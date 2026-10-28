@@ -118,12 +118,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function closeDrawer(e) {
-    if (e && typeof e.preventDefault === 'function') e.preventDefault();
+    // Do NOT preventDefault here: drawer links must still navigate when the drawer closes.
     document.body.classList.remove('drawer-open');
     document.documentElement.classList.remove('drawer-open');
     mobileToggles.forEach(btn => btn.setAttribute('aria-expanded', 'false'));
+    const isLinkClick = e && e.target && e.target.closest && e.target.closest('.mobile-drawer a, .mobile-drawer [data-open-modal]');
     const firstToggle = document.querySelector('.mobile-nav-toggle');
-    if (firstToggle) firstToggle.focus({ preventScroll: true });
+    if (firstToggle && !isLinkClick) firstToggle.focus({ preventScroll: true });
   }
 
   let lastDrawerToggleTick = 0;
