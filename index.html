@@ -30,15 +30,19 @@
     <script>
       try {
         const splashSeenKey = 'nartech-home-splash-seen';
-        if (!sessionStorage.getItem(splashSeenKey)) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const forceSplash = urlParams.has('splash');
+        if (!sessionStorage.getItem(splashSeenKey) || forceSplash) {
           document.documentElement.classList.add('show-site-splash');
-          sessionStorage.setItem(splashSeenKey, 'true');
+          if (!forceSplash) {
+            sessionStorage.setItem(splashSeenKey, 'true');
+          }
         }
       } catch (_) {}
     </script>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="assets/css/main.css?v=20261028-catalog-glass">
+    <link rel="stylesheet" href="assets/css/main.css?v=20261028-splash-v3">
 
     <!-- Structured Data: Organization & Engineering Service -->
     <script type="application/ld+json">
@@ -82,7 +86,7 @@
         <div class="splash-main">
           <div class="splash-intro">
             <div class="splash-logo-panel">
-              <img src="assets/images/nartech-logo-transparent.png" alt="NarTech Tank Terminal Solutions" width="1958" height="803">
+              <img src="assets/images/logo-white.png" alt="NarTech Tank Terminal Solutions" class="splash-logo-img" width="1024" height="472">
             </div>
             <p class="splash-eyebrow"><span class="lang-tr">MÜHENDİSLİK · GÜVENLİK · SAHA DENEYİMİ</span><span class="lang-en">ENGINEERING · SAFETY · FIELD EXPERIENCE</span></p>
             <h1 id="splash-title">

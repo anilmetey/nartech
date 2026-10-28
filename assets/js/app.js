@@ -87,51 +87,81 @@ document.addEventListener('DOMContentLoaded', () => {
     updateHeaderScroll();
   }
 
-  // 3. Mobile Navigation Drawer
+  // 3. Mobile Navigation Drawer (Bulletproof click & touch for all mobile browsers)
   const mobileToggles = document.querySelectorAll('.mobile-nav-toggle');
   const drawerCloseBtns = document.querySelectorAll('.drawer-close-btn');
   const drawerOverlays = document.querySelectorAll('.mobile-drawer-overlay');
 
   function openDrawer(e) {
-    if (e) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
+    if (e && e.preventDefault) e.preventDefault();
     document.body.classList.add('drawer-open');
+    document.documentElement.classList.add('drawer-open');
     mobileToggles.forEach(btn => btn.setAttribute('aria-expanded', 'true'));
     const firstClose = document.querySelector('.drawer-close-btn');
     if (firstClose) firstClose.focus({ preventScroll: true });
   }
 
   function closeDrawer(e) {
-    if (e && e.preventDefault) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
+    if (e && e.preventDefault) e.preventDefault();
     document.body.classList.remove('drawer-open');
+    document.documentElement.classList.remove('drawer-open');
     mobileToggles.forEach(btn => btn.setAttribute('aria-expanded', 'false'));
     const firstToggle = document.querySelector('.mobile-nav-toggle');
     if (firstToggle) firstToggle.focus({ preventScroll: true });
   }
 
   mobileToggles.forEach(btn => {
-    btn.addEventListener('click', openDrawer);
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (document.body.classList.contains('drawer-open')) {
+        closeDrawer(e);
+      } else {
+        openDrawer(e);
+      }
+    });
   });
+
   drawerCloseBtns.forEach(btn => {
     btn.addEventListener('click', closeDrawer);
   });
+
   drawerOverlays.forEach(overlay => {
     overlay.addEventListener('click', closeDrawer);
   });
 
-  // Close drawer when clicking an anchor link inside drawer
-  document.querySelectorAll('.mobile-drawer a, .mobile-drawer [data-open-modal]').forEach(el => {
-    el.addEventListener('click', () => {
+  document.addEventListener('click', (e) => {
+    const toggle = e.target.closest('.mobile-nav-toggle');
+    if (toggle) {
+      e.preventDefault();
+      e.stopPropagation();
       if (document.body.classList.contains('drawer-open')) {
-        document.body.classList.remove('drawer-open');
-        mobileToggles.forEach(btn => btn.setAttribute('aria-expanded', 'false'));
+        closeDrawer(e);
+      } else {
+        openDrawer(e);
       }
-    });
+      return;
+    }
+
+    const closeBtn = e.target.closest('.drawer-close-btn');
+    if (closeBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      closeDrawer(e);
+      return;
+    }
+
+    const overlay = e.target.closest('.mobile-drawer-overlay');
+    if (overlay) {
+      e.preventDefault();
+      e.stopPropagation();
+      closeDrawer(e);
+      return;
+    }
+
+    const drawerLink = e.target.closest('.mobile-drawer a, .mobile-drawer [data-open-modal]');
+    if (drawerLink) {
+      closeDrawer(e);
+    }
   });
 
   // 4. Modal Handling (RFQ / Inquiries)
@@ -426,13 +456,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const techPanes = Array.from(document.querySelectorAll('.tech-pane'));
   const catalogNavigation = document.querySelector('.catalog-navigation');
   const storageNavigation = document.querySelector('.storage-nav-group');
-  const compactCatalog = window.matchMedia('(max-width: 991px)');
 
+  // Keep catalog index and storage group permanently open on both mobile and desktop
   if (catalogNavigation) {
-    catalogNavigation.open = !compactCatalog.matches;
-    compactCatalog.addEventListener('change', event => {
-      catalogNavigation.open = !event.matches;
-    });
+    catalogNavigation.open = true;
+  }
+  if (storageNavigation) {
+    storageNavigation.open = true;
   }
 
   function activateTechTab(targetId, focusTab = false) {
@@ -442,6 +472,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Keep navigation group stable — do NOT collapse or shift sidebar
     if (storageNavigation) {
       storageNavigation.open = true;
+    }
+    if (catalogNavigation) {
+      catalogNavigation.open = true;
     }
 
     techPanes.forEach(pane => {
@@ -468,15 +501,19 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (_) {}
   }
 
-  windowNavItems.forEach((item, index) => {
-    item.addEventListener('click', (e) => {
+  // Delegated click handler: catalog sidebar items ALWAYS respond on mobile & desktop
+  document.addEventListener('click', (e) => {
+    const item = e.target.closest('.window-nav-item');
+    if (item) {
       e.preventDefault();
       const targetId = item.getAttribute('data-tab-target');
-      if (!activateTechTab(targetId)) return;
-      updateTechHash(targetId);
-      // Seamless in-place switch: no scrollIntoView jumping, no navigation collapsing
-    });
+      if (targetId && activateTechTab(targetId)) {
+        updateTechHash(targetId);
+      }
+    }
+  });
 
+  windowNavItems.forEach((item, index) => {
     item.addEventListener('keydown', event => {
       let nextIndex;
       if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
