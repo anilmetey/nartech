@@ -1,0 +1,23 @@
+{
+  "name": "nartech-engineering-web",
+  "version": "1.0.0",
+  "description": "Production-grade, high-performance website for Nartech Engineering",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test.js"
+  },
+  "keywords": [
+    "nartech",
+    "engineering",
+    "pvrv",
+    "flame-arrester",
+    "storage-tank-equipments",
+    "api-650",
+    "api-2000",
+    "atex"
+  ],
+  "author": "Nartech Mühendislik",
+  "license": "UNLICENSED",
+  "private": true
+}

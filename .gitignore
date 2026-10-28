@@ -1,0 +1,11 @@
+# System & Environment
+.DS_Store
+.env
+.env.*
+*.log
+npm-debug.log*
+
+# Node
+node_modules/
+.dist/
+.vscode/

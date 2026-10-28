@@ -1,0 +1,193 @@
+1-Storage Tank Equipments:
+
+a-Pressure Vacuum Relief Valves
+
+Basınç Vakum Ventili
+
+API 650 standardına göre tasarlanan atmosferik ve düşük basınçlı depolama tanklarında kullanılan, tankın iç basıncını ve vakumunu kontrol ederek tankın güvenli işletilmesini sağlayan bir basınç/vakum emniyet nefeslik valfidir.
+
+PVRV'nin nefeslik kapasitesi ve boyutlandırma hesaplamaları, API 2000 7th Edition, Venting Atmospheric and Low-Pressure Storage Tanks standardına göre gerçekleştirilir. Tankın doldurma ve boşaltma debileri ile termal etkiler dikkate alınarak inbreathing (vakum) ve outbreathing (basınç) ihtiyaçları hesaplanır ve buna uygun PVRV kapasitesi belirlenir.
+
+PVRV, patlayıcı atmosfer oluşma riski bulunan tank uygulamalarında kullanılmak üzere ATEX Sertifikalı olarak temin edilir. ATEX sertifikasyonu sayesinde ekipmanın, ilgili patlayıcı atmosfer ortamlarında kullanım için gerekli güvenlik ve uygunluk şartlarını karşılaması sağlanır.
+
+Basınç vakum ventili ; Hat Sonu , Hat Arası , Basınç Ventili , Vakum Ventili tipleri olarakta farklı tiplerde sağlanabilir.
+
+Pressure Vacuum Relief Valve
+
+Pressure Vacuum Relief Valve used on atmospheric and low-pressure storage tanks designed in accordance with the API 650 standard. It controls the internal pressure and vacuum of the tank, ensuring safe operation.
+
+The venting capacity and sizing calculations of the PVRV are carried out in accordance with API 2000 7th Edition, Venting Atmospheric and Low-Pressure Storage Tanks. The required inbreathing (vacuum) and outbreathing (pressure) capacities are calculated by taking into consideration the tank filling and emptying rates as well as thermal effects, and the appropriate PVRV capacity is determined accordingly.
+
+The PVRV is supplied as ATEX Certified equipment for use in tank applications where there is a risk of explosive atmospheres. The ATEX certification ensures that the equipment meets the necessary safety and conformity requirements for use in the relevant potentially explosive atmospheres.
+
+Pressure vacuum valves can also be supplied in different types, such as End of Line, In Line, Pressure Relief Valves, and Vacuum Relief Valves.
+
+b-In Line Type Flame Arresters:
+
+Hat Arası Alev Tutucu:
+
+EN ISO 16852 standardına uygun olarak tasarlanan ve test edilen Flame Arrestor (Alev Tutucu), yanıcı gaz, buhar veya hava karışımının bulunduğu proses ve depolama sistemlerinde, oluşabilecek bir alevin ekipman veya tank içerisine ilerlemesini ve diğer bölgelere yayılmasını önlemek amacıyla kullanılan pasif bir güvenlik ekipmanıdır.
+
+Alev tutucular, uygulamanın gerektirdiği gaz grupları IIA ve IIB için uygun olarak seçilir ve boyutlandırılır. Uygulama ve proses gereksinimlerine bağlı olarak Deflagration (Patlama) ve Detonation (Parlama) tipi alev tutucu seçenekleri mevcuttur.
+
+Ekipman, proses hattı ve montaj koşullarına bağlı olarak Yatay(Horizontal) veya dikey(Vertical) konumlandırılabilir. Böylece farklı tank, borulama ve proses sistemi uygulamalarına uygun montaj esnekliği sağlanır.
+
+Patlayıcı atmosfer oluşma riski bulunan uygulamalarda alev tutucu ATEX sertifikalı olarak temin edilir. ATEX sertifikasyonu, ekipmanın ilgili potansiyel patlayıcı atmosferlerde güvenli kullanım için gerekli uygunluk ve güvenlik gerekliliklerini karşıladığını gösterir.
+
+Alev tutucu seçiminde; gaz/buhar grubu (IIA veya IIB), deflagration veya detonation tipi, montaj yönü (yatay veya dikey), çalışma basıncı ve sıcaklığı, proses akışkanı ve akış kapasitesi gibi proses parametreleri dikkate alınarak uygun ürün seçimi gerçekleştirilir.
+
+In- Line Type Flame Arrester:
+
+The In Line Flame Arrestor, designed and tested in accordance with the EN ISO 16852 standard, is a passive safety device used in process and storage systems containing flammable gas, vapor, or air mixtures. Its primary purpose is to prevent a flame from propagating into equipment or tanks and from spreading to other areas.
+
+Flame arrestors are selected and sized according to the applicable gas groups IIA and IIB. Depending on the application and process requirements, Deflagration and Detonation type flame arrestors are available.
+
+Depending on the process piping and installation conditions, the equipment can be installed in either Horizontal or Vertical configration, providing installation flexibility for various tank, piping, and process system applications.
+
+For applications where there is a risk of explosive atmospheres, the flame arrestor is supplied as ATEX-certified equipment. ATEX certification demonstrates that the equipment meets the necessary conformity and safety requirements for safe use in the relevant potentially explosive atmospheres.
+
+The selection of the appropriate flame arrestor is based on process parameters such as gas/vapor group (IIA or IIB), deflagration or detonation type, installation orientation (horizontal or vertical), operating pressure and temperature, process fluid, and flow capacity.
+
+c-End of Line Type Flame Arresters:
+
+Hat Sonu Alev Tutucu:
+
+EN ISO 16852 standardına uygun olarak tasarlanan ve test edilen Hat Sonu Alev Tutucu, yanıcı gaz, buhar veya hava karışımının bulunduğu proses ve depolama sistemlerinin atmosferik açık uçlarında veya tank havalandırma hatlarında, dış ortamdan kaynaklanabilecek bir alevin veya kıvılcımın ekipman veya tank içerisine ilerlemesini önlemek amacıyla kullanılan pasif bir güvenlik ekipmanıdır.
+
+Hat Sonu Alev Tutucular, uygulamanın gerektirdiği gaz gruplarına uygun olarak seçilir ve boyutlandırılır. Uygulama ve proses gereksinimlerine bağlı olarak, açık hat uçlarında yaygın olarak karşılaşılan Deflagration (Patlama) tipinin yanı sıra, yanma süresi ve kararlılığına göre Kısa Süreli Yanma (Short-time Burning) veya Sınırsız Süreli Yanma (Endurance Burning) özelliklerine sahip hat sonu alev tutucu seçenekleri mevcuttur.
+
+Ekipman, borulama ve hat çıkış koşullarına bağlı olarak genellikle dikey (vertical) konumlandırılır.
+
+Patlayıcı atmosfer oluşma riski bulunan uygulamalarda alev tutucu ATEX sertifikalı olarak temin edilir. ATEX sertifikasyonu, ekipmanın ilgili potansiyel patlayıcı atmosferlerde güvenli kullanım için gerekli uygunluk ve güvenlik gerekliliklerini karşıladığını gösterir.
+
+End-of-Line Flame Arrester:
+
+Designed and tested in accordance with the EN ISO 16852 standard, the End-of-Line Flame Arrester is a passive safety equipment used in atmospheric open ends of process and storage systems containing flammable gas, vapor, or air mixtures, or in tank venting lines, to prevent a flame or spark originating from the external environment from propagating into the equipment or tank.
+
+End-of-Line Flame Arresters are selected and sized according to the gas groups required by the application. Depending on application and process requirements, alongside the Deflagration type commonly encountered at open line ends, end-of-line flame arrester options featuring Short-time Burning or Endurance Burning capabilities based on burning duration and stability are available.
+
+Depending on the piping and line discharge conditions, the equipment is generally positioned vertically.
+
+In applications with a risk of explosive atmospheres, the flame arrester is provided with ATEX certification. ATEX certification demonstrates that the equipment meets the compliance and safety requirements necessary for safe use in the relevant potentially explosive atmospheres.
+
+d-Emergency Relief Valve
+
+Acil Emniyet Ventili
+
+API 650 standardına göre tasarlanan atmosferik ve düşük basınçlı depolama tanklarında kullanılan Emergency Relief Valve, tank içerisinde meydana gelebilecek anormal basınç artışlarında tankın aşırı basınca maruz kalmasını önlemek amacıyla kullanılan bir acil durum basınç tahliye ekipmanıdır.
+
+Emergency Relief Valve, patlayıcı atmosfer riski bulunan uygulamalarda kullanılmak üzere ATEX sertifikalı olarak temin edilmektedir.Emergency Relief Valve, özellikle yangın (fire exposure) gibi acil durum koşullarında tank içerisindeki basıncın hızlı şekilde yükselmesi durumunda devreye girerek, oluşan fazla buhar ve gazın kontrollü bir şekilde tahliye edilmesini sağlar. Böylece tankın tasarım basıncının aşılmasının ve tank yapısında meydana gelebilecek hasarların önlenmesine yardımcı olur.
+
+Emergency Relief Valve'ın kapasite ve boyutlandırma hesaplamaları, API 2000 - 7th Edition, Venting Atmospheric and Low-Pressure Storage Tanks standardına göre gerçekleştirilir. Özellikle yangın senaryosu için gerekli emergency venting kapasitesi hesaplanarak uygun vana kapasitesi belirlenir.
+
+Ekipman, tankın tasarım özellikleri ve proses koşullarına bağlı olarak Ağırlıklı veya Yaylı tasarımlarda temin edilebilir. Ürün seçimi sırasında tankın çapı, depolanan ürün, tasarım basıncı ve vakumu, çalışma sıcaklığı, yangına maruz kalma koşulları ve gerekli acil durum vent kapasitesi gibi parametreler dikkate alınır.Emergency Relief ValveEmergency Relief Valve is an emergency pressure relief device used on atmospheric and low-pressure storage tanks designed in accordance with the API 650 standard. It is intended to protect the tank from excessive pressure in the event of abnormal pressure increases within the tank.
+
+Emergency Relief Valve is supplied as ATEX-certified equipment for applications where there is a risk of explosive atmospheres.Emergency Relief Valve is activated particularly under emergency conditions such as fire exposure, when the pressure inside the tank rises rapidly, allowing excess vapor and gas to be safely and controlledly released. This helps prevent the tank design pressure from being exceeded and minimizes the risk of structural damage to the tank.
+
+Capacity and sizing calculations of the Emergency Relief Valve are carried out in accordance with API 2000 - 7th Edition, Venting Atmospheric and Low-Pressure Storage Tanks. In particular, the required emergency venting capacity for the fire scenario is calculated, and the appropriate valve capacity is determined accordingly.
+
+Depending on the tank design and process conditions, the equipment can be supplied in weighted or spring-loaded designs. During product selection, parameters such as tank diameter, stored product, design pressure and vacuum, operating temperature, fire exposure conditions, and required emergency venting capacity are taken into consideration.
+
+e-Gauge Hatches
+
+Ölçüm Deliği Kapağı
+
+API 650 standardına göre tasarlanan atmosferik ve düşük basınçlı depolama tanklarında kullanılan Gauge Hatch (Ölçüm Kapağı), tank içerisindeki ürün seviyesinin manuel olarak ölçülmesi, numune alınması ve tank içerisindeki ürünün kontrol edilmesi amacıyla tank çatısına monte edilen bir tank ekipmanıdır.
+
+Gauge Hatch, patlayıcı atmosfer riski bulunan uygulamalarda kullanılmak üzere ATEX sertifikalı olarak temin edilebilir.Gauge Hatch, yetkisiz erişimi önlemek amacıyla kilitleme mekanizmasına sahip olup, yalnızca yetkili personel tarafından açılabilecek şekilde tasarlanmıştır. Bu özellik, özellikle yanıcı, tehlikeli veya değerli ürünlerin depolandığı tanklarda operasyonel güvenlik ve erişim kontrolü sağlar.
+
+Gauge Hatch, API 650 tank çatı yapısına uygun olarak farklı bağlantı ve ölçü seçeneklerinde üretilebilir. Manuel seviye ölçümü ve numune alma işlemleri sırasında ölçüm ekipmanlarının tank içerisine güvenli şekilde erişmesine imkân sağlar. Anti-spark (kıvılcım önleyici) tasarımı sayesinde, ölçüm kapağının açılması veya kapatılması sırasında oluşabilecek mekanik kıvılcım riskinin azaltılmasına yardımcı olur ve yanıcı ürünlerin depolandığı tank uygulamalarında ilave güvenlik sağlar.
+
+Ürün seçiminde tank çatı tipi, bağlantı/nozzle ölçüsü, depolanan ürün, çalışma sıcaklığı, malzeme uyumluluğu ve operasyonel gereksinimler dikkate alınır. Gövde, kapak ve sızdırmazlık elemanları, tankın çalışma koşullarına ve depolanan ürünün özelliklerine uygun olarak seçilir.
+
+Kilitli tip’ kilitsiz tip’ atmosfere kapali tip’
+
+Gauge Hatch
+
+Gauge Hatch is a tank accessory installed on the roof of atmospheric and low-pressure storage tanks designed in accordance with the API 650 standard. It is used for manual measurement of the product level inside the tank, sampling, and inspection of the stored product.
+
+Gauge Hatch can be supplied as ATEX-Certified equipment for applications where there is a risk of explosive atmospheres.Gauge Hatch is equipped with a locking mechanism to prevent unauthorized access and is designed to be opened only by authorized personnel. This feature provides additional operational safety and access control, particularly for tanks storing flammable, hazardous, or valuable products.
+
+The Gauge Hatch can be manufactured with different connection types and dimensions in accordance with the API 650 tank roof structure. It provides safe access for measurement equipment during manual level measurement and sampling operations. Thanks to its anti-spark (spark-resistant) design, it helps reduce the risk of mechanical sparks during opening and closing of the hatch, providing additional safety in tank applications involving flammable products.
+
+During product selection, parameters such as tank roof type, connection/nozzle size, stored product, operating temperature, material compatibility, and operational requirements are taken into consideration. The body, cover, and sealing elements are selected according to the tank operating conditions and the characteristics of the stored product.
+
+f-Internal Floating Roofs and Seals***
+
+Pontoon Type IFR
+
+Full Contact Type IFR
+
+Chemraz XPE Seal
+
+HDPE Seal
+
+LDPE Seal
+
+2-Fire Fighting Equipments (FM / UL Approved)
+
+A Fixed Foam Monitor
+
+B Foam Maker
+
+C Foam Mixer
+
+D Foam Top Pourer
+
+E Rim Seal Foam Pourer
+
+F Foam Tanks
+
+G Foam Sprinkler / Water Sprinkler
+
+3-Pig Cleaning Equipments
+
+A Foam Pigs
+
+B Solid Cast Pigs
+
+C Steel Pigs
+
+-Pig Signallers
+
+A Non Intrusive Type Pig Signaller
+
+B Intrusive Type Pig Signaller
+
+4-Industrial Silencers
+
+An Industrial Silencer is a critical noise control device engineered to significantly reduce high-intensity operational noise generated by equipment like fans, blowers, and exhaust systems. By lowering noise levels precisely down to 85 dB, it effectively protects workers from hearing loss and long-term health hazards in compliance with occupational safety regulations. Additionally, it minimizes environmental noise pollution, creating a safer, more productive, and regulation-friendly industrial workplace.
+
+5-Floatin Suction Units
+
+The Floating Suction Unit is a system designed to draw liquid from the cleanest surface level in storage tanks (especially for aviation fuels and chemicals). It ensures that always the clearest product at the very top is withdrawn, preventing the pumping of water, sediments, and sludge accumulated at the bottom of the tank.
+
+A Pipe Type Floating Suction Unit
+
+B Hose Type Floating Suction Unit
+
+C Oil Skimmer
+
+6-Retractable Grounding Cable
+
+The ATEX-Certified Retractable Grounding Reel (RGR) is designed to safely discharge static electricity from floating roof tanks in accordance with API standards. Acting as a direct electrical connection between the floating roof and the tank shell, it ensures that lightning currents and bound charges are rapidly and effectively conducted to the earth during a lightning strike.
+
+7-Loading Arms
+
+8-Industrial Valves
+
+A Ball Valves
+
+B Gate Valves
+
+C Butterfly Valves
+
+9-Gas Scrubber Systems
+
+10-Seperators
+
+11-Spare Parts for Refineries
+
+Ürünlerimiz, uluslararası standartlara uygun ve gerekli sertifikasyonlarla güvence altındadır.
+
+All products ccomply with international standards and are secured by the necessary certifications.

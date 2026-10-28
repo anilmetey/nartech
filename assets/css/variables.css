@@ -1,0 +1,130 @@
+:root {
+  /* ==========================================================================
+     NARTECH ENGINEERING DESIGN SYSTEM — INDUSTRIAL ARCHITECTURAL PALETTE
+     Ground: Crisp Architectural White (#FFFFFF) & Warm Stone (#F7F8F6)
+     Primary: Deep Industrial Forest Green (#144F32)
+     Accent: Deep Claret / Bordeaux (#7A1D2E)
+     Grounding Footer: Warm Espresso Charcoal (#181211)
+     ========================================================================== */
+  
+  /* Primary Green */
+  --color-primary: #144F32;
+  --color-primary-dark: #0D3823;
+  --color-primary-hover: #0E3D26;
+  --color-primary-light: #1E7845;
+  --color-primary-subtle: #F0F5F2;
+  --color-primary-border: #C5D9CD;
+
+  /* Deep Claret / Bordeaux Accent */
+  --color-bordeaux: #7A1D2E;
+  --color-bordeaux-dark: #58121F;
+  --color-bordeaux-hover: #5C1220;
+  --color-bordeaux-light: #942539;
+  --color-bordeaux-subtle: #F7F0F2;
+  --color-bordeaux-border: #D4A6B0;
+
+  /* Alias accent to Bordeaux */
+  --color-accent: var(--color-bordeaux);
+  --color-accent-hover: var(--color-bordeaux-hover);
+  --color-accent-subtle: var(--color-bordeaux-subtle);
+  --color-accent-border: var(--color-bordeaux-border);
+
+  /* Architectural Surfaces */
+  --color-surface-bg: #FFFFFF;
+  --color-surface-subtle: #F7F8F6;
+  --color-surface-muted: #EEF2EF;
+  --color-surface-card: #FFFFFF;
+  
+  /* Footer & Grounding Dark Espresso */
+  --color-brown-base: #181211;
+  --color-brown-deep: #100B0A;
+  --color-brown-surface: #221918;
+  --color-brown-border: #362B29;
+  --color-brown-muted: #C2B8B4;
+
+  /* Deep Green Surface */
+  --color-surface-dark: #0F2A1F;
+  --color-surface-dark-card: #14382A;
+
+  /* Typography Ink Hierarchy (WCAG AA/AAA Verified) */
+  --color-text-primary: #0F1A14;
+  --color-text-secondary: #26382F;
+  --color-text-muted: #42574B;
+  --color-text-light: #8FA89B;
+  --color-text-inverse: #FFFFFF;
+  --color-text-inverse-muted: #D5E5DC;
+
+  /* Structural Borders */
+  --color-border: #DCE6DF;
+  --color-border-subtle: #E9EFEA;
+  --color-border-strong: #B8CEC0;
+  --color-border-dark: #1F4534;
+
+  /* Status Colors */
+  --color-success: #166534;
+  --color-success-bg: #F0FDF4;
+  --color-error: #B91C1C;
+  --color-error-bg: #FEF2F2;
+  --color-warning: #B45309;
+
+  /* Typography */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  --text-xs: 0.75rem;     /* 12px */
+  --text-sm: 0.875rem;    /* 14px */
+  --text-base: 1rem;      /* 16px */
+  --text-lg: 1.125rem;    /* 18px */
+  --text-xl: 1.25rem;     /* 20px */
+  --text-2xl: 1.5rem;     /* 24px */
+  --text-3xl: 1.875rem;   /* 30px */
+  --text-4xl: 2.25rem;    /* 36px */
+  --text-5xl: 3rem;       /* 48px */
+
+  --leading-tight: 1.18;
+  --leading-snug: 1.32;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.65;
+
+  /* 8px Spacing Scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* Layout Containers */
+  --container-max: 1240px;
+  --container-wide: 1360px;
+  --container-narrow: 840px;
+  --container-padding: 24px;
+
+  /* Industrial Precision Radii (Consistent Sharp/Machined Corners) */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-pill: 4px;
+
+  /* restrained Elevations (Only for floating UI overlays) */
+  --shadow-sm: none;
+  --shadow-md: 0 6px 16px -4px rgba(15, 26, 20, 0.08);
+  --shadow-lg: 0 20px 40px -12px rgba(15, 26, 20, 0.18);
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-normal: 240ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Z-Index System */
+  --z-header: 100;
+  --z-drawer: 200;
+  --z-modal: 300;
+  --z-toast: 400;
+}
