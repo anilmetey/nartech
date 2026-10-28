@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const drawerOverlays = document.querySelectorAll('.mobile-drawer-overlay');
 
   function openDrawer(e) {
-    if (e && e.preventDefault) e.preventDefault();
+    if (e && typeof e.preventDefault === 'function') e.preventDefault();
     document.body.classList.add('drawer-open');
     document.documentElement.classList.add('drawer-open');
     mobileToggles.forEach(btn => btn.setAttribute('aria-expanded', 'true'));
@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function closeDrawer(e) {
-    if (e && e.preventDefault) e.preventDefault();
+    if (e && typeof e.preventDefault === 'function') e.preventDefault();
     document.body.classList.remove('drawer-open');
     document.documentElement.classList.remove('drawer-open');
     mobileToggles.forEach(btn => btn.setAttribute('aria-expanded', 'false'));
@@ -126,50 +126,70 @@ document.addEventListener('DOMContentLoaded', () => {
     if (firstToggle) firstToggle.focus({ preventScroll: true });
   }
 
+  let lastDrawerToggleTick = 0;
+  function toggleDrawer(e) {
+    if (e) {
+      if (typeof e.preventDefault === 'function') e.preventDefault();
+      if (typeof e.stopPropagation === 'function') e.stopPropagation();
+    }
+    const now = Date.now();
+    if (now - lastDrawerToggleTick < 280) {
+      return;
+    }
+    lastDrawerToggleTick = now;
+
+    if (document.body.classList.contains('drawer-open')) {
+      closeDrawer(e);
+    } else {
+      openDrawer(e);
+    }
+  }
+
   mobileToggles.forEach(btn => {
     btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (document.body.classList.contains('drawer-open')) {
-        closeDrawer(e);
-      } else {
-        openDrawer(e);
-      }
+      toggleDrawer(e);
     });
   });
 
   drawerCloseBtns.forEach(btn => {
-    btn.addEventListener('click', closeDrawer);
+    btn.addEventListener('click', (e) => {
+      if (e) {
+        if (typeof e.preventDefault === 'function') e.preventDefault();
+        if (typeof e.stopPropagation === 'function') e.stopPropagation();
+      }
+      closeDrawer(e);
+    });
   });
 
   drawerOverlays.forEach(overlay => {
-    overlay.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', (e) => {
+      if (e) {
+        if (typeof e.preventDefault === 'function') e.preventDefault();
+        if (typeof e.stopPropagation === 'function') e.stopPropagation();
+      }
+      closeDrawer(e);
+    });
   });
 
   document.addEventListener('click', (e) => {
     const toggle = e.target.closest('.mobile-nav-toggle');
     if (toggle) {
-      e.preventDefault();
-      e.stopPropagation();
-      if (document.body.classList.contains('drawer-open')) {
-        closeDrawer(e);
-      } else {
-        openDrawer(e);
-      }
+      toggleDrawer(e);
       return;
     }
 
     const closeBtn = e.target.closest('.drawer-close-btn');
     if (closeBtn) {
-      e.preventDefault();
-      e.stopPropagation();
+      if (typeof e.preventDefault === 'function') e.preventDefault();
+      if (typeof e.stopPropagation === 'function') e.stopPropagation();
       closeDrawer(e);
       return;
     }
 
     const overlay = e.target.closest('.mobile-drawer-overlay');
     if (overlay) {
-      e.preventDefault();
-      e.stopPropagation();
+      if (typeof e.preventDefault === 'function') e.preventDefault();
+      if (typeof e.stopPropagation === 'function') e.stopPropagation();
       closeDrawer(e);
       return;
     }
