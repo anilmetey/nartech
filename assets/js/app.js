@@ -28,6 +28,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Delegated click listener for 100% reliable language toggling on all mobile and desktop devices
+  document.addEventListener('click', (e) => {
+    const langBtn = e.target.closest('.lang-btn');
+    if (langBtn) {
+      e.preventDefault();
+      const selectedLang = langBtn.getAttribute('data-lang');
+      if (selectedLang && selectedLang !== activeLang) {
+        activeLang = selectedLang;
+        try {
+          localStorage.setItem('nartech_lang', activeLang);
+        } catch (_) {}
+        applyLanguage(activeLang);
+      }
+    }
+  });
+
   function applyLanguage(lang) {
     if (!translations || !translations[lang]) return;
     activeLang = lang;
