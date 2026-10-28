@@ -125,6 +125,6 @@
   /* Z-Index System */
   --z-header: 500;
   --z-drawer: 600;
-  --z-modal: 700;
-  --z-toast: 800;
+  --z-modal: 15000;
+  --z-toast: 16000;
 }

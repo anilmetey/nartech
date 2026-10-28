@@ -121,7 +121,7 @@
   /* Z-Index */
   --z-header: 500;
   --z-drawer: 600;
-  --z-modal: 700;
+  --z-modal: 15000;
   --z-toast: 800;
 }
 
@@ -4459,7 +4459,7 @@ body.splash-active {
   display: none;
   position: fixed;
   inset: 0;
-  z-index: 1000;
+  z-index: 20000;
   place-items: center;
   overflow: hidden;
   padding: clamp(20px, 4vw, 56px);
