@@ -361,6 +361,24 @@ async function runTests() {
     assert(mainCssContent.includes('rgba(24, 18, 17, 0.90)') || mainCssContent.includes('rgba(24, 18, 17'), 'btn-apt-executive utilizes footer translucent dark espresso grounding');
     assert(mainCssContent.includes('backdrop-filter: blur(12px)'), 'btn-apt-executive utilizes backdrop-filter blur');
 
+    // 30. Mobile Header Sticky & Mobile Drawer Reliability
+    const vm = require('vm');
+    let jsSyntaxClean = true;
+    try {
+      new vm.Script(appJsContent, { filename: 'app.js' });
+      const i18nContent = fs.readFileSync(path.join(__dirname, 'assets/js/i18n.js'), 'utf-8');
+      new vm.Script(i18nContent, { filename: 'i18n.js' });
+    } catch (e) {
+      jsSyntaxClean = false;
+    }
+    assert(jsSyntaxClean, 'app.js and i18n.js pass JavaScript syntax parsing with zero errors');
+    assert(mainCssContent.includes('overflow-x: clip'), 'main.css prevents sticky break using overflow-x: clip');
+    assert(mainCssContent.includes('.site-header') && mainCssContent.includes('position: sticky'), 'main.css positions site header sticky');
+    assert(mainCssContent.includes('.drawer-open .mobile-drawer'), 'main.css has drawer open transformation');
+    assert(mainCssContent.includes('body.drawer-open'), 'main.css contains body.drawer-open lock');
+    assert(appJsContent.includes('openDrawer') && appJsContent.includes('closeDrawer'), 'app.js wires mobile navigation drawer');
+    assert(appJsContent.includes('mobileToggles.forEach'), 'app.js binds mobile drawer toggles across all matches');
+
     console.log(`\n📊 Final In-Process Test Results: ${passed} Passed, ${failed} Failed.`);
     if (failed > 0) process.exit(1);
   } catch (err) {

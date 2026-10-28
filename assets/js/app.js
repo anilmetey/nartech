@@ -76,50 +76,60 @@ document.addEventListener('DOMContentLoaded', () => {
   // 2. Sticky Header Elevation on Scroll
   const header = document.querySelector('.site-header');
   if (header) {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 20) {
+    const updateHeaderScroll = () => {
+      if (window.scrollY > 10) {
         header.classList.add('scrolled');
       } else {
         header.classList.remove('scrolled');
       }
-    }, { passive: true });
+    };
+    window.addEventListener('scroll', updateHeaderScroll, { passive: true });
+    updateHeaderScroll();
   }
 
   // 3. Mobile Navigation Drawer
-  const mobileToggle = document.querySelector('.mobile-nav-toggle');
-  const drawerCloseBtn = document.querySelector('.drawer-close-btn');
-  const drawerOverlay = document.querySelector('.mobile-drawer-overlay');
+  const mobileToggles = document.querySelectorAll('.mobile-nav-toggle');
+  const drawerCloseBtns = document.querySelectorAll('.drawer-close-btn');
+  const drawerOverlays = document.querySelectorAll('.mobile-drawer-overlay');
 
-  function openDrawer() {
-    document.body.classList.add('drawer-open');
-    if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'true');
-    if (drawerCloseBtn) drawerCloseBtn.focus({ preventScroll: true });
-  }
-
-  function closeDrawer() {
-    document.body.classList.remove('drawer-open');
-    if (mobileToggle) {
-      mobileToggle.setAttribute('aria-expanded', 'false');
-      mobileToggle.focus({ preventScroll: true });
+  function openDrawer(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
     }
+    document.body.classList.add('drawer-open');
+    mobileToggles.forEach(btn => btn.setAttribute('aria-expanded', 'true'));
+    const firstClose = document.querySelector('.drawer-close-btn');
+    if (firstClose) firstClose.focus({ preventScroll: true });
   }
 
-  if (mobileToggle) {
-    mobileToggle.addEventListener('click', openDrawer);
+  function closeDrawer(e) {
+    if (e && e.preventDefault) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    document.body.classList.remove('drawer-open');
+    mobileToggles.forEach(btn => btn.setAttribute('aria-expanded', 'false'));
+    const firstToggle = document.querySelector('.mobile-nav-toggle');
+    if (firstToggle) firstToggle.focus({ preventScroll: true });
   }
-  if (drawerCloseBtn) {
-    drawerCloseBtn.addEventListener('click', closeDrawer);
-  }
-  if (drawerOverlay) {
-    drawerOverlay.addEventListener('click', closeDrawer);
-  }
+
+  mobileToggles.forEach(btn => {
+    btn.addEventListener('click', openDrawer);
+  });
+  drawerCloseBtns.forEach(btn => {
+    btn.addEventListener('click', closeDrawer);
+  });
+  drawerOverlays.forEach(overlay => {
+    overlay.addEventListener('click', closeDrawer);
+  });
 
   // Close drawer when clicking an anchor link inside drawer
   document.querySelectorAll('.mobile-drawer a, .mobile-drawer [data-open-modal]').forEach(el => {
     el.addEventListener('click', () => {
       if (document.body.classList.contains('drawer-open')) {
         document.body.classList.remove('drawer-open');
-        if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
+        mobileToggles.forEach(btn => btn.setAttribute('aria-expanded', 'false'));
       }
     });
   });
@@ -174,8 +184,6 @@ document.addEventListener('DOMContentLoaded', () => {
         m.classList.remove('modal-open');
       });
       document.body.classList.remove('modal-active');
-    }
-  });
     }
   });
 

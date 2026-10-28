@@ -123,8 +123,8 @@
   --transition-normal: 240ms cubic-bezier(0.22, 1, 0.36, 1);
 
   /* Z-Index System */
-  --z-header: 100;
-  --z-drawer: 200;
-  --z-modal: 300;
-  --z-toast: 400;
+  --z-header: 500;
+  --z-drawer: 600;
+  --z-modal: 700;
+  --z-toast: 800;
 }
