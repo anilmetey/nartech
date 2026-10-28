@@ -2712,7 +2712,6 @@ textarea.form-control {
    ========================================================================== */
 body.drawer-open {
   overflow: hidden !important;
-  touch-action: none;
 }
 
 .mobile-drawer-overlay {

@@ -545,6 +545,17 @@ document.addEventListener('DOMContentLoaded', () => {
       const targetId = item.getAttribute('data-tab-target');
       if (targetId && activateTechTab(targetId)) {
         updateTechHash(targetId);
+        // On mobile/tablet the sidebar is stacked above the content pane, so bring the
+        // selected pane into view below the fixed header; otherwise the tap looks dead.
+        if (window.matchMedia('(max-width: 991px)').matches) {
+          const viewport = document.querySelector('.tech-window-viewport');
+          if (viewport) {
+            const headerEl = document.querySelector('.site-header');
+            const offset = (headerEl ? headerEl.getBoundingClientRect().height : 76) + 12;
+            const top = viewport.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
+          }
+        }
       }
     }
   });
