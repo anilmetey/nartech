@@ -5,6 +5,8 @@
 !.env.example
 *.log
 npm-debug.log*
+__pycache__/
+*.py[cod]
 
 # Node
 node_modules/
