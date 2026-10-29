@@ -155,15 +155,10 @@ def nav(prefix: str, current: str) -> str:
     return "\n".join(links)
 
 def footer(prefix: str) -> str:
-    category_links = "".join(
-        f'<li><a href="{prefix}categories/{esc(category["id"])}.html"><span class="lang-tr">{esc(category_title(category, "tr"))}</span><span class="lang-en">{esc(category_title(category, "en"))}</span></a></li>'
-        for category in categories
-    )
     return f'''<footer class="site-footer" role="contentinfo"><div class="footer-inner">
 <section class="footer-brand-block"><a class="footer-brand" href="{prefix}index.html" aria-label="NarTech Ana Sayfa"><img src="{prefix}assets/images/logo-white.png" width="1024" height="472" alt="NarTech"></a><p class="footer-tagline"><span class="footer-tagline-dot" aria-hidden="true"></span><span class="lang-tr">{esc(content['home']['titleTr'])}</span><span class="lang-en">{esc(content['home']['titleEn'])}</span></p></section>
-<nav class="footer-group footer-company" aria-label="Hakkımızda"><h2 class="footer-heading"><a href="{prefix}about.html"><span class="lang-tr">Hakkımızda</span><span class="lang-en">About Us</span></a></h2><ul class="footer-links"><li><a href="{prefix}index.html"><span class="lang-tr">Ana Sayfa</span><span class="lang-en">Home</span></a></li><li><a href="{prefix}services.html"><span class="lang-tr">Hizmetler</span><span class="lang-en">Services</span></a></li><li><a href="{prefix}faq.html"><span class="lang-tr">Sıkça Sorulan Sorular</span><span class="lang-en">Frequently Asked Questions</span></a></li></ul></nav>
-<nav class="footer-group footer-products" aria-label="Ürünler"><h2 class="footer-heading"><a href="{prefix}products.html"><span class="lang-tr">Ürünler</span><span class="lang-en">Products</span></a></h2><ul class="footer-category-list">{category_links}</ul></nav>
-<nav class="footer-group footer-contact" aria-label="İletişim"><h2 class="footer-heading"><a href="{prefix}contact.html"><span class="lang-tr">İletişim</span><span class="lang-en">Contact</span></a></h2><ul class="footer-links"><li><a href="{prefix}calculator.html"><span class="lang-tr">Hesaplama</span><span class="lang-en">Calculator</span></a></li></ul><a class="footer-cta" href="{prefix}contact.html#contact-form"><span class="lang-tr">Teklif Gönder</span><span class="lang-en">Send Request</span><span aria-hidden="true">↗</span></a></nav>
+<nav class="footer-group footer-site" aria-label="Site"><h2 class="footer-heading"><a href="{prefix}about.html"><span class="lang-tr">Hakkımızda</span><span class="lang-en">About Us</span></a></h2><ul class="footer-links"><li><a href="{prefix}index.html"><span class="lang-tr">Ana Sayfa</span><span class="lang-en">Home</span></a></li><li><a href="{prefix}products.html"><span class="lang-tr">Ürünler</span><span class="lang-en">Products</span></a></li><li><a href="{prefix}services.html"><span class="lang-tr">Hizmetler</span><span class="lang-en">Services</span></a></li><li><a href="{prefix}calculator.html"><span class="lang-tr">Hesaplama</span><span class="lang-en">Calculator</span></a></li><li><a href="{prefix}faq.html"><span class="lang-tr">SSS</span><span class="lang-en">FAQ</span></a></li></ul></nav>
+<nav class="footer-group footer-contact" aria-label="İletişim"><h2 class="footer-heading"><a href="{prefix}contact.html"><span class="lang-tr">İletişim</span><span class="lang-en">Contact</span></a></h2><a class="footer-cta" href="{prefix}contact.html#contact-form"><span class="lang-tr">Teklif Gönder</span><span class="lang-en">Send Request</span><span aria-hidden="true">↗</span></a></nav>
 </div></footer>'''
 
 def layout(title: str, body: str, current: str, prefix="", lang="tr") -> str:
@@ -172,7 +167,7 @@ def layout(title: str, body: str, current: str, prefix="", lang="tr") -> str:
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)} | NarTech</title>
-<link rel="stylesheet" href="{prefix}assets/css/main.css?v=source-footer-professional-1">
+<link rel="stylesheet" href="{prefix}assets/css/main.css?v=source-footer-compact-2">
 <script defer src="{prefix}assets/js/app.js?v=source-home-photo-2"></script>
 </head>
 <body>
@@ -225,6 +220,13 @@ for category in categories:
     home_categories.append(f'<a class="home-category-link" href="categories/{esc(category["id"])}.html">{label}<span aria-hidden="true">↗</span></a>')
 home_about_tr=''.join(p_html(entry,"tr") for entry in content["about"]["paragraphsTr"][:2])
 home_about_en=''.join(p_html(entry,"en") for entry in content["about"]["paragraphsEn"][:2])
+home_proof_items=[
+    ("MÜHENDİSLİK DENEYİMİ","ENGINEERING EXPERIENCE","10+ Yıl","10+ Years","Sektörel Mühendislik Deneyimi","Industrial Engineering Experience"),
+    ("ULUSLARARASI STANDARTLAR","INTERNATIONAL STANDARDS","API & EN","API & EN","API 650, 2000 ve EN ISO 16852 Uyumu","API 650, 2000 and EN ISO 16852 Compliance"),
+    ("EMNİYET & YANGIN SERTİFİKASYONU","SAFETY & FIRE CERTIFICATION","FM & ATEX","FM & ATEX","Patlayıcı Ortam ve Yangın Güvenliği","Explosive Atmosphere and Fire Safety"),
+    ("PROJE & ŞARTNAME UYUMU","PROJECT SPECIFICATIONS","Özel Tasarım","Tailored Products","Müşteri şartnamelerine göre","To client specifications"),
+]
+home_proof_html=''.join(f'<div class="home-proof-item"><span class="home-proof-kicker"><span aria-hidden="true"></span><span class="lang-tr">{esc(tr_kicker)}</span><span class="lang-en">{esc(en_kicker)}</span></span><strong class="home-proof-value"><span class="lang-tr">{esc(tr_value)}</span><span class="lang-en">{esc(en_value)}</span></strong><span class="home-proof-detail"><span class="lang-tr">{esc(tr_detail)}</span><span class="lang-en">{esc(en_detail)}</span></span></div>' for tr_kicker,en_kicker,tr_value,en_value,tr_detail,en_detail in home_proof_items)
 home_services=[]
 for service in content["services"]["items"]:
     service_copy=''.join(p_html(paragraph,"tr") for paragraph in service["paragraphs"])
@@ -232,6 +234,7 @@ for service in content["services"]["items"]:
 home_feature_tr=p_html(pvrv["tr"][0],"tr")
 home_feature_en=p_html(pvrv["en"][0],"en")
 home_body=f'''<div class="home-page"><div class="page-wrap"><section class="home-hero"><div class="home-hero-copy"><h1><span class="lang-tr">{esc(content['home']['titleTr'])}</span><span class="lang-en">{esc(content['home']['titleEn'])}</span></h1><p><span class="lang-tr">{esc(content['home']['bodyTr'])}</span><span class="lang-en">{esc(content['home']['bodyEn'])}</span></p><div class="home-actions"><a class="button button-primary" href="products.html"><span class="lang-tr">Ürünler</span><span class="lang-en">Products</span></a><a class="button" href="calculator.html"><span class="lang-tr">Hesaplama</span><span class="lang-en">Calculator</span></a><a class="button" href="contact.html#contact-form"><span class="lang-tr">Randevu Oluştur</span><span class="lang-en">Appointment</span></a></div></div><figure class="home-hero-media"><img src="assets/images/home.jpeg" alt="NarTech Depolama Tankı ve Terminal Ekipmanları Sahası" width="1170" height="525" fetchpriority="high" decoding="async"></figure></section>
+<section class="home-proof-strip" aria-label="Mühendislik Göstergeleri">{home_proof_html}</section>
 <section class="home-feature-section"><article class="home-feature"><div><div class="home-feature-category"><span class="lang-tr">{esc(category_title(categories[0],"tr"))}</span><span class="lang-en">{esc(category_title(categories[0],"en"))}</span></div><h2><a href="products/{esc(pvrv['id'])}.html"><span class="lang-tr">{esc(title_for(pvrv,"tr"))}</span><span class="lang-en">{esc(title_for(pvrv,"en"))}</span></a></h2></div><div class="lang-tr">{home_feature_tr}</div><div class="lang-en">{home_feature_en}</div></article></section>
 <section class="home-section home-products-section"><div class="home-section-heading"><h2><span class="lang-tr">Ürünler</span><span class="lang-en">Products</span></h2></div><nav class="home-category-grid" aria-label="Ürünler">{''.join(home_categories)}</nav></section>
 <section class="home-about-section"><div class="home-about-heading"><h2><span class="lang-tr">Hakkımızda</span><span class="lang-en">About Us</span></h2><a class="home-section-link" href="about.html"><span class="lang-tr">Hakkımızda</span><span class="lang-en">About Us</span><span aria-hidden="true">↗</span></a></div><div class="home-about-copy"><div class="lang-tr">{home_about_tr}</div><div class="lang-en">{home_about_en}</div></div></section>
