@@ -167,8 +167,8 @@ def layout(title: str, body: str, current: str, prefix="", lang="tr") -> str:
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)} | NarTech</title>
-<link rel="stylesheet" href="{prefix}assets/css/main.css?v=source-footer-dot-aligned-6">
-<script defer src="{prefix}assets/js/app.js?v=source-home-photo-2"></script>
+<link rel="stylesheet" href="{prefix}assets/css/main.css?v=source-proof-count-up-1">
+<script defer src="{prefix}assets/js/app.js?v=source-proof-count-up-1"></script>
 </head>
 <body>
 <header class="site-header"><div class="header-inner"><a class="brand" href="{prefix}index.html" aria-label="NarTech"><img src="{prefix}assets/images/nartech-logo-transparent.png" width="1958" height="803" alt="NarTech"></a><button class="nav-toggle" type="button" data-nav-toggle aria-controls="site-nav" aria-expanded="false" aria-label="Menüyü Aç"><span></span><span></span><span></span></button><nav class="site-nav" id="site-nav" aria-label="Site">{nav(prefix,current)}</nav></div></header>
@@ -226,16 +226,27 @@ home_proof_items=[
     ("EMNİYET & YANGIN SERTİFİKASYONU","SAFETY & FIRE CERTIFICATION","FM & ATEX","FM & ATEX","Patlayıcı Ortam ve Yangın Güvenliği","Explosive Atmosphere and Fire Safety"),
     ("PROJE & ŞARTNAME UYUMU","PROJECT SPECIFICATIONS","Özel Tasarım","Tailored Products","Müşteri şartnamelerine göre","To client specifications"),
 ]
-home_proof_html=''.join(f'<div class="home-proof-item"><span class="home-proof-kicker"><span aria-hidden="true"></span><span class="lang-tr">{esc(tr_kicker)}</span><span class="lang-en">{esc(en_kicker)}</span></span><strong class="home-proof-value"><span class="lang-tr">{esc(tr_value)}</span><span class="lang-en">{esc(en_value)}</span></strong><span class="home-proof-detail"><span class="lang-tr">{esc(tr_detail)}</span><span class="lang-en">{esc(en_detail)}</span></span></div>' for tr_kicker,en_kicker,tr_value,en_value,tr_detail,en_detail in home_proof_items)
+home_proof_cards=[]
+for index,(tr_kicker,en_kicker,tr_value,en_value,tr_detail,en_detail) in enumerate(home_proof_items):
+    if index == 0:
+        tr_value_html=f'<span class="lang-tr" data-count-up="10" data-count-suffix="+ Yıl">{esc(tr_value)}</span>'
+        en_value_html=f'<span class="lang-en" data-count-up="10" data-count-suffix="+ Years">{esc(en_value)}</span>'
+    else:
+        tr_value_html=f'<span class="lang-tr">{esc(tr_value)}</span>'
+        en_value_html=f'<span class="lang-en">{esc(en_value)}</span>'
+    home_proof_cards.append(f'<div class="home-proof-item" style="--proof-delay:{index*110}ms"><span class="home-proof-kicker"><span aria-hidden="true"></span><span class="lang-tr">{esc(tr_kicker)}</span><span class="lang-en">{esc(en_kicker)}</span></span><strong class="home-proof-value">{tr_value_html}{en_value_html}</strong><span class="home-proof-detail"><span class="lang-tr">{esc(tr_detail)}</span><span class="lang-en">{esc(en_detail)}</span></span></div>')
+home_proof_html=''.join(home_proof_cards)
 home_services=[]
 for service in content["services"]["items"]:
     service_copy=''.join(p_html(paragraph,"tr") for paragraph in service["paragraphs"])
     home_services.append(f'<article class="home-service-row"><h3>{esc(service["title"])}</h3><div>{service_copy}</div></article>')
 home_feature_tr=p_html(pvrv["tr"][0],"tr")
 home_feature_en=p_html(pvrv["en"][0],"en")
+home_feature_category_tr=category_title(categories[0],"tr").removeprefix("1-").strip()
+home_feature_category_en=category_title(categories[0],"en").removeprefix("1-").strip()
 home_body=f'''<div class="home-page"><div class="page-wrap"><section class="home-hero"><div class="home-hero-copy"><h1><span class="lang-tr">{esc(content['home']['titleTr'])}</span><span class="lang-en">{esc(content['home']['titleEn'])}</span></h1><p><span class="lang-tr">{esc(content['home']['bodyTr'])}</span><span class="lang-en">{esc(content['home']['bodyEn'])}</span></p><div class="home-actions"><a class="button button-primary" href="products.html"><span class="lang-tr">Ürünler</span><span class="lang-en">Products</span></a><a class="button" href="calculator.html"><span class="lang-tr">Hesaplama</span><span class="lang-en">Calculator</span></a><a class="button" href="contact.html#contact-form"><span class="lang-tr">Randevu Oluştur</span><span class="lang-en">Appointment</span></a></div></div><figure class="home-hero-media"><img src="assets/images/home.jpeg" alt="NarTech Depolama Tankı ve Terminal Ekipmanları Sahası" width="1170" height="525" fetchpriority="high" decoding="async"></figure></section>
 <section class="home-proof-strip" aria-label="Mühendislik Göstergeleri">{home_proof_html}</section>
-<section class="home-feature-section"><article class="home-feature"><div><div class="home-feature-category"><span class="lang-tr">{esc(category_title(categories[0],"tr"))}</span><span class="lang-en">{esc(category_title(categories[0],"en"))}</span></div><h2><a href="products/{esc(pvrv['id'])}.html"><span class="lang-tr">{esc(title_for(pvrv,"tr"))}</span><span class="lang-en">{esc(title_for(pvrv,"en"))}</span></a></h2></div><div class="lang-tr">{home_feature_tr}</div><div class="lang-en">{home_feature_en}</div></article></section>
+<section class="home-feature-section"><article class="home-feature"><div><div class="home-feature-category"><span class="lang-tr">{esc(home_feature_category_tr)}</span><span class="lang-en">{esc(home_feature_category_en)}</span></div><h2><a href="products/{esc(pvrv['id'])}.html"><span class="lang-tr">{esc(title_for(pvrv,"tr"))}</span><span class="lang-en">{esc(title_for(pvrv,"en"))}</span></a></h2></div><div class="lang-tr">{home_feature_tr}</div><div class="lang-en">{home_feature_en}</div></article></section>
 <section class="home-section home-products-section"><div class="home-section-heading"><h2><span class="lang-tr">Ürünler</span><span class="lang-en">Products</span></h2></div><nav class="home-category-grid" aria-label="Ürünler">{''.join(home_categories)}</nav></section>
 <section class="home-about-section"><div class="home-about-heading"><h2><span class="lang-tr">Hakkımızda</span><span class="lang-en">About Us</span></h2><a class="home-section-link" href="about.html"><span class="lang-tr">Hakkımızda</span><span class="lang-en">About Us</span><span aria-hidden="true">↗</span></a></div><div class="home-about-copy"><div class="lang-tr">{home_about_tr}</div><div class="lang-en">{home_about_en}</div></div></section>
 <section class="home-section home-services-section"><div class="home-section-heading"><h2><span class="lang-tr">Hizmetler</span><span class="lang-en">Services</span></h2><a class="home-section-link" href="services.html"><span class="lang-tr">Hizmetler</span><span class="lang-en">Services</span><span aria-hidden="true">↗</span></a></div><div class="home-service-list">{''.join(home_services)}</div></section></div></div>'''
