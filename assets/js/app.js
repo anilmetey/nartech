@@ -22,6 +22,16 @@
   const navToggle = document.querySelector('[data-nav-toggle]');
   const siteNav = document.querySelector('#site-nav');
   const navBackdrop = document.querySelector('[data-nav-close]');
+  const headerBrand = document.querySelector('.brand');
+  const headerLogo = headerBrand?.querySelector('img');
+  if (siteNav && headerBrand && headerLogo && !siteNav.querySelector('.mobile-nav-brand')) {
+    const mobileNavBrand = document.createElement('a');
+    mobileNavBrand.className = 'mobile-nav-brand';
+    mobileNavBrand.href = headerBrand.href;
+    mobileNavBrand.setAttribute('aria-label', 'NarTech Ana Sayfa');
+    mobileNavBrand.append(headerLogo.cloneNode(true));
+    siteNav.append(mobileNavBrand);
+  }
   if (navToggle && siteNav && navBackdrop) {
     const mobileNav = window.matchMedia('(max-width: 1100px)');
     const closeMenu = returnFocus => {
