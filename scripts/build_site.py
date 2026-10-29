@@ -155,7 +155,16 @@ def nav(prefix: str, current: str) -> str:
     return "\n".join(links)
 
 def footer(prefix: str) -> str:
-    return f'''<footer class="site-footer"><div class="footer-inner"><div class="footer-mark-line"><a class="footer-brand" href="{prefix}index.html" aria-label="NarTech"><img src="{prefix}assets/images/logo-white.png" width="1024" height="472" alt="NarTech"></a><div class="footer-tagline"><span class="footer-tagline-dot" aria-hidden="true"></span><span class="lang-tr">{esc(content['home']['titleTr'])}</span><span class="lang-en">{esc(content['home']['titleEn'])}</span></div></div><nav class="footer-nav" aria-label="Site"><a href="{prefix}products.html"><span class="lang-tr">Ürünler</span><span class="lang-en">Products</span></a><a href="{prefix}about.html"><span class="lang-tr">Hakkımızda</span><span class="lang-en">About Us</span></a><a href="{prefix}services.html"><span class="lang-tr">Hizmetler</span><span class="lang-en">Services</span></a><a href="{prefix}calculator.html"><span class="lang-tr">Hesaplama</span><span class="lang-en">Calculator</span></a><a href="{prefix}faq.html"><span class="lang-tr">SSS</span><span class="lang-en">FAQ</span></a><a href="{prefix}contact.html"><span class="lang-tr">İletişim</span><span class="lang-en">Contact</span></a></nav></div></footer>'''
+    category_links = "".join(
+        f'<li><a href="{prefix}categories/{esc(category["id"])}.html"><span class="lang-tr">{esc(category_title(category, "tr"))}</span><span class="lang-en">{esc(category_title(category, "en"))}</span></a></li>'
+        for category in categories
+    )
+    return f'''<footer class="site-footer" role="contentinfo"><div class="footer-inner">
+<section class="footer-brand-block"><a class="footer-brand" href="{prefix}index.html" aria-label="NarTech Ana Sayfa"><img src="{prefix}assets/images/logo-white.png" width="1024" height="472" alt="NarTech"></a><p class="footer-tagline"><span class="footer-tagline-dot" aria-hidden="true"></span><span class="lang-tr">{esc(content['home']['titleTr'])}</span><span class="lang-en">{esc(content['home']['titleEn'])}</span></p></section>
+<nav class="footer-group footer-company" aria-label="Hakkımızda"><h2 class="footer-heading"><a href="{prefix}about.html"><span class="lang-tr">Hakkımızda</span><span class="lang-en">About Us</span></a></h2><ul class="footer-links"><li><a href="{prefix}index.html"><span class="lang-tr">Ana Sayfa</span><span class="lang-en">Home</span></a></li><li><a href="{prefix}services.html"><span class="lang-tr">Hizmetler</span><span class="lang-en">Services</span></a></li><li><a href="{prefix}faq.html"><span class="lang-tr">Sıkça Sorulan Sorular</span><span class="lang-en">Frequently Asked Questions</span></a></li></ul></nav>
+<nav class="footer-group footer-products" aria-label="Ürünler"><h2 class="footer-heading"><a href="{prefix}products.html"><span class="lang-tr">Ürünler</span><span class="lang-en">Products</span></a></h2><ul class="footer-category-list">{category_links}</ul></nav>
+<nav class="footer-group footer-contact" aria-label="İletişim"><h2 class="footer-heading"><a href="{prefix}contact.html"><span class="lang-tr">İletişim</span><span class="lang-en">Contact</span></a></h2><ul class="footer-links"><li><a href="{prefix}calculator.html"><span class="lang-tr">Hesaplama</span><span class="lang-en">Calculator</span></a></li></ul><a class="footer-cta" href="{prefix}contact.html#contact-form"><span class="lang-tr">Teklif Gönder</span><span class="lang-en">Send Request</span><span aria-hidden="true">↗</span></a></nav>
+</div></footer>'''
 
 def layout(title: str, body: str, current: str, prefix="", lang="tr") -> str:
     return f'''<!doctype html>
@@ -163,7 +172,7 @@ def layout(title: str, body: str, current: str, prefix="", lang="tr") -> str:
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)} | NarTech</title>
-<link rel="stylesheet" href="{prefix}assets/css/main.css?v=source-home-photo-2">
+<link rel="stylesheet" href="{prefix}assets/css/main.css?v=source-footer-professional-1">
 <script defer src="{prefix}assets/js/app.js?v=source-home-photo-2"></script>
 </head>
 <body>
