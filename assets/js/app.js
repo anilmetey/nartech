@@ -60,6 +60,22 @@
     });
   });
 
+  const homeProductExplorer = document.querySelector('[data-home-product-explorer]');
+  if (homeProductExplorer) {
+    const categoryButtons = [...homeProductExplorer.querySelectorAll('[data-home-category]')];
+    const productPanels = [...homeProductExplorer.querySelectorAll('[data-home-product-panel]')];
+    categoryButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const selectedCategory = button.dataset.homeCategory;
+        if (!productPanels.some(panel => panel.dataset.homeProductPanel === selectedCategory)) return;
+        categoryButtons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+        productPanels.forEach(panel => {
+          panel.hidden = panel.dataset.homeProductPanel !== selectedCategory;
+        });
+      });
+    });
+  }
+
   const calculatorEmailForm = document.querySelector('#calc-email-form');
   if (calculatorEmailForm) {
     const stepEmail = document.querySelector('#calc-step-email');

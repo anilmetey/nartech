@@ -167,8 +167,8 @@ def layout(title: str, body: str, current: str, prefix="", lang="tr") -> str:
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)} | NarTech</title>
-<link rel="stylesheet" href="{prefix}assets/css/main.css?v=source-proof-count-up-1">
-<script defer src="{prefix}assets/js/app.js?v=source-proof-count-up-1"></script>
+<link rel="stylesheet" href="{prefix}assets/css/main.css?v=source-home-product-explorer-1">
+<script defer src="{prefix}assets/js/app.js?v=source-home-product-explorer-1"></script>
 </head>
 <body>
 <header class="site-header"><div class="header-inner"><a class="brand" href="{prefix}index.html" aria-label="NarTech"><img src="{prefix}assets/images/nartech-logo-transparent.png" width="1958" height="803" alt="NarTech"></a><button class="nav-toggle" type="button" data-nav-toggle aria-controls="site-nav" aria-expanded="false" aria-label="Menüyü Aç"><span></span><span></span><span></span></button><nav class="site-nav" id="site-nav" aria-label="Site">{nav(prefix,current)}</nav></div></header>
@@ -214,10 +214,31 @@ def branch_for(obj: dict, prefix: str, code="") -> str:
     return "".join(parts)
 
 # Homepage
-home_categories=[]
-for category in categories:
-    label=f'<span class="lang-tr">{esc(category_title(category,"tr"))}</span><span class="lang-en">{esc(category_title(category,"en"))}</span>'
-    home_categories.append(f'<a class="home-category-link" href="categories/{esc(category["id"])}.html">{label}<span aria-hidden="true">↗</span></a>')
+home_product_categories=[]
+home_product_panels=[]
+for index,category in enumerate(categories):
+    category_id=esc(category["id"])
+    category_tr=category_title(category,"tr").removeprefix(f"{index+1}-").strip()
+    category_en=category_title(category,"en").removeprefix(f"{index+1}-").strip()
+    label=f'<span class="lang-tr">{esc(category_tr)}</span><span class="lang-en">{esc(category_en)}</span>'
+    selected="true" if index==0 else "false"
+    home_product_categories.append(f'<button class="home-product-category" type="button" id="home-category-{category_id}" data-home-category="{category_id}" aria-controls="home-panel-{category_id}" aria-pressed="{selected}">{label}</button>')
+
+    product_cards=[]
+    for obj in category["items"]:
+        product_tr=title_for(obj,"tr")
+        product_en=obj.get("navTitleEn") or title_for(obj,"en") or product_tr
+        product_cards.append(f'<a class="home-product-card" href="products/{esc(obj["id"])}.html"><span class="home-product-card-heading"><strong><span class="lang-tr">{esc(product_tr)}</span><span class="lang-en">{esc(product_en)}</span></strong><span aria-hidden="true">↗</span></span></a>')
+
+    category_copy_tr=''.join(p_html(entry,"tr") for entry in category.get("description",[]))
+    category_copy_en=''.join(p_html(entry,"en") for entry in category.get("description",[]))
+    if not product_cards and not category_copy_tr and not category_copy_en:
+        category_copy_tr=f'<a class="home-category-open" href="categories/{category_id}.html">{esc(category_tr)} <span aria-hidden="true">↗</span></a>'
+        category_copy_en=f'<a class="home-category-open" href="categories/{category_id}.html">{esc(category_en)} <span aria-hidden="true">↗</span></a>'
+    panel_hidden="" if index==0 else " hidden"
+    home_product_panels.append(f'<section class="home-product-panel" id="home-panel-{category_id}" data-home-product-panel="{category_id}" aria-labelledby="home-panel-heading-{category_id}"{panel_hidden}><div class="home-product-panel-heading"><h3 id="home-panel-heading-{category_id}"><span class="lang-tr">{esc(category_tr)}</span><span class="lang-en">{esc(category_en)}</span></h3><a href="categories/{category_id}.html" aria-labelledby="home-panel-heading-{category_id}"><span aria-hidden="true">↗</span></a></div><div class="home-product-grid">{"".join(product_cards)}</div><div class="lang-tr home-product-category-copy">{category_copy_tr}</div><div class="lang-en home-product-category-copy">{category_copy_en}</div></section>')
+home_product_categories_html=''.join(home_product_categories)
+home_product_panels_html=''.join(home_product_panels)
 home_about_tr=''.join(p_html(entry,"tr") for entry in content["about"]["paragraphsTr"][:2])
 home_about_en=''.join(p_html(entry,"en") for entry in content["about"]["paragraphsEn"][:2])
 home_proof_items=[
@@ -240,15 +261,10 @@ home_services=[]
 for service in content["services"]["items"]:
     service_copy=''.join(p_html(paragraph,"tr") for paragraph in service["paragraphs"])
     home_services.append(f'<article class="home-service-row"><h3>{esc(service["title"])}</h3><div>{service_copy}</div></article>')
-home_feature_tr=p_html(pvrv["tr"][0],"tr")
-home_feature_en=p_html(pvrv["en"][0],"en")
-home_feature_category_tr=category_title(categories[0],"tr").removeprefix("1-").strip()
-home_feature_category_en=category_title(categories[0],"en").removeprefix("1-").strip()
 home_body=f'''<div class="home-page"><div class="page-wrap"><section class="home-hero"><div class="home-hero-copy"><h1><span class="lang-tr">{esc(content['home']['titleTr'])}</span><span class="lang-en">{esc(content['home']['titleEn'])}</span></h1><p><span class="lang-tr">{esc(content['home']['bodyTr'])}</span><span class="lang-en">{esc(content['home']['bodyEn'])}</span></p><div class="home-actions"><a class="button button-primary" href="products.html"><span class="lang-tr">Ürünler</span><span class="lang-en">Products</span></a><a class="button" href="calculator.html"><span class="lang-tr">Hesaplama</span><span class="lang-en">Calculator</span></a><a class="button" href="contact.html#contact-form"><span class="lang-tr">Randevu Oluştur</span><span class="lang-en">Appointment</span></a></div></div><figure class="home-hero-media"><img src="assets/images/home.jpeg" alt="NarTech Depolama Tankı ve Terminal Ekipmanları Sahası" width="1170" height="525" fetchpriority="high" decoding="async"></figure></section>
 <section class="home-proof-strip" aria-label="Mühendislik Göstergeleri">{home_proof_html}</section>
-<section class="home-feature-section"><article class="home-feature"><div><div class="home-feature-category"><span class="lang-tr">{esc(home_feature_category_tr)}</span><span class="lang-en">{esc(home_feature_category_en)}</span></div><h2><a href="products/{esc(pvrv['id'])}.html"><span class="lang-tr">{esc(title_for(pvrv,"tr"))}</span><span class="lang-en">{esc(title_for(pvrv,"en"))}</span></a></h2></div><div class="lang-tr">{home_feature_tr}</div><div class="lang-en">{home_feature_en}</div></article></section>
-<section class="home-section home-products-section"><div class="home-section-heading"><h2><span class="lang-tr">Ürünler</span><span class="lang-en">Products</span></h2></div><nav class="home-category-grid" aria-label="Ürünler">{''.join(home_categories)}</nav></section>
-<section class="home-about-section"><div class="home-about-heading"><h2><span class="lang-tr">Hakkımızda</span><span class="lang-en">About Us</span></h2><a class="home-section-link" href="about.html"><span class="lang-tr">Hakkımızda</span><span class="lang-en">About Us</span><span aria-hidden="true">↗</span></a></div><div class="home-about-copy"><div class="lang-tr">{home_about_tr}</div><div class="lang-en">{home_about_en}</div></div></section>
+<section class="home-about-section"><div class="home-about-heading"><h2><span class="lang-tr">Hakkımızda</span><span class="lang-en">About Us</span></h2><a class="home-section-link" href="about.html"><span class="lang-tr">Hakkımızda</span><span class="lang-en">About Us</span><span aria-hidden="true">↗</span></a><a class="home-section-link" href="#home-products"><span class="lang-tr">Ürünler</span><span class="lang-en">Products</span><span aria-hidden="true">↓</span></a></div><div class="home-about-copy"><div class="lang-tr">{home_about_tr}</div><div class="lang-en">{home_about_en}</div></div></section>
+<section class="home-section home-products-section" id="home-products"><div class="home-section-heading"><h2><span class="lang-tr">Ürünler</span><span class="lang-en">Products</span></h2></div><div class="home-product-explorer" data-home-product-explorer><div class="home-product-category-list" role="group" aria-label="Ürünler">{home_product_categories_html}</div><div class="home-product-panels">{home_product_panels_html}</div></div></section>
 <section class="home-section home-services-section"><div class="home-section-heading"><h2><span class="lang-tr">Hizmetler</span><span class="lang-en">Services</span></h2><a class="home-section-link" href="services.html"><span class="lang-tr">Hizmetler</span><span class="lang-en">Services</span><span aria-hidden="true">↗</span></a></div><div class="home-service-list">{''.join(home_services)}</div></section></div></div>'''
 (OUT/"index.html").write_text(layout(content["home"]["titleTr"],home_body,"home"),encoding="utf-8")
 # Keep the fallback free of copy that is not supplied in the source documents.
