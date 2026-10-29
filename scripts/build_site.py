@@ -163,8 +163,8 @@ def layout(title: str, body: str, current: str, prefix="", lang="tr") -> str:
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)} | NarTech</title>
-<link rel="stylesheet" href="{prefix}assets/css/main.css?v=reference-image-slots-1">
-<script defer src="{prefix}assets/js/app.js?v=reference-image-slots-1"></script>
+<link rel="stylesheet" href="{prefix}assets/css/main.css?v=source-home-sections-1">
+<script defer src="{prefix}assets/js/app.js?v=source-home-sections-1"></script>
 </head>
 <body>
 <header class="site-header"><div class="header-inner"><a class="brand" href="{prefix}index.html" aria-label="NarTech"><img src="{prefix}assets/images/nartech-logo-transparent.png" width="1958" height="803" alt="NarTech"></a><button class="nav-toggle" type="button" data-nav-toggle aria-controls="site-nav" aria-expanded="false" aria-label="Menüyü Aç"><span></span><span></span><span></span></button><nav class="site-nav" id="site-nav" aria-label="Site">{nav(prefix,current)}</nav></div></header>
@@ -210,7 +210,22 @@ def branch_for(obj: dict, prefix: str, code="") -> str:
     return "".join(parts)
 
 # Homepage
-home_body=f'''<div class="page-wrap"><section class="home-hero"><h1><span class="lang-tr">{esc(content['home']['titleTr'])}</span><span class="lang-en">{esc(content['home']['titleEn'])}</span></h1><p><span class="lang-tr">{esc(content['home']['bodyTr'])}</span><span class="lang-en">{esc(content['home']['bodyEn'])}</span></p><div class="home-actions"><a class="button button-primary" href="products.html"><span class="lang-tr">Ürünler</span><span class="lang-en">Products</span></a></div></section></div>'''
+home_categories=[]
+for category in categories:
+    label=f'<span class="lang-tr">{esc(category_title(category,"tr"))}</span><span class="lang-en">{esc(category_title(category,"en"))}</span>'
+    home_categories.append(f'<a class="home-category-link" href="categories/{esc(category["id"])}.html">{label}<span aria-hidden="true">↗</span></a>')
+home_about_tr=''.join(p_html(entry,"tr") for entry in content["about"]["paragraphsTr"][:2])
+home_about_en=''.join(p_html(entry,"en") for entry in content["about"]["paragraphsEn"][:2])
+home_services=[]
+for service in content["services"]["items"]:
+    service_copy=''.join(p_html(paragraph,"tr") for paragraph in service["paragraphs"])
+    home_services.append(f'<article class="home-service-row"><h3>{esc(service["title"])}</h3><div>{service_copy}</div></article>')
+home_feature_tr=p_html(pvrv["tr"][0],"tr")
+home_feature_en=p_html(pvrv["en"][0],"en")
+home_body=f'''<div class="home-page"><div class="page-wrap"><section class="home-hero"><div class="home-hero-copy"><h1><span class="lang-tr">{esc(content['home']['titleTr'])}</span><span class="lang-en">{esc(content['home']['titleEn'])}</span></h1><p><span class="lang-tr">{esc(content['home']['bodyTr'])}</span><span class="lang-en">{esc(content['home']['bodyEn'])}</span></p><div class="home-actions"><a class="button button-primary" href="products.html"><span class="lang-tr">Ürünler</span><span class="lang-en">Products</span></a><a class="button" href="calculator.html"><span class="lang-tr">Hesaplama</span><span class="lang-en">Calculator</span></a></div></div><article class="home-feature"><div class="home-feature-category"><span class="lang-tr">{esc(category_title(categories[0],"tr"))}</span><span class="lang-en">{esc(category_title(categories[0],"en"))}</span></div><h2><a href="products/{esc(pvrv['id'])}.html"><span class="lang-tr">{esc(title_for(pvrv,"tr"))}</span><span class="lang-en">{esc(title_for(pvrv,"en"))}</span></a></h2><div class="lang-tr">{home_feature_tr}</div><div class="lang-en">{home_feature_en}</div></article></section>
+<section class="home-section home-products-section"><div class="home-section-heading"><h2><span class="lang-tr">Ürünler</span><span class="lang-en">Products</span></h2></div><nav class="home-category-grid" aria-label="Ürünler">{''.join(home_categories)}</nav></section>
+<section class="home-about-section"><div class="home-about-heading"><h2><span class="lang-tr">Hakkımızda</span><span class="lang-en">About Us</span></h2><a class="home-section-link" href="about.html"><span class="lang-tr">Hakkımızda</span><span class="lang-en">About Us</span><span aria-hidden="true">↗</span></a></div><div class="home-about-copy"><div class="lang-tr">{home_about_tr}</div><div class="lang-en">{home_about_en}</div></div></section>
+<section class="home-section home-services-section"><div class="home-section-heading"><h2><span class="lang-tr">Hizmetler</span><span class="lang-en">Services</span></h2><a class="home-section-link" href="services.html"><span class="lang-tr">Hizmetler</span><span class="lang-en">Services</span><span aria-hidden="true">↗</span></a></div><div class="home-service-list">{''.join(home_services)}</div></section></div></div>'''
 (OUT/"index.html").write_text(layout(content["home"]["titleTr"],home_body,"home"),encoding="utf-8")
 # Keep the fallback free of copy that is not supplied in the source documents.
 (OUT/"404.html").write_text('<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=./index.html"></head><body></body></html>',encoding="utf-8")
