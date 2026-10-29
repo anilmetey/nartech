@@ -167,7 +167,7 @@ def layout(title: str, body: str, current: str, prefix="", lang="tr") -> str:
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)} | NarTech</title>
-<link rel="stylesheet" href="{prefix}assets/css/main.css?v=source-footer-compact-2">
+<link rel="stylesheet" href="{prefix}assets/css/main.css?v=source-footer-logo-center-3">
 <script defer src="{prefix}assets/js/app.js?v=source-home-photo-2"></script>
 </head>
 <body>
