@@ -176,7 +176,7 @@ main { min-height: 58vh; }
 .footer-contact { grid-area: contact; }
 .footer-brand { display: inline-flex; width: min(300px,100%); height: 104px; align-items: center; justify-content: center; }
 .footer-brand img { width: 100%; height: 100%; object-fit: contain; }
-.footer-tagline { display: flex; width: fit-content; align-items: center; justify-content: center; gap: 10px; max-width: 100%; margin: 3px 0 0; font-size: 14px; font-weight: 650; line-height: 1.55; text-align: center; }
+.footer-tagline { display: flex; width: fit-content; align-items: center; justify-content: center; gap: 10px; max-width: 100%; margin: 3px 0 0; font-size: 14px; font-weight: 650; line-height: 1.55; text-align: left; }
 .footer-tagline-dot { width: 7px; height: 7px; flex: 0 0 7px; border-radius: 50%; background: #8cc9a3; animation: footer-dot-pulse 2.4s ease-in-out infinite; }
 @keyframes footer-dot-pulse { 0%,100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(140,201,163,.28); } 50% { transform: scale(1.16); box-shadow: 0 0 0 4px rgba(140,201,163,0); } }
 .footer-heading { margin: 0 0 12px; color: #fff; font-size: 14px; font-weight: 750; letter-spacing: .015em; line-height: 1.4; }
