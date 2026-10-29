@@ -253,7 +253,7 @@ about_body=f'''<div class="page-wrap"><div class="page-heading"><h1><span class=
 service_cards=[]
 for service in content["services"]["items"]:
     paragraphs_html=''.join(f'<p data-source="{esc(paragraph["source"])}">{esc(paragraph["text"])}</p>' for paragraph in service["paragraphs"])
-    service_cards.append(f'<details class="service-item"><summary data-source="{esc(service["titleSource"])}">{esc(service["title"])}</summary>{paragraphs_html}</details>')
+    service_cards.append(f'<details class="service-item" open><summary data-source="{esc(service["titleSource"])}">{esc(service["title"])}</summary>{paragraphs_html}</details>')
 services_body=f'''<div class="page-wrap"><div class="page-heading"><h1>{esc(services[0])}</h1></div><div class="service-list">{''.join(service_cards)}</div></div>'''
 (OUT/"services.html").write_text(layout(services[0],services_body,"services"),encoding="utf-8")
 
