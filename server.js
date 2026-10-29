@@ -1,315 +1,259 @@
-/**
- * Nartech Engineering - Production HTTP Server
- * Built with Node.js standard libraries. Zero dependencies. High security & performance.
- */
-const http = require('http');
-const fs = require('fs');
-const path = require('path');
-const crypto = require('crypto');
+'use strict';
 
-const PORT = process.env.PORT || 3000;
-const BASE_DIR = __dirname;
+const fs = require('node:fs');
+const path = require('node:path');
+const http = require('node:http');
+const nodemailer = require('nodemailer');
 
-// Statik Hedef E-posta Adresi (İleride belirtilmek üzere statik/konfigüre edilebilir bırakıldı)
-const CONFIG_DESTINATION_EMAIL = process.env.APPOINTMENT_TARGET_EMAIL || "randevu-hedef@nartech.com.tr";
+const ROOT = __dirname;
+const MAX_BODY_BYTES = 16 * 1024;
+const WINDOW_MS = 60 * 1000;
+const RATE_LIMIT = 8;
+const recentRequests = new Map();
 
-// MIME Types Mapping
-const MIME_TYPES = {
-  '.html': 'text/html; charset=utf-8',
-  '.css': 'text/css; charset=utf-8',
-  '.js': 'application/javascript; charset=utf-8',
-  '.json': 'application/json; charset=utf-8',
-  '.jpeg': 'image/jpeg',
-  '.jpg': 'image/jpeg',
-  '.png': 'image/png',
-  '.webp': 'image/webp',
-  '.svg': 'image/svg+xml',
-  '.ico': 'image/x-icon',
-  '.txt': 'text/plain; charset=utf-8',
-  '.xml': 'application/xml; charset=utf-8'
-};
-
-// Rate limiter store in memory
-const rateLimitMap = new Map();
-const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
-const MAX_REQUESTS_PER_WINDOW = 15; // 15 requests/min per IP
-
-function isRateLimited(ip) {
-  const now = Date.now();
-  const clientData = rateLimitMap.get(ip) || { count: 0, resetTime: now + RATE_LIMIT_WINDOW_MS };
-
-  if (now > clientData.resetTime) {
-    clientData.count = 1;
-    clientData.resetTime = now + RATE_LIMIT_WINDOW_MS;
-    rateLimitMap.set(ip, clientData);
-    return false;
+function readLocalEnv() {
+  const file = path.join(ROOT, '.env');
+  if (!fs.existsSync(file)) return;
+  for (const line of fs.readFileSync(file, 'utf8').split(/\r?\n/)) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith('#')) continue;
+    const splitAt = trimmed.indexOf('=');
+    if (splitAt < 1) continue;
+    const key = trimmed.slice(0, splitAt).trim();
+    let value = trimmed.slice(splitAt + 1).trim();
+    if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
+      value = value.slice(1, -1);
+    }
+    if (/^[A-Z][A-Z0-9_]*$/.test(key) && process.env[key] === undefined) process.env[key] = value;
   }
-
-  clientData.count += 1;
-  rateLimitMap.set(ip, clientData);
-  return clientData.count > MAX_REQUESTS_PER_WINDOW;
 }
+readLocalEnv();
+const PORT = Math.max(1, Math.min(65535, Number(process.env.PORT || 4318)));
 
-// Clean old rate limiter entries periodically
-const cleanupInterval = setInterval(() => {
-  const now = Date.now();
-  for (const [ip, data] of rateLimitMap.entries()) {
-    if (now > data.resetTime) {
-      rateLimitMap.delete(ip);
-    }
-  }
-}, 5 * 60 * 1000);
-if (cleanupInterval.unref) cleanupInterval.unref();
-
-// Basic Sanitizer for User Inputs
-function sanitizeText(str) {
-  if (typeof str !== 'string') return '';
-  return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;')
-    .trim();
-}
-
-// Create HTTP Server
-const server = http.createServer((req, res) => {
-  const clientIp = req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'unknown';
-
-  // 1. Strict Security Headers
-  res.setHeader('X-Content-Type-Options', 'nosniff');
-  res.setHeader('X-Frame-Options', 'DENY');
-  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
-  res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
-  res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; frame-ancestors 'none';");
-
-  const parsedUrl = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
-  let pathname = decodeURIComponent(parsedUrl.pathname);
-
-  // 2. API Endpoints: Randevu (Appointment)
-  if (pathname === '/api/appointment' || pathname === '/api/randevu') {
-    if (req.method !== 'POST') {
-      res.writeHead(405, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify({ success: false, message: 'Method Not Allowed' }));
-      return;
-    }
-
-    if (isRateLimited(clientIp)) {
-      res.writeHead(429, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify({ success: false, message: 'Çok fazla istek gönderildi. Lütfen bir süre sonra tekrar deneyiniz.' }));
-      return;
-    }
-
-    let body = '';
-    req.on('data', chunk => {
-      body += chunk;
-      if (body.length > 1e6) req.destroy();
-    });
-
-    req.on('end', () => {
-      try {
-        let data = {};
-        if (req.headers['content-type'] && req.headers['content-type'].includes('application/json')) {
-          data = JSON.parse(body || '{}');
-        } else {
-          const params = new URLSearchParams(body);
-          for (const [key, val] of params.entries()) {
-            data[key] = val;
-          }
-        }
-
-        // Honeypot anti-spam
-        if (data.company_website_url) {
-          res.writeHead(200, { 'Content-Type': 'application/json' });
-          res.end(JSON.stringify({ success: true, message: 'Randevu talebiniz alındı.' }));
-          return;
-        }
-
-        const fullname = sanitizeText(data.fullname);
-        const phone = sanitizeText(data.phone);
-        const description = sanitizeText(data.description || data.notes);
-        const date = sanitizeText(data.date || 'En kısa sürede');
-
-        // Validation: Ad Soyad, Numara, Açıklama kutucukları
-        if (!fullname || !phone || !description) {
-          res.writeHead(400, { 'Content-Type': 'application/json' });
-          res.end(JSON.stringify({
-            success: false,
-            message: 'Lütfen Ad Soyad, Telefon Numarası ve Açıklama alanlarını doldurunuz.'
-          }));
-          return;
-        }
-
-        // Statik hedefe e-posta gönderim kaydı oluştur
-        const emailDispatch = {
-          id: crypto.randomUUID(),
-          to: CONFIG_DESTINATION_EMAIL,
-          subject: `[YENİ MÜHENDİSLİK RANDEVUSU] - ${fullname}`,
-          createdAt: new Date().toISOString(),
-          clientIp,
-          content: {
-            fullname,
-            phone,
-            preferredDate: date,
-            description
-          }
-        };
-
-        console.log('[APPOINTMENT_EMAIL_SENT_TO_STATIC_DESTINATION]', JSON.stringify(emailDispatch));
-
-        res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({
-          success: true,
-          message: 'Randevu talebiniz başarıyla alındı ve e-posta olarak iletildi.',
-          destinationEmail: CONFIG_DESTINATION_EMAIL
-        }));
-      } catch (err) {
-        res.writeHead(400, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ success: false, message: 'Geçersiz istek verisi.' }));
-      }
-    });
-    return;
-  }
-
-  // 2. API Endpoints: RFQ / Teklif & İletişim
-  if (pathname === '/api/rfq' || pathname === '/api/contact') {
-    if (req.method !== 'POST') {
-      res.writeHead(405, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify({ success: false, message: 'Method Not Allowed' }));
-      return;
-    }
-
-    if (isRateLimited(clientIp)) {
-      res.writeHead(429, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify({ success: false, message: 'Çok fazla istek gönderildi. Lütfen bir süre sonra tekrar deneyiniz.' }));
-      return;
-    }
-
-    let body = '';
-    req.on('data', chunk => {
-      body += chunk;
-      if (body.length > 1e6) { // 1MB payload limit
-        req.destroy();
-      }
-    });
-
-    req.on('end', () => {
-      try {
-        let data = {};
-        if (req.headers['content-type'] && req.headers['content-type'].includes('application/json')) {
-          data = JSON.parse(body || '{}');
-        } else {
-          // urlencoded fallback
-          const params = new URLSearchParams(body);
-          for (const [key, val] of params.entries()) {
-            data[key] = val;
-          }
-        }
-
-        // Honeypot bot protection
-        if (data.company_website_url) {
-          res.writeHead(200, { 'Content-Type': 'application/json' });
-          res.end(JSON.stringify({ success: true, message: 'Talebiniz alındı.' }));
-          return;
-        }
-
-        const fullname = sanitizeText(data.fullname);
-        const phone = sanitizeText(data.phone);
-        const product = sanitizeText(data.product || 'Genel Mühendislik / Ekipman');
-        const details = sanitizeText(data.details);
-        const company = sanitizeText(data.company || '');
-        const email = sanitizeText(data.email || '');
-
-        // Server-Side Input Validation: strictly Ad Soyad, Telefon, Açıklama
-        if (!fullname || !phone || !details) {
-          res.writeHead(400, { 'Content-Type': 'application/json' });
-          res.end(JSON.stringify({ success: false, message: 'Lütfen Ad Soyad, Telefon Numarası ve Açıklama alanlarını eksiksiz doldurunuz.' }));
-          return;
-        }
-
-        // Log RFQ securely (without exposing sensitive secrets)
-        const inquiryRecord = {
-          id: crypto.randomUUID(),
-          timestamp: new Date().toISOString(),
-          fullname,
-          phone,
-          product,
-          company,
-          email,
-          detailsLength: details.length
-        };
-        console.log('[RFQ_RECEIVED]', JSON.stringify(inquiryRecord));
-
-        res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({
-          success: true,
-          message: 'Talebiniz başarıyla alındı. Mühendislik ekibimiz en kısa sürede sizinle iletişime geçecektir.'
-        }));
-      } catch (err) {
-        res.writeHead(400, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ success: false, message: 'Geçersiz istek verisi.' }));
-      }
-    });
-    return;
-  }
-
-  // 3. Static File Serving with Clean URL Support
-  if (pathname === '/privacy' || pathname === '/privacy.html') {
-    res.writeHead(301, { 'Location': '/' });
-    res.end();
-    return;
-  }
-
-  if (pathname === '/') {
-    pathname = '/index.html';
-  } else if (!path.extname(pathname)) {
-    if (fs.existsSync(path.join(BASE_DIR, pathname + '.html'))) {
-      pathname = pathname + '.html';
-    }
-  }
-
-  // Prevent Directory Traversal
-  const safePath = path.normalize(path.join(BASE_DIR, pathname));
-  if (!safePath.startsWith(BASE_DIR)) {
-    res.writeHead(403, { 'Content-Type': 'text/plain' });
-    res.end('Access Denied');
-    return;
-  }
-
-  fs.stat(safePath, (err, stats) => {
-    if (err || !stats.isFile()) {
-      // Serve custom 404 page
-      const notFoundPath = path.join(BASE_DIR, '404.html');
-      fs.readFile(notFoundPath, (err404, data404) => {
-        res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
-        res.end(data404 || '<h1>404 Sayfa Bulunamadı</h1>');
-      });
-      return;
-    }
-
-    const ext = path.extname(safePath).toLowerCase();
-    const contentType = MIME_TYPES[ext] || 'application/octet-stream';
-
-    // Caching Strategy
-    if (ext === '.jpeg' || ext === '.jpg' || ext === '.png' || ext === '.webp' || ext === '.svg') {
-      res.setHeader('Cache-Control', 'public, max-age=604800, immutable'); // 7 days for images
-    } else if (ext === '.css' || ext === '.js') {
-      res.setHeader('Cache-Control', 'public, max-age=86400'); // 1 day
-    } else {
-      res.setHeader('Cache-Control', 'no-cache');
-    }
-
-    res.writeHead(200, { 'Content-Type': contentType });
-    const stream = fs.createReadStream(safePath);
-    stream.pipe(res);
+function jsonResponse(res, status, data) {
+  res.writeHead(status, {
+    'Content-Type': 'application/json; charset=utf-8',
+    'Cache-Control': 'no-store',
+    'X-Content-Type-Options': 'nosniff',
   });
+  res.end(JSON.stringify(data));
+}
+
+function readBody(req) {
+  return new Promise((resolve, reject) => {
+    let body = '';
+    let size = 0;
+    let tooLarge = false;
+    req.setEncoding('utf8');
+    req.on('data', chunk => {
+      if (tooLarge) return;
+      size += Buffer.byteLength(chunk);
+      if (size > MAX_BODY_BYTES) {
+        tooLarge = true;
+        body = '';
+        return;
+      }
+      body += chunk;
+    });
+    req.on('end', () => {
+      if (tooLarge) {
+        reject(Object.assign(new Error('BODY_TOO_LARGE'), { statusCode: 413 }));
+        return;
+      }
+      try { resolve(JSON.parse(body || '{}')); }
+      catch { reject(Object.assign(new Error('INVALID_JSON'), { statusCode: 400 })); }
+    });
+    req.on('error', reject);
+  });
+}
+
+function isLimited(req) {
+  const now = Date.now();
+  const address = req.socket.remoteAddress || 'local';
+  const prior = recentRequests.get(address) || [];
+  const live = prior.filter(time => now - time < WINDOW_MS);
+  live.push(now);
+  recentRequests.set(address, live);
+  return live.length > RATE_LIMIT;
+}
+
+function smtpSettings() {
+  const host = process.env.SMTP_HOST?.trim();
+  const port = Number(process.env.SMTP_PORT || 587);
+  const user = process.env.SMTP_USER?.trim();
+  const pass = process.env.SMTP_PASS;
+  const from = process.env.SMTP_FROM?.trim() || user;
+  if (!host || !Number.isInteger(port) || port < 1 || port > 65535 || !user || !pass || !from) return null;
+  return { host, port, secure: String(process.env.SMTP_SECURE).toLowerCase() === 'true', auth: { user, pass }, from };
+}
+
+async function sendEmail(to, subject, text, html) {
+  const settings = smtpSettings();
+  if (!settings) return { ok: false, status: 503, message: 'E-posta gönderilemedi' };
+  if (!isEmail(to)) return { ok: false, status: 503, message: 'E-posta gönderilemedi' };
+  try {
+    const transporter = nodemailer.createTransport({
+      host: settings.host,
+      port: settings.port,
+      secure: settings.secure,
+      auth: settings.auth,
+      connectionTimeout: 8000,
+      greetingTimeout: 8000,
+      socketTimeout: 12000,
+    });
+    await transporter.sendMail({ from: settings.from, to, subject, text, html });
+    transporter.close();
+    return { ok: true };
+  } catch (error) {
+    console.error('E-posta gönderimi başarısız:', error.code || 'SMTP_ERROR');
+    return { ok: false, status: 502, message: 'E-posta gönderilemedi' };
+  }
+}
+
+function isEmail(value) {
+  return typeof value === 'string' && value.length <= 254 && /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
+}
+
+function calculateApi2000Venting(tankCapacityM3, maxFillRateM3h, maxEmptyRateM3h, productFlashPointAbove37C = true) {
+  const outLiquid = maxFillRateM3h;
+  const inLiquid = maxEmptyRateM3h;
+  let thermalFactor;
+  if (tankCapacityM3 <= 1000) thermalFactor = 0.5;
+  else if (tankCapacityM3 <= 10000) thermalFactor = 0.3;
+  else thermalFactor = 0.15;
+  if (!productFlashPointAbove37C) thermalFactor *= 1.25;
+  const thermalVenting = tankCapacityM3 * thermalFactor * 0.1;
+  const totalOutM3h = outLiquid + thermalVenting;
+  const totalInM3h = inLiquid + thermalVenting;
+  const conversionFactor = 35.3147;
+  return {
+    tank_capacity_m3: tankCapacityM3,
+    max_fill_rate_m3h: maxFillRateM3h,
+    max_empty_rate_m3h: maxEmptyRateM3h,
+    product_flash_point_above_37c: productFlashPointAbove37C,
+    thermal_venting_m3h: thermalVenting,
+    thermal_venting_scfh: thermalVenting * conversionFactor,
+    outbreathing_m3h: totalOutM3h,
+    outbreathing_scfh: totalOutM3h * conversionFactor,
+    inbreathing_m3h: totalInM3h,
+    inbreathing_scfh: totalInM3h * conversionFactor,
+  };
+}
+
+function finiteNumber(value) { return typeof value === 'number' && Number.isFinite(value); }
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
+}
+function fixed(value) { return value.toFixed(2); }
+
+const DISCLAIMER = 'Yasal Uyarı ve Sorumluluk Reddi: Bu raporda sunulan tüm hesaplamalar, veriler ve sonuçlar yalnızca bilgi amaçlıdır ve hiçbir şekilde mühendislik veya ticari açıdan bağlayıcılığı yoktur. Kesin ekipman seçimi, boyutlandırma ve projelendirme aşamalarında saha koşulları, meteorolojik veriler, boru hattı dinamikleri ve yerel/uluslararası standartlar göz önünde bulundurularak doğrulama yapılması gerekmektedir.';
+
+function reportText(calc) {
+  return [
+    'API 2000 7th Edition Venting Sizing Program', '',
+    `Tank Capacity: ${fixed(calc.tank_capacity_m3)} m³`,
+    `Max Fill Rate: ${fixed(calc.max_fill_rate_m3h)} m³/h`,
+    `Max Empty Rate: ${fixed(calc.max_empty_rate_m3h)} m³/h`, '',
+    '=== TOTAL SIZING RESULTS ===',
+    `Thermal Venting Contribution: ${fixed(calc.thermal_venting_m3h)} m³/h (${fixed(calc.thermal_venting_scfh)} SCFH)`,
+    `Total Outbreathing (Pressure Valve Capacity): ${fixed(calc.outbreathing_m3h)} m³/h | ${fixed(calc.outbreathing_scfh)} SCFH`,
+    `Total Inbreathing (Vacuum Valve Capacity):   ${fixed(calc.inbreathing_m3h)} m³/h | ${fixed(calc.inbreathing_scfh)} SCFH`, '',
+    DISCLAIMER,
+  ].join('\n');
+}
+
+function reportHtml(calc) {
+  const safeDisclaimer = escapeHtml(DISCLAIMER);
+  const rows = [
+    ['Tank Capacity', `${fixed(calc.tank_capacity_m3)} m³`],
+    ['Max Fill Rate', `${fixed(calc.max_fill_rate_m3h)} m³/h`],
+    ['Max Empty Rate', `${fixed(calc.max_empty_rate_m3h)} m³/h`],
+    ['Thermal Venting Contribution', `${fixed(calc.thermal_venting_m3h)} m³/h (${fixed(calc.thermal_venting_scfh)} SCFH)`],
+    ['Total Outbreathing (Pressure Valve Capacity)', `${fixed(calc.outbreathing_m3h)} m³/h | ${fixed(calc.outbreathing_scfh)} SCFH`],
+    ['Total Inbreathing (Vacuum Valve Capacity)', `${fixed(calc.inbreathing_m3h)} m³/h | ${fixed(calc.inbreathing_scfh)} SCFH`],
+  ];
+  return `<h2>API 2000 7th Edition Venting Sizing Program</h2><table>${rows.map(([label, value]) => `<tr><th align="left">${escapeHtml(label)}</th><td>${escapeHtml(value)}</td></tr>`).join('')}</table><p>${safeDisclaimer}</p>`;
+}
+
+async function apiRequest(req, res, pathname) {
+  if (req.method !== 'POST') return jsonResponse(res, 405, { message: 'Gönderilemedi' });
+  if (isLimited(req)) return jsonResponse(res, 429, { message: 'Gönderilemedi' });
+  let payload;
+  try { payload = await readBody(req); }
+  catch (error) { return jsonResponse(res, error.statusCode || 400, { message: 'Gönderilemedi' }); }
+
+  if (pathname === '/api/api2000-report') {
+    const { recipientEmail, calculation } = payload || {};
+    if (!isEmail(recipientEmail) || !calculation || typeof calculation !== 'object') return jsonResponse(res, 400, { message: 'Gönderilemedi' });
+    const capacity = calculation.tank_capacity_m3;
+    const fillRate = calculation.max_fill_rate_m3h;
+    const emptyRate = calculation.max_empty_rate_m3h;
+    const flashPoint = calculation.product_flash_point_above_37c;
+    if (!finiteNumber(capacity) || capacity <= 0 || !finiteNumber(fillRate) || fillRate < 0 || !finiteNumber(emptyRate) || emptyRate < 0 || typeof flashPoint !== 'boolean') {
+      return jsonResponse(res, 400, { message: 'Gönderilemedi' });
+    }
+    const result = calculateApi2000Venting(capacity, fillRate, emptyRate, flashPoint);
+    const delivery = await sendEmail(recipientEmail.trim(), 'API 2000 7th Edition Venting Sizing Program', reportText(result), reportHtml(result));
+    return delivery.ok ? jsonResponse(res, 200, { message: 'Gönderildi' }) : jsonResponse(res, delivery.status, { message: delivery.message });
+  }
+
+  if (pathname === '/api/contact') {
+    const { name, phone, description } = payload || {};
+    if (typeof name !== 'string' || !name.trim() || name.length > 150 || typeof phone !== 'string' || !phone.trim() || phone.length > 80 || typeof description !== 'string' || !description.trim() || description.length > 5000) {
+      return jsonResponse(res, 400, { message: 'Gönderilemedi' });
+    }
+    const destination = process.env.CONTACT_EMAIL?.trim();
+    if (!isEmail(destination)) return jsonResponse(res, 503, { message: 'E-posta gönderilemedi' });
+    const product = typeof payload.product === 'string' && /^[a-z0-9-]{1,100}$/.test(payload.product) ? payload.product : '';
+    const lines = [`Ad Soyad: ${name.trim()}`, `Telefon No: ${phone.trim()}`, `Açıklama: ${description.trim()}`];
+    if (product) lines.push(`Ürün: ${product}`);
+    const content = lines.join('\n');
+    const safeContent = content.split('\n').map(escapeHtml).join('<br>');
+    const delivery = await sendEmail(destination, 'NarTech', content, `<p>${safeContent}</p>`);
+    return delivery.ok ? jsonResponse(res, 200, { message: 'Gönderildi' }) : jsonResponse(res, delivery.status, { message: delivery.message });
+  }
+  return jsonResponse(res, 404, { message: 'Gönderilemedi' });
+}
+
+const TYPES = {
+  '.html':'text/html; charset=utf-8', '.css':'text/css; charset=utf-8', '.js':'text/javascript; charset=utf-8',
+  '.json':'application/json; charset=utf-8', '.xml':'application/xml; charset=utf-8', '.txt':'text/plain; charset=utf-8',
+  '.svg':'image/svg+xml', '.png':'image/png', '.jpg':'image/jpeg', '.jpeg':'image/jpeg', '.webp':'image/webp', '.ico':'image/x-icon',
+};
+const PUBLIC_ROOT_FILES = new Set(['index.html','about.html','products.html','services.html','contact.html','calculator.html','faq.html','robots.txt','sitemap.xml']);
+const PUBLIC_DIRECTORIES = new Set(['assets','categories','products']);
+
+const server = http.createServer(async (req, res) => {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('Referrer-Policy', 'no-referrer');
+  res.setHeader('Content-Security-Policy', "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'");
+  let pathname;
+  try { pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname); }
+  catch { res.writeHead(400).end(''); return; }
+  if (pathname.startsWith('/api/')) return apiRequest(req, res, pathname);
+  if (req.method !== 'GET' && req.method !== 'HEAD') { res.writeHead(405).end(''); return; }
+
+  const relative = pathname === '/' ? 'index.html' : pathname.replace(/^\/+/, '');
+  const firstSegment = relative.split('/')[0];
+  if (relative.split('/').some(segment => segment.startsWith('.')) ||
+      (relative.includes('/') && !PUBLIC_DIRECTORIES.has(firstSegment)) ||
+      (!relative.includes('/') && !PUBLIC_ROOT_FILES.has(firstSegment))) {
+    res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' }).end('Not found');
+    return;
+  }
+  let filePath = path.resolve(ROOT, relative);
+  if (!filePath.startsWith(ROOT + path.sep) && filePath !== ROOT) { res.writeHead(403).end(''); return; }
+  try {
+    if (!path.extname(filePath)) filePath += '.html';
+    const info = await fs.promises.stat(filePath);
+    if (info.isDirectory()) filePath = path.join(filePath, 'index.html');
+    const data = await fs.promises.readFile(filePath);
+    res.writeHead(200, { 'Content-Type': TYPES[path.extname(filePath).toLowerCase()] || 'application/octet-stream', 'Cache-Control': 'no-cache' });
+    if (req.method === 'HEAD') res.end(); else res.end(data);
+  } catch {
+    res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' });
+    res.end();
+  }
 });
 
-if (require.main === module) {
-  server.listen(PORT, () => {
-    console.log(`Nartech Engineering web server running at http://localhost:${PORT}`);
-  });
-}
-
-module.exports = server;
+server.listen(PORT, process.env.HOST || '127.0.0.1', () => console.log(`NarTech web server: http://localhost:${PORT}`));

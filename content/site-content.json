@@ -1,0 +1,873 @@
+{
+  "home": {
+    "titleTr": "Doğru Mühendislik. Doğru Ürün. Doğru Zamanda.",
+    "bodyTr": "Petrol & Gaz, Petrokimya, Kimya, Su, Upstream, Downstream ve Offshore sektörlerinde; uluslararası güvenlik, kalite ve performans standartlarına tam uyumlu, dünya standartlarında mühendislik çözümleri sunuyor; müşterilerimizin şartnamelerine özel tasarlanmış ürünler geliştiriyoruz.",
+    "titleEn": "The Right Engineering. The Right Product. The Right Time.",
+    "bodyEn": "In the Oil & Gas, Petrochemical, Chemical, Water, Upstream, Downstream, and Offshore sectors, we deliver world-class engineering solutions in full compliance with international safety, quality, and performance standards, and develop products tailor-made to our client’s specifications."
+  },
+  "about": {
+    "titleTr": "Hakkımızda / About Us :",
+    "paragraphsTr": [
+      {
+        "text": "Petrol & Gaz, Petrokimya, Kimya, Su, Upstream, Downstream ve Offshore sektörlerinde 10 yılı aşkın mühendislik deneyimimizle, müşterilerimize güvenilir, teknik açıdan doğru ve ekonomik çözümler sunuyoruz.",
+        "source": "About US.docx:2"
+      },
+      {
+        "text": "Rafineriler, tank çiftlikleri ve doğal gaz boru hattı uygulamaları için; depolama tankı ekipmanları, vanalar ve yangın koruma sistemleri başta olmak üzere, mühendislik onayından geçmiş geniş bir ürün yelpazesi tedarik ediyoruz. Endüstriyel tesis ve terminaller için kritik yedek parçalara hızlı ve güvenilir erişim sağlıyoruz.",
+        "source": "About US.docx:3"
+      },
+      {
+        "text": "Her proje, bizim için önce bir mühendislik problemidir. Ürün seçiminden tedarike kadar tüm süreci bu bakış açısıyla ele alıyoruz.",
+        "source": "About US.docx:4"
+      },
+      {
+        "text": "Sektörün önde gelen EPC yüklenicileri ve son kullanıcıları için gerçekleştirdiğimiz projeler, kompleks endüstriyel ihtiyaçları yakından tanımamızı sağlıyor; uluslararası standartlara ve proje şartnamelerine tam uyumlu çözümler sunuyoruz.",
+        "source": "About US.docx:5"
+      },
+      {
+        "text": "Hedefimiz basit: Doğru ürünü, doğru çözümü, doğru zamanda sunmak.",
+        "source": "About US.docx:6"
+      }
+    ],
+    "titleEn": "About Us",
+    "paragraphsEn": [
+      {
+        "text": "With an engineering team boasting over 10 years of engineering experience in the Oil & Gas, Petrochemical, Chemical, Water, Upstream, Downstream, and Offshore sectors, we provide our clients with reliable, technically accurate, and cost-effective solutions.",
+        "source": "About US.docx:8"
+      },
+      {
+        "text": "For refineries, tank farms, and natural gas pipeline applications, we supply a wide range of engineering approved products including storage tank equipments, valves, and fire protection systems. We ensure fast, reliable access to critical spare parts for industrial facilities and terminals.",
+        "source": "About US.docx:9"
+      },
+      {
+        "text": "For us, every project is priority and foremost an engineering problem. We approach the entire process from product selection to procurement from this same perspective.",
+        "source": "About US.docx:10"
+      },
+      {
+        "text": "The projects we've delivered for leading EPC contractors and end users give us close, first-hand insight into complex industrial requirements — enabling us to provide solutions fully aligned with international standards and project specifications.",
+        "source": "About US.docx:11"
+      },
+      {
+        "text": "Our goal is simple: the right product, the right solution, at the right time.",
+        "source": "About US.docx:12"
+      }
+    ]
+  },
+  "services": {
+    "title": "SAHA SÜPERVİZÖRLÜK HİZMETİ",
+    "items": [
+      {
+        "title": "\n\n1. Basınç Vakum Ventili (Pressure Vacuum Relief Valve - PVRV) Set Değerlerinin Kontrolü",
+        "titleSource": "Supervision Services.docx:2",
+        "paragraphs": [
+          {
+            "text": "Basınç vakum ventilleri, tankların aşırı basınç veya vakum altında kalarak deforme olmasını ya da patlamasını önleyen en kritik emniyet ekipmanlarıdır.",
+            "source": "Supervision Services.docx:3"
+          },
+          {
+            "text": "Fiziksel ve Fonksiyonel Kontrol",
+            "source": "Supervision Services.docx:4"
+          }
+        ]
+      },
+      {
+        "title": "2. İç Yüzer Tavanların (Internal Floating Roof - IFR) Kontrolü",
+        "titleSource": "Supervision Services.docx:5",
+        "paragraphs": [
+          {
+            "text": "Uçucu organik bileşik (VOC) emisyonlarını azaltmak ve ürün kaybını önlemek amacıyla kullanılan iç yüzer tavanlar, hassas mekanik montaj gerektirir.",
+            "source": "Supervision Services.docx:6"
+          },
+          {
+            "text": "Sızdırmazlık Fitilleri (Seals) ve Ekipmanlar: Rim seal (kenar sızdırmazlık) fitillerinin montaj kalitesi, iniş bacaklarının (leg settings) doğru pozisyonlandırılması ve drenaj sistemlerinin çalışabilirliği denetlenir.",
+            "source": "Supervision Services.docx:7"
+          }
+        ]
+      },
+      {
+        "title": "3. Dış Yüzer Tavanların (External Floating Roof - IFR) Kontrolü",
+        "titleSource": "Supervision Services.docx:8",
+        "paragraphs": [
+          {
+            "text": "Uçucu organik bileşik (VOC) emisyonlarını azaltmak ve ürün kaybını önlemek amacıyla kullanılan dış yüzer tavanlar, hassas mekanik montaj gerektirir.",
+            "source": "Supervision Services.docx:9"
+          },
+          {
+            "text": "Sızdırmazlık Fitilleri (Seals) ve Ekipmanlar: Rim seal (kenar sızdırmazlık) fitillerinin montaj kalitesi denetlenir.",
+            "source": "Supervision Services.docx:10"
+          }
+        ]
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "storage-tank-equipments",
+      "title": {
+        "text": "1-Storage Tank Equipments: ",
+        "source": "Products (1).docx:1"
+      },
+      "items": [
+        {
+          "id": "pressure-vacuum-relief-valve",
+          "titleTr": "Basınç Vakum Ventili",
+          "titleEn": "Pressure Vacuum Relief Valve",
+          "tr": [
+            {
+              "text": "API 650 standardına göre tasarlanan atmosferik ve düşük basınçlı depolama tanklarında kullanılan, tankın iç basıncını ve vakumunu kontrol ederek tankın güvenli işletilmesini sağlayan bir basınç/vakum emniyet nefeslik valfidir.",
+              "source": "Products (1).docx:4"
+            },
+            {
+              "text": "PVRV'nin nefeslik kapasitesi ve boyutlandırma hesaplamaları, API 2000 7th Edition, Venting Atmospheric and Low-Pressure Storage Tanks standardına göre gerçekleştirilir. Tankın doldurma ve boşaltma debileri ile termal etkiler dikkate alınarak inbreathing (vakum) ve outbreathing (basınç) ihtiyaçları hesaplanır ve buna uygun PVRV kapasitesi belirlenir.",
+              "source": "Products (1).docx:5"
+            },
+            {
+              "text": "PVRV, patlayıcı atmosfer oluşma riski bulunan tank uygulamalarında kullanılmak üzere ATEX Sertifikalı olarak temin edilir. ATEX sertifikasyonu sayesinde ekipmanın, ilgili patlayıcı atmosfer ortamlarında kullanım için gerekli güvenlik ve uygunluk şartlarını karşılaması sağlanır.",
+              "source": "Products (1).docx:6"
+            },
+            {
+              "text": "Basınç vakum ventili ; Hat Sonu , Hat Arası , Basınç Ventili , Vakum Ventili tipleri olarakta farklı tiplerde sağlanabilir.",
+              "source": "Products (1).docx:7"
+            }
+          ],
+          "en": [
+            {
+              "text": "Pressure Vacuum Relief Valve used on atmospheric and low-pressure storage tanks designed in accordance with the API 650 standard. It controls the internal pressure and vacuum of the tank, ensuring safe operation.",
+              "source": "Products (1).docx:9"
+            },
+            {
+              "text": "The venting capacity and sizing calculations of the PVRV are carried out in accordance with API 2000 7th Edition, Venting Atmospheric and Low-Pressure Storage Tanks. The required inbreathing (vacuum) and outbreathing (pressure) capacities are calculated by taking into consideration the tank filling and emptying rates as well as thermal effects, and the appropriate PVRV capacity is determined accordingly.",
+              "source": "Products (1).docx:10"
+            },
+            {
+              "text": "The PVRV is supplied as ATEX Certified equipment for use in tank applications where there is a risk of explosive atmospheres. The ATEX certification ensures that the equipment meets the necessary safety and conformity requirements for use in the relevant potentially explosive atmospheres.",
+              "source": "Products (1).docx:11"
+            },
+            {
+              "text": "Pressure vacuum valves can also be supplied in different types, such as End of Line, In Line, Pressure Relief Valves, and Vacuum Relief Valves.",
+              "source": "Products (1).docx:12"
+            }
+          ],
+          "children": [],
+          "source": 1,
+          "navTitleEn": "a-Pressure Vacuum Relief Valves"
+        },
+        {
+          "id": "inline-flame-arrester",
+          "titleTr": "Hat Arası Alev Tutucu:",
+          "titleEn": "In- Line Type Flame Arrester:",
+          "tr": [
+            {
+              "text": "EN ISO 16852 standardına uygun olarak tasarlanan ve test edilen Flame Arrestor (Alev Tutucu), yanıcı gaz, buhar veya hava karışımının bulunduğu proses ve depolama sistemlerinde, oluşabilecek bir alevin ekipman veya tank içerisine ilerlemesini ve diğer bölgelere yayılmasını önlemek amacıyla kullanılan pasif bir güvenlik ekipmanıdır.",
+              "source": "Products (1).docx:23"
+            },
+            {
+              "text": "Alev tutucular, uygulamanın gerektirdiği gaz grupları IIA ve IIB için uygun olarak seçilir ve boyutlandırılır. Uygulama ve proses gereksinimlerine bağlı olarak Deflagration (Patlama) ve Detonation (Parlama) tipi alev tutucu seçenekleri mevcuttur.",
+              "source": "Products (1).docx:24"
+            },
+            {
+              "text": "Ekipman, proses hattı ve montaj koşullarına bağlı olarak Yatay(Horizontal) veya dikey(Vertical) konumlandırılabilir. Böylece farklı tank, borulama ve proses sistemi uygulamalarına uygun montaj esnekliği sağlanır.",
+              "source": "Products (1).docx:25"
+            },
+            {
+              "text": "Patlayıcı atmosfer oluşma riski bulunan uygulamalarda alev tutucu ATEX sertifikalı olarak temin edilir. ATEX sertifikasyonu, ekipmanın ilgili potansiyel patlayıcı atmosferlerde güvenli kullanım için gerekli uygunluk ve güvenlik gerekliliklerini karşıladığını gösterir.",
+              "source": "Products (1).docx:26"
+            },
+            {
+              "text": "Alev tutucu seçiminde; gaz/buhar grubu (IIA veya IIB), deflagration veya detonation tipi, montaj yönü (yatay veya dikey), çalışma basıncı ve sıcaklığı, proses akışkanı ve akış kapasitesi gibi proses parametreleri dikkate alınarak uygun ürün seçimi gerçekleştirilir.",
+              "source": "Products (1).docx:27"
+            }
+          ],
+          "en": [
+            {
+              "text": "The In Line Flame Arrestor, designed and tested in accordance with the EN ISO 16852 standard, is a passive safety device used in process and storage systems containing flammable gas, vapor, or air mixtures. Its primary purpose is to prevent a flame from propagating into equipment or tanks and from spreading to other areas.",
+              "source": "Products (1).docx:29"
+            },
+            {
+              "text": "Flame arrestors are selected and sized according to the applicable gas groups IIA and IIB. Depending on the application and process requirements, Deflagration and Detonation type flame arrestors are available.",
+              "source": "Products (1).docx:30"
+            },
+            {
+              "text": "Depending on the process piping and installation conditions, the equipment can be installed in either Horizontal or Vertical configration, providing installation flexibility for various tank, piping, and process system applications.",
+              "source": "Products (1).docx:31"
+            },
+            {
+              "text": "For applications where there is a risk of explosive atmospheres, the flame arrestor is supplied as ATEX-certified equipment. ATEX certification demonstrates that the equipment meets the necessary conformity and safety requirements for safe use in the relevant potentially explosive atmospheres.",
+              "source": "Products (1).docx:32"
+            },
+            {
+              "text": "The selection of the appropriate flame arrestor is based on process parameters such as gas/vapor group (IIA or IIB), deflagration or detonation type, installation orientation (horizontal or vertical), operating pressure and temperature, process fluid, and flow capacity.",
+              "source": "Products (1).docx:33"
+            }
+          ],
+          "children": [],
+          "source": 12,
+          "navTitleEn": "b-In Line Type Flame Arresters:"
+        },
+        {
+          "id": "end-line-flame-arrester",
+          "titleTr": "Hat Sonu Alev Tutucu:",
+          "titleEn": "End-of-Line Flame Arrester:",
+          "tr": [
+            {
+              "text": "EN ISO 16852 standardına uygun olarak tasarlanan ve test edilen Hat Sonu Alev Tutucu, yanıcı gaz, buhar veya hava karışımının bulunduğu proses ve depolama sistemlerinin atmosferik açık uçlarında veya tank havalandırma hatlarında, dış ortamdan kaynaklanabilecek bir alevin veya kıvılcımın ekipman veya tank içerisine ilerlemesini önlemek amacıyla kullanılan pasif bir güvenlik ekipmanıdır.",
+              "source": "Products (1).docx:39"
+            },
+            {
+              "text": "Hat Sonu Alev Tutucular, uygulamanın gerektirdiği gaz gruplarına uygun olarak seçilir ve boyutlandırılır. Uygulama ve proses gereksinimlerine bağlı olarak, açık hat uçlarında yaygın olarak karşılaşılan Deflagration (Patlama) tipinin yanı sıra, yanma süresi ve kararlılığına göre Kısa Süreli Yanma (Short-time Burning) veya Sınırsız Süreli Yanma (Endurance Burning) özelliklerine sahip hat sonu alev tutucu seçenekleri mevcuttur.",
+              "source": "Products (1).docx:40"
+            },
+            {
+              "text": "Ekipman, borulama ve hat çıkış koşullarına bağlı olarak genellikle dikey (vertical) konumlandırılır.",
+              "source": "Products (1).docx:41"
+            },
+            {
+              "text": "Patlayıcı atmosfer oluşma riski bulunan uygulamalarda alev tutucu ATEX sertifikalı olarak temin edilir. ATEX sertifikasyonu, ekipmanın ilgili potansiyel patlayıcı atmosferlerde güvenli kullanım için gerekli uygunluk ve güvenlik gerekliliklerini karşıladığını gösterir.",
+              "source": "Products (1).docx:42"
+            }
+          ],
+          "en": [
+            {
+              "text": "Designed and tested in accordance with the EN ISO 16852 standard, the End-of-Line Flame Arrester is a passive safety equipment used in atmospheric open ends of process and storage systems containing flammable gas, vapor, or air mixtures, or in tank venting lines, to prevent a flame or spark originating from the external environment from propagating into the equipment or tank.",
+              "source": "Products (1).docx:44"
+            },
+            {
+              "text": "End-of-Line Flame Arresters are selected and sized according to the gas groups required by the application. Depending on application and process requirements, alongside the Deflagration type commonly encountered at open line ends, end-of-line flame arrester options featuring Short-time Burning or Endurance Burning capabilities based on burning duration and stability are available.",
+              "source": "Products (1).docx:45"
+            },
+            {
+              "text": "Depending on the piping and line discharge conditions, the equipment is generally positioned vertically.",
+              "source": "Products (1).docx:46"
+            },
+            {
+              "text": "In applications with a risk of explosive atmospheres, the flame arrester is provided with ATEX certification. ATEX certification demonstrates that the equipment meets the compliance and safety requirements necessary for safe use in the relevant potentially explosive atmospheres.",
+              "source": "Products (1).docx:47"
+            }
+          ],
+          "children": [],
+          "source": 25,
+          "navTitleEn": "c-End of Line Type Flame Arresters:"
+        },
+        {
+          "id": "emergency-relief-valve",
+          "titleTr": "Acil Emniyet Ventili",
+          "titleEn": "Emergency Relief Valve",
+          "tr": [
+            {
+              "text": "API 650 standardına göre tasarlanan atmosferik ve düşük basınçlı depolama tanklarında kullanılan Emergency Relief Valve, tank içerisinde meydana gelebilecek anormal basınç artışlarında tankın aşırı basınca maruz kalmasını önlemek amacıyla kullanılan bir acil durum basınç tahliye ekipmanıdır.",
+              "source": "Products (1).docx:58"
+            },
+            {
+              "text": "Emergency Relief Valve, patlayıcı atmosfer riski bulunan uygulamalarda kullanılmak üzere ATEX sertifikalı olarak temin edilmektedir.Emergency Relief Valve, özellikle yangın (fire exposure) gibi acil durum koşullarında tank içerisindeki basıncın hızlı şekilde yükselmesi durumunda devreye girerek, oluşan fazla buhar ve gazın kontrollü bir şekilde tahliye edilmesini sağlar. Böylece tankın tasarım basıncının aşılmasının ve tank yapısında meydana gelebilecek hasarların önlenmesine yardımcı olur.",
+              "source": "Products (1).docx:59"
+            },
+            {
+              "text": "Emergency Relief Valve'ın kapasite ve boyutlandırma hesaplamaları, API 2000 - 7th Edition, Venting Atmospheric and Low-Pressure Storage Tanks standardına göre gerçekleştirilir. Özellikle yangın senaryosu için gerekli emergency venting kapasitesi hesaplanarak uygun vana kapasitesi belirlenir.",
+              "source": "Products (1).docx:60"
+            },
+            {
+              "text": "Ekipman, tankın tasarım özellikleri ve proses koşullarına bağlı olarak Ağırlıklı veya Yaylı tasarımlarda temin edilebilir. Ürün seçimi sırasında tankın çapı, depolanan ürün, tasarım basıncı ve vakumu, çalışma sıcaklığı, yangına maruz kalma koşulları ve gerekli acil durum vent kapasitesi gibi parametreler dikkate alınır.\n\nEmergency Relief Valve\nEmergency Relief Valve is an emergency pressure relief device used on atmospheric and low-pressure storage tanks designed in accordance with the API 650 standard. It is intended to protect the tank from excessive pressure in the event of abnormal pressure increases within the tank.",
+              "source": "Products (1).docx:61"
+            }
+          ],
+          "en": [
+            {
+              "text": "Emergency Relief Valve is an emergency pressure relief device used on atmospheric and low-pressure storage tanks designed in accordance with the API 650 standard. It is intended to protect the tank from excessive pressure in the event of abnormal pressure increases within the tank.",
+              "source": "Products (1).docx:61"
+            },
+            {
+              "text": "Emergency Relief Valve is supplied as ATEX-certified equipment for applications where there is a risk of explosive atmospheres.Emergency Relief Valve is activated particularly under emergency conditions such as fire exposure, when the pressure inside the tank rises rapidly, allowing excess vapor and gas to be safely and controlledly released. This helps prevent the tank design pressure from being exceeded and minimizes the risk of structural damage to the tank.",
+              "source": "Products (1).docx:62"
+            },
+            {
+              "text": "Capacity and sizing calculations of the Emergency Relief Valve are carried out in accordance with API 2000 - 7th Edition, Venting Atmospheric and Low-Pressure Storage Tanks. In particular, the required emergency venting capacity for the fire scenario is calculated, and the appropriate valve capacity is determined accordingly.",
+              "source": "Products (1).docx:63"
+            },
+            {
+              "text": "Depending on the tank design and process conditions, the equipment can be supplied in weighted or spring-loaded designs. During product selection, parameters such as tank diameter, stored product, design pressure and vacuum, operating temperature, fire exposure conditions, and required emergency venting capacity are taken into consideration.",
+              "source": "Products (1).docx:64"
+            }
+          ],
+          "children": [],
+          "source": 36,
+          "navTitleEn": "\nd-Emergency Relief Valve"
+        },
+        {
+          "id": "gauge-hatch",
+          "titleTr": "Ölçüm Deliği Kapağı",
+          "titleEn": "Gauge Hatch",
+          "tr": [
+            {
+              "text": "API 650 standardına göre tasarlanan atmosferik ve düşük basınçlı depolama tanklarında kullanılan Gauge Hatch (Ölçüm Kapağı), tank içerisindeki ürün seviyesinin manuel olarak ölçülmesi, numune alınması ve tank içerisindeki ürünün kontrol edilmesi amacıyla tank çatısına monte edilen bir tank ekipmanıdır.",
+              "source": "Products (1).docx:72"
+            },
+            {
+              "text": "Gauge Hatch, patlayıcı atmosfer riski bulunan uygulamalarda kullanılmak üzere ATEX sertifikalı olarak temin edilebilir.Gauge Hatch, yetkisiz erişimi önlemek amacıyla kilitleme mekanizmasına sahip olup, yalnızca yetkili personel tarafından açılabilecek şekilde tasarlanmıştır. Bu özellik, özellikle yanıcı, tehlikeli veya değerli ürünlerin depolandığı tanklarda operasyonel güvenlik ve erişim kontrolü sağlar.",
+              "source": "Products (1).docx:73"
+            },
+            {
+              "text": "Gauge Hatch, API 650 tank çatı yapısına uygun olarak farklı bağlantı ve ölçü seçeneklerinde üretilebilir. Manuel seviye ölçümü ve numune alma işlemleri sırasında ölçüm ekipmanlarının tank içerisine güvenli şekilde erişmesine imkân sağlar. Anti-spark (kıvılcım önleyici) tasarımı sayesinde, ölçüm kapağının açılması veya kapatılması sırasında oluşabilecek mekanik kıvılcım riskinin azaltılmasına yardımcı olur ve yanıcı ürünlerin depolandığı tank uygulamalarında ilave güvenlik sağlar.",
+              "source": "Products (1).docx:74"
+            },
+            {
+              "text": "Ürün seçiminde tank çatı tipi, bağlantı/nozzle ölçüsü, depolanan ürün, çalışma sıcaklığı, malzeme uyumluluğu ve operasyonel gereksinimler dikkate alınır. Gövde, kapak ve sızdırmazlık elemanları, tankın çalışma koşullarına ve depolanan ürünün özelliklerine uygun olarak seçilir.",
+              "source": "Products (1).docx:75"
+            },
+            {
+              "text": "Kilitli tip’ kilitsiz tip’ atmosfere kapali tip’",
+              "source": "Products (1).docx:76"
+            }
+          ],
+          "en": [
+            {
+              "text": "Gauge Hatch is a tank accessory installed on the roof of atmospheric and low-pressure storage tanks designed in accordance with the API 650 standard. It is used for manual measurement of the product level inside the tank, sampling, and inspection of the stored product.",
+              "source": "Products (1).docx:78"
+            },
+            {
+              "text": "Gauge Hatch can be supplied as ATEX-Certified equipment for applications where there is a risk of explosive atmospheres.Gauge Hatch is equipped with a locking mechanism to prevent unauthorized access and is designed to be opened only by authorized personnel. This feature provides additional operational safety and access control, particularly for tanks storing flammable, hazardous, or valuable products.",
+              "source": "Products (1).docx:79"
+            },
+            {
+              "text": "The Gauge Hatch can be manufactured with different connection types and dimensions in accordance with the API 650 tank roof structure. It provides safe access for measurement equipment during manual level measurement and sampling operations. Thanks to its anti-spark (spark-resistant) design, it helps reduce the risk of mechanical sparks during opening and closing of the hatch, providing additional safety in tank applications involving flammable products.",
+              "source": "Products (1).docx:80"
+            },
+            {
+              "text": "During product selection, parameters such as tank roof type, connection/nozzle size, stored product, operating temperature, material compatibility, and operational requirements are taken into consideration. The body, cover, and sealing elements are selected according to the tank operating conditions and the characteristics of the stored product.",
+              "source": "Products (1).docx:81"
+            }
+          ],
+          "children": [],
+          "source": 45,
+          "navTitleEn": "e-Gauge Hatches"
+        },
+        {
+          "id": "internal-floating-roofs-and-seals",
+          "titleTr": "İç Yüzer Tavanlar ve Fitiller",
+          "titleEn": "f-Internal Floating Roofs and Seals***",
+          "tr": [],
+          "en": [],
+          "children": [
+            {
+              "id": "pontoon-type-ifr",
+              "titleTr": "\n-Pontoon Type IFR / Pontoon Tip Yüzer Tavan",
+              "titleEn": null,
+              "tr": [
+                {
+                  "text": "An Internal Floating Roof (IFR) designed and supplied in strict compliance with international standards such as API 650 is a moveable deck installed inside fixed-roof storage tanks for petroleum products, fuels, and chemicals, designed to rise and fall together with the liquid level.",
+                  "source": "Products (1).docx:85"
+                },
+                {
+                  "text": "Features hollow compartments (pontoons) beneath the deck that trap vapors and provide buoyancy, allowing the roof to float stably on the liquid surface. This is the most common and versatile design.",
+                  "source": "Products (1).docx:86"
+                },
+                {
+                  "text": "Key Functions and Benefits",
+                  "source": "Products (1).docx:87"
+                },
+                {
+                  "text": "Superior Emission Reduction: Effectively minimizes product evaporation by reducing the vapor space between the liquid surface and the fixed roof, preventing volatile organic compounds (VOCs) from escaping into the atmosphere.",
+                  "source": "Products (1).docx:88"
+                },
+                {
+                  "text": "Environmental & Workplace Protection: By controlling harmful vapor release, it actively protects the surrounding environment, lowers local air pollution, and maintains safe operational standards around the storage facility.",
+                  "source": "Products (1).docx:89"
+                },
+                {
+                  "text": "Balanced Stability & Safety: The integrated pontoons ensure stable, dependable floating performance, minimizing fire risks and supporting long-term, eco-friendly storage operations.",
+                  "source": "Products (1).docx:90"
+                },
+                {
+                  "text": "Our Supply & Quality Assurance",
+                  "source": "Products (1).docx:91"
+                },
+                {
+                  "text": "As a trusted global supplier, we source and distribute these high-performance internal floating roof systems in strict compliance with international standards, including API 650.",
+                  "source": "Products (1).docx:92"
+                },
+                {
+                  "text": "You can rely on our industry expertise and globally certified products to deliver maximum safety, environmental compliance, and long-term reliability for your storage facilities.",
+                  "source": "Products (1).docx:93"
+                }
+              ],
+              "en": [],
+              "children": [],
+              "source": 57
+            },
+            {
+              "id": "full-contact-type-ifr",
+              "titleTr": "-Full Contact Type IFR",
+              "titleEn": null,
+              "tr": [
+                {
+                  "text": "An Internal Floating Roof (IFR) designed and supplied in strict compliance with international standards such as API 650 is a moveable deck installed inside fixed-roof storage tanks for petroleum products, fuels, and chemicals, designed to rise and fall together with the liquid level.",
+                  "source": "Products (1).docx:107"
+                },
+                {
+                  "text": "Full Contact Type: The bottom of the deck makes direct, full contact with the stored liquid, leaving zero air or vapor space beneath it. This makes it ideal for highly volatile products to reduce evaporation to an absolute minimum.",
+                  "source": "Products (1).docx:108"
+                },
+                {
+                  "text": "Key Functions and Benefits",
+                  "source": "Products (1).docx:109"
+                },
+                {
+                  "text": "Near-Zero VOC Emissions: Because the deck makes complete, direct contact with the liquid, it provides absolute emission control, virtually eliminating atmospheric vapor losses for strict environmental compliance.",
+                  "source": "Products (1).docx:110"
+                },
+                {
+                  "text": "Maximum Environmental Preservation: Ideal for highly volatile products and aggressive chemicals, it prevents hazardous fumes and odors from leaking into the ecosystem, ensuring ultimate eco-friendly containment.",
+                  "source": "Products (1).docx:111"
+                },
+                {
+                  "text": "Enhanced Safety & Vapor Lockdown: By completely removing sub-deck vapor spaces, it eliminates the risk of explosive gas accumulation, offering the highest level of environmental and workplace safety available.",
+                  "source": "Products (1).docx:112"
+                },
+                {
+                  "text": "Our Supply & Quality Assurance",
+                  "source": "Products (1).docx:113"
+                },
+                {
+                  "text": "As a trusted global supplier, we source and distribute these high-performance internal floating roof systems in strict compliance with international standards, including API 650.",
+                  "source": "Products (1).docx:114"
+                },
+                {
+                  "text": "You can rely on our industry expertise and globally certified products to deliver maximum safety, environmental compliance, and long-term reliability for your storage facilities.",
+                  "source": "Products (1).docx:115"
+                }
+              ],
+              "en": [],
+              "children": [],
+              "source": 68
+            },
+            {
+              "id": "chemraz-xpe-seal",
+              "titleTr": "-Chemraz XPE Seal",
+              "titleEn": null,
+              "tr": [
+                {
+                  "text": "Delivering exceptional chemical resistance and thermal stability for extremely aggressive chemicals and high temperatures, Chemraz XPE seals ensure near-zero leakage and maximum fluid compatibility in IFR systems even under the harshest conditions. ",
+                  "source": "Products (1).docx:118"
+                }
+              ],
+              "en": [],
+              "children": [],
+              "source": 78
+            },
+            {
+              "id": "hdpe-seal",
+              "titleTr": " -HDPE Seal",
+              "titleEn": null,
+              "tr": [
+                {
+                  "text": "Offering superior mechanical strength and abrasion resistance in IFR perimeter sealing applications, high-density polyethylene (HDPE) based elements guarantee long-lasting and reliable operation. ",
+                  "source": "Products (1).docx:120"
+                }
+              ],
+              "en": [],
+              "children": [],
+              "source": 80
+            },
+            {
+              "id": "ldpe-seal",
+              "titleTr": "-LDPE Seal: ",
+              "titleEn": null,
+              "tr": [
+                {
+                  "text": "Distinguished by their flexibility and vapor-tight properties, low-density polyethylene (LDPE) seals effectively block volatile organic compound (VOC) emissions on IFR roofs, ensuring high environmental safety.",
+                  "source": "Products (1).docx:122"
+                }
+              ],
+              "en": [],
+              "children": [],
+              "source": 82
+            }
+          ],
+          "source": 56
+        }
+      ],
+      "titleTr": "1-Depolama Tankı Ekipmanları",
+      "titleEn": "1-Storage Tank Equipments: "
+    },
+    {
+      "id": "fire-fighting-equipments",
+      "title": {
+        "text": "2-Fire Fighting Equipments (FM / UL Approved)",
+        "source": "Products (1).docx:125"
+      },
+      "items": [
+        {
+          "id": "fixed-foam-monitor",
+          "titleTr": "A Fixed Foam Monitor:",
+          "titleEn": null,
+          "tr": [
+            {
+              "text": "Fixed Foam Monitor is a high-capacity, fixed firefighting device used in industrial facilities and tank farms to rapidly deliver large volumes of water-foam solution over long distances.",
+              "source": "Products (1).docx:127"
+            },
+            {
+              "text": "NFPA 11 Compliance: Designed in strict accordance with NFPA 11 standards to ensure optimal foam discharge, blanket formation, and rapid fire suppression for critical risks.",
+              "source": "Products (1).docx:128"
+            },
+            {
+              "text": "UL / FM Approvals: Certified by leading global safety authorities (UL and FM), guaranteeing proven reliability, rugged durability, and uncompromising performance during emergency response operations.",
+              "source": "Products (1).docx:129"
+            }
+          ],
+          "en": [],
+          "children": [],
+          "source": 84
+        },
+        {
+          "id": "foam-maker",
+          "titleTr": "B Foam Maker:",
+          "titleEn": null,
+          "tr": [
+            {
+              "text": "Foam Maker is a specialized discharge device used for the protection of open floating-roof storage tanks where low-velocity foam streams are desired. Its working principle is similar to that of a foam chamber, with the key difference being that a foam maker allows the foam to flow directly without storage, producing low-expansion foam to effectively secure flammable liquid surfaces.",
+              "source": "Products (1).docx:131"
+            },
+            {
+              "text": "NFPA 11 Compliance: Engineered in strict accordance with NFPA 11 standards to ensure proper air-foam aspiration, correct low-expansion foam production, and reliable discharge performance.",
+              "source": "Products (1).docx:132"
+            },
+            {
+              "text": "UL / FM Approvals: Backed by trusted UL and FM certifications, guaranteeing top-tier manufacturing quality, flawless performance, and maximum safety for critical industrial fire protection systems.",
+              "source": "Products (1).docx:133"
+            }
+          ],
+          "en": [],
+          "children": [],
+          "source": 88
+        },
+        {
+          "id": "foam-mixer-proportioner",
+          "titleTr": "C Foam Mixer (Proportioner):",
+          "titleEn": null,
+          "tr": [
+            {
+              "text": "Foam Mixer (or proportioner) is a critical fire protection device designed to automatically mix water and foam concentrate at the correct, pre-determined percentage ratio to generate an effective foam solution during an emergency.",
+              "source": "Products (1).docx:135"
+            },
+            {
+              "text": "NFPA 11 Compliance: Engineered in strict accordance with NFPA 11 standards to ensure accurate proportioning, reliable performance, and optimal foam solution delivery for industrial fire suppression systems.",
+              "source": "Products (1).docx:136"
+            },
+            {
+              "text": "UL / FM Approvals: Backed by trusted UL and FM certifications, guaranteeing top-tier manufacturing quality, operational precision, and maximum safety for critical tank farm and facility protection.",
+              "source": "Products (1).docx:137"
+            }
+          ],
+          "en": [],
+          "children": [],
+          "source": 92
+        },
+        {
+          "id": "foam-top-pourer",
+          "titleTr": "D Foam Top Pourer:",
+          "titleEn": null,
+          "tr": [
+            {
+              "text": "Foam Top Pourer (also known as a foam chamber) is a specialized fire suppression device mounted on the shell of fixed-roof storage tanks, designed to gently pour expanded firefighting foam directly onto the surface of a burning liquid without plunging into it.",
+              "source": "Products (1).docx:139"
+            },
+            {
+              "text": "NFPA 11 Compliance: Engineered in strict accordance with NFPA 11 standards to ensure proper air aspiration, reliable low-expansion foam generation, and correct distribution over flammable liquid surfaces.",
+              "source": "Products (1).docx:140"
+            },
+            {
+              "text": "UL / FM Approvals: Backed by trusted UL and FM certifications, guaranteeing top-tier manufacturing quality, operational reliability, and maximum fire safety for critical industrial tank farms.",
+              "source": "Products (1).docx:141"
+            }
+          ],
+          "en": [],
+          "children": [],
+          "source": 96
+        },
+        {
+          "id": "rim-seal-foam-pourer",
+          "titleTr": "E Rim Seal Foam Pourer:",
+          "titleEn": null,
+          "tr": [
+            {
+              "text": "Rim Seal Foam Pourer is a specialized fire protection device designed specifically to protect the annular ring (rim seal area) of external floating-roof storage tanks, delivering expanded foam directly to the most vulnerable sealing zone where rim fires are most likely to occur.",
+              "source": "Products (1).docx:144"
+            },
+            {
+              "text": "NFPA 11 Compliance: Engineered in strict accordance with NFPA 11 standards to ensure proper air aspiration, reliable low-expansion foam generation, and targeted discharge performance directly onto the seal area.",
+              "source": "Products (1).docx:145"
+            },
+            {
+              "text": "UL / FM Approvals: Backed by trusted UL and FM certifications, guaranteeing top-tier manufacturing quality, operational precision, and maximum safety for critical tank rim fire protection.",
+              "source": "Products (1).docx:146"
+            }
+          ],
+          "en": [],
+          "children": [],
+          "source": 100
+        },
+        {
+          "id": "foam-tanks",
+          "titleTr": "F Foam Tanks:",
+          "titleEn": null,
+          "tr": [
+            {
+              "text": "Foam Tank (typically a bladder tank proportioning system) is a pre-piped pressure vessel used in fire protection systems to store foam concentrate and automatically inject it into the water supply at the correct proportion during an emergency.",
+              "source": "Products (1).docx:148"
+            },
+            {
+              "text": "NFPA 11 Compliance: Engineered in strict accordance with NFPA 11 standards to ensure accurate liquid proportioning, reliable bladder integrity, and dependable foam solution generation for industrial fire suppression.",
+              "source": "Products (1).docx:149"
+            },
+            {
+              "text": "UL / FM Approvals: Backed by trusted UL and FM certifications, guaranteeing top-tier manufacturing quality, operational precision, and maximum safety for critical storage tank and facility protection.",
+              "source": "Products (1).docx:150"
+            }
+          ],
+          "en": [],
+          "children": [],
+          "source": 104
+        },
+        {
+          "id": "foam-water-sprinkler",
+          "titleTr": "G Foam & Water Sprinkler:",
+          "titleEn": null,
+          "tr": [
+            {
+              "text": "Specialized Foam Sprinklers and Water Sprinklers deployed within a storage tank farm are automatic discharge nozzles engineered to safeguard high-risk peripheral areas such as pump stations, manifold areas, truck loading racks, and secondary containment dykes by rapidly delivering uniform water sprays or aspirated foam blankets.",
+              "source": "Products (1).docx:153"
+            },
+            {
+              "text": "UL / FM Approvals & K-Factor Precision: Backed by trusted UL and FM certifications and a comprehensive selection of precise K-factor options, guaranteeing accurate hydraulic design calculations, uncompromising manufacturing quality, and dependable round-the-clock protection for critical areas within the tank farm.",
+              "source": "Products (1).docx:154"
+            }
+          ],
+          "en": [],
+          "children": [],
+          "source": 108
+        }
+      ],
+      "titleTr": "2-Yangın Söndürme",
+      "titleEn": "2-Fire Fighting Equipments (FM / UL Approved)"
+    },
+    {
+      "id": "pig-cleaning-equipments",
+      "title": {
+        "text": "3-Pig Cleaning Equipments",
+        "source": "Products (1).docx:157"
+      },
+      "items": [
+        {
+          "id": "foam-pigs",
+          "titleTr": "A Foam Pigs",
+          "titleEn": null,
+          "tr": [],
+          "en": [],
+          "children": [],
+          "source": 112
+        },
+        {
+          "id": "solid-cast-pigs",
+          "titleTr": "B Solid Cast Pigs",
+          "titleEn": null,
+          "tr": [],
+          "en": [],
+          "children": [],
+          "source": 113
+        },
+        {
+          "id": "steel-pigs",
+          "titleTr": "C Steel Pigs",
+          "titleEn": null,
+          "tr": [],
+          "en": [],
+          "children": [],
+          "source": 114
+        },
+        {
+          "id": "pig-signallers",
+          "titleTr": "-Pig Signallers",
+          "titleEn": null,
+          "tr": [],
+          "en": [],
+          "children": [
+            {
+              "id": "non-intrusive-pig-signaller",
+              "titleTr": "A Non Intrusive Type Pig Signaller",
+              "titleEn": null,
+              "tr": [],
+              "en": [],
+              "children": [],
+              "source": 116
+            },
+            {
+              "id": "intrusive-pig-signaller",
+              "titleTr": "B Intrusive Type Pig Signaller",
+              "titleEn": null,
+              "tr": [],
+              "en": [],
+              "children": [],
+              "source": 116
+            }
+          ],
+          "source": 115
+        }
+      ],
+      "titleTr": "3-Pig Temizleme",
+      "titleEn": "3-Pig Cleaning Equipments"
+    },
+    {
+      "id": "industrial-silencers",
+      "title": {
+        "text": "4-Industrial Silencers",
+        "source": "Products (1).docx:169"
+      },
+      "items": [],
+      "description": [
+        {
+          "text": "An Industrial Silencer is a critical noise control device engineered to significantly reduce high-intensity operational noise generated by equipment like fans, blowers, and exhaust systems. By lowering noise levels precisely down to 85 dB, it effectively protects workers from hearing loss and long-term health hazards in compliance with occupational safety regulations. Additionally, it minimizes environmental noise pollution, creating a safer, more productive, and regulation-friendly industrial workplace.",
+          "source": "Products (1).docx:170"
+        }
+      ],
+      "titleTr": "4-Susturucular",
+      "titleEn": "4-Industrial Silencers"
+    },
+    {
+      "id": "floatin-suction-units",
+      "title": {
+        "text": "5-Floatin Suction Units",
+        "source": "Products (1).docx:173"
+      },
+      "items": [
+        {
+          "id": "pipe-type-floating-suction-unit",
+          "titleTr": "A Pipe Type Floating Suction Unit",
+          "titleEn": null,
+          "tr": [],
+          "en": [],
+          "children": [],
+          "source": 122
+        },
+        {
+          "id": "hose-type-floating-suction-unit",
+          "titleTr": "B Hose Type Floating Suction Unit",
+          "titleEn": null,
+          "tr": [],
+          "en": [],
+          "children": [],
+          "source": 123
+        },
+        {
+          "id": "oil-skimmer",
+          "titleTr": "C Oil Skimmer",
+          "titleEn": null,
+          "tr": [],
+          "en": [],
+          "children": [],
+          "source": 124
+        }
+      ],
+      "description": [
+        {
+          "text": "The Floating Suction Unit is a system designed to draw liquid from the cleanest surface level in storage tanks (especially for aviation fuels and chemicals). It ensures that always the clearest product at the very top is withdrawn, preventing the pumping of water, sediments, and sludge accumulated at the bottom of the tank.",
+          "source": "Products (1).docx:174"
+        }
+      ],
+      "titleTr": "5-Yüzer Emiş",
+      "titleEn": "5-Floatin Suction Units"
+    },
+    {
+      "id": "retractable-grounding-cable",
+      "title": {
+        "text": "6-Retractable Grounding Cable",
+        "source": "Products (1).docx:179"
+      },
+      "items": [],
+      "description": [
+        {
+          "text": "The ATEX-Certified Retractable Grounding Reel (RGR) is designed to safely discharge static electricity from floating roof tanks in accordance with API standards. Acting as a direct electrical connection between the floating roof and the tank shell, it ensures that lightning currents and bound charges are rapidly and effectively conducted to the earth during a lightning strike.",
+          "source": "Products (1).docx:180"
+        }
+      ],
+      "titleTr": "6-Topraklama RGR",
+      "titleEn": "6-Retractable Grounding Cable"
+    },
+    {
+      "id": "loading-arms",
+      "title": {
+        "text": "7-Loading Arms",
+        "source": "Products (1).docx:182"
+      },
+      "items": [],
+      "titleTr": "7-Dolum Kolları",
+      "titleEn": "7-Loading Arms"
+    },
+    {
+      "id": "industrial-valves",
+      "title": {
+        "text": "8-Industrial Valves",
+        "source": "Products (1).docx:184"
+      },
+      "items": [
+        {
+          "id": "ball-valves",
+          "titleTr": "A Ball Valves",
+          "titleEn": null,
+          "tr": [],
+          "en": [],
+          "children": [],
+          "source": 129
+        },
+        {
+          "id": "gate-valves",
+          "titleTr": "B Gate Valves",
+          "titleEn": null,
+          "tr": [],
+          "en": [],
+          "children": [],
+          "source": 130
+        },
+        {
+          "id": "butterfly-valves",
+          "titleTr": "C Butterfly Valves",
+          "titleEn": null,
+          "tr": [],
+          "en": [],
+          "children": [],
+          "source": 131
+        }
+      ],
+      "titleTr": "8-Vanalar",
+      "titleEn": "8-Industrial Valves"
+    },
+    {
+      "id": "gas-scrubber-systems",
+      "title": {
+        "text": "9-Gas Scrubber Systems",
+        "source": "Products (1).docx:189"
+      },
+      "items": [],
+      "titleTr": "9-Gaz Yıkama",
+      "titleEn": "9-Gas Scrubber Systems"
+    },
+    {
+      "id": "seperators",
+      "title": {
+        "text": "10-Seperators",
+        "source": "Products (1).docx:191"
+      },
+      "items": [],
+      "titleTr": "10-Seperatörler",
+      "titleEn": "10-Seperators"
+    },
+    {
+      "id": "spare-parts-for-refineries",
+      "title": {
+        "text": "11-Spare Parts for Refineries",
+        "source": "Products (1).docx:193"
+      },
+      "items": [],
+      "titleTr": "11-Yedek Parça",
+      "titleEn": "11-Spare Parts for Refineries"
+    }
+  ]
+}

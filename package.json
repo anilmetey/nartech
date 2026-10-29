@@ -4,6 +4,7 @@
   "description": "Production-grade, high-performance website for Nartech Engineering",
   "main": "server.js",
   "scripts": {
+    "build": "python3 scripts/build_site.py",
     "start": "node server.js",
     "test": "node test.js"
   },
@@ -19,5 +20,8 @@
   ],
   "author": "Nartech Mühendislik",
   "license": "UNLICENSED",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "nodemailer": "^10.3.1"
+  }
 }
