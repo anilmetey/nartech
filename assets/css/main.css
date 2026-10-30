@@ -754,3 +754,16 @@ main { min-height: 58vh; }
   .catalog-index { grid-template-columns: minmax(0, 1fr); }
   .catalog-index a { min-height: 50px; }
 }
+
+@media (min-width: 1101px) {
+  .site-nav {
+    grid-template-columns:
+      minmax(62px, .85fr)
+      minmax(72px, .95fr)
+      minmax(84px, 1.05fr)
+      minmax(50px, .65fr)
+      minmax(60px, .8fr)
+      max-content max-content max-content 80px;
+    column-gap: clamp(4px, .45vw, 6px);
+  }
+}
