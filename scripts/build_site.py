@@ -14,15 +14,17 @@ def source_lines(filename: str) -> list[int]:
     return [i + 1 for i, p in enumerate(Document(DOCS / filename).paragraphs) if p.text.strip()]
 
 home = paragraphs("Home.docx")
-about = paragraphs("About US.docx")
-about_lines = source_lines("About US.docx")
+about = paragraphs("Who We Are - About US.docx")
+about_lines = source_lines("Who We Are - About US.docx")
+what_we_do = paragraphs("What We Do (1).docx")
+what_we_do_lines = source_lines("What We Do (1).docx")
 services = paragraphs("Supervision Services.docx")
 service_lines = source_lines("Supervision Services.docx")
-product_text = paragraphs("Products (1).docx")
-product_lines = source_lines("Products (1).docx")
+product_text = paragraphs("Products (3).docx")
+product_lines = source_lines("Products (3).docx")
 
 def ref(index: int) -> dict:
-    return {"text": product_text[index], "source": f"Products (1).docx:{product_lines[index]}"}
+    return {"text": product_text[index], "source": f"Products (3).docx:{product_lines[index]}"}
 
 def text_at_product_line(line: int) -> str:
     return product_text[product_lines.index(line)]
@@ -45,7 +47,7 @@ def item(id, title_tr=None, title_en=None, tr=None, en=None, children=None, src=
         "source": src,
     }
 
-# The category order and all product wording come from Products (1).docx.
+# The category order and all product wording come from Products (3).docx.
 pvrv = item("pressure-vacuum-relief-valve", 2, 7, [3, 4, 5, 6], [8, 9, 10, 11], src=1)
 pvrv["navTitleEn"] = text_at_product_line(2)
 inline = item("inline-flame-arrester", 13, 19, [14, 15, 16, 17, 18], [20, 21, 22, 23, 24], src=12)
@@ -128,7 +130,8 @@ def category_title(category, language):
 # Persist only the concise copy used by the pages.
 content = {
     "home":{"titleTr":home[0],"bodyTr":home[1],"titleEn":home[2],"bodyEn":home[3]},
-    "about":{"titleTr":about[0],"paragraphsTr":[{"text":about[i],"source":f"About US.docx:{about_lines[i]}"} for i in range(1,6)],"titleEn":about[6],"paragraphsEn":[{"text":about[i],"source":f"About US.docx:{about_lines[i]}"} for i in range(7,12)]},
+    "about":{"titleTr":about[0],"paragraphsTr":[{"text":about[i],"source":f"Who We Are - About US.docx:{about_lines[i]}"} for i in range(1,6)],"titleEn":about[6],"paragraphsEn":[{"text":about[i],"source":f"Who We Are - About US.docx:{about_lines[i]}"} for i in range(7,12)]},
+    "whatWeDo":{"titleTr":what_we_do[0],"paragraphsTr":[{"text":what_we_do[i],"source":f"What We Do (1).docx:{what_we_do_lines[i]}"} for i in range(1,5)],"titleEn":what_we_do[5],"paragraphsEn":[{"text":what_we_do[i],"source":f"What We Do (1).docx:{what_we_do_lines[i]}"} for i in range(6,10)]},
     "services":{"title":services[0],"items":[{"title":services[i],"titleSource":f"Supervision Services.docx:{service_lines[i]}","paragraphs":[{"text":services[j],"source":f"Supervision Services.docx:{service_lines[j]}"} for j in (i+1,i+2)]} for i in (1,4,7)]},
     "categories":categories,
 }
@@ -140,7 +143,8 @@ def esc(value) -> str:
 def nav(prefix: str, current: str) -> str:
     entries = [
         ("home","index.html","Ana Sayfa","Home"),
-        ("about","about.html","Hakkımızda","About Us"),
+        ("about","about.html","Hakkımızda","Who We Are"),
+        ("what-we-do","what-we-do.html","Ne Yapıyoruz","What We Do"),
         ("products","products.html","Ürünler","Products"),
         ("services","services.html","Hizmetler","Services"),
         ("calculator","calculator.html","Hesaplama","Calculator"),
@@ -152,13 +156,24 @@ def nav(prefix: str, current: str) -> str:
         current_attr=' aria-current="page"' if key==current else ""
         links.append(f'<a href="{prefix}{path}"{current_attr}><span class="lang-tr">{esc(tr)}</span><span class="lang-en">{esc(en)}</span></a>')
     links.append('<span class="language-toggle" aria-label="TR EN"><button type="button" data-set-language="tr" aria-pressed="true">TR</button><button type="button" data-set-language="en" aria-pressed="false">EN</button></span>')
+    links.append(f'<a class="mobile-nav-brand" href="{prefix}index.html" aria-label="NarTech Ana Sayfa"><img src="{prefix}assets/images/nartech-logo-transparent.png" width="1958" height="803" alt="NarTech"></a>')
     return "\n".join(links)
 
 def footer(prefix: str) -> str:
+    entries = [
+        ("index.html", "Ana Sayfa", "Home"),
+        ("about.html", "Hakkımızda", "Who We Are"),
+        ("what-we-do.html", "Ne Yapıyoruz", "What We Do"),
+        ("products.html", "Ürünler", "Products"),
+        ("services.html", "Hizmetler", "Services"),
+        ("calculator.html", "Hesaplama", "Calculator"),
+        ("faq.html", "SSS", "FAQ"),
+    ]
+    links = "".join(f'<li><a href="{prefix}{path}"><span class="lang-tr">{esc(tr)}</span><span class="lang-en">{esc(en)}</span></a></li>' for path, tr, en in entries)
     return f'''<footer class="site-footer" role="contentinfo"><div class="footer-inner">
 <section class="footer-brand-block"><a class="footer-brand" href="{prefix}index.html" aria-label="NarTech Ana Sayfa"><img src="{prefix}assets/images/logo-white.png" width="1024" height="472" alt="NarTech"></a><p class="footer-tagline"><span class="footer-tagline-dot" aria-hidden="true"></span><span class="lang-tr">{esc(content['home']['titleTr'])}</span><span class="lang-en">{esc(content['home']['titleEn'])}</span></p></section>
-<nav class="footer-group footer-site" aria-label="Hakkımızda"><h2 class="footer-heading"><a href="{prefix}about.html"><span class="lang-tr">Hakkımızda</span><span class="lang-en">About Us</span></a></h2><ul class="footer-links"><li><a href="{prefix}index.html"><span class="lang-tr">Ana Sayfa</span><span class="lang-en">Home</span></a></li><li><a href="{prefix}products.html"><span class="lang-tr">Ürünler</span><span class="lang-en">Products</span></a></li><li><a href="{prefix}services.html"><span class="lang-tr">Hizmetler</span><span class="lang-en">Services</span></a></li><li><a href="{prefix}calculator.html"><span class="lang-tr">Hesaplama</span><span class="lang-en">Calculator</span></a></li><li><a href="{prefix}faq.html"><span class="lang-tr">SSS</span><span class="lang-en">FAQ</span></a></li></ul></nav>
-<nav class="footer-group footer-contact" aria-label="İletişim"><h2 class="footer-heading"><a href="{prefix}contact.html"><span class="lang-tr">İletişim</span><span class="lang-en">Contact</span></a></h2><a class="footer-cta" href="{prefix}contact.html#contact-form"><span class="lang-tr">Teklif Gönder</span><span class="lang-en">Send Request</span><span aria-hidden="true">↗</span></a></nav>
+<nav class="footer-group footer-site" aria-label="Hızlı Erişim"><h2 class="footer-heading"><span class="lang-tr">Hızlı Erişim</span><span class="lang-en">Quick Links</span></h2><ul class="footer-links">{links}</ul></nav>
+<nav class="footer-group footer-contact" aria-label="İletişim"><h2 class="footer-heading"><span class="lang-tr">İletişim</span><span class="lang-en">Contact</span></h2><a class="footer-cta" href="{prefix}contact.html#contact-form"><span class="lang-tr">Teklif Gönder</span><span class="lang-en">Send Request</span><span aria-hidden="true">↗</span></a></nav>
 </div></footer>'''
 
 def layout(title: str, body: str, current: str, prefix="", lang="tr") -> str:
@@ -167,8 +182,8 @@ def layout(title: str, body: str, current: str, prefix="", lang="tr") -> str:
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)} | NarTech</title>
-<link rel="stylesheet" href="{prefix}assets/css/main.css?v=source-home-product-explorer-1">
-<script defer src="{prefix}assets/js/app.js?v=source-home-product-explorer-1"></script>
+<link rel="stylesheet" href="{prefix}assets/css/main.css?v=naragro-pages-20261030-2">
+<script defer src="{prefix}assets/js/app.js?v=naragro-pages-20261030-2"></script>
 </head>
 <body>
 <header class="site-header"><div class="header-inner"><a class="brand" href="{prefix}index.html" aria-label="NarTech"><img src="{prefix}assets/images/nartech-logo-transparent.png" width="1958" height="803" alt="NarTech"></a><button class="nav-toggle" type="button" data-nav-toggle aria-controls="site-nav" aria-expanded="false" aria-label="Menüyü Aç"><span></span><span></span><span></span></button><nav class="site-nav" id="site-nav" aria-label="Site">{nav(prefix,current)}</nav></div></header>
@@ -213,34 +228,7 @@ def branch_for(obj: dict, prefix: str, code="") -> str:
     parts.append('</div></details>')
     return "".join(parts)
 
-# Homepage
-home_product_categories=[]
-home_product_panels=[]
-for index,category in enumerate(categories):
-    category_id=esc(category["id"])
-    category_tr=category_title(category,"tr").removeprefix(f"{index+1}-").strip()
-    category_en=category_title(category,"en").removeprefix(f"{index+1}-").strip()
-    label=f'<span class="lang-tr">{esc(category_tr)}</span><span class="lang-en">{esc(category_en)}</span>'
-    selected="true" if index==0 else "false"
-    home_product_categories.append(f'<button class="home-product-category" type="button" id="home-category-{category_id}" data-home-category="{category_id}" aria-controls="home-panel-{category_id}" aria-pressed="{selected}">{label}</button>')
-
-    product_cards=[]
-    for obj in category["items"]:
-        product_tr=title_for(obj,"tr")
-        product_en=obj.get("navTitleEn") or title_for(obj,"en") or product_tr
-        product_cards.append(f'<a class="home-product-card" href="products/{esc(obj["id"])}.html"><span class="home-product-card-heading"><strong><span class="lang-tr">{esc(product_tr)}</span><span class="lang-en">{esc(product_en)}</span></strong><span aria-hidden="true">↗</span></span></a>')
-
-    category_copy_tr=''.join(p_html(entry,"tr") for entry in category.get("description",[]))
-    category_copy_en=''.join(p_html(entry,"en") for entry in category.get("description",[]))
-    if not product_cards and not category_copy_tr and not category_copy_en:
-        category_copy_tr=f'<a class="home-category-open" href="categories/{category_id}.html">{esc(category_tr)} <span aria-hidden="true">↗</span></a>'
-        category_copy_en=f'<a class="home-category-open" href="categories/{category_id}.html">{esc(category_en)} <span aria-hidden="true">↗</span></a>'
-    panel_hidden="" if index==0 else " hidden"
-    home_product_panels.append(f'<section class="home-product-panel" id="home-panel-{category_id}" data-home-product-panel="{category_id}" aria-labelledby="home-panel-heading-{category_id}"{panel_hidden}><div class="home-product-panel-heading"><h3 id="home-panel-heading-{category_id}"><span class="lang-tr">{esc(category_tr)}</span><span class="lang-en">{esc(category_en)}</span></h3><a href="categories/{category_id}.html" aria-labelledby="home-panel-heading-{category_id}"><span aria-hidden="true">↗</span></a></div><div class="home-product-grid">{"".join(product_cards)}</div><div class="lang-tr home-product-category-copy">{category_copy_tr}</div><div class="lang-en home-product-category-copy">{category_copy_en}</div></section>')
-home_product_categories_html=''.join(home_product_categories)
-home_product_panels_html=''.join(home_product_panels)
-home_about_tr=''.join(p_html(entry,"tr") for entry in content["about"]["paragraphsTr"][:2])
-home_about_en=''.join(p_html(entry,"en") for entry in content["about"]["paragraphsEn"][:2])
+# Homepage proof strip
 home_proof_items=[
     ("MÜHENDİSLİK DENEYİMİ","ENGINEERING EXPERIENCE","10+ Yıl","10+ Years","Sektörel Mühendislik Deneyimi","Industrial Engineering Experience"),
     ("ULUSLARARASI STANDARTLAR","INTERNATIONAL STANDARDS","API & EN","API & EN","API 650, 2000 ve EN ISO 16852 Uyumu","API 650, 2000 and EN ISO 16852 Compliance"),
@@ -257,15 +245,8 @@ for index,(tr_kicker,en_kicker,tr_value,en_value,tr_detail,en_detail) in enumera
         en_value_html=f'<span class="lang-en">{esc(en_value)}</span>'
     home_proof_cards.append(f'<div class="home-proof-item" style="--proof-delay:{index*110}ms"><span class="home-proof-kicker"><span aria-hidden="true"></span><span class="lang-tr">{esc(tr_kicker)}</span><span class="lang-en">{esc(en_kicker)}</span></span><strong class="home-proof-value">{tr_value_html}{en_value_html}</strong><span class="home-proof-detail"><span class="lang-tr">{esc(tr_detail)}</span><span class="lang-en">{esc(en_detail)}</span></span></div>')
 home_proof_html=''.join(home_proof_cards)
-home_services=[]
-for service in content["services"]["items"]:
-    service_copy=''.join(p_html(paragraph,"tr") for paragraph in service["paragraphs"])
-    home_services.append(f'<article class="home-service-row"><h3>{esc(service["title"])}</h3><div>{service_copy}</div></article>')
 home_body=f'''<div class="home-page"><div class="page-wrap"><section class="home-hero"><div class="home-hero-copy"><h1><span class="lang-tr">{esc(content['home']['titleTr'])}</span><span class="lang-en">{esc(content['home']['titleEn'])}</span></h1><p><span class="lang-tr">{esc(content['home']['bodyTr'])}</span><span class="lang-en">{esc(content['home']['bodyEn'])}</span></p><div class="home-actions"><a class="button button-primary" href="products.html"><span class="lang-tr">Ürünler</span><span class="lang-en">Products</span></a><a class="button" href="calculator.html"><span class="lang-tr">Hesaplama</span><span class="lang-en">Calculator</span></a><a class="button" href="contact.html#contact-form"><span class="lang-tr">Randevu Oluştur</span><span class="lang-en">Appointment</span></a></div></div><figure class="home-hero-media"><img src="assets/images/home.jpeg" alt="NarTech Depolama Tankı ve Terminal Ekipmanları Sahası" width="1170" height="525" fetchpriority="high" decoding="async"></figure></section>
-<section class="home-proof-strip" aria-label="Mühendislik Göstergeleri">{home_proof_html}</section>
-<section class="home-about-section"><div class="home-about-heading"><h2><span class="lang-tr">Hakkımızda</span><span class="lang-en">About Us</span></h2><a class="home-section-link" href="about.html"><span class="lang-tr">Hakkımızda</span><span class="lang-en">About Us</span><span aria-hidden="true">↗</span></a><a class="home-section-link" href="#home-products"><span class="lang-tr">Ürünler</span><span class="lang-en">Products</span><span aria-hidden="true">↓</span></a></div><div class="home-about-copy"><div class="lang-tr">{home_about_tr}</div><div class="lang-en">{home_about_en}</div></div></section>
-<section class="home-section home-products-section" id="home-products"><div class="home-section-heading"><h2><span class="lang-tr">Ürünler</span><span class="lang-en">Products</span></h2></div><div class="home-product-explorer" data-home-product-explorer><div class="home-product-category-list" role="group" aria-label="Ürünler">{home_product_categories_html}</div><div class="home-product-panels">{home_product_panels_html}</div></div></section>
-<section class="home-section home-services-section"><div class="home-section-heading"><h2><span class="lang-tr">Hizmetler</span><span class="lang-en">Services</span></h2><a class="home-section-link" href="services.html"><span class="lang-tr">Hizmetler</span><span class="lang-en">Services</span><span aria-hidden="true">↗</span></a></div><div class="home-service-list">{''.join(home_services)}</div></section></div></div>'''
+<section class="home-proof-strip" aria-label="Mühendislik Göstergeleri">{home_proof_html}</section></div></div>'''
 (OUT/"index.html").write_text(layout(content["home"]["titleTr"],home_body,"home"),encoding="utf-8")
 # Keep the fallback free of copy that is not supplied in the source documents.
 (OUT/"404.html").write_text('<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=./index.html"></head><body></body></html>',encoding="utf-8")
@@ -277,6 +258,12 @@ about_rest_tr=''.join(p_html(x,"tr") for x in content["about"]["paragraphsTr"][2
 about_rest_en=''.join(p_html(x,"en") for x in content["about"]["paragraphsEn"][2:])
 about_body=f'''<div class="page-wrap"><div class="page-heading"><h1><span class="lang-tr">{esc(about[0].split('/')[0].strip(' :'))}</span><span class="lang-en">{esc(about[6])}</span></h1></div><section class="about-intro"><article class="about-intro-copy"><div class="lang-tr">{about_intro_tr}</div><div class="lang-en">{about_intro_en}</div></article><figure class="about-media"><img src="assets/images/home.jpeg" alt="NarTech Depolama Tankı ve Terminal Ekipmanları Sahası" width="1170" height="525" loading="lazy" decoding="async"></figure></section><article class="copy-section"><div class="lang-tr">{about_rest_tr}</div><div class="lang-en">{about_rest_en}</div></article></div>'''
 (OUT/"about.html").write_text(layout(about[0],about_body,"about"),encoding="utf-8")
+
+what_we_do_tr=''.join(p_html(entry,"tr") for entry in content["whatWeDo"]["paragraphsTr"])
+what_we_do_en=''.join(p_html(entry,"en") for entry in content["whatWeDo"]["paragraphsEn"])
+what_we_do_body=f'''<div class="page-wrap what-we-do-page"><div class="page-heading"><h1><span class="lang-tr">{esc(content["whatWeDo"]["titleTr"])}</span><span class="lang-en">{esc(content["whatWeDo"]["titleEn"])}</span></h1></div><section class="what-we-do-copy"><div class="lang-tr"><div class="what-we-do-grid">{what_we_do_tr}</div></div><div class="lang-en"><div class="what-we-do-grid">{what_we_do_en}</div></div></section></div>'''
+(OUT/"what-we-do.html").write_text(layout(content["whatWeDo"]["titleTr"],what_we_do_body,"what-we-do"),encoding="utf-8")
+
 service_cards=[]
 for service in content["services"]["items"]:
     paragraphs_html=''.join(f'<p data-source="{esc(paragraph["source"])}">{esc(paragraph["text"])}</p>' for paragraph in service["paragraphs"])
@@ -381,7 +368,7 @@ faq_body=f'''<div class="page-wrap"><div class="page-heading"><h1><span class="l
 (OUT/"faq.html").write_text(layout("Sıkça Sorulan Sorular",faq_body,"faq"),encoding="utf-8")
 
 # Sitemap uses the site origin already listed in robots.txt.
-urls=['index.html','about.html','services.html','products.html','calculator.html','faq.html','contact.html']
+urls=['index.html','about.html','what-we-do.html','services.html','products.html','calculator.html','faq.html','contact.html']
 urls += [f'categories/{c["id"]}.html' for c in categories]
 urls += [f'products/{x["id"]}.html' for c in categories for x in flatten(c['items'])]
 base_url='https://nartech.com.tr/'
