@@ -172,12 +172,12 @@ def footer(prefix: str) -> str:
     links = "".join(f'<li><a href="{prefix}{path}"><span class="lang-tr">{esc(tr)}</span><span class="lang-en">{esc(en)}</span></a></li>' for path, tr, en in entries)
     return f'''<footer class="site-footer" role="contentinfo"><div class="footer-inner">
 <section class="footer-brand-block"><a class="footer-brand" href="{prefix}index.html" aria-label="NarTech Ana Sayfa"><img src="{prefix}assets/images/logo-white.png" width="1024" height="472" alt="NarTech"></a><p class="footer-tagline"><span class="footer-tagline-dot" aria-hidden="true"></span><span class="lang-tr">{esc(content['home']['titleTr'])}</span><span class="lang-en">{esc(content['home']['titleEn'])}</span></p></section>
-<nav class="footer-group footer-site" aria-label="Hızlı Erişim"><h2 class="footer-heading"><span class="lang-tr">Hızlı Erişim</span><span class="lang-en">Quick Links</span></h2><ul class="footer-links">{links}</ul></nav>
+<nav class="footer-group footer-site" aria-label="Hızlı Erişim"><svg class="footer-orbit" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect x="6" y="6" width="988" height="988" rx="24" pathLength="1000"/></svg><h2 class="footer-heading"><span class="lang-tr">Hızlı Erişim</span><span class="lang-en">Quick Links</span></h2><ul class="footer-links">{links}</ul></nav>
 <nav class="footer-group footer-contact" aria-label="İletişim"><h2 class="footer-heading"><span class="lang-tr">İletişim</span><span class="lang-en">Contact</span></h2><a class="footer-cta" href="{prefix}contact.html#contact-form"><span class="lang-tr">Teklif Gönder</span><span class="lang-en">Send Request</span><span aria-hidden="true">↗</span></a></nav>
 </div></footer>'''
 
 def layout(title: str, body: str, current: str, prefix="", lang="tr") -> str:
-    css_version = "naragro-home-flow-20261030-6" if current == "home" else "naragro-footer-responsive-20261030-3"
+    css_version = "naragro-home-flow-20261030-8" if current == "home" else "naragro-footer-responsive-20261030-5"
     js_version = "naragro-home-flow-20261030-6" if current == "home" else "naragro-pages-20261030-2"
     return f'''<!doctype html>
 <html lang="{lang}" data-language="tr">

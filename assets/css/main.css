@@ -328,6 +328,10 @@ main { min-height: 58vh; }
 .footer-tagline-dot { flex: 0 0 7px; margin-top: .68em; }
 .footer-heading { margin: 0 0 13px; color: #fff; font-size: 14px; }
 .footer-site { min-width: 0; border: 0; padding: 0; }
+.footer-site { position: relative; isolation: isolate; }
+.footer-site > .footer-heading, .footer-site > .footer-links { position: relative; z-index: 1; }
+.footer-site .footer-orbit { position: absolute; z-index: 0; inset: -1px; width: auto; height: auto; overflow: visible; pointer-events: none; }
+.footer-site .footer-orbit rect { fill: none; stroke: #a9d8b8; stroke-width: 2; stroke-linecap: round; stroke-dasharray: 75 175; stroke-dashoffset: 0; vector-effect: non-scaling-stroke; animation: footer-quick-access-orbit 8s linear infinite; }
 .footer-site .footer-heading { display: block; }
 .footer-links { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3px 16px; }
 .footer-links li { min-width: 0; border: 0 !important; }
@@ -336,6 +340,8 @@ main { min-height: 58vh; }
 .footer-cta { min-height: 46px; margin-top: 2px; border-color: rgba(240,247,242,.48); border-radius: 6px; background: rgba(255,255,255,.035); color: #fff; }
 .footer-cta:hover { border-color: rgba(240,247,242,.82); background: rgba(255,255,255,.1); }
 .footer-cta span:last-child { color: #a9d8b8; }
+@keyframes footer-quick-access-orbit { to { stroke-dashoffset: -1000; } }
+@media (prefers-reduced-motion: reduce) { .footer-site .footer-orbit rect { animation: none !important; stroke-dashoffset: 0; } }
 @media (max-width: 850px) {
   .footer-inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "brand site" "brand contact"; align-items: start; gap: 16px 28px; }
   .footer-contact { border-left: 1px solid rgba(240,247,242,.24); padding-left: 20px; }
