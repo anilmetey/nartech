@@ -94,46 +94,56 @@
     ]
   },
   "services": {
-    "title": "SAHA SÜPERVİZÖRLÜK HİZMETİ",
+    "titleTr": "SAHA SÜPERVİZÖRLÜK HİZMETİ",
+    "titleEn": "FIELD SUPERVISION SERVICE",
     "items": [
       {
         "title": "\n\n1. Basınç Vakum Ventili (Pressure Vacuum Relief Valve - PVRV) Set Değerlerinin Kontrolü",
+        "titleEn": "1. Pressure Vacuum Relief Valve (PVRV) Set Point Inspection",
         "titleSource": "Supervision Services.docx:2",
         "paragraphs": [
           {
             "text": "Basınç vakum ventilleri, tankların aşırı basınç veya vakum altında kalarak deforme olmasını ya da patlamasını önleyen en kritik emniyet ekipmanlarıdır.",
+            "textEn": "Pressure vacuum relief valves are critical safety devices that prevent tanks from deforming or rupturing under excessive pressure or vacuum.",
             "source": "Supervision Services.docx:3"
           },
           {
             "text": "Fiziksel ve Fonksiyonel Kontrol",
+            "textEn": "Physical and Functional Inspection",
             "source": "Supervision Services.docx:4"
           }
         ]
       },
       {
         "title": "2. İç Yüzer Tavanların (Internal Floating Roof - IFR) Kontrolü",
+        "titleEn": "2. Internal Floating Roof (IFR) Inspection",
         "titleSource": "Supervision Services.docx:5",
         "paragraphs": [
           {
             "text": "Uçucu organik bileşik (VOC) emisyonlarını azaltmak ve ürün kaybını önlemek amacıyla kullanılan iç yüzer tavanlar, hassas mekanik montaj gerektirir.",
+            "textEn": "Internal floating roofs are used to reduce volatile organic compound (VOC) emissions and product loss, and require precise mechanical installation.",
             "source": "Supervision Services.docx:6"
           },
           {
             "text": "Sızdırmazlık Fitilleri (Seals) ve Ekipmanlar: Rim seal (kenar sızdırmazlık) fitillerinin montaj kalitesi, iniş bacaklarının (leg settings) doğru pozisyonlandırılması ve drenaj sistemlerinin çalışabilirliği denetlenir.",
+            "textEn": "Sealing Elements and Equipment: The installation quality of rim seals, correct positioning of leg settings, and operability of drainage systems are inspected.",
             "source": "Supervision Services.docx:7"
           }
         ]
       },
       {
         "title": "3. Dış Yüzer Tavanların (External Floating Roof - IFR) Kontrolü",
+        "titleEn": "3. External Floating Roof (IFR) Inspection",
         "titleSource": "Supervision Services.docx:8",
         "paragraphs": [
           {
             "text": "Uçucu organik bileşik (VOC) emisyonlarını azaltmak ve ürün kaybını önlemek amacıyla kullanılan dış yüzer tavanlar, hassas mekanik montaj gerektirir.",
+            "textEn": "External floating roofs are used to reduce volatile organic compound (VOC) emissions and product loss, and require precise mechanical installation.",
             "source": "Supervision Services.docx:9"
           },
           {
             "text": "Sızdırmazlık Fitilleri (Seals) ve Ekipmanlar: Rim seal (kenar sızdırmazlık) fitillerinin montaj kalitesi denetlenir.",
+            "textEn": "Sealing Elements and Equipment: The installation quality of rim seals is inspected.",
             "source": "Supervision Services.docx:10"
           }
         ]
@@ -306,14 +316,14 @@
               "source": "Products (3).docx:60"
             },
             {
-              "text": "Ekipman, tankın tasarım özellikleri ve proses koşullarına bağlı olarak Ağırlıklı veya Yaylı tasarımlarda temin edilebilir. Ürün seçimi sırasında tankın çapı, depolanan ürün, tasarım basıncı ve vakumu, çalışma sıcaklığı, yangına maruz kalma koşulları ve gerekli acil durum vent kapasitesi gibi parametreler dikkate alınır.\n\nEmergency Relief Valve\nEmergency Relief Valve is an emergency pressure relief device used on atmospheric and low-pressure storage tanks designed in accordance with the API 650 standard. It is intended to protect the tank from excessive pressure in the event of abnormal pressure increases within the tank.",
+              "text": "Ekipman, tankın tasarım özellikleri ve proses koşullarına bağlı olarak Ağırlıklı veya Yaylı tasarımlarda temin edilebilir. Ürün seçimi sırasında tankın çapı, depolanan ürün, tasarım basıncı ve vakumu, çalışma sıcaklığı, yangına maruz kalma koşulları ve gerekli acil durum vent kapasitesi gibi parametreler dikkate alınır.",
               "source": "Products (3).docx:61"
             }
           ],
           "en": [
             {
               "text": "Emergency Relief Valve is an emergency pressure relief device used on atmospheric and low-pressure storage tanks designed in accordance with the API 650 standard. It is intended to protect the tank from excessive pressure in the event of abnormal pressure increases within the tank.",
-              "source": "Products (1).docx:61"
+              "source": "Products (3).docx:61"
             },
             {
               "text": "Emergency Relief Valve is supplied as ATEX-certified equipment for applications where there is a risk of explosive atmospheres.Emergency Relief Valve is activated particularly under emergency conditions such as fire exposure, when the pressure inside the tank rises rapidly, allowing excess vapor and gas to be safely and controlledly released. This helps prevent the tank design pressure from being exceeded and minimizes the risk of structural damage to the tank.",
@@ -374,6 +384,10 @@
             {
               "text": "During product selection, parameters such as tank roof type, connection/nozzle size, stored product, operating temperature, material compatibility, and operational requirements are taken into consideration. The body, cover, and sealing elements are selected according to the tank operating conditions and the characteristics of the stored product.",
               "source": "Products (3).docx:81"
+            },
+            {
+              "text": "Available in locked, unlocked, and closed-to-atmosphere types.",
+              "source": "Products (3).docx:76"
             }
           ],
           "children": [],
@@ -383,15 +397,53 @@
         {
           "id": "internal-floating-roofs-and-seals",
           "titleTr": "İç Yüzer Tavanlar ve Fitiller",
-          "titleEn": "f-Internal Floating Roofs and Seals***",
+          "titleEn": "Internal Floating Roofs and Seals",
           "tr": [],
           "en": [],
           "children": [
             {
               "id": "pontoon-type-ifr",
-              "titleTr": "\n-Pontoon Type IFR / Pontoon Tip Yüzer Tavan",
-              "titleEn": null,
+              "titleTr": "Ponton Tipi Yüzer Tavan",
+              "titleEn": "Pontoon Type IFR",
               "tr": [
+                {
+                  "text": "API 650 gibi uluslararası standartlara uygun olarak tasarlanıp tedarik edilen iç yüzer tavan (IFR), petrol ürünleri, yakıtlar ve kimyasallar için sabit çatılı depolama tanklarının içine yerleştirilen ve sıvı seviyesiyle birlikte yükselip alçalan hareketli bir platformdur.",
+                  "source": "Products (3).docx:85"
+                },
+                {
+                  "text": "Platformun altındaki içi boş bölmeler (pontoonlar) buharı hapseder ve kaldırma kuvveti sağlayarak tavanın sıvı yüzeyinde dengeli biçimde yüzmesini sağlar. Bu, en yaygın ve çok yönlü tasarımdır.",
+                  "source": "Products (3).docx:86"
+                },
+                {
+                  "text": "Temel İşlevler ve Faydalar",
+                  "source": "Products (3).docx:87"
+                },
+                {
+                  "text": "Üstün Emisyon Azaltımı: Sıvı yüzeyi ile sabit tavan arasındaki buhar boşluğunu azaltarak ürünün buharlaşmasını ve uçucu organik bileşiklerin (VOC) atmosfere salınmasını etkili biçimde sınırlar.",
+                  "source": "Products (3).docx:88"
+                },
+                {
+                  "text": "Çevre ve Çalışanların Korunması: Zararlı buhar salımını kontrol ederek çevreyi korur, yerel hava kirliliğini azaltır ve depolama tesisi çevresindeki güvenli çalışma koşullarını destekler.",
+                  "source": "Products (3).docx:89"
+                },
+                {
+                  "text": "Dengeli Kararlılık ve Güvenlik: Entegre pontoonlar, tavanın dengeli ve güvenilir biçimde yüzmesini sağlar; yangın risklerini azaltır ve uzun ömürlü, çevreye duyarlı depolama çalışmalarını destekler.",
+                  "source": "Products (3).docx:90"
+                },
+                {
+                  "text": "Tedarik ve Kalite Güvencemiz",
+                  "source": "Products (3).docx:91"
+                },
+                {
+                  "text": "Güvenilir bir küresel tedarikçi olarak bu yüksek performanslı iç yüzer tavan sistemlerini API 650 dâhil uluslararası standartlara uygun biçimde tedarik ediyoruz.",
+                  "source": "Products (3).docx:92"
+                },
+                {
+                  "text": "Sektör deneyimimiz ve küresel sertifikalı ürünlerimizle depolama tesisleriniz için yüksek güvenlik, çevre mevzuatına uyum ve uzun dönemli güvenilirlik sağlıyoruz.",
+                  "source": "Products (3).docx:93"
+                }
+              ],
+              "en": [
                 {
                   "text": "An Internal Floating Roof (IFR) designed and supplied in strict compliance with international standards such as API 650 is a moveable deck installed inside fixed-roof storage tanks for petroleum products, fuels, and chemicals, designed to rise and fall together with the liquid level.",
                   "source": "Products (3).docx:85"
@@ -429,15 +481,52 @@
                   "source": "Products (3).docx:93"
                 }
               ],
-              "en": [],
               "children": [],
               "source": 57
             },
             {
               "id": "full-contact-type-ifr",
-              "titleTr": "-Full Contact Type IFR",
-              "titleEn": null,
+              "titleTr": "Tam Temas Tipi IFR",
+              "titleEn": "-Full Contact Type IFR",
               "tr": [
+                {
+                  "text": "API 650 gibi uluslararası standartlara uygun olarak tasarlanıp tedarik edilen iç yüzer tavan (IFR), petrol ürünleri, yakıtlar ve kimyasallar için sabit çatılı depolama tanklarının içine yerleştirilen ve sıvı seviyesiyle birlikte yükselip alçalan hareketli bir platformdur.",
+                  "source": "Products (3).docx:107"
+                },
+                {
+                  "text": "Tam Temas Tipi: Platformun alt yüzeyi depolanan sıvıyla doğrudan ve tamamen temas eder; altında hava veya buhar boşluğu kalmaz. Bu yapı, buharlaşmayı en aza indirmek için yüksek uçuculuğa sahip ürünlerde uygundur.",
+                  "source": "Products (3).docx:108"
+                },
+                {
+                  "text": "Temel İşlevler ve Faydalar",
+                  "source": "Products (3).docx:109"
+                },
+                {
+                  "text": "Sıfıra Yakın VOC Emisyonu: Platform sıvıyla doğrudan ve tam temas ettiğinden emisyonları kontrol eder ve atmosfere buhar kaybını en aza indirerek çevre gerekliliklerini karşılamaya yardımcı olur.",
+                  "source": "Products (3).docx:110"
+                },
+                {
+                  "text": "Çevrenin Korunması: Yüksek uçuculuğa sahip ürünler ve agresif kimyasallar için uygun olan bu yapı, zararlı buhar ve kokuların çevreye yayılmasını önlemeye yardımcı olur.",
+                  "source": "Products (3).docx:111"
+                },
+                {
+                  "text": "Geliştirilmiş Güvenlik ve Buhar Kontrolü: Platform altındaki buhar boşluğunu ortadan kaldırarak patlayıcı gaz birikmesi riskini azaltır ve çevre ile çalışma alanı güvenliğini destekler.",
+                  "source": "Products (3).docx:112"
+                },
+                {
+                  "text": "Tedarik ve Kalite Güvencemiz",
+                  "source": "Products (3).docx:113"
+                },
+                {
+                  "text": "Güvenilir bir küresel tedarikçi olarak bu yüksek performanslı iç yüzer tavan sistemlerini API 650 dâhil uluslararası standartlara uygun biçimde tedarik ediyoruz.",
+                  "source": "Products (3).docx:114"
+                },
+                {
+                  "text": "Sektör deneyimimiz ve küresel sertifikalı ürünlerimizle depolama tesisleriniz için yüksek güvenlik, çevre mevzuatına uyum ve uzun dönemli güvenilirlik sağlıyoruz.",
+                  "source": "Products (3).docx:115"
+                }
+              ],
+              "en": [
                 {
                   "text": "An Internal Floating Roof (IFR) designed and supplied in strict compliance with international standards such as API 650 is a moveable deck installed inside fixed-roof storage tanks for petroleum products, fuels, and chemicals, designed to rise and fall together with the liquid level.",
                   "source": "Products (3).docx:107"
@@ -475,49 +564,63 @@
                   "source": "Products (3).docx:115"
                 }
               ],
-              "en": [],
               "children": [],
               "source": 68
             },
             {
               "id": "chemraz-xpe-seal",
-              "titleTr": "-Chemraz XPE Seal",
-              "titleEn": null,
+              "titleTr": "Chemraz XPE Contası",
+              "titleEn": "-Chemraz XPE Seal",
               "tr": [
+                {
+                  "text": "Chemraz XPE contalar, IFR sistemlerinde en zorlu koşullarda dahi çok agresif kimyasallara ve yüksek sıcaklıklara karşı güçlü kimyasal dayanım ve ısıl kararlılık sağlar; sızıntıyı en aza indirir ve akışkan uyumluluğunu artırır.",
+                  "source": "Products (3).docx:118"
+                }
+              ],
+              "en": [
                 {
                   "text": "Delivering exceptional chemical resistance and thermal stability for extremely aggressive chemicals and high temperatures, Chemraz XPE seals ensure near-zero leakage and maximum fluid compatibility in IFR systems even under the harshest conditions. ",
                   "source": "Products (3).docx:118"
                 }
               ],
-              "en": [],
               "children": [],
               "source": 78
             },
             {
               "id": "hdpe-seal",
-              "titleTr": " -HDPE Seal",
-              "titleEn": null,
+              "titleTr": "HDPE Contası",
+              "titleEn": " -HDPE Seal",
               "tr": [
+                {
+                  "text": "Yüksek yoğunluklu polietilen (HDPE) esaslı elemanlar, IFR çevre sızdırmazlık uygulamalarında yüksek mekanik dayanım ve aşınma direnci sunarak uzun ömürlü ve güvenilir çalışmayı destekler.",
+                  "source": "Products (3).docx:120"
+                }
+              ],
+              "en": [
                 {
                   "text": "Offering superior mechanical strength and abrasion resistance in IFR perimeter sealing applications, high-density polyethylene (HDPE) based elements guarantee long-lasting and reliable operation. ",
                   "source": "Products (3).docx:120"
                 }
               ],
-              "en": [],
               "children": [],
               "source": 80
             },
             {
               "id": "ldpe-seal",
-              "titleTr": "-LDPE Seal: ",
-              "titleEn": null,
+              "titleTr": "LDPE Contası",
+              "titleEn": "-LDPE Seal: ",
               "tr": [
+                {
+                  "text": "Düşük yoğunluklu polietilen (LDPE) contalar, esnekliği ve buhar sızdırmazlığı sağlayan özellikleriyle IFR tavanlarında uçucu organik bileşik (VOC) emisyonlarını sınırlar ve çevresel güvenliği destekler.",
+                  "source": "Products (3).docx:122"
+                }
+              ],
+              "en": [
                 {
                   "text": "Distinguished by their flexibility and vapor-tight properties, low-density polyethylene (LDPE) seals effectively block volatile organic compound (VOC) emissions on IFR roofs, ensuring high environmental safety.",
                   "source": "Products (3).docx:122"
                 }
               ],
-              "en": [],
               "children": [],
               "source": 82
             }
@@ -537,9 +640,23 @@
       "items": [
         {
           "id": "fixed-foam-monitor",
-          "titleTr": "A Fixed Foam Monitor:",
-          "titleEn": null,
+          "titleTr": "A Sabit Köpük Monitörü",
+          "titleEn": "A Fixed Foam Monitor:",
           "tr": [
+            {
+              "text": "Sabit Köpük Monitörü, endüstriyel tesislerde ve tank çiftliklerinde büyük miktarda su-köpük çözeltisini uzak mesafelere hızla iletmek için kullanılan, yüksek kapasiteli ve sabit bir yangın söndürme cihazıdır.",
+              "source": "Products (3).docx:127"
+            },
+            {
+              "text": "NFPA 11 Uyumu: Kritik risklere karşı uygun köpük tahliyesi, köpük örtüsü oluşumu ve hızlı yangın söndürme sağlamak üzere NFPA 11 standartlarına uygun tasarlanır.",
+              "source": "Products (3).docx:128"
+            },
+            {
+              "text": "UL / FM Onayları: Önde gelen küresel güvenlik kuruluşları UL ve FM tarafından sertifikalandırılmıştır; acil müdahalede güvenilirliği, dayanıklılığı ve performansı güvence altına alır.",
+              "source": "Products (3).docx:129"
+            }
+          ],
+          "en": [
             {
               "text": "Fixed Foam Monitor is a high-capacity, fixed firefighting device used in industrial facilities and tank farms to rapidly deliver large volumes of water-foam solution over long distances.",
               "source": "Products (3).docx:127"
@@ -553,15 +670,28 @@
               "source": "Products (3).docx:129"
             }
           ],
-          "en": [],
           "children": [],
           "source": 84
         },
         {
           "id": "foam-maker",
-          "titleTr": "B Foam Maker:",
-          "titleEn": null,
+          "titleTr": "B Köpük Yapıcı",
+          "titleEn": "B Foam Maker:",
           "tr": [
+            {
+              "text": "Köpük Yapıcı, düşük hızlı köpük akışının istendiği açık yüzer tavanlı depolama tanklarını korumak için kullanılan özel bir tahliye cihazıdır. Çalışma prensibi köpük odasına benzer; ancak köpük yapıcı, köpüğü depolamadan doğrudan akıtarak yanıcı sıvı yüzeylerini korumak üzere düşük genleşmeli köpük üretir.",
+              "source": "Products (3).docx:131"
+            },
+            {
+              "text": "NFPA 11 Uyumu: Doğru hava-köpük emişi, düşük genleşmeli köpük üretimi ve güvenilir tahliye performansı sağlamak üzere NFPA 11 standartlarına uygun tasarlanır.",
+              "source": "Products (3).docx:132"
+            },
+            {
+              "text": "UL / FM Onayları: UL ve FM sertifikaları üretim kalitesini, performansı ve kritik endüstriyel yangın koruma sistemlerindeki güvenliği destekler.",
+              "source": "Products (3).docx:133"
+            }
+          ],
+          "en": [
             {
               "text": "Foam Maker is a specialized discharge device used for the protection of open floating-roof storage tanks where low-velocity foam streams are desired. Its working principle is similar to that of a foam chamber, with the key difference being that a foam maker allows the foam to flow directly without storage, producing low-expansion foam to effectively secure flammable liquid surfaces.",
               "source": "Products (3).docx:131"
@@ -575,15 +705,28 @@
               "source": "Products (3).docx:133"
             }
           ],
-          "en": [],
           "children": [],
           "source": 88
         },
         {
           "id": "foam-mixer-proportioner",
-          "titleTr": "C Foam Mixer (Proportioner):",
-          "titleEn": null,
+          "titleTr": "C Köpük Karıştırıcı (Oranlayıcı)",
+          "titleEn": "C Foam Mixer (Proportioner):",
           "tr": [
+            {
+              "text": "Köpük Karıştırıcı (oranlayıcı), acil durumda etkili bir köpük çözeltisi oluşturmak için su ile köpük konsantresini önceden belirlenmiş doğru oranda otomatik olarak karıştıran kritik bir yangın koruma cihazıdır.",
+              "source": "Products (3).docx:135"
+            },
+            {
+              "text": "NFPA 11 Uyumu: Endüstriyel yangın söndürme sistemlerinde doğru oranlama, güvenilir çalışma ve uygun köpük çözeltisi iletimi sağlamak üzere NFPA 11 standartlarına uygun tasarlanır.",
+              "source": "Products (3).docx:136"
+            },
+            {
+              "text": "UL / FM Onayları: UL ve FM sertifikaları tank çiftlikleri ve tesisler için üretim kalitesini, çalışma hassasiyetini ve güvenliği destekler.",
+              "source": "Products (3).docx:137"
+            }
+          ],
+          "en": [
             {
               "text": "Foam Mixer (or proportioner) is a critical fire protection device designed to automatically mix water and foam concentrate at the correct, pre-determined percentage ratio to generate an effective foam solution during an emergency.",
               "source": "Products (3).docx:135"
@@ -597,15 +740,28 @@
               "source": "Products (3).docx:137"
             }
           ],
-          "en": [],
           "children": [],
           "source": 92
         },
         {
           "id": "foam-top-pourer",
-          "titleTr": "D Foam Top Pourer:",
-          "titleEn": null,
+          "titleTr": "D Köpük Üstten Dökme Cihazı",
+          "titleEn": "D Foam Top Pourer:",
           "tr": [
+            {
+              "text": "Köpük odası olarak da bilinen Köpük Üstten Dökme Cihazı, sabit çatılı depolama tanklarının gövdesine monte edilir ve genleşmiş yangın söndürme köpüğünü yanan sıvı yüzeyine doğrudan, sıvının içine dalmadan, nazikçe verir.",
+              "source": "Products (3).docx:139"
+            },
+            {
+              "text": "NFPA 11 Uyumu: Yanıcı sıvı yüzeylerine uygun hava emişi, güvenilir düşük genleşmeli köpük üretimi ve doğru dağıtım sağlamak üzere NFPA 11 standartlarına uygun tasarlanır.",
+              "source": "Products (3).docx:140"
+            },
+            {
+              "text": "UL / FM Onayları: UL ve FM sertifikaları tank çiftliklerinde üretim kalitesini, çalışma güvenilirliğini ve yangın güvenliğini destekler.",
+              "source": "Products (3).docx:141"
+            }
+          ],
+          "en": [
             {
               "text": "Foam Top Pourer (also known as a foam chamber) is a specialized fire suppression device mounted on the shell of fixed-roof storage tanks, designed to gently pour expanded firefighting foam directly onto the surface of a burning liquid without plunging into it.",
               "source": "Products (3).docx:139"
@@ -619,15 +775,28 @@
               "source": "Products (3).docx:141"
             }
           ],
-          "en": [],
           "children": [],
           "source": 96
         },
         {
           "id": "rim-seal-foam-pourer",
-          "titleTr": "E Rim Seal Foam Pourer:",
-          "titleEn": null,
+          "titleTr": "E Kenar Sızdırmazlığı Köpük Dökme Cihazı",
+          "titleEn": "E Rim Seal Foam Pourer:",
           "tr": [
+            {
+              "text": "Kenar Sızdırmazlığı Köpük Dökme Cihazı, dış yüzer tavanlı tankların dairesel kenar sızdırmazlık alanını korumak için tasarlanmış özel bir yangın koruma cihazıdır. Genleşmiş köpüğü, kenar yangınlarının görülme olasılığının en yüksek olduğu hassas sızdırmazlık bölgesine doğrudan iletir.",
+              "source": "Products (3).docx:144"
+            },
+            {
+              "text": "NFPA 11 Uyumu: Sızdırmazlık alanına doğru hava emişi, güvenilir düşük genleşmeli köpük üretimi ve hedefli tahliye sağlamak üzere NFPA 11 standartlarına uygun tasarlanır.",
+              "source": "Products (3).docx:145"
+            },
+            {
+              "text": "UL / FM Onayları: UL ve FM sertifikaları tank kenarı yangın koruması için üretim kalitesini, çalışma hassasiyetini ve güvenliği destekler.",
+              "source": "Products (3).docx:146"
+            }
+          ],
+          "en": [
             {
               "text": "Rim Seal Foam Pourer is a specialized fire protection device designed specifically to protect the annular ring (rim seal area) of external floating-roof storage tanks, delivering expanded foam directly to the most vulnerable sealing zone where rim fires are most likely to occur.",
               "source": "Products (3).docx:144"
@@ -641,15 +810,28 @@
               "source": "Products (3).docx:146"
             }
           ],
-          "en": [],
           "children": [],
           "source": 100
         },
         {
           "id": "foam-tanks",
-          "titleTr": "F Foam Tanks:",
-          "titleEn": null,
+          "titleTr": "F Köpük Tankı",
+          "titleEn": "F Foam Tanks:",
           "tr": [
+            {
+              "text": "Köpük Tankı (genellikle bladder tank oranlama sistemi), köpük konsantresini yangın koruma sisteminde depolayan ve acil durumda doğru oranda su hattına otomatik olarak veren, ön borulaması yapılmış basınçlı bir kaptır.",
+              "source": "Products (3).docx:148"
+            },
+            {
+              "text": "NFPA 11 Uyumu: Endüstriyel yangın söndürme sistemlerinde doğru sıvı oranlama, bladder bütünlüğü ve güvenilir köpük çözeltisi üretimi sağlamak üzere NFPA 11 standartlarına uygun tasarlanır.",
+              "source": "Products (3).docx:149"
+            },
+            {
+              "text": "UL / FM Onayları: UL ve FM sertifikaları depolama tankları ve tesislerde üretim kalitesini, çalışma hassasiyetini ve güvenliği destekler.",
+              "source": "Products (3).docx:150"
+            }
+          ],
+          "en": [
             {
               "text": "Foam Tank (typically a bladder tank proportioning system) is a pre-piped pressure vessel used in fire protection systems to store foam concentrate and automatically inject it into the water supply at the correct proportion during an emergency.",
               "source": "Products (3).docx:148"
@@ -663,15 +845,24 @@
               "source": "Products (3).docx:150"
             }
           ],
-          "en": [],
           "children": [],
           "source": 104
         },
         {
           "id": "foam-water-sprinkler",
-          "titleTr": "G Foam & Water Sprinkler:",
-          "titleEn": null,
+          "titleTr": "G Köpük ve Su Sprinkleri",
+          "titleEn": "G Foam & Water Sprinkler:",
           "tr": [
+            {
+              "text": "Tank çiftliklerinde kullanılan köpük ve su sprinklerleri; pompa istasyonları, manifold alanları, tanker dolum sahaları ve ikincil sızdırmazlık havuzları gibi yüksek riskli çevre bölgelerini koruyan otomatik tahliye nozullarıdır. Bu nozullar, eşit su püskürtmesi veya hava emişli köpük örtüsünü hızla iletir.",
+              "source": "Products (3).docx:153"
+            },
+            {
+              "text": "UL / FM Onayları ve K-Faktörü Hassasiyeti: UL ve FM sertifikaları ile farklı hassas K-faktörü seçenekleri; doğru hidrolik tasarım hesaplarını, üretim kalitesini ve tank çiftliğinin kritik alanlarında kesintisiz korumayı destekler.",
+              "source": "Products (3).docx:154"
+            }
+          ],
+          "en": [
             {
               "text": "Specialized Foam Sprinklers and Water Sprinklers deployed within a storage tank farm are automatic discharge nozzles engineered to safeguard high-risk peripheral areas such as pump stations, manifold areas, truck loading racks, and secondary containment dykes by rapidly delivering uniform water sprays or aspirated foam blankets.",
               "source": "Products (3).docx:153"
@@ -681,7 +872,6 @@
               "source": "Products (3).docx:154"
             }
           ],
-          "en": [],
           "children": [],
           "source": 108
         }
@@ -698,8 +888,8 @@
       "items": [
         {
           "id": "foam-pigs",
-          "titleTr": "A Foam Pigs",
-          "titleEn": null,
+          "titleTr": "A Köpük Pigleri",
+          "titleEn": "A Foam Pigs",
           "tr": [],
           "en": [],
           "children": [],
@@ -707,8 +897,8 @@
         },
         {
           "id": "solid-cast-pigs",
-          "titleTr": "B Solid Cast Pigs",
-          "titleEn": null,
+          "titleTr": "B Katı Döküm Pigleri",
+          "titleEn": "B Solid Cast Pigs",
           "tr": [],
           "en": [],
           "children": [],
@@ -716,8 +906,8 @@
         },
         {
           "id": "steel-pigs",
-          "titleTr": "C Steel Pigs",
-          "titleEn": null,
+          "titleTr": "C Çelik Pigler",
+          "titleEn": "C Steel Pigs",
           "tr": [],
           "en": [],
           "children": [],
@@ -725,15 +915,15 @@
         },
         {
           "id": "pig-signallers",
-          "titleTr": "-Pig Signallers",
-          "titleEn": null,
+          "titleTr": "Pig Sinyal Vericileri",
+          "titleEn": "Pig Signallers",
           "tr": [],
           "en": [],
           "children": [
             {
               "id": "non-intrusive-pig-signaller",
-              "titleTr": "A Non Intrusive Type Pig Signaller",
-              "titleEn": null,
+              "titleTr": "A Müdahalesiz Tip Pig Sinyal Vericisi",
+              "titleEn": "A Non Intrusive Type Pig Signaller",
               "tr": [],
               "en": [],
               "children": [],
@@ -741,8 +931,8 @@
             },
             {
               "id": "intrusive-pig-signaller",
-              "titleTr": "B Intrusive Type Pig Signaller",
-              "titleEn": null,
+              "titleTr": "B Müdahaleli Tip Pig Sinyal Vericisi",
+              "titleEn": "B Intrusive Type Pig Signaller",
               "tr": [],
               "en": [],
               "children": [],
@@ -762,7 +952,13 @@
         "source": "Products (3).docx:169"
       },
       "items": [],
-      "description": [
+      "descriptionTr": [
+        {
+          "text": "Endüstriyel Susturucu; fan, blower ve egzoz sistemleri gibi ekipmanların oluşturduğu yüksek çalışma gürültüsünü önemli ölçüde azaltmak için tasarlanmış kritik bir ses kontrol cihazıdır. Gürültü seviyesini 85 dB'ye kadar düşürerek çalışanları iş güvenliği mevzuatına uygun biçimde işitme kaybı ve uzun vadeli sağlık risklerinden korur. Ayrıca çevresel gürültü kirliliğini azaltarak daha güvenli, verimli ve mevzuata uygun bir çalışma ortamı sağlar.",
+          "source": "Products (3).docx:170"
+        }
+      ],
+      "descriptionEn": [
         {
           "text": "An Industrial Silencer is a critical noise control device engineered to significantly reduce high-intensity operational noise generated by equipment like fans, blowers, and exhaust systems. By lowering noise levels precisely down to 85 dB, it effectively protects workers from hearing loss and long-term health hazards in compliance with occupational safety regulations. Additionally, it minimizes environmental noise pollution, creating a safer, more productive, and regulation-friendly industrial workplace.",
           "source": "Products (3).docx:170"
@@ -780,8 +976,8 @@
       "items": [
         {
           "id": "pipe-type-floating-suction-unit",
-          "titleTr": "A Pipe Type Floating Suction Unit",
-          "titleEn": null,
+          "titleTr": "A Boru Tipi Yüzer Emiş Ünitesi",
+          "titleEn": "A Pipe Type Floating Suction Unit",
           "tr": [],
           "en": [],
           "children": [],
@@ -789,8 +985,8 @@
         },
         {
           "id": "hose-type-floating-suction-unit",
-          "titleTr": "B Hose Type Floating Suction Unit",
-          "titleEn": null,
+          "titleTr": "B Hortum Tipi Yüzer Emiş Ünitesi",
+          "titleEn": "B Hose Type Floating Suction Unit",
           "tr": [],
           "en": [],
           "children": [],
@@ -798,15 +994,21 @@
         },
         {
           "id": "oil-skimmer",
-          "titleTr": "C Oil Skimmer",
-          "titleEn": null,
+          "titleTr": "C Yağ Sıyırıcı",
+          "titleEn": "C Oil Skimmer",
           "tr": [],
           "en": [],
           "children": [],
           "source": 124
         }
       ],
-      "description": [
+      "descriptionTr": [
+        {
+          "text": "Yüzer Emiş Ünitesi, depolama tanklarında sıvıyı en temiz yüzey seviyesinden çekmek için tasarlanmış bir sistemdir; özellikle havacılık yakıtları ve kimyasallarda kullanılır. En temiz ürünün üst seviyeden alınmasını sağlayarak tankın dibinde biriken su, tortu ve çamurun pompalanmasını önler.",
+          "source": "Products (3).docx:174"
+        }
+      ],
+      "descriptionEn": [
         {
           "text": "The Floating Suction Unit is a system designed to draw liquid from the cleanest surface level in storage tanks (especially for aviation fuels and chemicals). It ensures that always the clearest product at the very top is withdrawn, preventing the pumping of water, sediments, and sludge accumulated at the bottom of the tank.",
           "source": "Products (3).docx:174"
@@ -822,7 +1024,13 @@
         "source": "Products (3).docx:179"
       },
       "items": [],
-      "description": [
+      "descriptionTr": [
+        {
+          "text": "ATEX sertifikalı Geri Sarmalı Topraklama Makarası (RGR), API standartlarına uygun olarak yüzer tavanlı tanklardaki statik elektriği güvenli biçimde boşaltmak için tasarlanmıştır. Yüzer tavan ile tank gövdesi arasında doğrudan elektrik bağlantısı kurar; yıldırım sırasında akımın ve biriken yüklerin hızla toprağa iletilmesini sağlar.",
+          "source": "Products (3).docx:180"
+        }
+      ],
+      "descriptionEn": [
         {
           "text": "The ATEX-Certified Retractable Grounding Reel (RGR) is designed to safely discharge static electricity from floating roof tanks in accordance with API standards. Acting as a direct electrical connection between the floating roof and the tank shell, it ensures that lightning currents and bound charges are rapidly and effectively conducted to the earth during a lightning strike.",
           "source": "Products (3).docx:180"
@@ -850,8 +1058,8 @@
       "items": [
         {
           "id": "ball-valves",
-          "titleTr": "A Ball Valves",
-          "titleEn": null,
+          "titleTr": "A Küresel Vanalar",
+          "titleEn": "A Ball Valves",
           "tr": [],
           "en": [],
           "children": [],
@@ -859,8 +1067,8 @@
         },
         {
           "id": "gate-valves",
-          "titleTr": "B Gate Valves",
-          "titleEn": null,
+          "titleTr": "B Sürgülü Vanalar",
+          "titleEn": "B Gate Valves",
           "tr": [],
           "en": [],
           "children": [],
@@ -868,8 +1076,8 @@
         },
         {
           "id": "butterfly-valves",
-          "titleTr": "C Butterfly Valves",
-          "titleEn": null,
+          "titleTr": "C Kelebek Vanalar",
+          "titleEn": "C Butterfly Valves",
           "tr": [],
           "en": [],
           "children": [],

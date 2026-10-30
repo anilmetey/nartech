@@ -1,16 +1,47 @@
 (() => {
   const root = document.documentElement;
+  const statusCopy = {
+    sent: { tr: 'Gönderildi', en: 'Sent' },
+    failed: { tr: 'Gönderilemedi', en: 'Could not send' },
+  };
+  const setStatus = (element, key) => {
+    element.dataset.statusKey = key;
+    element.textContent = statusCopy[key][root.dataset.language] || '';
+  };
 
   const selectedLanguage = () => {
     try { return localStorage.getItem('nartech-language') || 'tr'; }
     catch { return 'tr'; }
   };
   const setLanguage = language => {
+    language = language === 'en' ? 'en' : 'tr';
     root.dataset.language = language;
     root.lang = language;
+    const english = language === 'en';
+    document.title = english ? root.dataset.titleEn : root.dataset.titleTr;
+    const menuButton = document.querySelector('[data-nav-toggle]');
+    if (menuButton) {
+      const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+      const labelLanguage = english ? 'En' : 'Tr';
+      const labelAction = isOpen ? 'close' : 'open';
+      menuButton.setAttribute('aria-label', menuButton.dataset[`${labelAction}Label${labelLanguage}`]);
+    }
     document.querySelectorAll('[data-set-language]').forEach(button => {
       button.setAttribute('aria-pressed', String(button.dataset.setLanguage === language));
     });
+    document.querySelectorAll('[data-aria-tr][data-aria-en]').forEach(element => {
+      element.setAttribute('aria-label', english ? element.dataset.ariaEn : element.dataset.ariaTr);
+    });
+    document.querySelectorAll('[data-alt-tr][data-alt-en]').forEach(element => {
+      element.setAttribute('alt', english ? element.dataset.altEn : element.dataset.altTr);
+    });
+    document.querySelectorAll('[data-i18n-tr][data-i18n-en]').forEach(element => {
+      element.textContent = english ? element.dataset.i18nEn : element.dataset.i18nTr;
+    });
+    document.querySelectorAll('[data-status-key]').forEach(element => {
+      element.textContent = statusCopy[element.dataset.statusKey]?.[language] || '';
+    });
+    document.dispatchEvent(new CustomEvent('nartech-language-change', { detail: { language } }));
     try { localStorage.setItem('nartech-language', language); } catch { /* Storage may be unavailable for file previews. */ }
   };
   setLanguage(selectedLanguage());
@@ -24,11 +55,15 @@
   const navBackdrop = document.querySelector('[data-nav-close]');
   if (navToggle && siteNav && navBackdrop) {
     const mobileNav = window.matchMedia('(max-width: 1100px)');
+    const menuLabel = opened => {
+      const language = root.dataset.language === 'en' ? 'En' : 'Tr';
+      navToggle.setAttribute('aria-label', navToggle.dataset[`${opened ? 'close' : 'open'}Label${language}`]);
+    };
     const closeMenu = returnFocus => {
       root.removeAttribute('data-nav-open');
       document.body.classList.remove('nav-is-open');
       navToggle.setAttribute('aria-expanded', 'false');
-      navToggle.setAttribute('aria-label', 'Menüyü Aç');
+      menuLabel(false);
       if (returnFocus) navToggle.focus();
     };
     const openMenu = () => {
@@ -36,7 +71,7 @@
       root.setAttribute('data-nav-open', 'true');
       document.body.classList.add('nav-is-open');
       navToggle.setAttribute('aria-expanded', 'true');
-      navToggle.setAttribute('aria-label', 'Menüyü Kapat');
+      menuLabel(true);
       siteNav.querySelector('a')?.focus();
     };
     navToggle.addEventListener('click', () => {
@@ -95,7 +130,10 @@
         else indicator.removeAttribute('aria-current');
       });
     };
-    const format = value => Number(value).toFixed(2);
+    const format = value => new Intl.NumberFormat(root.dataset.language === 'en' ? 'en-US' : 'tr-TR', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(Number(value));
     const createResult = (label, value) => {
       const row = document.createElement('div');
       row.className = 'calc-result-row';
@@ -105,6 +143,33 @@
       result.textContent = value;
       row.append(name, result);
       return row;
+    };
+
+    const renderResults = () => {
+      if (!calculation) return;
+      const labels = root.dataset.language === 'en' ? {
+        capacity: 'Tank Capacity',
+        fill: 'Max Fill Rate',
+        empty: 'Max Empty Rate',
+        thermal: 'Thermal Venting Contribution',
+        out: 'Total Outbreathing (Pressure Valve Capacity)',
+        in: 'Total Inbreathing (Vacuum Valve Capacity)',
+      } : {
+        capacity: 'Tank Kapasitesi',
+        fill: 'Maksimum Dolum Debisi',
+        empty: 'Maksimum Boşaltım Debisi',
+        thermal: 'Termal Nefesleme Katkısı',
+        out: 'Toplam Dış Nefesleme (Basınç Ventili Kapasitesi)',
+        in: 'Toplam İç Nefesleme (Vakum Ventili Kapasitesi)',
+      };
+      resultContent.replaceChildren(
+        createResult(labels.capacity, `${format(calculation.tank_capacity_m3)} m³`),
+        createResult(labels.fill, `${format(calculation.max_fill_rate_m3h)} m³/h`),
+        createResult(labels.empty, `${format(calculation.max_empty_rate_m3h)} m³/h`),
+        createResult(labels.thermal, `${format(calculation.thermal_venting_m3h)} m³/h | ${format(calculation.thermal_venting_scfh)} SCFH`),
+        createResult(labels.out, `${format(calculation.outbreathing_m3h)} m³/h | ${format(calculation.outbreathing_scfh)} SCFH`),
+        createResult(labels.in, `${format(calculation.inbreathing_m3h)} m³/h | ${format(calculation.inbreathing_scfh)} SCFH`),
+      );
     };
 
     calculatorEmailForm.addEventListener('submit', event => {
@@ -144,28 +209,26 @@
         inbreathing_m3h: totalInbreathing,
         inbreathing_scfh: totalInbreathing * conversionFactor,
       };
-      resultContent.replaceChildren(
-        createResult('Tank Capacity', `${format(capacity)} m³`),
-        createResult('Max Fill Rate', `${format(fillRate)} m³/h`),
-        createResult('Max Empty Rate', `${format(emptyRate)} m³/h`),
-        createResult('Thermal Venting Contribution', `${format(calculation.thermal_venting_m3h)} m³/h | ${format(calculation.thermal_venting_scfh)} SCFH`),
-        createResult('Total Outbreathing (Pressure Valve Capacity)', `${format(calculation.outbreathing_m3h)} m³/h | ${format(calculation.outbreathing_scfh)} SCFH`),
-        createResult('Total Inbreathing (Vacuum Valve Capacity)', `${format(calculation.inbreathing_m3h)} m³/h | ${format(calculation.inbreathing_scfh)} SCFH`),
-      );
+      renderResults();
+      status.removeAttribute('data-status-key');
       status.textContent = '';
       showStep(3);
       document.querySelector('#calc-send').focus();
     });
 
     document.querySelector('#calc-back').addEventListener('click', () => {
+      status.removeAttribute('data-status-key');
       status.textContent = '';
       showStep(2);
     });
+
+    document.addEventListener('nartech-language-change', renderResults);
 
     document.querySelector('#calc-send').addEventListener('click', async event => {
       if (!calculation || !recipientEmail) return;
       const button = event.currentTarget;
       button.disabled = true;
+      status.removeAttribute('data-status-key');
       status.textContent = '';
       try {
         const response = await fetch('/api/api2000-report', {
@@ -173,11 +236,10 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ recipientEmail, calculation }),
         });
-        const data = await response.json();
-        if (!response.ok) throw new Error(data.message || 'Gönderilemedi');
-        status.textContent = 'Gönderildi';
-      } catch (error) {
-        status.textContent = error.message === 'Failed to fetch' ? 'Gönderilemedi' : error.message;
+        if (!response.ok) throw new Error('send-failed');
+        setStatus(status, 'sent');
+      } catch {
+        setStatus(status, 'failed');
       } finally {
         button.disabled = false;
       }
@@ -194,6 +256,7 @@
       if (!contactForm.reportValidity()) return;
       const button = contactForm.querySelector('button[type="submit"]');
       button.disabled = true;
+      status.removeAttribute('data-status-key');
       status.textContent = '';
       const form = new FormData(contactForm);
       try {
@@ -202,13 +265,12 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name: form.get('name'), phone: form.get('phone'), description: form.get('description'), product: form.get('product') }),
         });
-        const data = await response.json();
-        if (!response.ok) throw new Error(data.message || 'Gönderilemedi');
-        status.textContent = 'Gönderildi';
+        if (!response.ok) throw new Error('send-failed');
+        setStatus(status, 'sent');
         contactForm.reset();
         contactForm.elements.product.value = params.get('product') || '';
-      } catch (error) {
-        status.textContent = error.message === 'Failed to fetch' ? 'Gönderilemedi' : error.message;
+      } catch {
+        setStatus(status, 'failed');
       } finally {
         button.disabled = false;
       }
