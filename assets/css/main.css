@@ -846,3 +846,96 @@ main { min-height: 58vh; }
     box-shadow: 0 5px 16px rgba(24,58,39,.045);
   }
 }
+
+/* Larger desktop header type, with the brand aligned closer to the viewport edge. */
+@media (min-width: 1101px) {
+  .header-inner {
+    width: min(100% - 48px, 1640px);
+    grid-template-columns: 245px minmax(0, 1fr);
+    gap: clamp(22px, 2vw, 34px);
+  }
+  .brand { margin-left: -12px; }
+  .site-nav > a:not(.mobile-nav-brand) {
+    padding-inline: 3px;
+    font-size: clamp(14.5px, calc(13.5px + .1vw), 15.5px);
+  }
+  .language-toggle { padding-left: 12px; }
+  .language-toggle button {
+    padding-inline: 5px;
+    font-size: clamp(14px, calc(13px + .1vw), 15px);
+  }
+}
+
+/* Separate the product statement from both the title and category list. */
+.product-overview > .copy-section {
+  margin: 28px auto 0;
+  padding-bottom: 92px;
+}
+@media (max-width: 620px) {
+  .product-overview > .copy-section {
+    margin-top: 22px;
+    padding-bottom: 82px;
+  }
+}
+
+/* A larger editorial image gives the About page a stronger visual anchor. */
+@media (min-width: 1101px) {
+  .about-intro {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+    gap: 0 clamp(34px, 3.2vw, 48px);
+  }
+  .about-media {
+    aspect-ratio: 1.5;
+    border-radius: 11px;
+    box-shadow: 0 16px 38px rgba(24,58,39,.10);
+  }
+}
+
+/* Desktop hover adds a restrained green lift to the four What We Do cards. */
+.what-we-do-grid p {
+  transition: transform 220ms cubic-bezier(.2,.7,.2,1), box-shadow 220ms ease, border-color 220ms ease, background 220ms ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .what-we-do-grid p:hover {
+    transform: translateY(-4px);
+    border-top-color: var(--green);
+    background: linear-gradient(145deg, #fff, #f0f6f2);
+    box-shadow: 0 16px 34px rgba(20,79,50,.14);
+  }
+}
+
+.home-proof-value [data-count-up] { display: inline-block; }
+.home-proof-value [data-count-up].is-counting {
+  animation: proof-count-emphasis 1900ms cubic-bezier(.2,.7,.2,1) both;
+}
+@keyframes proof-count-emphasis {
+  0% { opacity: .55; transform: translateY(6px) scale(.96); text-shadow: 0 0 0 rgba(20,79,50,0); }
+  16% { opacity: 1; transform: translateY(0) scale(1.04); text-shadow: 0 0 16px rgba(20,79,50,.24); }
+  100% { opacity: 1; transform: scale(1); text-shadow: 0 0 0 rgba(20,79,50,0); }
+}
+
+/* Mobile product overview: one clear text-to-list gap and room between accordions. */
+@media (max-width: 620px) {
+  .product-overview > .copy-section {
+    margin-top: 20px;
+    padding-bottom: 22px;
+  }
+  .product-overview .catalog-content {
+    display: grid;
+    gap: 20px;
+  }
+  .product-overview .tree-group,
+  .product-overview .tree-root-label { margin-bottom: 0; }
+}
+
+/* Light translucent surfaces distinguish the contact and calculator panels. */
+.form-page .form-panel {
+  border-color: rgba(176,202,187,.78);
+  background: linear-gradient(135deg, rgba(250,252,250,.84), rgba(239,246,241,.68));
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 16px 38px rgba(20,79,50,.075), inset 0 1px rgba(255,255,255,.88);
+}
+.form-page .form-field input,
+.form-page .form-field textarea,
+.form-page .form-field select { background: rgba(255,255,255,.82); }
