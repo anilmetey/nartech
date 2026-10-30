@@ -164,7 +164,7 @@ floating_children = [
     item("ldpe-seal", 82, 82, [83], [83], src=82),
 ]
 floating_roofs = item("internal-floating-roofs-and-seals", 57, None, [], [], floating_children, 56)
-floating_roofs["titleTr"] = "f-İç Yüzer Tavanlar ve Fitiller"
+floating_roofs["titleTr"] = "İç Yüzer Tavanlar ve Fitiller"
 floating_roofs["titleEn"] = "f-Internal Floating Roofs and Seals"
 floating_suction_children = [
     item("pipe-type-floating-suction-unit", 123, 123, [], [], src=122),
