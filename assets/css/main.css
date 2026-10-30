@@ -544,3 +544,28 @@ main { min-height: 58vh; }
   .language-toggle { gap: 2px; margin-left: 3px; padding-left: 11px; }
   .language-toggle button { padding: 6px 4px; font-size: 12px; }
 }
+
+/* Desktop composition: compact navigation, aligned copy and stable language switching. */
+@media (min-width: 821px) {
+  .home-who-section { display: block; max-width: 1080px; margin: 0 auto; border-bottom: 1px solid var(--line); padding: clamp(34px, 4vw, 52px) 0 clamp(38px, 4.2vw, 54px); }
+  .home-who-heading { margin-bottom: 14px; }
+  .home-who-heading h2 { font-size: clamp(34px, 3.4vw, 44px); }
+  .home-who-copy p { max-width: 980px; margin-bottom: 14px; font-size: 18px; line-height: 1.7; }
+  .about-intro > .copy-section { grid-column: 1 / -1; }
+}
+@media (min-width: 1101px) {
+  .header-inner { grid-template-columns: 245px minmax(0, 1fr); justify-items: stretch; align-items: center; gap: clamp(24px, 3vw, 38px); padding: 7px 0; }
+  .brand { width: 100%; height: 100px; justify-content: flex-start; }
+  .site-nav { display: grid; width: 100%; grid-template-columns: minmax(70px,.9fr) minmax(83px,1fr) minmax(100px,1.2fr) minmax(56px,.65fr) minmax(68px,.8fr) minmax(82px,1fr) minmax(184px,1.9fr) minmax(62px,.7fr) 80px; align-items: center; justify-content: stretch; gap: 0 clamp(4px, .55vw, 7px); }
+  .site-nav a { display: block; min-width: 0; padding: 8px 2px; font-size: 13px; text-align: center; }
+  .site-nav > .mobile-nav-brand { display: none; }
+  .site-nav a[aria-current="page"] { position: relative; box-shadow: none; }
+  .site-nav a[aria-current="page"]::after { position: absolute; right: 50%; bottom: 1px; width: min(42px, calc(100% - 12px)); height: 2px; background: var(--green); content: ""; transform: translateX(50%); }
+  .language-toggle { width: 100%; justify-content: center; gap: 0; margin: 0; border-left: 1px solid var(--line); padding: 0 0 0 10px; }
+  .language-toggle button { padding: 6px 4px; font-size: 12px; }
+  .about-intro { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto auto; gap: 0 clamp(30px, 3vw, 40px); }
+  .about-intro-copy { grid-column: 2; grid-row: 1; }
+  .about-media { grid-column: 1; grid-row: 1 / span 2; aspect-ratio: 1.4; }
+  .about-intro > .copy-section { grid-column: 2; grid-row: 2; max-width: none; padding: 0 0 38px; }
+  .about-intro-copy p:last-child { margin-bottom: 12px; }
+}
