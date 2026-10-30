@@ -144,35 +144,69 @@ function finiteNumber(value) { return typeof value === 'number' && Number.isFini
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
 }
-function fixed(value) { return value.toFixed(2); }
+function fixed(value, language) {
+  return new Intl.NumberFormat(language === 'en' ? 'en-US' : 'tr-TR', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(value);
+}
 
-const DISCLAIMER = 'Yasal Uyarı ve Sorumluluk Reddi: Bu raporda sunulan tüm hesaplamalar, veriler ve sonuçlar yalnızca bilgi amaçlıdır ve hiçbir şekilde mühendislik veya ticari açıdan bağlayıcılığı yoktur. Kesin ekipman seçimi, boyutlandırma ve projelendirme aşamalarında saha koşulları, meteorolojik veriler, boru hattı dinamikleri ve yerel/uluslararası standartlar göz önünde bulundurularak doğrulama yapılması gerekmektedir.';
+const REPORT_COPY = {
+  tr: {
+    subject: 'API 2000 7. Baskı Havalandırma Boyutlandırma Sonuçları',
+    title: 'API 2000 7. Baskı Havalandırma Boyutlandırma Programı',
+    capacity: 'Tank Kapasitesi',
+    fillRate: 'Maksimum Dolum Debisi',
+    emptyRate: 'Maksimum Boşaltım Debisi',
+    results: 'TOPLAM BOYUTLANDIRMA SONUÇLARI',
+    thermal: 'Termal Havalandırma Katkısı',
+    outbreathing: 'Toplam Dışa Soluma (Basınç Ventili Kapasitesi)',
+    inbreathing: 'Toplam İçe Soluma (Vakum Ventili Kapasitesi)',
+    disclaimer: 'Yasal Uyarı ve Sorumluluk Reddi: Bu raporda sunulan tüm hesaplamalar, veriler ve sonuçlar yalnızca bilgi amaçlıdır ve hiçbir şekilde mühendislik veya ticari açıdan bağlayıcılığı yoktur. Kesin ekipman seçimi, boyutlandırma ve projelendirme aşamalarında saha koşulları, meteorolojik veriler, boru hattı dinamikleri ve yerel/uluslararası standartlar göz önünde bulundurularak doğrulama yapılması gerekmektedir.',
+  },
+  en: {
+    subject: 'API 2000 7th Edition Venting Sizing Results',
+    title: 'API 2000 7th Edition Venting Sizing Program',
+    capacity: 'Tank Capacity',
+    fillRate: 'Maximum Fill Rate',
+    emptyRate: 'Maximum Empty Rate',
+    results: 'TOTAL SIZING RESULTS',
+    thermal: 'Thermal Venting Contribution',
+    outbreathing: 'Total Outbreathing (Pressure Valve Capacity)',
+    inbreathing: 'Total Inbreathing (Vacuum Valve Capacity)',
+    disclaimer: 'Legal Notice and Disclaimer: All calculations, data, and results in this report are for informational purposes only and are not binding for engineering or commercial purposes. Equipment selection, sizing, and project design must be verified with regard to site conditions, meteorological data, pipeline dynamics, and applicable local and international standards.',
+  },
+};
 
-function reportText(calc) {
+function reportText(calc, language) {
+  const copy = REPORT_COPY[language];
+  const number = value => fixed(value, language);
   return [
-    'API 2000 7th Edition Venting Sizing Program', '',
-    `Tank Capacity: ${fixed(calc.tank_capacity_m3)} m³`,
-    `Max Fill Rate: ${fixed(calc.max_fill_rate_m3h)} m³/h`,
-    `Max Empty Rate: ${fixed(calc.max_empty_rate_m3h)} m³/h`, '',
-    '=== TOTAL SIZING RESULTS ===',
-    `Thermal Venting Contribution: ${fixed(calc.thermal_venting_m3h)} m³/h (${fixed(calc.thermal_venting_scfh)} SCFH)`,
-    `Total Outbreathing (Pressure Valve Capacity): ${fixed(calc.outbreathing_m3h)} m³/h | ${fixed(calc.outbreathing_scfh)} SCFH`,
-    `Total Inbreathing (Vacuum Valve Capacity):   ${fixed(calc.inbreathing_m3h)} m³/h | ${fixed(calc.inbreathing_scfh)} SCFH`, '',
-    DISCLAIMER,
+    copy.title, '',
+    `${copy.capacity}: ${number(calc.tank_capacity_m3)} m³`,
+    `${copy.fillRate}: ${number(calc.max_fill_rate_m3h)} m³/h`,
+    `${copy.emptyRate}: ${number(calc.max_empty_rate_m3h)} m³/h`, '',
+    `=== ${copy.results} ===`,
+    `${copy.thermal}: ${number(calc.thermal_venting_m3h)} m³/h (${number(calc.thermal_venting_scfh)} SCFH)`,
+    `${copy.outbreathing}: ${number(calc.outbreathing_m3h)} m³/h | ${number(calc.outbreathing_scfh)} SCFH`,
+    `${copy.inbreathing}: ${number(calc.inbreathing_m3h)} m³/h | ${number(calc.inbreathing_scfh)} SCFH`, '',
+    copy.disclaimer,
   ].join('\n');
 }
 
-function reportHtml(calc) {
-  const safeDisclaimer = escapeHtml(DISCLAIMER);
+function reportHtml(calc, language) {
+  const copy = REPORT_COPY[language];
+  const number = value => fixed(value, language);
+  const safeDisclaimer = escapeHtml(copy.disclaimer);
   const rows = [
-    ['Tank Capacity', `${fixed(calc.tank_capacity_m3)} m³`],
-    ['Max Fill Rate', `${fixed(calc.max_fill_rate_m3h)} m³/h`],
-    ['Max Empty Rate', `${fixed(calc.max_empty_rate_m3h)} m³/h`],
-    ['Thermal Venting Contribution', `${fixed(calc.thermal_venting_m3h)} m³/h (${fixed(calc.thermal_venting_scfh)} SCFH)`],
-    ['Total Outbreathing (Pressure Valve Capacity)', `${fixed(calc.outbreathing_m3h)} m³/h | ${fixed(calc.outbreathing_scfh)} SCFH`],
-    ['Total Inbreathing (Vacuum Valve Capacity)', `${fixed(calc.inbreathing_m3h)} m³/h | ${fixed(calc.inbreathing_scfh)} SCFH`],
+    [copy.capacity, `${number(calc.tank_capacity_m3)} m³`],
+    [copy.fillRate, `${number(calc.max_fill_rate_m3h)} m³/h`],
+    [copy.emptyRate, `${number(calc.max_empty_rate_m3h)} m³/h`],
+    [copy.thermal, `${number(calc.thermal_venting_m3h)} m³/h (${number(calc.thermal_venting_scfh)} SCFH)`],
+    [copy.outbreathing, `${number(calc.outbreathing_m3h)} m³/h | ${number(calc.outbreathing_scfh)} SCFH`],
+    [copy.inbreathing, `${number(calc.inbreathing_m3h)} m³/h | ${number(calc.inbreathing_scfh)} SCFH`],
   ];
-  return `<h2>API 2000 7th Edition Venting Sizing Program</h2><table>${rows.map(([label, value]) => `<tr><th align="left">${escapeHtml(label)}</th><td>${escapeHtml(value)}</td></tr>`).join('')}</table><p>${safeDisclaimer}</p>`;
+  return `<h2>${escapeHtml(copy.title)}</h2><table>${rows.map(([label, value]) => `<tr><th align="left">${escapeHtml(label)}</th><td>${escapeHtml(value)}</td></tr>`).join('')}</table><p>${safeDisclaimer}</p>`;
 }
 
 async function apiRequest(req, res, pathname) {
@@ -184,6 +218,7 @@ async function apiRequest(req, res, pathname) {
 
   if (pathname === '/api/api2000-report') {
     const { recipientEmail, calculation } = payload || {};
+    const language = payload?.language === 'en' ? 'en' : 'tr';
     if (!isEmail(recipientEmail) || !calculation || typeof calculation !== 'object') return jsonResponse(res, 400, { message: 'Gönderilemedi' });
     const capacity = calculation.tank_capacity_m3;
     const fillRate = calculation.max_fill_rate_m3h;
@@ -193,20 +228,25 @@ async function apiRequest(req, res, pathname) {
       return jsonResponse(res, 400, { message: 'Gönderilemedi' });
     }
     const result = calculateApi2000Venting(capacity, fillRate, emptyRate, flashPoint);
-    const delivery = await sendEmail(recipientEmail.trim(), 'API 2000 7th Edition Venting Sizing Program', reportText(result), reportHtml(result));
+    const copy = REPORT_COPY[language];
+    const delivery = await sendEmail(recipientEmail.trim(), copy.subject, reportText(result, language), reportHtml(result, language));
     return delivery.ok ? jsonResponse(res, 200, { message: 'Gönderildi' }) : jsonResponse(res, delivery.status, { message: delivery.message });
   }
 
   if (pathname === '/api/contact') {
     const { name, phone, description } = payload || {};
+    const language = payload?.language === 'en' ? 'en' : 'tr';
     if (typeof name !== 'string' || !name.trim() || name.length > 150 || typeof phone !== 'string' || !phone.trim() || phone.length > 80 || typeof description !== 'string' || !description.trim() || description.length > 5000) {
       return jsonResponse(res, 400, { message: 'Gönderilemedi' });
     }
     const destination = process.env.CONTACT_EMAIL?.trim();
     if (!isEmail(destination)) return jsonResponse(res, 503, { message: 'E-posta gönderilemedi' });
     const product = typeof payload.product === 'string' && /^[a-z0-9-]{1,100}$/.test(payload.product) ? payload.product : '';
-    const lines = [`Ad Soyad: ${name.trim()}`, `Telefon No: ${phone.trim()}`, `Açıklama: ${description.trim()}`];
-    if (product) lines.push(`Ürün: ${product}`);
+    const labels = language === 'en'
+      ? { name: 'Name', phone: 'Phone Number', description: 'Description', product: 'Product' }
+      : { name: 'Ad Soyad', phone: 'Telefon No', description: 'Açıklama', product: 'Ürün' };
+    const lines = [`${labels.name}: ${name.trim()}`, `${labels.phone}: ${phone.trim()}`, `${labels.description}: ${description.trim()}`];
+    if (product) lines.push(`${labels.product}: ${product}`);
     const content = lines.join('\n');
     const safeContent = content.split('\n').map(escapeHtml).join('<br>');
     const delivery = await sendEmail(destination, 'NarTech', content, `<p>${safeContent}</p>`);

@@ -234,7 +234,7 @@
         const response = await fetch('/api/api2000-report', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ recipientEmail, calculation }),
+          body: JSON.stringify({ recipientEmail, calculation, language: root.dataset.language }),
         });
         if (!response.ok) throw new Error('send-failed');
         setStatus(status, 'sent');
@@ -263,7 +263,7 @@
         const response = await fetch('/api/contact', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name: form.get('name'), phone: form.get('phone'), description: form.get('description'), product: form.get('product') }),
+          body: JSON.stringify({ name: form.get('name'), phone: form.get('phone'), description: form.get('description'), product: form.get('product'), language: root.dataset.language }),
         });
         if (!response.ok) throw new Error('send-failed');
         setStatus(status, 'sent');
