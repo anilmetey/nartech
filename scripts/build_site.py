@@ -177,7 +177,7 @@ def footer(prefix: str) -> str:
 </div></footer>'''
 
 def layout(title: str, body: str, current: str, prefix="", lang="tr") -> str:
-    css_version = "naragro-home-flow-20261030-8" if current == "home" else "naragro-footer-responsive-20261030-5"
+    css_version = "naragro-home-flow-20261030-9" if current == "home" else "naragro-footer-responsive-20261030-6"
     js_version = "naragro-home-flow-20261030-6" if current == "home" else "naragro-pages-20261030-2"
     return f'''<!doctype html>
 <html lang="{lang}" data-language="tr">

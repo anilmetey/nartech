@@ -331,7 +331,7 @@ main { min-height: 58vh; }
 .footer-site { position: relative; isolation: isolate; }
 .footer-site > .footer-heading, .footer-site > .footer-links { position: relative; z-index: 1; }
 .footer-site .footer-orbit { position: absolute; z-index: 0; inset: -1px; width: auto; height: auto; overflow: visible; pointer-events: none; }
-.footer-site .footer-orbit rect { fill: none; stroke: #a9d8b8; stroke-width: 2; stroke-linecap: round; stroke-dasharray: 75 175; stroke-dashoffset: 0; vector-effect: non-scaling-stroke; animation: footer-quick-access-orbit 8s linear infinite; }
+.footer-site .footer-orbit rect { fill: none; stroke: #a9d8b8; stroke-width: 2; stroke-linecap: round; stroke-dasharray: 75 175; stroke-dashoffset: 0; vector-effect: non-scaling-stroke; animation: footer-quick-access-orbit 18s linear infinite; }
 .footer-site .footer-heading { display: block; }
 .footer-links { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3px 16px; }
 .footer-links li { min-width: 0; border: 0 !important; }
