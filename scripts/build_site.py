@@ -177,12 +177,13 @@ def footer(prefix: str) -> str:
 </div></footer>'''
 
 def layout(title: str, body: str, current: str, prefix="", lang="tr") -> str:
+    css_version = "naragro-home-sections-20261030-3" if current == "home" else "naragro-pages-20261030-2"
     return f'''<!doctype html>
 <html lang="{lang}" data-language="tr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)} | NarTech</title>
-<link rel="stylesheet" href="{prefix}assets/css/main.css?v=naragro-pages-20261030-2">
+<link rel="stylesheet" href="{prefix}assets/css/main.css?v={css_version}">
 <script defer src="{prefix}assets/js/app.js?v=naragro-pages-20261030-2"></script>
 </head>
 <body>
@@ -245,8 +246,13 @@ for index,(tr_kicker,en_kicker,tr_value,en_value,tr_detail,en_detail) in enumera
         en_value_html=f'<span class="lang-en">{esc(en_value)}</span>'
     home_proof_cards.append(f'<div class="home-proof-item" style="--proof-delay:{index*110}ms"><span class="home-proof-kicker"><span aria-hidden="true"></span><span class="lang-tr">{esc(tr_kicker)}</span><span class="lang-en">{esc(en_kicker)}</span></span><strong class="home-proof-value">{tr_value_html}{en_value_html}</strong><span class="home-proof-detail"><span class="lang-tr">{esc(tr_detail)}</span><span class="lang-en">{esc(en_detail)}</span></span></div>')
 home_proof_html=''.join(home_proof_cards)
+home_about_tr=''.join(p_html(x,"tr") for x in content["about"]["paragraphsTr"][:2])
+home_about_en=''.join(p_html(x,"en") for x in content["about"]["paragraphsEn"][:2])
+home_what_we_do_cards=''.join(f'<p data-source="{esc(tr["source"])}"><span class="lang-tr">{esc(tr["text"])}</span><span class="lang-en" data-source="{esc(en["source"])}">{esc(en["text"])}</span></p>' for tr,en in zip(content["whatWeDo"]["paragraphsTr"],content["whatWeDo"]["paragraphsEn"]))
 home_body=f'''<div class="home-page"><div class="page-wrap"><section class="home-hero"><div class="home-hero-copy"><h1><span class="lang-tr">{esc(content['home']['titleTr'])}</span><span class="lang-en">{esc(content['home']['titleEn'])}</span></h1><p><span class="lang-tr">{esc(content['home']['bodyTr'])}</span><span class="lang-en">{esc(content['home']['bodyEn'])}</span></p><div class="home-actions"><a class="button button-primary" href="products.html"><span class="lang-tr">Ürünler</span><span class="lang-en">Products</span></a><a class="button" href="calculator.html"><span class="lang-tr">Hesaplama</span><span class="lang-en">Calculator</span></a><a class="button" href="contact.html#contact-form"><span class="lang-tr">Randevu Oluştur</span><span class="lang-en">Appointment</span></a></div></div><figure class="home-hero-media"><img src="assets/images/home.jpeg" alt="NarTech Depolama Tankı ve Terminal Ekipmanları Sahası" width="1170" height="525" fetchpriority="high" decoding="async"></figure></section>
-<section class="home-proof-strip" aria-label="Mühendislik Göstergeleri">{home_proof_html}</section></div></div>'''
+<section class="home-proof-strip" aria-label="Mühendislik Göstergeleri">{home_proof_html}</section>
+<section class="home-who-section" aria-labelledby="home-who-heading"><div class="home-who-heading"><h2 id="home-who-heading"><span class="lang-tr">Hakkımızda</span><span class="lang-en">Who We Are</span></h2></div><div class="home-who-copy"><div class="lang-tr">{home_about_tr}</div><div class="lang-en">{home_about_en}</div></div></section>
+<section class="home-what-section" aria-labelledby="home-what-heading"><div class="home-what-heading"><h2 id="home-what-heading"><span class="lang-tr">Ne Yapıyoruz</span><span class="lang-en">What We Do</span></h2><p class="home-what-subtitle"><span class="lang-tr">{esc(content['whatWeDo']['titleTr'])}</span><span class="lang-en">{esc(content['whatWeDo']['titleEn'].strip())}</span></p></div><div class="home-what-grid">{home_what_we_do_cards}</div></section></div></div>'''
 (OUT/"index.html").write_text(layout(content["home"]["titleTr"],home_body,"home"),encoding="utf-8")
 # Keep the fallback free of copy that is not supplied in the source documents.
 (OUT/"404.html").write_text('<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=./index.html"></head><body></body></html>',encoding="utf-8")
