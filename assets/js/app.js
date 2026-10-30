@@ -263,7 +263,7 @@
           showFlow();
           flowObserver.disconnect();
         }
-      }, { threshold: 0.18 });
+      }, { threshold: 0.12 });
       flowObserver.observe(homeFlow);
     }
   }

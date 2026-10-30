@@ -177,8 +177,8 @@ def footer(prefix: str) -> str:
 </div></footer>'''
 
 def layout(title: str, body: str, current: str, prefix="", lang="tr") -> str:
-    css_version = "naragro-home-flow-20261030-4" if current == "home" else "naragro-pages-20261030-2"
-    js_version = "naragro-home-flow-20261030-4" if current == "home" else "naragro-pages-20261030-2"
+    css_version = "naragro-home-flow-20261030-5" if current == "home" else "naragro-footer-responsive-20261030-3"
+    js_version = "naragro-home-flow-20261030-5" if current == "home" else "naragro-pages-20261030-2"
     return f'''<!doctype html>
 <html lang="{lang}" data-language="tr">
 <head>
@@ -249,15 +249,15 @@ for index,(tr_kicker,en_kicker,tr_value,en_value,tr_detail,en_detail) in enumera
 home_proof_html=''.join(home_proof_cards)
 home_about_tr=''.join(p_html(x,"tr") for x in content["about"]["paragraphsTr"][:2])
 home_about_en=''.join(p_html(x,"en") for x in content["about"]["paragraphsEn"][:2])
-home_what_we_do_cards=''.join(f'<p style="--flow-delay:{index*70}ms" data-source="{esc(tr["source"])}"><span class="lang-tr">{esc(tr["text"])}</span><span class="lang-en" data-source="{esc(en["source"])}">{esc(en["text"])}</span></p>' for index,(tr,en) in enumerate(zip(content["whatWeDo"]["paragraphsTr"],content["whatWeDo"]["paragraphsEn"])))
+home_what_we_do_cards=''.join(f'<p style="--flow-delay:{index*85}ms" data-source="{esc(tr["source"])}"><span class="lang-tr">{esc(tr["text"])}</span><span class="lang-en" data-source="{esc(en["source"])}">{esc(en["text"])}</span></p>' for index,(tr,en) in enumerate(zip(content["whatWeDo"]["paragraphsTr"],content["whatWeDo"]["paragraphsEn"])))
 home_flow_paths=[
     "M125 20 C125 55 410 58 488 108",
     "M375 20 C375 55 455 62 496 108",
     "M625 20 C625 55 545 62 504 108",
     "M875 20 C875 55 590 58 512 108",
 ]
-home_flow_tracks=''.join(f'<path class="home-flow-track" d="{path}"/><path class="home-flow-particles" d="{path}" style="--flow-delay:-{index*.36:.2f}s"/>' for index,path in enumerate(home_flow_paths))
-home_flow_graphic=f'''<svg class="home-flow-lines home-flow-lines--desktop" viewBox="0 0 1000 110" preserveAspectRatio="none" aria-hidden="true">{home_flow_tracks}</svg><svg class="home-flow-lines home-flow-lines--mobile" viewBox="0 0 1000 54" preserveAspectRatio="none" aria-hidden="true"><path class="home-flow-track" d="M500 0 C500 15 500 34 500 54"/><path class="home-flow-particles" d="M500 0 C500 15 500 34 500 54"/></svg>'''
+home_flow_tracks=''.join(f'<path class="home-flow-track" d="{path}"/><path class="home-flow-particles" d="{path}" style="--flow-delay:{.42+index*.24:.2f}s"/>' for index,path in enumerate(home_flow_paths))
+home_flow_graphic=f'''<svg class="home-flow-lines home-flow-lines--desktop" viewBox="0 0 1000 110" preserveAspectRatio="none" aria-hidden="true">{home_flow_tracks}</svg><svg class="home-flow-lines home-flow-lines--mobile" viewBox="0 0 1000 54" preserveAspectRatio="none" aria-hidden="true"><path class="home-flow-track" d="M500 0 C500 15 500 34 500 54"/><path class="home-flow-particles" d="M500 0 C500 15 500 34 500 54" style="--flow-delay:.42s"/></svg>'''
 home_body=f'''<div class="home-page"><div class="page-wrap"><section class="home-hero"><div class="home-hero-copy"><h1><span class="lang-tr">{esc(content['home']['titleTr'])}</span><span class="lang-en">{esc(content['home']['titleEn'])}</span></h1><p><span class="lang-tr">{esc(content['home']['bodyTr'])}</span><span class="lang-en">{esc(content['home']['bodyEn'])}</span></p><div class="home-actions"><a class="button button-primary" href="products.html"><span class="lang-tr">Ürünler</span><span class="lang-en">Products</span></a><a class="button" href="calculator.html"><span class="lang-tr">Hesaplama</span><span class="lang-en">Calculator</span></a><a class="button" href="contact.html#contact-form"><span class="lang-tr">Randevu Oluştur</span><span class="lang-en">Appointment</span></a></div></div><figure class="home-hero-media"><img src="assets/images/home.jpeg" alt="NarTech Depolama Tankı ve Terminal Ekipmanları Sahası" width="1170" height="525" fetchpriority="high" decoding="async"></figure></section>
 <section class="home-proof-strip" aria-label="Mühendislik Göstergeleri">{home_proof_html}</section>
 <section class="home-who-section" aria-labelledby="home-who-heading"><div class="home-who-heading"><h2 id="home-who-heading"><span class="lang-tr">Hakkımızda</span><span class="lang-en">Who We Are</span></h2></div><div class="home-who-copy"><div class="lang-tr">{home_about_tr}</div><div class="lang-en">{home_about_en}</div></div></section>
