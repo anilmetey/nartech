@@ -248,4 +248,23 @@
       proofObserver.observe(proofStrip);
     }
   }
+
+  const homeFlow = document.querySelector('[data-home-flow]');
+  if (homeFlow) {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const showFlow = () => homeFlow.classList.add('is-visible');
+
+    if (reducedMotion || !('IntersectionObserver' in window)) {
+      showFlow();
+    } else {
+      homeFlow.classList.add('motion-ready');
+      const flowObserver = new IntersectionObserver(entries => {
+        if (entries.some(entry => entry.isIntersecting)) {
+          showFlow();
+          flowObserver.disconnect();
+        }
+      }, { threshold: 0.18 });
+      flowObserver.observe(homeFlow);
+    }
+  }
 })();
