@@ -286,13 +286,15 @@
       proofStrip.querySelectorAll('[data-count-up]').forEach(element => {
         const target = Number(element.dataset.countUp);
         const suffix = element.dataset.countSuffix || '';
-        const duration = 900;
+        const duration = 1900;
         const startedAt = performance.now();
+        element.classList.add('is-counting');
         const update = now => {
           const progress = Math.min((now - startedAt) / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          element.textContent = `${Math.round(target * eased)}${suffix}`;
+          const count = progress < 1 ? Math.min(target, Math.floor(target * progress) + 1) : target;
+          element.textContent = `${count}${suffix}`;
           if (progress < 1) requestAnimationFrame(update);
+          else element.classList.remove('is-counting');
         };
         requestAnimationFrame(update);
       });
@@ -301,6 +303,7 @@
     if (reducedMotion || !('IntersectionObserver' in window)) {
       proofStrip.classList.add('is-visible');
     } else {
+      proofStrip.classList.add('motion-ready');
       const proofObserver = new IntersectionObserver(entries => {
         if (entries.some(entry => entry.isIntersecting)) {
           revealProof();

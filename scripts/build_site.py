@@ -2,6 +2,7 @@ from __future__ import annotations
 import html, json, re, shutil
 from pathlib import Path
 from docx import Document
+from docx_formatting import format_source_text
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
@@ -42,7 +43,7 @@ PRODUCT_TURKISH = {
     71: "Temel İşlevler ve Faydalar",
     72: "Sıfıra Yakın VOC Emisyonu: Platform sıvıyla doğrudan ve tam temas ettiğinden emisyonları kontrol eder ve atmosfere buhar kaybını en aza indirerek çevre gerekliliklerini karşılamaya yardımcı olur.",
     73: "Çevrenin Korunması: Yüksek uçuculuğa sahip ürünler ve agresif kimyasallar için uygun olan bu yapı, zararlı buhar ve kokuların çevreye yayılmasını önlemeye yardımcı olur.",
-    74: "Geliştirilmiş Güvenlik ve Buhar Kontrolü: Platform altındaki buhar boşluğunu ortadan kaldırarak patlayıcı gaz birikmesi riskini azaltır ve çevre ile çalışma alanı güvenliğini destekler.",
+    74: "Geliştirilmiş Güvenlik ve Buhar Kontrolü: Platform altındaki buhar boşluğunu ortadan kaldırarak patlayıcı gaz birikmesi riskini ortadan kaldırır ve çevre ile çalışma alanı güvenliğini destekler.",
     75: "Tedarik ve Kalite Güvencemiz",
     76: "Güvenilir bir küresel tedarikçi olarak bu yüksek performanslı iç yüzer tavan sistemlerini API 650 dâhil uluslararası standartlara uygun biçimde tedarik ediyoruz.",
     77: "Sektör deneyimimiz ve küresel sertifikalı ürünlerimizle depolama tesisleriniz için yüksek güvenlik, çevre mevzuatına uyum ve uzun dönemli güvenilirlik sağlıyoruz.",
@@ -306,7 +307,7 @@ def layout(title: str, body: str, current: str, prefix="", lang="tr", title_en=N
 <main>{body}</main>{footer(prefix)}</body></html>'''
 
 def p_html(entry: dict, lang: str) -> str:
-    return f'<p data-source="{esc(entry["source"])}">{esc(entry["text"])}</p>'
+    return f'<p data-source="{esc(entry["source"])}">{format_source_text(entry["text"], entry["source"], lang)}</p>'
 
 def title_for(obj: dict, lang: str) -> str:
     key="titleEn" if lang=="en" and obj.get("titleEn") else "titleTr"
@@ -414,7 +415,7 @@ what_we_do_body=f'''<div class="page-wrap what-we-do-page"><div class="page-head
 
 service_cards=[]
 for service in content["services"]["items"]:
-    paragraphs_html=''.join(f'<p data-source="{esc(paragraph["source"])}"><span class="lang-tr">{esc(paragraph["text"])}</span><span class="lang-en">{esc(paragraph["textEn"])}</span></p>' for paragraph in service["paragraphs"])
+    paragraphs_html=''.join(f'<p data-source="{esc(paragraph["source"])}"><span class="lang-tr">{format_source_text(paragraph["text"], paragraph["source"], "tr")}</span><span class="lang-en">{format_source_text(paragraph["textEn"], paragraph["source"], "en")}</span></p>' for paragraph in service["paragraphs"])
     service_cards.append(f'<details class="service-item" open><summary data-source="{esc(service["titleSource"])}"><span class="lang-tr">{esc(service["title"])}</span><span class="lang-en">{esc(service["titleEn"])}</span></summary>{paragraphs_html}</details>')
 services_body=f'''<div class="page-wrap"><div class="page-heading"><h1><span class="lang-tr">{esc(content["services"]["titleTr"])}</span><span class="lang-en">{esc(content["services"]["titleEn"])}</span></h1></div><div class="service-list">{''.join(service_cards)}</div></div>'''
 (OUT/"services.html").write_text(layout(content["services"]["titleTr"],services_body,"services",title_en=content["services"]["titleEn"]),encoding="utf-8")
