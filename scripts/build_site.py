@@ -177,8 +177,8 @@ def footer(prefix: str) -> str:
 </div></footer>'''
 
 def layout(title: str, body: str, current: str, prefix="", lang="tr") -> str:
-    css_version = "naragro-home-flow-20261030-5" if current == "home" else "naragro-footer-responsive-20261030-3"
-    js_version = "naragro-home-flow-20261030-5" if current == "home" else "naragro-pages-20261030-2"
+    css_version = "naragro-home-flow-20261030-6" if current == "home" else "naragro-footer-responsive-20261030-3"
+    js_version = "naragro-home-flow-20261030-6" if current == "home" else "naragro-pages-20261030-2"
     return f'''<!doctype html>
 <html lang="{lang}" data-language="tr">
 <head>
@@ -249,19 +249,38 @@ for index,(tr_kicker,en_kicker,tr_value,en_value,tr_detail,en_detail) in enumera
 home_proof_html=''.join(home_proof_cards)
 home_about_tr=''.join(p_html(x,"tr") for x in content["about"]["paragraphsTr"][:2])
 home_about_en=''.join(p_html(x,"en") for x in content["about"]["paragraphsEn"][:2])
-home_what_we_do_cards=''.join(f'<p style="--flow-delay:{index*85}ms" data-source="{esc(tr["source"])}"><span class="lang-tr">{esc(tr["text"])}</span><span class="lang-en" data-source="{esc(en["source"])}">{esc(en["text"])}</span></p>' for index,(tr,en) in enumerate(zip(content["whatWeDo"]["paragraphsTr"],content["whatWeDo"]["paragraphsEn"])))
-home_flow_paths=[
-    "M125 20 C125 55 410 58 488 108",
-    "M375 20 C375 55 455 62 496 108",
-    "M625 20 C625 55 545 62 504 108",
-    "M875 20 C875 55 590 58 512 108",
+home_flow_items=[
+    ("Standartlar", "International Standards", "Güvenlik · kalite · performans", "Safety · quality · performance", "What We Do (1).docx:2", "What We Do (1).docx:7"),
+    ("Teknik Gereksinimler", "Technical Requirements", "Proje ihtiyaçları · özel şartnameler", "Project needs · specific specifications", "What We Do (1).docx:3", "What We Do (1).docx:8"),
+    ("Mühendislik Uzmanlığı", "Engineering Expertise", "Teknik bilgi birikimi · uluslararası iş ortaklıkları", "Technical know-how · international partnerships", "What We Do (1).docx:4", "What We Do (1).docx:9"),
+    ("Doğru Ürün", "The Right Product", "Operasyonel verimlilik · uzun vadeli değer", "Operational efficiency · long-term value", "What We Do (1).docx:5", "What We Do (1).docx:10"),
 ]
-home_flow_tracks=''.join(f'<path class="home-flow-track" d="{path}"/><path class="home-flow-particles" d="{path}" style="--flow-delay:{.42+index*.24:.2f}s"/>' for index,path in enumerate(home_flow_paths))
-home_flow_graphic=f'''<svg class="home-flow-lines home-flow-lines--desktop" viewBox="0 0 1000 110" preserveAspectRatio="none" aria-hidden="true">{home_flow_tracks}</svg><svg class="home-flow-lines home-flow-lines--mobile" viewBox="0 0 1000 54" preserveAspectRatio="none" aria-hidden="true"><path class="home-flow-track" d="M500 0 C500 15 500 34 500 54"/><path class="home-flow-particles" d="M500 0 C500 15 500 34 500 54" style="--flow-delay:.42s"/></svg>'''
+home_flow_card_items=[]
+for index,(title_tr,title_en,detail_tr,detail_en,source_tr,source_en) in enumerate(home_flow_items):
+    home_flow_card_items.append(f'''<article class="home-flow-card" role="listitem" style="--flow-delay:{index*55}ms" data-source="{esc(source_tr)}"><h3><span class="lang-tr">{esc(title_tr)}</span><span class="lang-en" data-source="{esc(source_en)}">{esc(title_en)}</span></h3><p><span class="lang-tr">{esc(detail_tr)}</span><span class="lang-en">{esc(detail_en)}</span></p></article>''')
+home_flow_cards=''.join(home_flow_card_items)
+home_flow_desktop_paths=[
+    "M125 144 C125 180 385 174 482 232",
+    "M375 144 C375 178 445 187 492 232",
+    "M625 144 C625 178 555 187 508 232",
+    "M875 144 C875 180 615 174 518 232",
+]
+home_flow_mobile_paths=[
+    "M250 136 C250 204 420 245 490 326",
+    "M750 136 C750 204 580 245 510 326",
+    "M250 264 C250 288 430 306 492 326",
+    "M750 264 C750 288 570 306 508 326",
+]
+def flow_svg_paths(paths, output_path):
+    source_paths=''.join(f'<path class="home-flow-track" d="{path}"/><path class="home-flow-particles" d="{path}" style="--flow-delay:{.3+index*.14:.2f}s"/>' for index,path in enumerate(paths))
+    return f'{source_paths}<path class="home-flow-track" d="{output_path}"/><path class="home-flow-particles home-flow-particles--output" d="{output_path}" style="--flow-delay:.82s"/>'
+home_flow_desktop_svg=flow_svg_paths(home_flow_desktop_paths,"M500 272 C500 302 500 328 500 354")
+home_flow_mobile_svg=flow_svg_paths(home_flow_mobile_paths,"M500 366 C500 383 500 400 500 418")
+home_flow_graphic=f'''<svg class="home-flow-lines home-flow-lines--desktop" viewBox="0 0 1000 464" preserveAspectRatio="none" aria-hidden="true">{home_flow_desktop_svg}</svg><svg class="home-flow-lines home-flow-lines--mobile" viewBox="0 0 1000 500" preserveAspectRatio="none" aria-hidden="true">{home_flow_mobile_svg}</svg>'''
 home_body=f'''<div class="home-page"><div class="page-wrap"><section class="home-hero"><div class="home-hero-copy"><h1><span class="lang-tr">{esc(content['home']['titleTr'])}</span><span class="lang-en">{esc(content['home']['titleEn'])}</span></h1><p><span class="lang-tr">{esc(content['home']['bodyTr'])}</span><span class="lang-en">{esc(content['home']['bodyEn'])}</span></p><div class="home-actions"><a class="button button-primary" href="products.html"><span class="lang-tr">Ürünler</span><span class="lang-en">Products</span></a><a class="button" href="calculator.html"><span class="lang-tr">Hesaplama</span><span class="lang-en">Calculator</span></a><a class="button" href="contact.html#contact-form"><span class="lang-tr">Randevu Oluştur</span><span class="lang-en">Appointment</span></a></div></div><figure class="home-hero-media"><img src="assets/images/home.jpeg" alt="NarTech Depolama Tankı ve Terminal Ekipmanları Sahası" width="1170" height="525" fetchpriority="high" decoding="async"></figure></section>
 <section class="home-proof-strip" aria-label="Mühendislik Göstergeleri">{home_proof_html}</section>
 <section class="home-who-section" aria-labelledby="home-who-heading"><div class="home-who-heading"><h2 id="home-who-heading"><span class="lang-tr">Hakkımızda</span><span class="lang-en">Who We Are</span></h2></div><div class="home-who-copy"><div class="lang-tr">{home_about_tr}</div><div class="lang-en">{home_about_en}</div></div></section>
-<section class="home-what-section" aria-labelledby="home-what-heading"><div class="home-what-heading"><h2 id="home-what-heading"><span class="lang-tr">Ne Yapıyoruz</span><span class="lang-en">What We Do</span></h2><p class="home-what-subtitle"><span class="lang-tr">{esc(content['whatWeDo']['titleTr'])}</span><span class="lang-en">{esc(content['whatWeDo']['titleEn'].strip())}</span></p></div><div class="home-what-flow" data-home-flow><div class="home-what-grid">{home_what_we_do_cards}</div>{home_flow_graphic}<div class="home-flow-hub" aria-hidden="true"><img src="assets/images/nartech-logo-transparent.png" width="1958" height="803" alt=""></div></div></section></div></div>'''
+<section class="home-what-section" aria-labelledby="home-what-heading"><div class="home-what-heading"><h2 id="home-what-heading"><span class="lang-tr">Ne Yapıyoruz</span><span class="lang-en">What We Do</span></h2><p class="home-what-subtitle"><span class="lang-tr">{esc(content['whatWeDo']['titleTr'])}</span><span class="lang-en">{esc(content['whatWeDo']['titleEn'].strip())}</span></p></div><div class="home-what-flow" data-home-flow><div class="home-flow-visual"><div class="home-flow-cards" role="list">{home_flow_cards}</div>{home_flow_graphic}<div class="home-flow-orbit" aria-hidden="true"></div><div class="home-flow-hub"><img src="assets/images/nartech-logo-transparent.png" width="1958" height="803" alt="NarTech"></div><div class="home-flow-output"><strong><span class="lang-tr">Mühendislik Çözümleri</span><span class="lang-en">Engineering Solutions</span></strong><span><span class="lang-tr">Güvenilir · verimli · sürdürülebilir</span><span class="lang-en">Reliable · efficient · sustainable</span></span></div></div></div></section></div></div>'''
 (OUT/"index.html").write_text(layout(content["home"]["titleTr"],home_body,"home"),encoding="utf-8")
 # Keep the fallback free of copy that is not supplied in the source documents.
 (OUT/"404.html").write_text('<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=./index.html"></head><body></body></html>',encoding="utf-8")
