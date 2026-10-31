@@ -260,7 +260,7 @@ const TYPES = {
   '.json':'application/json; charset=utf-8', '.xml':'application/xml; charset=utf-8', '.txt':'text/plain; charset=utf-8',
   '.svg':'image/svg+xml', '.png':'image/png', '.jpg':'image/jpeg', '.jpeg':'image/jpeg', '.webp':'image/webp', '.ico':'image/x-icon',
 };
-const PUBLIC_ROOT_FILES = new Set(['index.html','about.html','products.html','services.html','contact.html','calculator.html','faq.html','robots.txt','sitemap.xml']);
+const PUBLIC_ROOT_FILES = new Set(['index.html','about.html','what-we-do.html','products.html','services.html','contact.html','calculator.html','faq.html','robots.txt','sitemap.xml']);
 const PUBLIC_DIRECTORIES = new Set(['assets','categories','products']);
 
 const server = http.createServer(async (req, res) => {

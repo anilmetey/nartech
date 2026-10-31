@@ -1043,3 +1043,148 @@ main { min-height: 58vh; }
   }
   .footer-site .footer-links a::after { transition: none; }
 }
+
+/* NarAgro-inspired desktop shell: brand and compact navigation stay together. */
+@media (min-width: 1101px) {
+  .site-header {
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 3px 12px rgba(24,58,39,.035);
+  }
+  .header-inner {
+    width: min(100% - 64px, 1540px);
+    grid-template-columns: 205px max-content;
+    justify-content: start;
+    align-items: center;
+    gap: clamp(20px, 1.8vw, 30px);
+    padding: 6px 0;
+  }
+  .brand {
+    width: 205px;
+    height: 84px;
+    margin: 0;
+  }
+  .site-nav {
+    display: flex;
+    width: max-content;
+    align-items: center;
+    justify-content: flex-start;
+    gap: clamp(13px, 1.3vw, 20px);
+  }
+  .site-nav > a:not(.mobile-nav-brand) {
+    position: relative;
+    padding: 9px 0;
+    color: #34443a;
+    font-size: clamp(12px, .88vw, 13px);
+    font-weight: 650;
+    letter-spacing: .035em;
+    text-align: left;
+    text-transform: uppercase;
+  }
+  .site-nav > a[aria-current="page"] {
+    color: var(--green);
+    box-shadow: none;
+  }
+  .site-nav > a:not(.mobile-nav-brand)::after {
+    position: absolute;
+    right: 0;
+    bottom: 3px;
+    left: 0;
+    height: 1px;
+    background: var(--green);
+    content: "";
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 160ms ease;
+  }
+  .site-nav > a[aria-current="page"]::after,
+  .site-nav > a:not(.mobile-nav-brand):hover::after,
+  .site-nav > a:not(.mobile-nav-brand):focus-visible::after {
+    transform: scaleX(1);
+  }
+  .language-toggle {
+    width: auto;
+    gap: 4px;
+    margin: 0 0 0 2px;
+    padding: 0 0 0 13px;
+  }
+  .language-toggle button {
+    padding: 6px 3px;
+    font-size: 12px;
+  }
+}
+
+/* Route the What We Do diagram to the three requested work areas. */
+.home-flow-outputs {
+  position: absolute;
+  z-index: 2;
+  top: 354px;
+  left: 50%;
+  display: grid;
+  width: min(780px, calc(100% - 48px));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  transform: translateX(-50%);
+}
+.home-flow-output {
+  position: relative;
+  top: auto;
+  left: auto;
+  display: grid;
+  width: auto;
+  min-height: 72px;
+  align-content: center;
+  justify-items: center;
+  border: 1px solid #d5e3da;
+  border-radius: 9px;
+  padding: 10px 12px;
+  background: rgba(255,255,255,.98);
+  box-shadow: 0 6px 18px rgba(24,58,39,.045);
+  text-align: center;
+  transform: none;
+}
+.home-flow-output strong {
+  color: var(--green);
+  font-size: 14px;
+  font-weight: 720;
+  line-height: 1.35;
+}
+.home-what-flow.motion-ready:not(.is-visible) .home-flow-output {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.home-what-flow.is-visible .home-flow-output {
+  animation: home-flow-output-enter 300ms cubic-bezier(.22,1,.36,1) both;
+  animation-delay: var(--flow-delay, .82s);
+}
+@keyframes home-flow-output-enter {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 820px) {
+  .home-flow-outputs {
+    top: 418px;
+    width: calc(100% - 24px);
+    gap: 8px;
+  }
+  .home-flow-output { min-height: 62px; padding: 8px 6px; }
+  .home-flow-output strong { font-size: 12px; }
+}
+@media (max-width: 620px) {
+  .home-flow-outputs { top: 418px; gap: 6px; }
+  .home-flow-output { min-height: 62px; padding: 7px 4px; }
+  .home-flow-output strong { font-size: clamp(10.5px, 3vw, 12px); }
+}
+@media (max-width: 359px) {
+  .home-flow-outputs { top: 454px; }
+  .home-flow-output { min-height: 66px; }
+  .home-flow-output strong { font-size: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-nav > a:not(.mobile-nav-brand)::after { transition: none; }
+  .home-what-flow .home-flow-output {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
