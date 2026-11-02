@@ -14,11 +14,11 @@ def paragraphs(filename: str) -> list[str]:
 def source_lines(filename: str) -> list[int]:
     return [i + 1 for i, p in enumerate(Document(DOCS / filename).paragraphs) if p.text.strip()]
 
-home = paragraphs("Home.docx")
 about = paragraphs("Who We Are - About US.docx")
 about_lines = source_lines("Who We Are - About US.docx")
 what_we_do = paragraphs("What We Do (1).docx")
 what_we_do_lines = source_lines("What We Do (1).docx")
+home = [what_we_do[0], what_we_do[1], what_we_do[5], what_we_do[6]]
 services = paragraphs("Supervision Services.docx")
 service_lines = source_lines("Supervision Services.docx")
 product_text = paragraphs("Products (3).docx")
@@ -226,7 +226,7 @@ def category_title(category, language):
 # Persist only the concise copy used by the pages.
 content = {
     "home":{"titleTr":home[0],"bodyTr":home[1],"titleEn":home[2],"bodyEn":home[3]},
-    "about":{"titleTr":about[0],"paragraphsTr":[{"text":about[i],"source":f"Who We Are - About US.docx:{about_lines[i]}"} for i in range(1,6)],"titleEn":about[6],"paragraphsEn":[{"text":about[i],"source":f"Who We Are - About US.docx:{about_lines[i]}"} for i in range(7,12)]},
+    "about":{"titleTr":about[0].split('/')[0].strip(' :'),"paragraphsTr":[{"text":about[i],"source":f"Who We Are - About US.docx:{about_lines[i]}"} for i in range(1,6)],"titleEn":about[6],"paragraphsEn":[{"text":about[i],"source":f"Who We Are - About US.docx:{about_lines[i]}"} for i in range(7,12)]},
     "whatWeDo":{"titleTr":what_we_do[0],"paragraphsTr":[{"text":what_we_do[i],"source":f"What We Do (1).docx:{what_we_do_lines[i]}"} for i in range(1,5)],"titleEn":what_we_do[5],"paragraphsEn":[{"text":what_we_do[i],"source":f"What We Do (1).docx:{what_we_do_lines[i]}"} for i in range(6,10)]},
     "services":{
         "titleTr":services[0],
@@ -406,7 +406,7 @@ about_intro_en=''.join(p_html(x,"en") for x in content["about"]["paragraphsEn"][
 about_rest_tr=''.join(p_html(x,"tr") for x in content["about"]["paragraphsTr"][2:])
 about_rest_en=''.join(p_html(x,"en") for x in content["about"]["paragraphsEn"][2:])
 about_body=f'''<div class="page-wrap"><div class="page-heading"><h1><span class="lang-tr">{esc(about[0].split('/')[0].strip(' :'))}</span><span class="lang-en">{esc(about[6])}</span></h1></div><section class="about-intro"><article class="about-intro-copy"><div class="lang-tr">{about_intro_tr}</div><div class="lang-en">{about_intro_en}</div></article><figure class="about-media"><img src="assets/images/home.jpeg" alt="NarTech Depolama Tankı ve Terminal Ekipmanları Sahası" data-alt-tr="NarTech Depolama Tankı ve Terminal Ekipmanları Sahası" data-alt-en="NarTech storage tank and terminal equipment facility" width="1170" height="525" loading="lazy" decoding="async"></figure></section><article class="copy-section"><div class="lang-tr">{about_rest_tr}</div><div class="lang-en">{about_rest_en}</div></article></div>'''
-(OUT/"about.html").write_text(layout(about[0],about_body,"about",title_en=about[6]),encoding="utf-8")
+(OUT/"about.html").write_text(layout(about[0].split('/')[0].strip(' :'),about_body,"about",title_en=about[6]),encoding="utf-8")
 
 what_we_do_tr=''.join(p_html(entry,"tr") for entry in content["whatWeDo"]["paragraphsTr"])
 what_we_do_en=''.join(p_html(entry,"en") for entry in content["whatWeDo"]["paragraphsEn"])

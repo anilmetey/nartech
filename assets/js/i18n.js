@@ -17,7 +17,7 @@ const translations = {
     // Taglines & Hero
     company_title: "Nartech Mühendislik",
     company_subtitle: "Endüstriyel Akış & Depolama Güvenlik Sistemleri",
-    hero_tagline: "Doğru Mühendislik. Doğru Ürün. Doğru Zamanda.",
+    hero_tagline: "Doğru Mühendislik & Doğru Ürün.",
     hero_title: "Petrol, Gaz ve Endüstriyel Tesisler İçin Yüksek Standartlı Mühendislik Çözümleri",
     hero_desc: "Petrol & Gaz, Petrokimya, Kimya, Su, Upstream, Downstream ve Offshore sektörlerinde; uluslararası güvenlik, kalite ve performans standartlarına tam uyumlu mühendislik çözümleri sunuyor; müşterilerimizin şartnamelerine özel tasarlanmış ürünler geliştiriyoruz.",
     hero_cta_primary: "Mühendislik Teklifi Al (RFQ)",
@@ -115,7 +115,7 @@ const translations = {
     footer_quick_links: "Hızlı Bağlantılar",
     footer_products_col: "Ürün Grupları",
     footer_contact_col: "İletişim & Lokasyon",
-    footer_tagline: "Doğru Mühendislik. Doğru Ürün. Doğru Zamanda.",
+    footer_tagline: "Doğru Mühendislik & Doğru Ürün.",
     footer_rights: "Tüm hakları saklıdır. Uluslararası standartlara uygun mühendislik güvencesi.",
     footer_direct_rfq: "Doğrudan Teklif İletin →",
     footer_privacy: "Gizlilik & KVKK Politikası"
@@ -134,7 +134,7 @@ const translations = {
     // Taglines & Hero
     company_title: "Nartech Engineering",
     company_subtitle: "Industrial Flow & Storage Safety Systems",
-    hero_tagline: "The Right Engineering. The Right Product. The Right Time.",
+    hero_tagline: "The Right Engineering & The Right Product.",
     hero_title: "High-Specification Engineering Solutions for Oil, Gas & Industrial Facilities",
     hero_desc: "In the Oil & Gas, Petrochemical, Chemical, Water, Upstream, Downstream, and Offshore sectors, we deliver international-standard engineering solutions in full compliance with global safety, quality, and performance codes, and develop products tailor-made to our client's specifications.",
     hero_cta_primary: "Request Engineering Quote (RFQ)",
@@ -232,7 +232,7 @@ const translations = {
     footer_quick_links: "Quick Links",
     footer_products_col: "Product Lines",
     footer_contact_col: "Contact & Location",
-    footer_tagline: "Right Engineering. Right Product. Right Time.",
+    footer_tagline: "The Right Engineering & The Right Product.",
     footer_rights: "All rights reserved. Certified to international engineering standards.",
     footer_direct_rfq: "Submit Direct RFQ →",
     footer_privacy: "Privacy Policy"

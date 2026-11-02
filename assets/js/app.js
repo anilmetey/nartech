@@ -49,7 +49,6 @@
     const button = event.target.closest('[data-set-language]');
     if (button) setLanguage(button.dataset.setLanguage);
   });
-
   const navToggle = document.querySelector('[data-nav-toggle]');
   const siteNav = document.querySelector('#site-nav');
   const navBackdrop = document.querySelector('[data-nav-close]');

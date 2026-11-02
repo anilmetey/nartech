@@ -1,12 +1,12 @@
 {
   "home": {
-    "titleTr": "Doğru Mühendislik. Doğru Ürün. Doğru Zamanda.",
-    "bodyTr": "Petrol & Gaz, Petrokimya, Kimya, Su, Upstream, Downstream ve Offshore sektörlerinde; uluslararası güvenlik, kalite ve performans standartlarına tam uyumlu, dünya standartlarında mühendislik çözümleri sunuyor; müşterilerimizin şartnamelerine özel tasarlanmış ürünler geliştiriyoruz.",
-    "titleEn": "The Right Engineering. The Right Product. The Right Time.",
-    "bodyEn": "In the Oil & Gas, Petrochemical, Chemical, Water, Upstream, Downstream, and Offshore sectors, we deliver world-class engineering solutions in full compliance with international safety, quality, and performance standards, and develop products tailor-made to our client’s specifications."
+    "titleTr": "Doğru Mühendislik & Doğru Ürün.",
+    "bodyTr": "Petrol & Gaz, Petrokimya, Kimya, Su, Upstream, Downstream ve Offshore sektörlerinde; uluslararası güvenlik, kalite ve performans standartlarına tam uyumlu, dünya standartlarında mühendislik çözümleri sunuyoruz.",
+    "titleEn": "The Right Engineering & The Right Product.",
+    "bodyEn": "We provide world-class engineering solutions across the Oil & Gas, Petrochemical, Chemical, Water, Upstream, Downstream, and Offshore industries, fully compliant with international safety, quality, and performance standards."
   },
   "about": {
-    "titleTr": "Hakkımızda / About Us :",
+    "titleTr": "Hakkımızda",
     "paragraphsTr": [
       {
         "text": "Nartech olarak; Petrol & Gaz, Petrokimya, Kimya, Su, Upstream, Downstream ve Offshore sektörlerinde 10 yılı aşkın mühendislik deneyimimizle, müşterilerimize güvenilir, teknik açıdan doğru ve ekonomik çözümler sunuyoruz.",
