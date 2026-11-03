@@ -1038,47 +1038,182 @@ main { min-height: 58vh; }
 .form-page .form-field textarea,
 .form-page .form-field select { background: rgba(255,255,255,.82); }
 
-/* About page: continuous text column on left, hero image starting cleanly at the top on right */
-@media (min-width: 821px) {
-  .about-intro {
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
-    grid-template-rows: auto auto;
-    align-items: start;
-    gap: 0 clamp(30px, 3.6vw, 54px);
-    padding-top: 14px;
+/* About Page Premium Architecture */
+.about-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  align-items: center;
+  gap: clamp(28px, 3.5vw, 52px);
+  padding: 32px 0 44px;
+  border-bottom: 1px solid var(--line);
+}
+.about-hero-copy p {
+  margin: 0 0 14px;
+  color: #34463b;
+  font-size: clamp(14.5px, 1.05vw, 15.5px);
+  line-height: 1.7;
+}
+.about-hero-copy p:last-child {
+  margin-bottom: 0;
+}
+.about-hero-media {
+  margin: 0;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--green-soft);
+  box-shadow: 0 16px 36px rgba(24, 58, 39, .09);
+}
+.about-hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Engineering Approach Section */
+.about-approach {
+  padding: clamp(38px, 4.5vw, 54px) 0 44px;
+  border-bottom: 1px solid var(--line);
+}
+.about-approach .about-subtitle {
+  display: table;
+  margin: 0 auto 28px;
+}
+.about-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(18px, 2.5vw, 28px);
+  margin-bottom: 24px;
+}
+.about-card {
+  position: relative;
+  padding: clamp(24px, 3vw, 32px);
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: linear-gradient(145deg, #fff, #f6f9f7);
+  box-shadow: 0 8px 24px rgba(24, 58, 39, .04);
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+.about-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(20, 79, 50, 0.35);
+  box-shadow: 0 14px 32px rgba(20, 79, 50, .09);
+}
+.about-card-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-bottom: 14px;
+  border-radius: 8px;
+  background: rgba(20, 79, 50, 0.08);
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+.about-card h3 {
+  margin: 0 0 10px;
+  font-size: clamp(16px, 1.25vw, 18px);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.35;
+}
+.about-card p {
+  margin: 0;
+  color: #34463b;
+  font-size: 14.5px;
+  line-height: 1.7;
+}
+.about-commitment {
+  padding: 18px 24px;
+  border-radius: 10px;
+  border: 1px solid rgba(20, 79, 50, 0.2);
+  background: linear-gradient(135deg, rgba(240, 246, 242, 0.85), rgba(255, 255, 255, 0.98));
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(24, 58, 39, .035);
+}
+.about-commitment p {
+  margin: 0;
+  color: #1e3327;
+  font-size: clamp(14.5px, 1.1vw, 16px);
+  line-height: 1.6;
+}
+.about-commitment strong {
+  color: var(--green);
+}
+
+/* "Nar" Story Showcase */
+.about-story-section {
+  padding: clamp(38px, 4.5vw, 54px) 0 clamp(48px, 5.5vw, 72px);
+}
+.about-story-box {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: clamp(32px, 4.2vw, 48px) clamp(24px, 4.5vw, 52px);
+  text-align: center;
+  border-radius: 14px;
+  border: 1px solid #d5e3da;
+  background: linear-gradient(145deg, #f9fbf9, #edf4ef);
+  box-shadow: 0 14px 34px rgba(24, 58, 39, .05);
+}
+.about-story-box .about-subtitle {
+  display: table;
+  margin: 0 auto 18px;
+}
+.about-story-box p {
+  max-width: 720px;
+  margin: 0 auto 14px;
+  color: #3d5245;
+  font-size: 14.5px;
+  line-height: 1.75;
+}
+.about-story-box .story-lead {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+.story-motto-pill {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 10px 24px;
+  background: rgba(20, 79, 50, 0.08);
+  border: 1px solid rgba(20, 79, 50, 0.22);
+  border-radius: 99px;
+  color: var(--green);
+  font-size: clamp(14px, 1.1vw, 15.5px);
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+@media (max-width: 820px) {
+  .about-hero {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding: 24px 0 34px;
   }
-  .about-intro-copy {
-    grid-column: 1;
-    grid-row: 1;
-    max-width: 650px;
+  .about-hero-media {
+    aspect-ratio: 16 / 9;
+    max-width: 100%;
   }
-  .about-intro-copy p,
-  .about-intro > .copy-section p {
-    margin-bottom: 13px;
-    font-size: clamp(14.5px, 1.05vw, 15.5px);
-    line-height: 1.68;
+  .about-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
-  .about-intro-copy p:last-child { margin-bottom: 12px; }
-  .about-media {
-    grid-column: 2;
-    grid-row: 1 / span 2;
-    align-self: start;
-    justify-self: center;
-    width: 100%;
-    max-width: 680px;
-    aspect-ratio: 1.4;
-    border-radius: 12px;
-    box-shadow: 0 16px 36px rgba(24,58,39,.11);
-    margin-top: 0;
+  .about-approach {
+    padding: 30px 0 34px;
   }
-  .about-intro > .copy-section {
-    grid-column: 1;
-    grid-row: 2;
-    max-width: 650px;
-    margin: 0;
-    padding: 0 0 28px;
+  .about-story-section {
+    padding: 30px 0 44px;
   }
-  .about-intro > .copy-section p:last-child { margin-bottom: 0; }
+  .about-story-box {
+    padding: 26px 20px;
+  }
 }
 
 /* Desktop footer: one moving rule belongs to Quick Links, with a short hover rule per link. */
