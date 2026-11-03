@@ -21,7 +21,10 @@ html { scroll-behavior: smooth; }
 body { margin: 0; color: var(--ink); background: var(--paper); line-height: 1.6; }
 img { display: block; max-width: 100%; }
 a { color: var(--green); text-decoration: none; }
-a:hover { text-decoration: underline; text-underline-offset: 3px; }
+a:hover { text-decoration: none; }
+.copy-section a:hover,
+.about-intro-copy a:hover,
+.legal-copy a:hover { text-decoration: underline; text-underline-offset: 3px; }
 button, input, textarea, select { font: inherit; }
 button, a, summary, input, textarea { -webkit-tap-highlight-color: transparent; }
 :focus-visible { outline: 3px solid #a65e3e; outline-offset: 3px; }
@@ -38,7 +41,13 @@ html[data-language="en"] .lang-tr { display: none !important; }
 .site-nav a:hover,
 .site-nav a:focus,
 .site-nav a:active,
-.site-nav a[aria-current="page"] { text-decoration: none !important; }
+.site-nav a[aria-current="page"],
+.site-nav a span,
+.site-nav a:hover span {
+  text-decoration: none !important;
+  text-decoration-line: none !important;
+  -webkit-text-decoration: none !important;
+}
 .site-nav a[aria-current="page"] { color: var(--green); box-shadow: none; }
 .mobile-nav-brand { display: none; }
 .nav-toggle, .nav-backdrop { display: none; }
@@ -460,9 +469,12 @@ main { min-height: 58vh; }
 .about-nar-story p:last-child,
 .nar-story-box p:last-child {
   margin-bottom: 0 !important;
-  font-style: italic;
-  font-weight: 600;
-  color: var(--green);
+  font-style: normal;
+  font-weight: 700;
+  color: #34463b !important;
+}
+.copy-section strong {
+  color: #34463b;
 }
 .home-what-section { padding: clamp(48px, 5vw, 68px) 0 clamp(52px, 6vw, 74px); }
 .home-what-heading { max-width: 850px; margin: 0 auto 24px; text-align: center; }
@@ -1157,7 +1169,8 @@ main { min-height: 58vh; }
     justify-content: flex-start;
     gap: clamp(13px, 1.3vw, 20px);
   }
-  .site-nav > a:not(.mobile-nav-brand) {
+  .site-nav > a:not(.mobile-nav-brand),
+  .site-nav > a:not(.mobile-nav-brand) span {
     position: relative;
     padding: 9px 0;
     color: #34443a;
@@ -1167,18 +1180,26 @@ main { min-height: 58vh; }
     text-align: left;
     text-transform: uppercase;
     text-decoration: none !important;
+    text-decoration-line: none !important;
+    -webkit-text-decoration: none !important;
   }
   .site-nav > a:not(.mobile-nav-brand):hover,
   .site-nav > a:not(.mobile-nav-brand):focus,
   .site-nav > a:not(.mobile-nav-brand):focus-visible,
-  .site-nav > a:not(.mobile-nav-brand):active {
+  .site-nav > a:not(.mobile-nav-brand):active,
+  .site-nav > a:not(.mobile-nav-brand):hover span {
     color: var(--green);
     text-decoration: none !important;
+    text-decoration-line: none !important;
+    -webkit-text-decoration: none !important;
   }
-  .site-nav > a[aria-current="page"] {
+  .site-nav > a[aria-current="page"],
+  .site-nav > a[aria-current="page"] span {
     color: var(--green);
     box-shadow: none !important;
     text-decoration: none !important;
+    text-decoration-line: none !important;
+    -webkit-text-decoration: none !important;
   }
   .site-nav > a:not(.mobile-nav-brand)::after {
     position: absolute;

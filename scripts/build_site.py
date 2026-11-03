@@ -311,7 +311,7 @@ def footer(prefix: str) -> str:
 </div></footer>'''
 
 def layout(title: str, body: str, current: str, prefix="", lang="tr", title_en=None) -> str:
-    css_version = "nartech-white-badge-20261103-2"
+    css_version = "nartech-white-badge-20261103-3"
     js_version = "nartech-localization-20261030-1"
     title_en = title_en or title
     return f'''<!doctype html>
@@ -319,7 +319,7 @@ def layout(title: str, body: str, current: str, prefix="", lang="tr", title_en=N
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)} | NarTech</title>
-<link rel="stylesheet" href="{prefix}assets/css/main.css?v={css_version}">
+<link rel="stylesheet" href="{prefix}assets/css/main.css?v=nartech-single-line-20261103-1">
 <script defer src="{prefix}assets/js/app.js?v={js_version}"></script>
 </head>
 <body>
