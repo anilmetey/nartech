@@ -32,23 +32,23 @@
     "titleEn": "About Us",
     "paragraphsEn": [
       {
-        "text": "As a NarTech with an engineering team boasting over 10 years of engineering experience in the Oil & Gas, Petrochemical, Chemical, Water, Upstream, Downstream, and Offshore sectors, we provide our clients with reliable, technically accurate, and cost-effective solutions.",
+        "text": "At NarTech, our engineering team brings over 10 years of experience across the Oil & Gas, Petrochemical, Chemical, Water, Upstream, Downstream, and Offshore sectors. We provide our clients with dependable, technically sound, and cost-effective solutions.",
         "source": "Who We Are - About US.docx:8"
       },
       {
-        "text": "For refineries, tank farms, and natural gas pipeline applications, we supply a wide range of engineering approved products including storage tank equipments, valves, and fire protection systems. We ensure fast, reliable access to critical spare parts for industrial facilities and terminals.",
+        "text": "For refineries, tank farms, and natural gas pipeline applications, we supply a wide range of engineering-approved products, primarily storage tank equipment, valves, and fire protection systems. We also ensure fast, dependable access to critical spare parts for industrial facilities and terminals.",
         "source": "Who We Are - About US.docx:9"
       },
       {
-        "text": "For us, every project is priority and foremost an engineering problem. We approach the entire process from product selection to procurement from this same perspective.",
+        "text": "We treat every project first and foremost as an engineering challenge. We approach the entire process, from product selection through procurement, from this same technical perspective.",
         "source": "Who We Are - About US.docx:10"
       },
       {
-        "text": "The projects we've delivered for leading EPC contractors and end users give us close, first-hand insight into complex industrial requirements — enabling us to provide solutions fully aligned with international standards and project specifications.",
+        "text": "The projects we deliver for leading EPC contractors and end users give us direct insight into complex industrial requirements. We provide solutions that fully comply with international standards and project specifications.",
         "source": "Who We Are - About US.docx:11"
       },
       {
-        "text": "Our goal is simple: the right product, the right solution, at the right time.",
+        "text": "Our commitment is simple: delivering the right product, the right solution, at the right time.",
         "source": "Who We Are - About US.docx:12"
       }
     ]
@@ -80,15 +80,15 @@
         "source": "What We Do (1).docx:7"
       },
       {
-        "text": "Taking our customer’s technical requirements, project needs, and specific specifications into account, we design, develop, and deliver the most suitable products and solutions.",
+        "text": "Based on our clients' technical requirements, project needs, and project specifications, we design, develop, and deliver the most suitable products and solutions.",
         "source": "What We Do (1).docx:8"
       },
       {
-        "text": "By combining our engineering expertise, technical know-how, and international partnerships, we deliver reliable, efficient, and sustainable solutions tailored to the unique requirements of every project.",
+        "text": "Combining deep engineering expertise, technical know-how, and international partnerships, we deliver dependable and efficient solutions tailored to the specific requirements of every project.",
         "source": "What We Do (1).docx:9"
       },
       {
-        "text": "For us, the right product is not simply one that meets technical requirements; it is one that brings together safety, performance, operational efficiency, and long-term value.",
+        "text": "To us, the right product does more than meet technical specifications. It brings together safety, performance, operational efficiency, and long-term value.",
         "source": "What We Do (1).docx:10"
       }
     ]
@@ -882,36 +882,46 @@
     {
       "id": "pig-cleaning-equipments",
       "title": {
-        "text": "3-Pig Cleaning Equipments",
+        "text": "3-Pig Signaller & Pigs",
         "source": "Products (3).docx:157"
       },
       "items": [
         {
-          "id": "foam-pigs",
-          "titleTr": "A Köpük Pigleri",
-          "titleEn": "A Foam Pigs",
+          "id": "pigs",
+          "titleTr": "Pigler",
+          "titleEn": "Pigs",
           "tr": [],
           "en": [],
-          "children": [],
+          "children": [
+            {
+              "id": "foam-pigs",
+              "titleTr": "A Köpük Pigleri",
+              "titleEn": "A Foam Pigs",
+              "tr": [],
+              "en": [],
+              "children": [],
+              "source": 112
+            },
+            {
+              "id": "solid-cast-pigs",
+              "titleTr": "B Katı Döküm Pigleri",
+              "titleEn": "B Solid Cast Pigs",
+              "tr": [],
+              "en": [],
+              "children": [],
+              "source": 113
+            },
+            {
+              "id": "steel-pigs",
+              "titleTr": "C Çelik Pigler",
+              "titleEn": "C Steel Pigs",
+              "tr": [],
+              "en": [],
+              "children": [],
+              "source": 114
+            }
+          ],
           "source": 112
-        },
-        {
-          "id": "solid-cast-pigs",
-          "titleTr": "B Katı Döküm Pigleri",
-          "titleEn": "B Solid Cast Pigs",
-          "tr": [],
-          "en": [],
-          "children": [],
-          "source": 113
-        },
-        {
-          "id": "steel-pigs",
-          "titleTr": "C Çelik Pigler",
-          "titleEn": "C Steel Pigs",
-          "tr": [],
-          "en": [],
-          "children": [],
-          "source": 114
         },
         {
           "id": "pig-signallers",
@@ -942,8 +952,8 @@
           "source": 115
         }
       ],
-      "titleTr": "3-Pig Temizleme",
-      "titleEn": "3-Pig Cleaning Equipments"
+      "titleTr": "3-Pig Sinyal Vericileri & Pigler",
+      "titleEn": "3-Pig Signaller & Pigs"
     },
     {
       "id": "industrial-silencers",

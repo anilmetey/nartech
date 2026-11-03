@@ -182,6 +182,14 @@ fire_items = [
     item("foam-tanks", 105, 105, [106, 107, 108], [106, 107, 108], src=104),
     item("foam-water-sprinkler", 109, 109, [110, 111], [110, 111], src=108),
 ]
+pigs_branch = item("pigs", None, None, [], [], [
+    item("foam-pigs", 113, 113, [], [], src=112),
+    item("solid-cast-pigs", 114, 114, [], [], src=113),
+    item("steel-pigs", 115, 115, [], [], src=114),
+], 112)
+pigs_branch["titleTr"] = "Pigler"
+pigs_branch["titleEn"] = "Pigs"
+
 pig_signallers = item("pig-signallers", 116, 116, [], [], [
     item("non-intrusive-pig-signaller", 117, 117, [], [], src=116),
     item("intrusive-pig-signaller", 118, 118, [], [], src=116),
@@ -196,9 +204,8 @@ valve_items = [
 categories = [
     {"id":"storage-tank-equipments", "title":ref(0), "items":[pvrv, inline, endline, emergency, gauge, floating_roofs]},
     {"id":"fire-fighting-equipments", "title":ref(84), "items":fire_items},
-    {"id":"pig-cleaning-equipments", "title":ref(112), "items":[
-        item("foam-pigs",113,113,[],[],src=112), item("solid-cast-pigs",114,114,[],[],src=113),
-        item("steel-pigs",115,115,[],[],src=114), pig_signallers]},
+    {"id":"pig-cleaning-equipments", "title":{"text": "3-Pig Signaller & Pigs", "source": "Products (3).docx:157"}, "items":[
+        pigs_branch, pig_signallers]},
     {"id":"industrial-silencers", "title":ref(119), "items":[], "descriptionTr":refs([120],"tr"), "descriptionEn":refs([120])},
     {"id":"floatin-suction-units", "title":ref(121), "items":floating_suction_children, "descriptionTr":refs([122],"tr"), "descriptionEn":refs([122])},
     {"id":"retractable-grounding-cable", "title":ref(126), "items":[], "descriptionTr":refs([127],"tr"), "descriptionEn":refs([127])},
@@ -209,7 +216,7 @@ categories = [
     {"id":"spare-parts-for-refineries", "title":ref(135), "items":[]},
 ]
 category_titles_tr=[
-    "1-Depolama Tankı Ekipmanları", "2-Yangın Söndürme", "3-Pig Temizleme",
+    "1-Depolama Tankı Ekipmanları", "2-Yangın Söndürme", "3-Pig Sinyal Vericileri & Pigler",
     "4-Susturucular", "5-Yüzer Emiş", "6-Topraklama RGR", "7-Dolum Kolları",
     "8-Vanalar", "9-Gaz Yıkama", "10-Seperatörler", "11-Yedek Parça",
 ]
@@ -223,11 +230,25 @@ def category_title(category, language):
         return category["titleTr"]
     return category["titleEn"].strip().rstrip(":").strip()
 
+ABOUT_ENGLISH_OVERRIDE = {
+    7: "At NarTech, our engineering team brings over 10 years of experience across the Oil & Gas, Petrochemical, Chemical, Water, Upstream, Downstream, and Offshore sectors. We provide our clients with dependable, technically sound, and cost-effective solutions.",
+    8: "For refineries, tank farms, and natural gas pipeline applications, we supply a wide range of engineering-approved products, primarily storage tank equipment, valves, and fire protection systems. We also ensure fast, dependable access to critical spare parts for industrial facilities and terminals.",
+    9: "We treat every project first and foremost as an engineering challenge. We approach the entire process, from product selection through procurement, from this same technical perspective.",
+    10: "The projects we deliver for leading EPC contractors and end users give us direct insight into complex industrial requirements. We provide solutions that fully comply with international standards and project specifications.",
+    11: "Our commitment is simple: delivering the right product, the right solution, at the right time.",
+}
+
+WHAT_WE_DO_ENGLISH_OVERRIDE = {
+    7: "Based on our clients' technical requirements, project needs, and project specifications, we design, develop, and deliver the most suitable products and solutions.",
+    8: "Combining deep engineering expertise, technical know-how, and international partnerships, we deliver dependable and efficient solutions tailored to the specific requirements of every project.",
+    9: "To us, the right product does more than meet technical specifications. It brings together safety, performance, operational efficiency, and long-term value.",
+}
+
 # Persist only the concise copy used by the pages.
 content = {
     "home":{"titleTr":home[0],"bodyTr":home[1],"titleEn":home[2],"bodyEn":home[3]},
-    "about":{"titleTr":about[0].split('/')[0].strip(' :'),"paragraphsTr":[{"text":about[i],"source":f"Who We Are - About US.docx:{about_lines[i]}"} for i in range(1,6)],"titleEn":about[6],"paragraphsEn":[{"text":about[i],"source":f"Who We Are - About US.docx:{about_lines[i]}"} for i in range(7,12)]},
-    "whatWeDo":{"titleTr":what_we_do[0],"paragraphsTr":[{"text":what_we_do[i],"source":f"What We Do (1).docx:{what_we_do_lines[i]}"} for i in range(1,5)],"titleEn":what_we_do[5],"paragraphsEn":[{"text":what_we_do[i],"source":f"What We Do (1).docx:{what_we_do_lines[i]}"} for i in range(6,10)]},
+    "about":{"titleTr":about[0].split('/')[0].strip(' :'),"paragraphsTr":[{"text":about[i],"source":f"Who We Are - About US.docx:{about_lines[i]}"} for i in range(1,6)],"titleEn":about[6],"paragraphsEn":[{"text":ABOUT_ENGLISH_OVERRIDE.get(i, about[i]),"source":f"Who We Are - About US.docx:{about_lines[i]}"} for i in range(7,12)]},
+    "whatWeDo":{"titleTr":what_we_do[0],"paragraphsTr":[{"text":what_we_do[i],"source":f"What We Do (1).docx:{what_we_do_lines[i]}"} for i in range(1,5)],"titleEn":what_we_do[5],"paragraphsEn":[{"text":WHAT_WE_DO_ENGLISH_OVERRIDE.get(i, what_we_do[i]),"source":f"What We Do (1).docx:{what_we_do_lines[i]}"} for i in range(6,10)]},
     "services":{
         "titleTr":services[0],
         "titleEn":"FIELD SUPERVISION SERVICE",
@@ -290,7 +311,7 @@ def footer(prefix: str) -> str:
 </div></footer>'''
 
 def layout(title: str, body: str, current: str, prefix="", lang="tr", title_en=None) -> str:
-    css_version = "naragro-home-flow-20261030-9" if current == "home" else "naragro-footer-responsive-20261030-6"
+    css_version = "naragro-hero-tuned-20261103-1" if current == "home" else "naragro-footer-responsive-20261030-6"
     js_version = "nartech-localization-20261030-1"
     title_en = title_en or title
     return f'''<!doctype html>
@@ -364,6 +385,7 @@ for index,(tr_kicker,en_kicker,tr_value,en_value,tr_detail,en_detail) in enumera
 home_proof_html=''.join(home_proof_cards)
 home_about_tr=''.join(p_html(x,"tr") for x in content["about"]["paragraphsTr"][:2])
 home_about_en=''.join(p_html(x,"en") for x in content["about"]["paragraphsEn"][:2])
+nar_story_html='''<div class="about-nar-story"><div class="lang-tr"><p>Türkçedeki “nar” sözcüğü, nar meyvesini ifade eder.</p><p>Dışarıdan bakıldığında bir nar tektir. Onu açtığınızda, içinde birbirinden farklı yüzlerce tane keşfedersiniz.</p><p>Nar bizi temsil eder. Her bir tanesi bizlerden biridir; geçmişlerimiz, fikirlerimiz, deneyimlerimiz ve güçlü yanlarımız farklı olsa da bir bütün olarak birleşiriz.</p><p><strong>Dışarıdan biriz. İçimiz zengin. Birlikte güçlüyüz.</strong></p></div><div class="lang-en"><p>In Turkish, "nar" means pomegranate.</p><p>From the outside, a pomegranate appears as a single fruit. Open it, and you discover hundreds of distinct seeds inside.</p><p>Nar represents our team. Each seed reflects one of us, bringing together different backgrounds, perspectives, and strengths as a unified whole.</p><p><strong>One on the outside. Rich within. Strong together.</strong></p></div></div>'''
 home_flow_items=[
     ("Standartlar", "International Standards", "Güvenlik · kalite · performans", "Safety · quality · performance", "What We Do (1).docx:2", "What We Do (1).docx:7"),
     ("Teknik Gereksinimler", "Technical Requirements", "Proje ihtiyaçları · özel şartnameler", "Project needs · specific specifications", "What We Do (1).docx:3", "What We Do (1).docx:8"),
@@ -394,7 +416,7 @@ home_flow_mobile_svg=flow_svg_paths(home_flow_mobile_paths,"M500 366 C500 383 50
 home_flow_graphic=f'''<svg class="home-flow-lines home-flow-lines--desktop" viewBox="0 0 1000 464" preserveAspectRatio="none" aria-hidden="true">{home_flow_desktop_svg}</svg><svg class="home-flow-lines home-flow-lines--mobile" viewBox="0 0 1000 500" preserveAspectRatio="none" aria-hidden="true">{home_flow_mobile_svg}</svg>'''
 home_body=f'''<div class="home-page"><div class="page-wrap"><section class="home-hero"><div class="home-hero-copy"><h1><span class="lang-tr">{esc(content['home']['titleTr'])}</span><span class="lang-en">{esc(content['home']['titleEn'])}</span></h1><p><span class="lang-tr">{esc(content['home']['bodyTr'])}</span><span class="lang-en">{esc(content['home']['bodyEn'])}</span></p><div class="home-actions"><a class="button button-primary" href="products.html"><span class="lang-tr">Ürünler</span><span class="lang-en">Products</span></a><a class="button" href="calculator.html"><span class="lang-tr">Hesaplama</span><span class="lang-en">Calculator</span></a><a class="button" href="contact.html#contact-form"><span class="lang-tr">Randevu Oluştur</span><span class="lang-en">Book an Appointment</span></a></div></div><figure class="home-hero-media"><img src="assets/images/home.jpeg" alt="NarTech Depolama Tankı ve Terminal Ekipmanları Sahası" data-alt-tr="NarTech Depolama Tankı ve Terminal Ekipmanları Sahası" data-alt-en="NarTech storage tank and terminal equipment facility" width="1170" height="525" fetchpriority="high" decoding="async"></figure></section>
 <section class="home-proof-strip" aria-label="Mühendislik Göstergeleri" data-aria-tr="Mühendislik Göstergeleri" data-aria-en="Engineering Indicators">{home_proof_html}</section>
-<section class="home-who-section" aria-labelledby="home-who-heading"><div class="home-who-heading"><h2 id="home-who-heading"><span class="lang-tr">Hakkımızda</span><span class="lang-en">Who We Are</span></h2></div><div class="home-who-copy"><div class="lang-tr">{home_about_tr}</div><div class="lang-en">{home_about_en}</div></div></section>
+<section class="home-who-section" aria-labelledby="home-who-heading"><div class="home-who-heading"><h2 id="home-who-heading"><span class="lang-tr">Biz Kimiz</span><span class="lang-en">Who We Are</span></h2></div><div class="home-who-copy"><div class="lang-tr">{home_about_tr}</div><div class="lang-en">{home_about_en}</div>{nar_story_html}</div></section>
 <section class="home-what-section" aria-labelledby="home-what-heading"><div class="home-what-heading"><h2 id="home-what-heading"><span class="lang-tr">Ne Yapıyoruz</span><span class="lang-en">What We Do</span></h2><p class="home-what-subtitle"><span class="lang-tr">{esc(content['whatWeDo']['titleTr'])}</span><span class="lang-en">{esc(content['whatWeDo']['titleEn'].strip())}</span></p></div><div class="home-what-flow" data-home-flow><div class="home-flow-visual"><div class="home-flow-cards" role="list">{home_flow_cards}</div>{home_flow_graphic}<div class="home-flow-orbit" aria-hidden="true"></div><div class="home-flow-hub"><img src="assets/images/nartech-logo-transparent.png" width="1958" height="803" alt="NarTech"></div><div class="home-flow-output"><strong><span class="lang-tr">Mühendislik Çözümleri</span><span class="lang-en">Engineering Solutions</span></strong><span><span class="lang-tr">Güvenilir · verimli · sürdürülebilir</span><span class="lang-en">Reliable · efficient · sustainable</span></span></div></div></div></section></div></div>'''
 (OUT/"index.html").write_text(layout(content["home"]["titleTr"],home_body,"home",title_en=content["home"]["titleEn"]),encoding="utf-8")
 # Keep the fallback free of copy that is not supplied in the source documents.
@@ -405,7 +427,7 @@ about_intro_tr=''.join(p_html(x,"tr") for x in content["about"]["paragraphsTr"][
 about_intro_en=''.join(p_html(x,"en") for x in content["about"]["paragraphsEn"][:2])
 about_rest_tr=''.join(p_html(x,"tr") for x in content["about"]["paragraphsTr"][2:])
 about_rest_en=''.join(p_html(x,"en") for x in content["about"]["paragraphsEn"][2:])
-about_body=f'''<div class="page-wrap"><div class="page-heading"><h1><span class="lang-tr">{esc(about[0].split('/')[0].strip(' :'))}</span><span class="lang-en">{esc(about[6])}</span></h1></div><section class="about-intro"><article class="about-intro-copy"><div class="lang-tr">{about_intro_tr}</div><div class="lang-en">{about_intro_en}</div></article><figure class="about-media"><img src="assets/images/home.jpeg" alt="NarTech Depolama Tankı ve Terminal Ekipmanları Sahası" data-alt-tr="NarTech Depolama Tankı ve Terminal Ekipmanları Sahası" data-alt-en="NarTech storage tank and terminal equipment facility" width="1170" height="525" loading="lazy" decoding="async"></figure></section><article class="copy-section"><div class="lang-tr">{about_rest_tr}</div><div class="lang-en">{about_rest_en}</div></article></div>'''
+about_body=f'''<div class="page-wrap"><div class="page-heading"><h1><span class="lang-tr">{esc(about[0].split('/')[0].strip(' :'))}</span><span class="lang-en">{esc(about[6])}</span></h1></div><section class="about-intro"><article class="about-intro-copy"><div class="lang-tr">{about_intro_tr}</div><div class="lang-en">{about_intro_en}</div></article><figure class="about-media"><img src="assets/images/home-4k.jpeg" alt="NarTech Depolama Tankı ve Terminal Ekipmanları Sahası" data-alt-tr="NarTech Depolama Tankı ve Terminal Ekipmanları Sahası" data-alt-en="NarTech storage tank and terminal equipment facility" width="3840" height="1723" loading="lazy" decoding="async"></figure></section><article class="copy-section"><div class="lang-tr">{about_rest_tr}</div><div class="lang-en">{about_rest_en}</div>{nar_story_html}</article></div>'''
 (OUT/"about.html").write_text(layout(about[0].split('/')[0].strip(' :'),about_body,"about",title_en=about[6]),encoding="utf-8")
 
 what_we_do_tr=''.join(p_html(entry,"tr") for entry in content["whatWeDo"]["paragraphsTr"])

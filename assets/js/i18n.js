@@ -155,9 +155,9 @@ const translations = {
 
     // Slogan Section
     slogan_sub: "Our Engineering Philosophy",
-    slogan_title: "For Us, Every Project is First and Foremost an Engineering Problem.",
-    slogan_desc: "We approach the entire process from product selection to procurement from this same perspective. The projects we have delivered for leading EPC contractors and end users give us close, first-hand insight into complex industrial requirements, enabling us to provide solutions fully aligned with international standards and project specifications.",
-    slogan_goal: "Our goal is simple: the right product, the right solution, at the right time.",
+    slogan_title: "For Us, Every Project is First and Foremost an Engineering Challenge.",
+    slogan_desc: "We approach the entire process, from product selection through procurement, from this same technical perspective. The projects we deliver for leading EPC contractors and end users give us direct insight into complex industrial requirements, ensuring every solution complies with international standards and project specifications.",
+    slogan_goal: "Our commitment is simple: delivering the right product, the right solution, at the right time.",
 
     // Appointment / Randevu Section
     appointment_title: "Book an Engineering Appointment",
