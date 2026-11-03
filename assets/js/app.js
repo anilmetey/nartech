@@ -309,11 +309,9 @@
     if (reducedMotion || !('IntersectionObserver' in window)) {
       revealProof();
     } else {
-      proofStrip.classList.add('motion-ready');
-
       const checkInView = () => {
         const rect = proofStrip.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
+        if (rect.top < window.innerHeight + 100 && rect.bottom > -50) {
           revealProof();
           return true;
         }
@@ -321,7 +319,7 @@
       };
 
       if (!checkInView()) {
-        setTimeout(checkInView, 120);
+        setTimeout(checkInView, 80);
       }
 
       const proofObserver = new IntersectionObserver(entries => {
@@ -329,7 +327,7 @@
           revealProof();
           proofObserver.disconnect();
         }
-      }, { threshold: 0.05, rootMargin: '60px 0px' });
+      }, { threshold: 0, rootMargin: '120px 0px' });
       proofObserver.observe(proofStrip);
     }
   }
