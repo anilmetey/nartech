@@ -34,8 +34,12 @@ html[data-language="en"] .lang-tr { display: none !important; }
 .brand { display: inline-flex; justify-content: center; align-items: center; width: min(420px, 78vw); height: 132px; }
 .brand img { width: 100%; height: 100%; object-fit: contain; }
 .site-nav { width: 100%; display: flex; flex-wrap: nowrap; align-items: center; justify-content: flex-start; gap: clamp(13px, 1.55vw, 23px); }
-.site-nav a { padding: 7px 2px; color: #293b31; font-size: 14px; font-weight: 650; white-space: nowrap; }
-.site-nav a[aria-current="page"] { color: var(--green); box-shadow: inset 0 -2px var(--green); }
+.site-nav a { padding: 7px 2px; color: #293b31; font-size: 14px; font-weight: 650; white-space: nowrap; text-decoration: none !important; }
+.site-nav a:hover,
+.site-nav a:focus,
+.site-nav a:active,
+.site-nav a[aria-current="page"] { text-decoration: none !important; }
+.site-nav a[aria-current="page"] { color: var(--green); box-shadow: none; }
 .mobile-nav-brand { display: none; }
 .nav-toggle, .nav-backdrop { display: none; }
 .language-toggle { display: inline-flex; gap: 4px; margin-left: 4px; padding-left: 14px; border-left: 1px solid var(--line); }
@@ -311,7 +315,8 @@ main { min-height: 58vh; }
 .form-panel { border-radius: 10px; background: linear-gradient(135deg, #fff, #fafcfb); box-shadow: 0 12px 34px rgba(24,58,39,.055); }
 #contact-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 #contact-form .form-field:nth-of-type(3), #contact-form .form-status, #contact-form > .button { grid-column: 1 / -1; }
-#contact-form > .button { justify-self: start; margin-top: 0; }
+#contact-form > .button { justify-self: center; min-width: 180px; margin-top: 8px; }
+#contact-form .form-status { text-align: center; }
 #calc-email-form { grid-template-columns: minmax(0, 1fr) auto; align-items: end; }
 #calc-input-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 #calc-input-form > div:last-child { grid-column: 1 / -1; }
@@ -525,10 +530,12 @@ main { min-height: 58vh; }
   }
   .brand { width: 100%; height: 100px; justify-content: flex-start; }
   .site-nav { display: grid; width: 100%; grid-template-columns: minmax(70px,.9fr) minmax(83px,1fr) minmax(100px,1.2fr) minmax(56px,.65fr) minmax(68px,.8fr) minmax(82px,1fr) minmax(184px,1.9fr) minmax(62px,.7fr) 80px; align-items: center; justify-content: stretch; gap: 0 clamp(4px, .55vw, 7px); }
-  .site-nav a { display: block; min-width: 0; padding: 8px 2px; font-size: 13px; text-align: center; }
+  .site-nav a { display: block; min-width: 0; padding: 8px 2px; font-size: 13px; text-align: center; text-decoration: none !important; }
+  .site-nav a:hover,
+  .site-nav a:focus,
+  .site-nav a:active { text-decoration: none !important; }
   .site-nav > .mobile-nav-brand { display: none; }
-  .site-nav a[aria-current="page"] { position: relative; box-shadow: none; }
-  .site-nav a[aria-current="page"]::after { position: absolute; right: 50%; bottom: 1px; width: min(42px, calc(100% - 12px)); height: 2px; background: var(--green); content: ""; transform: translateX(50%); }
+  .site-nav a[aria-current="page"] { position: relative; box-shadow: none; text-decoration: none !important; }
   .language-toggle { width: 100%; justify-content: center; gap: 0; margin: 0; border-left: 1px solid var(--line); padding: 0 0 0 10px; }
   .language-toggle button { padding: 6px 4px; font-size: 12px; }
   .about-intro { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto auto; gap: 0 clamp(30px, 3vw, 40px); }
@@ -1177,18 +1184,29 @@ main { min-height: 58vh; }
     letter-spacing: .035em;
     text-align: left;
     text-transform: uppercase;
+    text-decoration: none !important;
+  }
+  .site-nav > a:not(.mobile-nav-brand):hover,
+  .site-nav > a:not(.mobile-nav-brand):focus,
+  .site-nav > a:not(.mobile-nav-brand):focus-visible,
+  .site-nav > a:not(.mobile-nav-brand):active {
+    color: var(--green);
+    text-decoration: none !important;
   }
   .site-nav > a[aria-current="page"] {
     color: var(--green);
-    box-shadow: none;
+    box-shadow: none !important;
+    text-decoration: none !important;
   }
   .site-nav > a:not(.mobile-nav-brand)::after {
     position: absolute;
     right: 0;
-    bottom: 3px;
+    bottom: 2px;
     left: 0;
-    height: 1px;
+    width: auto;
+    height: 2px;
     background: var(--green);
+    border-radius: 2px;
     content: "";
     transform: scaleX(0);
     transform-origin: left;
