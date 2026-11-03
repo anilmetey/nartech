@@ -197,7 +197,8 @@ main { min-height: 58vh; }
 .footer-brand-block { grid-area: brand; display: flex; flex-direction: column; align-items: center; text-align: center; }
 .footer-site { grid-area: site; }
 .footer-contact { grid-area: contact; }
-.footer-brand { display: inline-flex; width: min(300px,100%); height: 104px; align-items: center; justify-content: center; }
+.footer-brand { display: inline-flex; width: min(250px, 100%); height: 82px; align-items: center; justify-content: center; padding: 10px 18px; background: #ffffff; border-radius: 9px; box-shadow: 0 4px 18px rgba(0, 30, 28, 0.22); box-sizing: border-box; transition: transform 160ms ease, box-shadow 160ms ease; }
+.footer-brand:hover { transform: translateY(-1px); box-shadow: 0 6px 22px rgba(0, 30, 28, 0.28); }
 .footer-brand img { width: 100%; height: 100%; object-fit: contain; }
 .footer-tagline { display: flex; width: fit-content; align-items: center; justify-content: center; gap: 10px; max-width: 100%; margin: 3px 0 0; font-size: 14px; font-weight: 650; line-height: 1.55; text-align: left; }
 .footer-tagline-dot { width: 7px; height: 7px; flex: 0 0 7px; border-radius: 50%; background: #8cc9a3; animation: footer-dot-pulse 2.4s ease-in-out infinite; }
@@ -224,7 +225,7 @@ main { min-height: 58vh; }
   .site-nav a:not(.mobile-nav-brand):hover, .site-nav a:not(.mobile-nav-brand)[aria-current="page"] { border-color: rgba(255,255,255,.26); background: rgba(255,255,255,.11); color: #fff; text-decoration: none; }
   .site-nav a[aria-current="page"] { box-shadow: inset 2px 0 #8cc9c2; }
   .mobile-nav-brand { position: sticky; z-index: 1; bottom: 0; display: flex; min-height: 88px; flex: 0 0 auto; align-items: center; justify-content: center; margin-top: auto; border-top: 1px solid rgba(255,255,255,.24); padding: 10px 8px 0; background: linear-gradient(105deg, rgba(1,79,77,.98), rgba(1,79,77,.92)), url("../images/home-4k.jpeg") center 57% / cover no-repeat; }
-  .mobile-nav-brand img { display: block; width: min(220px,100%); height: 70px; object-fit: contain; }
+  .mobile-nav-brand img { display: block; width: min(210px, 100%); height: 66px; object-fit: contain; background: #ffffff; border-radius: 8px; padding: 7px 14px; box-shadow: 0 4px 16px rgba(0, 30, 28, 0.22); box-sizing: border-box; }
   .language-toggle { margin: 10px 0 0; border-top: 1px solid rgba(255,255,255,.24); border-left: 0; padding: 13px 4px 3px; }
   .language-toggle button { min-height: 44px; color: rgba(255,255,255,.78); }
   .language-toggle button[aria-pressed="true"] { color: #fff; }
@@ -329,7 +330,7 @@ main { min-height: 58vh; }
 .site-footer { margin-top: 24px; border-top: 2px solid rgba(110,179,169,.78); padding: clamp(34px, 5vw, 52px) 0 36px; color: var(--footer-ink); background: linear-gradient(105deg, rgba(1,79,77,.96), rgba(1,79,77,.9)), url("../images/home-4k.jpeg") center 57% / cover no-repeat; box-shadow: 0 -12px 40px rgba(0,50,48,.14); }
 .footer-inner { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.1fr) minmax(170px, .72fr); grid-template-areas: "brand site contact"; align-items: center; gap: clamp(22px, 3.2vw, 44px); }
 .footer-brand-block { align-items: flex-start; text-align: left; }
-.footer-brand { width: min(270px, 100%); height: 96px; justify-content: flex-start; }
+.footer-brand { width: min(250px, 100%); height: 82px; justify-content: center; padding: 10px 18px; background: #ffffff; border-radius: 9px; box-shadow: 0 4px 18px rgba(0, 30, 28, 0.22); }
 .footer-tagline { justify-content: flex-start; align-items: flex-start; gap: 11px; max-width: 390px; color: rgba(255,255,255,.9); text-align: left; }
 .footer-tagline-dot { flex: 0 0 7px; margin-top: .68em; }
 .footer-heading { margin: 0 0 13px; color: #fff; font-size: 14px; }
@@ -363,7 +364,7 @@ main { min-height: 58vh; }
   .site-footer { padding: 34px 0 30px; }
   .footer-inner { grid-template-columns: minmax(0, 1.35fr) minmax(124px, .9fr); grid-template-areas: "brand brand" "site contact"; align-items: start; gap: 14px 14px; }
   .footer-brand-block { align-items: center; text-align: center; }
-  .footer-brand { width: min(280px, 100%); height: 100px; justify-content: center; }
+  .footer-brand { width: min(240px, 100%); height: 76px; padding: 9px 14px; justify-content: center; }
   .footer-tagline { display: flex; width: fit-content; max-width: min(100%, 330px); align-items: flex-start; justify-content: center; gap: 8px; margin: 3px auto 0; text-align: left; }
   .footer-tagline-dot { position: static; flex: 0 0 7px; margin-top: .62em; }
   .footer-site { min-width: 0; border-top: 1px solid rgba(240,247,242,.22); border-bottom: 1px solid rgba(240,247,242,.22); padding: 10px 0 8px; }

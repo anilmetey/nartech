@@ -305,13 +305,13 @@ def footer(prefix: str) -> str:
     ]
     links = "".join(f'<li><a href="{prefix}{path}"><span class="lang-tr">{esc(tr)}</span><span class="lang-en">{esc(en)}</span></a></li>' for path, tr, en in entries)
     return f'''<footer class="site-footer" role="contentinfo"><div class="footer-inner">
-<section class="footer-brand-block"><a class="footer-brand" href="{prefix}index.html" aria-label="NarTech ana sayfa" data-aria-tr="NarTech ana sayfa" data-aria-en="NarTech home page"><img src="{prefix}assets/images/logo-white.png?v=nartech-darkgreen-20261103-1" width="1958" height="803" alt="NarTech"></a><p class="footer-tagline"><span class="footer-tagline-dot" aria-hidden="true"></span><span class="lang-tr">{esc(content['home']['titleTr'])}</span><span class="lang-en">{esc(content['home']['titleEn'])}</span></p></section>
+<section class="footer-brand-block"><a class="footer-brand" href="{prefix}index.html" aria-label="NarTech ana sayfa" data-aria-tr="NarTech ana sayfa" data-aria-en="NarTech home page"><img src="{prefix}assets/images/nartech-logo-transparent.png" width="1958" height="803" alt="NarTech"></a><p class="footer-tagline"><span class="footer-tagline-dot" aria-hidden="true"></span><span class="lang-tr">{esc(content['home']['titleTr'])}</span><span class="lang-en">{esc(content['home']['titleEn'])}</span></p></section>
 <nav class="footer-group footer-site" aria-label="Hızlı Erişim" data-aria-tr="Hızlı Erişim" data-aria-en="Quick Links"><svg class="footer-orbit" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect x="6" y="6" width="988" height="988" rx="24" pathLength="1000"/></svg><h2 class="footer-heading"><span class="lang-tr">Hızlı Erişim</span><span class="lang-en">Quick Links</span></h2><ul class="footer-links">{links}</ul></nav>
 <nav class="footer-group footer-contact" aria-label="İletişim" data-aria-tr="İletişim" data-aria-en="Contact"><h2 class="footer-heading"><span class="lang-tr">İletişim</span><span class="lang-en">Contact</span></h2><a class="footer-cta" href="{prefix}contact.html#contact-form"><span class="lang-tr">Teklif Gönder</span><span class="lang-en">Send Request</span><span aria-hidden="true">↗</span></a></nav>
 </div></footer>'''
 
 def layout(title: str, body: str, current: str, prefix="", lang="tr", title_en=None) -> str:
-    css_version = "naragro-who-story-20261103-7"
+    css_version = "nartech-white-badge-20261103-1"
     js_version = "nartech-localization-20261030-1"
     title_en = title_en or title
     return f'''<!doctype html>
