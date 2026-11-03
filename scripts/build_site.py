@@ -311,7 +311,7 @@ def footer(prefix: str) -> str:
 </div></footer>'''
 
 def layout(title: str, body: str, current: str, prefix="", lang="tr", title_en=None) -> str:
-    css_version = "nartech-white-badge-20261103-1"
+    css_version = "nartech-white-badge-20261103-2"
     js_version = "nartech-localization-20261030-1"
     title_en = title_en or title
     return f'''<!doctype html>
