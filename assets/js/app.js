@@ -279,36 +279,57 @@
   const proofStrip = document.querySelector('.home-proof-strip');
   if (proofStrip) {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let revealed = false;
     const revealProof = () => {
+      if (revealed) return;
+      revealed = true;
       proofStrip.classList.add('is-visible');
       if (reducedMotion) return;
       proofStrip.querySelectorAll('[data-count-up]').forEach(element => {
         const target = Number(element.dataset.countUp);
         const suffix = element.dataset.countSuffix || '';
-        const duration = 1900;
+        const duration = 1500;
         const startedAt = performance.now();
         element.classList.add('is-counting');
         const update = now => {
           const progress = Math.min((now - startedAt) / duration, 1);
-          const count = progress < 1 ? Math.min(target, Math.floor(target * progress) + 1) : target;
+          const easeOut = 1 - Math.pow(1 - progress, 3);
+          const count = progress < 1 ? Math.min(target, Math.floor(target * easeOut) + 1) : target;
           element.textContent = `${count}${suffix}`;
           if (progress < 1) requestAnimationFrame(update);
-          else element.classList.remove('is-counting');
+          else {
+            element.textContent = `${target}${suffix}`;
+            element.classList.remove('is-counting');
+          }
         };
         requestAnimationFrame(update);
       });
     };
 
     if (reducedMotion || !('IntersectionObserver' in window)) {
-      proofStrip.classList.add('is-visible');
+      revealProof();
     } else {
       proofStrip.classList.add('motion-ready');
+
+      const checkInView = () => {
+        const rect = proofStrip.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          revealProof();
+          return true;
+        }
+        return false;
+      };
+
+      if (!checkInView()) {
+        setTimeout(checkInView, 120);
+      }
+
       const proofObserver = new IntersectionObserver(entries => {
         if (entries.some(entry => entry.isIntersecting)) {
           revealProof();
           proofObserver.disconnect();
         }
-      }, { threshold: 0.2 });
+      }, { threshold: 0.05, rootMargin: '60px 0px' });
       proofObserver.observe(proofStrip);
     }
   }
