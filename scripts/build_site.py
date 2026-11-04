@@ -195,10 +195,20 @@ pig_signallers = item("pig-signallers", 116, 116, [], [], [
     item("intrusive-pig-signaller", 118, 118, [], [], src=116),
 ], 115)
 pig_signallers["titleEn"] = "Pig Signallers"
+trv_item = {
+    "id": "thermal-relief-valve",
+    "titleTr": "D Termal Emniyet Vanası (TRV)",
+    "titleEn": "D Thermal Relief Valve (TRV)",
+    "tr": [{"text": "Termal Tahliye Vanası (TRV), kapalı bir hat veya ekipman hacminde hapsolmuş sıvının ısıl genleşmesi sonucu oluşan aşırı basınca karşı koruma sağlayan tahliye vanasıdır. Sıvı genleştikçe kapalı hacimdeki basınç yükselir; basınç set değerine ulaştığında yay yüklü vana açılarak küçük miktarda sıvıyı tahliye eder. Basınç güvenli seviyeye düştüğünde vana yeniden kapanır.", "source": "Valpro TRV"}],
+    "en": [{"text": "Thermal Relief Valve (TRV) is an overpressure protection device designed to protect closed piping systems and equipment against excessive hydraulic pressure caused by thermal fluid expansion. As the trapped fluid warms and expands, pressure rises rapidly; once set pressure is reached, the spring-loaded valve opens to discharge a small volume of liquid, reseating tightly once safe pressure is restored.", "source": "Valpro TRV"}],
+    "children": [],
+    "source": 132
+}
 valve_items = [
     item("ball-valves", 130, 130, [], [], src=129),
     item("gate-valves", 131, 131, [], [], src=130),
     item("butterfly-valves", 132, 132, [], [], src=131),
+    trv_item,
 ]
 
 categories = [
@@ -315,8 +325,8 @@ def footer(prefix: str) -> str:
 </div></footer>'''
 
 def layout(title: str, body: str, current: str, prefix="", lang="tr", title_en=None) -> str:
-    css_version = "nartech-spare-parts-20261104-1"
-    js_version = "nartech-spare-parts-20261104-1"
+    css_version = "nartech-specs-tables-20261104-2"
+    js_version = "nartech-specs-tables-20261104-2"
     title_en = title_en or title
     return f'''<!doctype html>
 <html lang="{lang}" data-language="tr" data-title-tr="{esc(title)} | NarTech" data-title-en="{esc(title_en)} | NarTech">

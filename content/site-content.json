@@ -1092,6 +1092,25 @@
           "en": [],
           "children": [],
           "source": 131
+        },
+        {
+          "id": "thermal-relief-valve",
+          "titleTr": "D Termal Emniyet Vanası (TRV)",
+          "titleEn": "D Thermal Relief Valve (TRV)",
+          "tr": [
+            {
+              "text": "Termal Tahliye Vanası (TRV), kapalı bir hat veya ekipman hacminde hapsolmuş sıvının ısıl genleşmesi sonucu oluşan aşırı basınca karşı koruma sağlayan tahliye vanasıdır. Sıvı genleştikçe kapalı hacimdeki basınç yükselir; basınç set değerine ulaştığında yay yüklü vana açılarak küçük miktarda sıvıyı tahliye eder. Basınç güvenli seviyeye düştüğünde vana yeniden kapanır.",
+              "source": "Valpro TRV"
+            }
+          ],
+          "en": [
+            {
+              "text": "Thermal Relief Valve (TRV) is an overpressure protection device designed to protect closed piping systems and equipment against excessive hydraulic pressure caused by thermal fluid expansion. As the trapped fluid warms and expands, pressure rises rapidly; once set pressure is reached, the spring-loaded valve opens to discharge a small volume of liquid, reseating tightly once safe pressure is restored.",
+              "source": "Valpro TRV"
+            }
+          ],
+          "children": [],
+          "source": 132
         }
       ],
       "titleTr": "8-Vanalar",

@@ -197,6 +197,19 @@ main { min-height: 58vh; }
 .product-child-list a { padding: 12px 14px; border: 1px solid var(--line); border-radius: 4px; }
 .product-child-list a:hover { background: var(--green-soft); text-decoration: none; }
 .quote-action { margin-top: 24px; }
+.product-specs-wrap { margin: 26px 0 20px; }
+.specs-heading { margin: 0 0 14px; color: var(--green); font-size: 19px; font-weight: 700; letter-spacing: -0.2px; }
+.product-specs-table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; font-size: 14.5px; line-height: 1.55; }
+.product-specs-table th, .product-specs-table td { padding: 10px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+.product-specs-table tr:last-child th, .product-specs-table tr:last-child td { border-bottom: none; }
+.product-specs-table th { width: 28%; min-width: 130px; background: #f7faf8; color: #1b2e23; font-weight: 650; border-right: 1px solid var(--line); }
+.product-specs-table td { color: #34463b; }
+.product-specs-table tr:hover td { background: #fafcfb; }
+@media (max-width: 640px) {
+  .product-specs-table { font-size: 13.5px; }
+  .product-specs-table th { width: 34%; min-width: 110px; padding: 8px 10px; }
+  .product-specs-table td { padding: 8px 10px; }
+}
 .form-page { max-width: 720px; padding-bottom: 66px; }
 .form-panel { margin-top: 26px; border: 1px solid var(--line); border-radius: 5px; padding: clamp(18px, 4vw, 30px); background: #fff; }
 .form-grid { display: grid; gap: 16px; }
