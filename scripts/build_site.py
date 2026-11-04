@@ -230,8 +230,12 @@ def category_title(category, language):
         return category["titleTr"]
     return category["titleEn"].strip().rstrip(":").strip()
 
+ABOUT_TURKISH_OVERRIDE = {
+    1: "NarTech olarak, Petrol & Gaz, Petrokimya, Kimya, Su, Upstream, Downstream ve Offshore sektörlerinde 10 yılı aşkın mühendislik deneyimimizle, müşterilerimize güvenilir, teknik açıdan doğru ve ekonomik çözümler sunuyoruz.",
+}
+
 ABOUT_ENGLISH_OVERRIDE = {
-    7: "At NarTech, our engineering team brings over 10 years of experience across the Oil & Gas, Petrochemical, Chemical, Water, Upstream, Downstream, and Offshore sectors. We provide our clients with dependable, technically sound, and cost-effective solutions.",
+    7: "As NarTech, our engineering team brings over 10 years of experience across the Oil & Gas, Petrochemical, Chemical, Water, Upstream, Downstream, and Offshore sectors. We provide our clients with dependable, technically sound, and cost-effective solutions.",
     8: "For refineries, tank farms, and natural gas pipeline applications, we supply a wide range of engineering-approved products, primarily storage tank equipment, valves, and fire protection systems. We also ensure fast, dependable access to critical spare parts for industrial facilities and terminals.",
     9: "We treat every project first and foremost as an engineering challenge. We approach the entire process, from product selection through procurement, from this same technical perspective.",
     10: "The projects we deliver for leading EPC contractors and end users give us direct insight into complex industrial requirements. We provide solutions that fully comply with international standards and project specifications.",
@@ -247,7 +251,7 @@ WHAT_WE_DO_ENGLISH_OVERRIDE = {
 # Persist only the concise copy used by the pages.
 content = {
     "home":{"titleTr":home[0],"bodyTr":home[1],"titleEn":home[2],"bodyEn":home[3]},
-    "about":{"titleTr":about[0].split('/')[0].strip(' :'),"paragraphsTr":[{"text":about[i],"source":f"Who We Are - About US.docx:{about_lines[i]}"} for i in range(1,6)],"titleEn":about[6],"paragraphsEn":[{"text":ABOUT_ENGLISH_OVERRIDE.get(i, about[i]),"source":f"Who We Are - About US.docx:{about_lines[i]}"} for i in range(7,12)]},
+    "about":{"titleTr":about[0].split('/')[0].strip(' :'),"paragraphsTr":[{"text":ABOUT_TURKISH_OVERRIDE.get(i, about[i]),"source":f"Who We Are - About US.docx:{about_lines[i]}"} for i in range(1,6)],"titleEn":about[6],"paragraphsEn":[{"text":ABOUT_ENGLISH_OVERRIDE.get(i, about[i]),"source":f"Who We Are - About US.docx:{about_lines[i]}"} for i in range(7,12)]},
     "whatWeDo":{"titleTr":what_we_do[0],"paragraphsTr":[{"text":what_we_do[i],"source":f"What We Do (1).docx:{what_we_do_lines[i]}"} for i in range(1,5)],"titleEn":what_we_do[5],"paragraphsEn":[{"text":WHAT_WE_DO_ENGLISH_OVERRIDE.get(i, what_we_do[i]),"source":f"What We Do (1).docx:{what_we_do_lines[i]}"} for i in range(6,10)]},
     "services":{
         "titleTr":services[0],
@@ -311,8 +315,8 @@ def footer(prefix: str) -> str:
 </div></footer>'''
 
 def layout(title: str, body: str, current: str, prefix="", lang="tr", title_en=None) -> str:
-    css_version = "nartech-proof-under-img-20261103-2"
-    js_version = "nartech-proof-under-img-20261103-2"
+    css_version = "nartech-as-nartech-20261104-1"
+    js_version = "nartech-as-nartech-20261104-1"
     title_en = title_en or title
     return f'''<!doctype html>
 <html lang="{lang}" data-language="tr" data-title-tr="{esc(title)} | NarTech" data-title-en="{esc(title_en)} | NarTech">
