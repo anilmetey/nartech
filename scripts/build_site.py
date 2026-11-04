@@ -213,12 +213,12 @@ categories = [
     {"id":"industrial-valves", "title":ref(129), "items":valve_items},
     {"id":"gas-scrubber-systems", "title":ref(133), "items":[]},
     {"id":"seperators", "title":ref(134), "items":[]},
-    {"id":"spare-parts-for-refineries", "title":ref(135), "items":[]},
+    {"id":"spare-parts-for-refineries", "title":{"text":"11-Spare Part for Refineries & Tank Terminals","source":"Mahmut Tunaz: 2026-11-04"}, "items":[], "descriptionTr":[{"text":"Tank terminalleri, rafineriler, petrol ve gaz boru hatları ve offshore platformların operasyonel sürekliliği için kritik önem taşıyan mekanik, enstrümantasyon, conta ve hardware grubu yedek parçalarını güvenle tedarik ediyoruz. Sektörün zorlu koşullarına tam uyumlu, uluslararası standartlardaki ürün çözümlerimizle tesislerinizin kesintisiz ve güvenli çalışmasını sağlıyoruz.","source":"Mahmut Tunaz: 2026-11-04"}], "descriptionEn":[{"text":"We reliably supply the mechanical, instrumentation, gasket, and hardware group spare parts that are critical for the operational continuity of tank terminals, refineries, oil & gas pipelines, and offshore platforms. With our product solutions that fully comply with the industry's demanding conditions and international standards, we ensure your facilities operate continuously and safely.","source":"Mahmut Tunaz: 2026-11-04"}]},
 ]
 category_titles_tr=[
     "1-Depolama Tankı Ekipmanları", "2-Yangın Söndürme", "3-Pig Sinyal Vericileri & Pigler",
     "4-Susturucular", "5-Yüzer Emiş", "6-Topraklama RGR", "7-Dolum Kolları",
-    "8-Vanalar", "9-Gaz Yıkama", "10-Seperatörler", "11-Yedek Parça",
+    "8-Vanalar", "9-Gaz Yıkama", "10-Seperatörler", "11-Rafineri ve Tank Terminali Yedek Parça",
 ]
 for category,title_tr in zip(categories,category_titles_tr):
     category["titleTr"]=title_tr
@@ -315,8 +315,8 @@ def footer(prefix: str) -> str:
 </div></footer>'''
 
 def layout(title: str, body: str, current: str, prefix="", lang="tr", title_en=None) -> str:
-    css_version = "nartech-as-nartech-20261104-1"
-    js_version = "nartech-as-nartech-20261104-1"
+    css_version = "nartech-spare-parts-20261104-1"
+    js_version = "nartech-spare-parts-20261104-1"
     title_en = title_en or title
     return f'''<!doctype html>
 <html lang="{lang}" data-language="tr" data-title-tr="{esc(title)} | NarTech" data-title-en="{esc(title_en)} | NarTech">

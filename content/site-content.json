@@ -1120,12 +1120,24 @@
     {
       "id": "spare-parts-for-refineries",
       "title": {
-        "text": "11-Spare Parts for Refineries",
-        "source": "Products (3).docx:193"
+        "text": "11-Spare Part for Refineries & Tank Terminals",
+        "source": "Mahmut Tunaz: 2026-11-04"
       },
       "items": [],
-      "titleTr": "11-Yedek Parça",
-      "titleEn": "11-Spare Parts for Refineries"
+      "descriptionTr": [
+        {
+          "text": "Tank terminalleri, rafineriler, petrol ve gaz boru hatları ve offshore platformların operasyonel sürekliliği için kritik önem taşıyan mekanik, enstrümantasyon, conta ve hardware grubu yedek parçalarını güvenle tedarik ediyoruz. Sektörün zorlu koşullarına tam uyumlu, uluslararası standartlardaki ürün çözümlerimizle tesislerinizin kesintisiz ve güvenli çalışmasını sağlıyoruz.",
+          "source": "Mahmut Tunaz: 2026-11-04"
+        }
+      ],
+      "descriptionEn": [
+        {
+          "text": "We reliably supply the mechanical, instrumentation, gasket, and hardware group spare parts that are critical for the operational continuity of tank terminals, refineries, oil & gas pipelines, and offshore platforms. With our product solutions that fully comply with the industry's demanding conditions and international standards, we ensure your facilities operate continuously and safely.",
+          "source": "Mahmut Tunaz: 2026-11-04"
+        }
+      ],
+      "titleTr": "11-Rafineri ve Tank Terminali Yedek Parça",
+      "titleEn": "11-Spare Part for Refineries & Tank Terminals"
     }
   ]
 }
