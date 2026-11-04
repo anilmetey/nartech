@@ -1581,3 +1581,6 @@ main { min-height: 58vh; }
   .product-detail-specs .product-specs-table th,
   .product-detail-specs .product-specs-table td { padding: 10px 8px; }
 }
+.product-detail-specs.category-feature-layout { display: block; }
+.product-detail-specs .category-intro > .lang-tr,
+.product-detail-specs .category-intro > .lang-en { max-width: 860px; color: var(--muted); }
