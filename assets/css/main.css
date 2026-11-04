@@ -1557,3 +1557,14 @@ main { min-height: 58vh; }
     transform: none !important;
   }
 }
+
+/* Valpro-style technical tables for matching product pages */
+.product-detail-specs { display: block; max-width: 1120px; margin-inline: auto; }
+.product-detail-specs .product-copy { padding: 4px 0; }
+.product-detail-specs .product-specs-wrap { margin: 28px 0 22px; }
+.product-detail-specs .product-specs-table { border: 0; border-radius: 0; background: transparent; font-size: 17px; line-height: 1.55; }
+.product-detail-specs .product-specs-table th, .product-detail-specs .product-specs-table td { padding: 13px 16px; border-bottom: 1px solid #e6e6e6; }
+.product-detail-specs .product-specs-table th { width: 24%; min-width: 175px; color: #d9382b; background: transparent; border-right: 0; font-weight: 700; }
+.product-detail-specs .product-specs-table td { color: #4b4b4b; }
+.product-detail-specs .product-specs-table tr:hover td { background: transparent; }
+@media (max-width: 640px) { .product-detail-specs .product-specs-table { font-size: 14px; } .product-detail-specs .product-specs-table th { width: 38%; min-width: 120px; } .product-detail-specs .product-specs-table th, .product-detail-specs .product-specs-table td { padding: 9px 8px; } }
