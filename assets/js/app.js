@@ -477,4 +477,7 @@
   };
 
   setupSupplyChain();
+
+  const homeFlow = document.querySelector('[data-home-flow]');
+  if (homeFlow) homeFlow.classList.add('is-visible');
 })();
