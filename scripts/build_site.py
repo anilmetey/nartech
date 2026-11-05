@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from __future__ import annotations
 import html, json, re, shutil
 from pathlib import Path
@@ -319,14 +320,14 @@ def footer(prefix: str) -> str:
     ]
     links = "".join(f'<li><a href="{prefix}{path}"><span class="lang-tr">{esc(tr)}</span><span class="lang-en">{esc(en)}</span></a></li>' for path, tr, en in entries)
     return f'''<footer class="site-footer" role="contentinfo"><div class="footer-inner">
-<section class="footer-brand-block"><a class="footer-brand" href="{prefix}index.html" aria-label="NarTech ana sayfa" data-aria-tr="NarTech ana sayfa" data-aria-en="NarTech home page"><img src="{prefix}assets/images/nartech-logo-transparent.png" width="1958" height="803" alt="NarTech"></a><p class="footer-tagline"><span class="footer-tagline-dot" aria-hidden="true"></span><span class="lang-tr">{esc(content['home']['titleTr'])}</span><span class="lang-en">{esc(content['home']['titleEn'])}</span></p><p class="footer-email"><a href="mailto:sales@nartech.com.tr">sales@nartech.com.tr</a></p></section>
+<section class="footer-brand-block"><a class="footer-brand" href="{prefix}index.html" aria-label="NarTech ana sayfa" data-aria-tr="NarTech ana sayfa" data-aria-en="NarTech home page"><img src="{prefix}assets/images/nartech-logo-transparent.png" width="1958" height="803" alt="NarTech"></a><p class="footer-tagline"><span class="footer-tagline-dot" aria-hidden="true"></span><span class="lang-tr">{esc(content['home']['titleTr'])}</span><span class="lang-en">{esc(content['home']['titleEn'])}</span></p></section>
 <nav class="footer-group footer-site" aria-label="Hızlı Erişim" data-aria-tr="Hızlı Erişim" data-aria-en="Quick Links"><h2 class="footer-heading"><span class="lang-tr">Hızlı Erişim</span><span class="lang-en">Quick Links</span></h2><ul class="footer-links">{links}</ul></nav>
 <nav class="footer-group footer-contact" aria-label="İletişim" data-aria-tr="İletişim" data-aria-en="Contact Us"><h2 class="footer-heading"><span class="lang-tr">İletişim</span><span class="lang-en">Contact Us</span></h2><div class="footer-contact-details"><p class="footer-contact-address"><span class="lang-tr">Fatih Mah. 30020 Sok. No: 29B/4 Mezitli / Mersin</span><span class="lang-en">Mezitli / Mersin, Turkey</span></p><p class="footer-contact-email"><a href="mailto:sales@nartech.com.tr">sales@nartech.com.tr</a></p></div><a class="footer-cta" href="{prefix}contact.html#contact-form"><span class="lang-tr">Teklif Gönder</span><span class="lang-en">Send Request</span><span aria-hidden="true">↗</span></a></nav>
 </div></footer>'''
 
 def layout(title: str, body: str, current: str, prefix="", lang="tr", title_en=None) -> str:
-    css_version = "nartech-clean-20261105-1"
-    js_version = "nartech-clean-20261105-1"
+    css_version = "nartech-clean-20261105-2"
+    js_version = "nartech-clean-20261105-2"
     title_en = title_en or title
     return f'''<!doctype html>
 <html lang="{lang}" data-language="tr" data-title-tr="{esc(title)} | NarTech" data-title-en="{esc(title_en)} | NarTech">
@@ -400,38 +401,287 @@ home_proof_html=''.join(home_proof_cards)
 home_about_tr=''.join(p_html(x,"tr") for x in content["about"]["paragraphsTr"][:2])
 home_about_en=''.join(p_html(x,"en") for x in content["about"]["paragraphsEn"][:2])
 nar_story_html='''<div class="about-nar-story nar-story-box"><div class="lang-tr"><p class="nar-story-lead">Türkçedeki “nar” sözcüğü, nar meyvesini ifade eder.</p><p>Dışarıdan bakıldığında bir nar tektir. Onu açtığınızda, içinde birbirinden farklı yüzlerce tane keşfedersiniz.</p><p>Nar bizi temsil eder. Her bir tanesi bizlerden biridir; geçmişlerimiz, fikirlerimiz, deneyimlerimiz ve güçlü yanlarımız farklı olsa da bir bütün olarak birleşiriz.</p><p class="nar-story-motto">Dışarıdan biriz. İçimiz zengin. Birlikte güçlüyüz.</p></div><div class="lang-en"><p class="nar-story-lead">“Nar” means pomegranate in Turkish.</p><p>From the outside, a pomegranate is one. Open it, and you discover hundreds of unique seeds inside.</p><p>Nar represents us. Each seed is one of us, different in our backgrounds, ideas, experiences and strengths, yet united as one.</p><p class="nar-story-motto">One outside. Rich inside. Strong together.</p></div></div>'''
-home_flow_items=[
-    ("Standartlar", "International Standards", "Güvenlik · kalite · performans", "Safety · quality · performance", "What We Do (1).docx:2", "What We Do (1).docx:7"),
-    ("Teknik Gereksinimler", "Technical Requirements", "Proje ihtiyaçları · özel şartnameler", "Project needs · specific specifications", "What We Do (1).docx:3", "What We Do (1).docx:8"),
-    ("Mühendislik Uzmanlığı", "Engineering Expertise", "Teknik bilgi birikimi · uluslararası iş ortaklıkları", "Technical know-how · international partnerships", "What We Do (1).docx:4", "What We Do (1).docx:9"),
-    ("Doğru Ürün", "The Right Product", "Operasyonel verimlilik · uzun vadeli değer", "Operational efficiency · long-term value", "What We Do (1).docx:5", "What We Do (1).docx:10"),
-]
-home_flow_card_items=[]
-for index,(title_tr,title_en,detail_tr,detail_en,source_tr,source_en) in enumerate(home_flow_items):
-    home_flow_card_items.append(f'''<article class="home-flow-card" role="listitem" style="--flow-delay:{index*55}ms" data-source="{esc(source_tr)}"><h3><span class="lang-tr">{esc(title_tr)}</span><span class="lang-en" data-source="{esc(source_en)}">{esc(title_en)}</span></h3><p><span class="lang-tr">{esc(detail_tr)}</span><span class="lang-en">{esc(detail_en)}</span></p></article>''')
-home_flow_cards=''.join(home_flow_card_items)
-home_flow_desktop_paths=[
-    "M125 144 C125 180 385 174 482 232",
-    "M375 144 C375 178 445 187 492 232",
-    "M625 144 C625 178 555 187 508 232",
-    "M875 144 C875 180 615 174 518 232",
-]
-home_flow_mobile_paths=[
-    "M250 136 C250 204 420 245 490 326",
-    "M750 136 C750 204 580 245 510 326",
-    "M250 264 C250 288 430 306 492 326",
-    "M750 264 C750 288 570 306 508 326",
-]
-def flow_svg_paths(paths, output_path):
-    source_paths=''.join(f'<path class="home-flow-track" d="{path}"/><path class="home-flow-particles" d="{path}" style="--flow-delay:{.3+index*.14:.2f}s"/>' for index,path in enumerate(paths))
-    return f'{source_paths}<path class="home-flow-track" d="{output_path}"/><path class="home-flow-particles home-flow-particles--output" d="{output_path}" style="--flow-delay:.82s"/>'
-home_flow_desktop_svg=flow_svg_paths(home_flow_desktop_paths,"M500 272 C500 302 500 328 500 354")
-home_flow_mobile_svg=flow_svg_paths(home_flow_mobile_paths,"M500 366 C500 383 500 400 500 418")
-home_flow_graphic=f'''<svg class="home-flow-lines home-flow-lines--desktop" viewBox="0 0 1000 464" preserveAspectRatio="none" aria-hidden="true">{home_flow_desktop_svg}</svg><svg class="home-flow-lines home-flow-lines--mobile" viewBox="0 0 1000 500" preserveAspectRatio="none" aria-hidden="true">{home_flow_mobile_svg}</svg>'''
+home_flow_svg = f'''<div class="supply-chain-wrapper"><svg class="supply-chain-svg" viewBox="0 0 1000 660" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <filter id="cardShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#014f4d" flood-opacity="0.08" />
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#014f4d" flood-opacity="0.04" />
+    </filter>
+    <filter id="cardShadowActive" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#014f4d" flood-opacity="0.25" />
+    </filter>
+    <filter id="glowFilter" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="hubGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="16" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <linearGradient id="flowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#34d399" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#014f4d" stop-opacity="1" />
+    </linearGradient>
+
+    <linearGradient id="flowGradBottom" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#014f4d" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#bd6a4b" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#a65e3e" stop-opacity="1" />
+    </linearGradient>
+
+    <radialGradient id="hubBgGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="85%" stop-color="#f7faf8" />
+      <stop offset="100%" stop-color="#e6f2eb" />
+    </radialGradient>
+
+    <radialGradient id="particleGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="40%" stop-color="#34d399" />
+      <stop offset="100%" stop-color="#014f4d" />
+    </radialGradient>
+
+    <radialGradient id="particleGradBottom" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="40%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#bd6a4b" />
+    </radialGradient>
+
+    <marker id="arrowHead" markerWidth="8" markerHeight="8" refX="5" refY="4" orient="auto">
+      <path d="M 1,1 L 7,4 L 1,7 Z" fill="#014f4d" />
+    </marker>
+    <marker id="arrowHeadBottom" markerWidth="8" markerHeight="8" refX="5" refY="4" orient="auto">
+      <path d="M 1,1 L 7,4 L 1,7 Z" fill="#bd6a4b" />
+    </marker>
+  </defs>
+
+  <rect x="15" y="15" width="970" height="630" rx="24" fill="#fafbfc" stroke="#e2e8f0" stroke-width="1.2" />
+
+  <g opacity="0.15">
+    <circle cx="100" cy="100" r="1.5" fill="#014f4d" /><circle cx="200" cy="100" r="1.5" fill="#014f4d" /><circle cx="300" cy="100" r="1.5" fill="#014f4d" /><circle cx="400" cy="100" r="1.5" fill="#014f4d" /><circle cx="500" cy="100" r="1.5" fill="#014f4d" /><circle cx="600" cy="100" r="1.5" fill="#014f4d" /><circle cx="700" cy="100" r="1.5" fill="#014f4d" /><circle cx="800" cy="100" r="1.5" fill="#014f4d" /><circle cx="900" cy="100" r="1.5" fill="#014f4d" />
+    <circle cx="100" cy="200" r="1.5" fill="#014f4d" /><circle cx="200" cy="200" r="1.5" fill="#014f4d" /><circle cx="800" cy="200" r="1.5" fill="#014f4d" /><circle cx="900" cy="200" r="1.5" fill="#014f4d" />
+    <circle cx="100" cy="500" r="1.5" fill="#014f4d" /><circle cx="200" cy="500" r="1.5" fill="#014f4d" /><circle cx="800" cy="500" r="1.5" fill="#014f4d" /><circle cx="900" cy="500" r="1.5" fill="#014f4d" />
+  </g>
+
+  <!-- Glowing pulse around center hub -->
+  <circle cx="500" cy="333" r="180" fill="#d1fae5" opacity="0.35" filter="url(#hubGlow)" />
+
+  <circle cx="500" cy="333" r="75" fill="none" stroke="#014f4d" stroke-width="1.8">
+    <animate attributeName="r" values="75;150" dur="3.2s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0.6;0" dur="3.2s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="500" cy="333" r="75" fill="none" stroke="#10b981" stroke-width="1.5">
+    <animate attributeName="r" values="75;150" dur="3.2s" begin="1.1s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0.6;0" dur="3.2s" begin="1.1s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="500" cy="333" r="75" fill="none" stroke="#bd6a4b" stroke-width="1.2">
+    <animate attributeName="r" values="75;150" dur="3.2s" begin="2.2s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0.5;0" dur="3.2s" begin="2.2s" repeatCount="indefinite" />
+  </circle>
+
+  <!-- Rotating dashed orbit with orbiting particles -->
+  <g>
+    <animateTransform attributeName="transform" type="rotate" from="0 500 333" to="360 500 333" dur="18s" repeatCount="indefinite" />
+    <circle cx="500" cy="333" r="110" fill="none" stroke="#014f4d" stroke-width="1.2" stroke-dasharray="6,8" opacity="0.28" />
+    <circle cx="500" cy="223" r="4.5" fill="#10b981" filter="url(#glowFilter)" />
+    <circle cx="500" cy="443" r="3.5" fill="#bd6a4b" filter="url(#glowFilter)" />
+  </g>
+
+  <!-- Flow 1: Danışmanlık & Doğru Ürün -->
+  <g class="flow-group" id="flow-consultancy">
+    <path id="path-consultancy" d="M 155,120 C 155,215 365,285 418,312" fill="none" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round" />
+    <path d="M 155,120 C 155,215 365,285 418,312" fill="none" stroke="url(#flowGrad)" stroke-width="3.5" stroke-linecap="round" class="flow-stream" marker-end="url(#arrowHead)">
+      <animate attributeName="stroke-dashoffset" from="0" to="-40" dur="1.4s" repeatCount="indefinite" />
+    </path>
+    <circle r="4.5" fill="url(#particleGrad)" filter="url(#glowFilter)">
+      <animateMotion dur="2.4s" repeatCount="indefinite" begin="0s" keyPoints="0;1" keyTimes="0;1">
+        <mpath href="#path-consultancy"/>
+      </animateMotion>
+    </circle>
+    <circle r="3.5" fill="#ffffff">
+      <animateMotion dur="2.4s" repeatCount="indefinite" begin="0.8s" keyPoints="0;1" keyTimes="0;1">
+        <mpath href="#path-consultancy"/>
+      </animateMotion>
+    </circle>
+    <circle r="4" fill="url(#particleGrad)" filter="url(#glowFilter)">
+      <animateMotion dur="2.4s" repeatCount="indefinite" begin="1.6s" keyPoints="0;1" keyTimes="0;1">
+        <mpath href="#path-consultancy"/>
+      </animateMotion>
+    </circle>
+  </g>
+
+  <!-- Flow 2: Mühendislik & Şartname -->
+  <g class="flow-group" id="flow-engineering">
+    <path id="path-engineering" d="M 380,120 C 380,198 440,240 468,300" fill="none" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round" />
+    <path d="M 380,120 C 380,198 440,240 468,300" fill="none" stroke="url(#flowGrad)" stroke-width="3.5" stroke-linecap="round" class="flow-stream" marker-end="url(#arrowHead)">
+      <animate attributeName="stroke-dashoffset" from="0" to="-40" dur="1.4s" repeatCount="indefinite" />
+    </path>
+    <circle r="4.5" fill="url(#particleGrad)" filter="url(#glowFilter)">
+      <animateMotion dur="2.4s" repeatCount="indefinite" begin="0.2s" keyPoints="0;1" keyTimes="0;1">
+        <mpath href="#path-engineering"/>
+      </animateMotion>
+    </circle>
+    <circle r="3.5" fill="#ffffff">
+      <animateMotion dur="2.4s" repeatCount="indefinite" begin="1.0s" keyPoints="0;1" keyTimes="0;1">
+        <mpath href="#path-engineering"/>
+      </animateMotion>
+    </circle>
+    <circle r="4" fill="url(#particleGrad)" filter="url(#glowFilter)">
+      <animateMotion dur="2.4s" repeatCount="indefinite" begin="1.8s" keyPoints="0;1" keyTimes="0;1">
+        <mpath href="#path-engineering"/>
+      </animateMotion>
+    </circle>
+  </g>
+
+  <!-- Flow 3: Doğrudan Tedarik -->
+  <g class="flow-group" id="flow-procurement">
+    <path id="path-procurement" d="M 620,120 C 620,198 560,240 532,300" fill="none" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round" />
+    <path d="M 620,120 C 620,198 560,240 532,300" fill="none" stroke="url(#flowGrad)" stroke-width="3.5" stroke-linecap="round" class="flow-stream" marker-end="url(#arrowHead)">
+      <animate attributeName="stroke-dashoffset" from="0" to="-40" dur="1.4s" repeatCount="indefinite" />
+    </path>
+    <circle r="4.5" fill="url(#particleGrad)" filter="url(#glowFilter)">
+      <animateMotion dur="2.4s" repeatCount="indefinite" begin="0.4s" keyPoints="0;1" keyTimes="0;1">
+        <mpath href="#path-procurement"/>
+      </animateMotion>
+    </circle>
+    <circle r="3.5" fill="#ffffff">
+      <animateMotion dur="2.4s" repeatCount="indefinite" begin="1.2s" keyPoints="0;1" keyTimes="0;1">
+        <mpath href="#path-procurement"/>
+      </animateMotion>
+    </circle>
+    <circle r="4" fill="url(#particleGrad)" filter="url(#glowFilter)">
+      <animateMotion dur="2.4s" repeatCount="indefinite" begin="2.0s" keyPoints="0;1" keyTimes="0;1">
+        <mpath href="#path-procurement"/>
+      </animateMotion>
+    </circle>
+  </g>
+
+  <!-- Flow 4: Saha Süpervizörlüğü -->
+  <g class="flow-group" id="flow-supervision">
+    <path id="path-supervision" d="M 845,120 C 845,215 635,285 582,312" fill="none" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round" />
+    <path d="M 845,120 C 845,215 635,285 582,312" fill="none" stroke="url(#flowGrad)" stroke-width="3.5" stroke-linecap="round" class="flow-stream" marker-end="url(#arrowHead)">
+      <animate attributeName="stroke-dashoffset" from="0" to="-40" dur="1.4s" repeatCount="indefinite" />
+    </path>
+    <circle r="4.5" fill="url(#particleGrad)" filter="url(#glowFilter)">
+      <animateMotion dur="2.4s" repeatCount="indefinite" begin="0.6s" keyPoints="0;1" keyTimes="0;1">
+        <mpath href="#path-supervision"/>
+      </animateMotion>
+    </circle>
+    <circle r="3.5" fill="#ffffff">
+      <animateMotion dur="2.4s" repeatCount="indefinite" begin="1.4s" keyPoints="0;1" keyTimes="0;1">
+        <mpath href="#path-supervision"/>
+      </animateMotion>
+    </circle>
+    <circle r="4" fill="url(#particleGrad)" filter="url(#glowFilter)">
+      <animateMotion dur="2.4s" repeatCount="indefinite" begin="2.2s" keyPoints="0;1" keyTimes="0;1">
+        <mpath href="#path-supervision"/>
+      </animateMotion>
+    </circle>
+  </g>
+
+  <!-- Flow 5: Hub to Solutions (Bottom) -->
+  <g class="flow-group" id="flow-solutions">
+    <path id="path-solutions" d="M 500,391 L 500,528" fill="none" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round" />
+    <path d="M 500,391 L 500,528" fill="none" stroke="url(#flowGradBottom)" stroke-width="3.5" stroke-linecap="round" class="flow-stream" marker-end="url(#arrowHeadBottom)">
+      <animate attributeName="stroke-dashoffset" from="0" to="-40" dur="1.4s" repeatCount="indefinite" />
+    </path>
+    <circle r="4.5" fill="url(#particleGradBottom)" filter="url(#glowFilter)">
+      <animateMotion dur="2.0s" repeatCount="indefinite" begin="0.1s" keyPoints="0;1" keyTimes="0;1">
+        <mpath href="#path-solutions"/>
+      </animateMotion>
+    </circle>
+    <circle r="3.5" fill="#ffffff">
+      <animateMotion dur="2.0s" repeatCount="indefinite" begin="0.8s" keyPoints="0;1" keyTimes="0;1">
+        <mpath href="#path-solutions"/>
+      </animateMotion>
+    </circle>
+    <circle r="4" fill="url(#particleGradBottom)" filter="url(#glowFilter)">
+      <animateMotion dur="2.0s" repeatCount="indefinite" begin="1.5s" keyPoints="0;1" keyTimes="0;1">
+        <mpath href="#path-solutions"/>
+      </animateMotion>
+    </circle>
+  </g>
+
+  <!-- Node 1: Danışmanlık & Doğru Ürün -->
+  <g class="node-card" id="node-consultancy" transform="translate(60, 48)" data-node="consultancy">
+    <rect width="190" height="72" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.8" filter="url(#cardShadow)" class="card-box" />
+    <rect x="0" y="0" width="6" height="72" rx="3" fill="#10b981" class="card-accent" />
+    <circle cx="36" cy="36" r="18" fill="#ecfdf5" />
+    <text x="36" y="43" font-size="18" text-anchor="middle" dominant-baseline="central">📋</text>
+    <text class="lang-tr" x="64" y="32" font-size="14" font-weight="700" fill="#1e293b" font-family="'Work Sans', -apple-system, sans-serif">Danışmanlık</text>
+    <text class="lang-en" x="64" y="32" font-size="14" font-weight="700" fill="#1e293b" font-family="'Work Sans', -apple-system, sans-serif">Consultancy</text>
+    <text class="lang-tr" x="64" y="50" font-size="10.5" font-weight="500" fill="#64748b" font-family="-apple-system, sans-serif">Doğru Ürün Seçimi</text>
+    <text class="lang-en" x="64" y="50" font-size="10.5" font-weight="500" fill="#64748b" font-family="-apple-system, sans-serif">Optimal Equipment</text>
+  </g>
+
+  <!-- Node 2: Mühendislik & Şartname -->
+  <g class="node-card" id="node-engineering" transform="translate(285, 48)" data-node="engineering">
+    <rect width="190" height="72" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.8" filter="url(#cardShadow)" class="card-box" />
+    <rect x="0" y="0" width="6" height="72" rx="3" fill="#f59e0b" class="card-accent" />
+    <circle cx="36" cy="36" r="18" fill="#fffbeb" />
+    <text x="36" y="43" font-size="18" text-anchor="middle" dominant-baseline="central">⚙️</text>
+    <text class="lang-tr" x="64" y="32" font-size="14" font-weight="700" fill="#1e293b" font-family="'Work Sans', -apple-system, sans-serif">Mühendislik</text>
+    <text class="lang-en" x="64" y="32" font-size="14" font-weight="700" fill="#1e293b" font-family="'Work Sans', -apple-system, sans-serif">Engineering</text>
+    <text class="lang-tr" x="64" y="50" font-size="10.5" font-weight="500" fill="#64748b" font-family="-apple-system, sans-serif">Şartname &amp; Norm Uyumu</text>
+    <text class="lang-en" x="64" y="50" font-size="10.5" font-weight="500" fill="#64748b" font-family="-apple-system, sans-serif">Spec &amp; Norm Compliance</text>
+  </g>
+
+  <!-- Node 3: Doğrudan Tedarik -->
+  <g class="node-card" id="node-procurement" transform="translate(525, 48)" data-node="procurement">
+    <rect width="190" height="72" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.8" filter="url(#cardShadow)" class="card-box" />
+    <rect x="0" y="0" width="6" height="72" rx="3" fill="#0284c7" class="card-accent" />
+    <circle cx="36" cy="36" r="18" fill="#f0f9ff" />
+    <text x="36" y="43" font-size="18" text-anchor="middle" dominant-baseline="central">🏭</text>
+    <text class="lang-tr" x="64" y="32" font-size="14" font-weight="700" fill="#1e293b" font-family="'Work Sans', -apple-system, sans-serif">Doğrudan Tedarik</text>
+    <text class="lang-en" x="64" y="32" font-size="14" font-weight="700" fill="#1e293b" font-family="'Work Sans', -apple-system, sans-serif">Direct Procurement</text>
+    <text class="lang-tr" x="64" y="50" font-size="10.5" font-weight="500" fill="#64748b" font-family="-apple-system, sans-serif">Üreticiden 1. El Temin</text>
+    <text class="lang-en" x="64" y="50" font-size="10.5" font-weight="500" fill="#64748b" font-family="-apple-system, sans-serif">Direct from Manufacturer</text>
+  </g>
+
+  <!-- Node 4: Saha Süpervizörlüğü -->
+  <g class="node-card" id="node-supervision" transform="translate(750, 48)" data-node="supervision">
+    <rect width="190" height="72" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.8" filter="url(#cardShadow)" class="card-box" />
+    <rect x="0" y="0" width="6" height="72" rx="3" fill="#8b5cf6" class="card-accent" />
+    <circle cx="36" cy="36" r="18" fill="#f5f3ff" />
+    <text x="36" y="43" font-size="18" text-anchor="middle" dominant-baseline="central">🔍</text>
+    <text class="lang-tr" x="64" y="32" font-size="14" font-weight="700" fill="#1e293b" font-family="'Work Sans', -apple-system, sans-serif">Saha Hizmetleri</text>
+    <text class="lang-en" x="64" y="32" font-size="14" font-weight="700" fill="#1e293b" font-family="'Work Sans', -apple-system, sans-serif">Field Services</text>
+    <text class="lang-tr" x="64" y="50" font-size="10.5" font-weight="500" fill="#64748b" font-family="-apple-system, sans-serif">Süpervizörlük &amp; Denetim</text>
+    <text class="lang-en" x="64" y="50" font-size="10.5" font-weight="500" fill="#64748b" font-family="-apple-system, sans-serif">Supervision &amp; Inspection</text>
+  </g>
+
+  <!-- Center Hub: NarTech -->
+  <g class="hub-center" id="hub-nartech" transform="translate(360, 275)" data-node="hub">
+    <rect width="280" height="116" rx="22" fill="url(#hubBgGrad)" stroke="#014f4d" stroke-width="2.5" filter="url(#cardShadowActive)" class="hub-box" />
+    <image xlink:href="assets/images/nartech-logo-transparent.png" href="assets/images/nartech-logo-transparent.png" x="25" y="24" width="230" height="68" preserveAspectRatio="xMidYMid meet" />
+  </g>
+
+  <!-- Bottom Node: Mühendislik Çözümleri -->
+  <g class="node-card" id="node-solutions" transform="translate(340, 528)" data-node="solutions">
+    <rect width="320" height="76" rx="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.8" filter="url(#cardShadow)" class="card-box" />
+    <rect x="0" y="0" width="6" height="76" rx="3" fill="#bd6a4b" class="card-accent" />
+    <circle cx="38" cy="38" r="20" fill="#fdf2f0" />
+    <text x="38" y="46" font-size="20" text-anchor="middle" dominant-baseline="central">🛡️</text>
+    <text class="lang-tr" x="68" y="33" font-size="15" font-weight="700" fill="#014f4d" font-family="'Work Sans', -apple-system, sans-serif">Mühendislik Çözümleri</text>
+    <text class="lang-en" x="68" y="33" font-size="15" font-weight="700" fill="#014f4d" font-family="'Work Sans', -apple-system, sans-serif">Engineering Solutions</text>
+    <text class="lang-tr" x="68" y="53" font-size="11" font-weight="500" fill="#556c5e" font-family="-apple-system, sans-serif">Depolama · Rafineri · Offshore · Enerji</text>
+    <text class="lang-en" x="68" y="53" font-size="11" font-weight="500" fill="#556c5e" font-family="-apple-system, sans-serif">Terminals · Refineries · Offshore · Energy</text>
+  </g>
+</svg>
+<div class="ecosystem-banner" id="ecosystem-banner">
+  <p class="banner-text" id="banner-text">
+    <span class="lang-tr"><strong>Doğru Mühendislik &amp; Doğru Ürün:</strong> Müşteri gereksinimlerinden nihai çözüme kesintisiz, güvenilir ve sertifikalı süreç.</span>
+    <span class="lang-en"><strong>The Right Engineering &amp; The Right Product:</strong> Seamless, certified, and reliable flow from technical requirements to final solutions.</span>
+  </p>
+</div>
+</div>'''
+
 home_body=f'''<div class="home-page"><div class="page-wrap"><section class="home-hero"><div class="home-hero-copy"><h1><span class="lang-tr">{esc(content['home']['titleTr'])}</span><span class="lang-en">{esc(content['home']['titleEn'])}</span></h1><p><span class="lang-tr">{esc(content['home']['bodyTr'])}</span><span class="lang-en">{esc(content['home']['bodyEn'])}</span></p><div class="home-actions"><a class="button button-primary" href="products.html"><span class="lang-tr">Ürünler</span><span class="lang-en">Products</span></a><a class="button" href="contact.html#contact-form"><span class="lang-tr">İletişime Geç</span><span class="lang-en">Get in Touch</span></a></div></div><figure class="home-hero-media"><img src="assets/images/home-4k.jpeg" alt="NarTech Depolama Tankı ve Terminal Ekipmanları Sahası" data-alt-tr="NarTech Depolama Tankı ve Terminal Ekipmanları Sahası" data-alt-en="NarTech storage tank and terminal equipment facility" width="3840" height="1723" fetchpriority="high" decoding="async"></figure></section>
 <section class="home-proof-strip" aria-label="Mühendislik Göstergeleri" data-aria-tr="Mühendislik Göstergeleri" data-aria-en="Engineering Indicators">{home_proof_html}</section>
 <section class="home-who-section" aria-labelledby="home-who-heading"><div class="home-who-heading"><div class="about-subtitle"><span class="lang-tr">BİZ KİMİZ</span><span class="lang-en">WHO WE ARE</span></div><h2 id="home-who-heading"><span class="lang-tr">Biz Kimiz</span><span class="lang-en">Who We Are</span></h2></div><div class="home-who-copy"><div class="lang-tr">{home_about_tr}</div><div class="lang-en">{home_about_en}</div>{nar_story_html}</div></section>
-<section class="home-what-section" aria-labelledby="home-what-heading"><div class="home-what-heading"><h2 id="home-what-heading"><span class="lang-tr">Ne Yapıyoruz</span><span class="lang-en">What We Do</span></h2><p class="home-what-subtitle"><span class="lang-tr">{esc(content['whatWeDo']['titleTr'])}</span><span class="lang-en">{esc(content['whatWeDo']['titleEn'].strip())}</span></p></div><div class="home-what-flow" data-home-flow><div class="home-flow-visual"><div class="home-flow-cards" role="list">{home_flow_cards}</div>{home_flow_graphic}<div class="home-flow-orbit" aria-hidden="true"></div><div class="home-flow-hub"><img src="assets/images/nartech-logo-transparent.png" width="1958" height="803" alt="NarTech"></div><div class="home-flow-output"><strong><span class="lang-tr">Mühendislik Çözümleri</span><span class="lang-en">Engineering Solutions</span></strong><span><span class="lang-tr">Güvenilir · verimli · sürdürülebilir</span><span class="lang-en">Reliable · efficient · sustainable</span></span></div></div></div></section></div></div>'''
+<section class="home-what-section supply-chain-section" aria-labelledby="home-what-heading"><div class="home-what-heading"><div class="about-subtitle"><span class="lang-tr">EKOSİSTEMİMİZ</span><span class="lang-en">OUR ECOSYSTEM</span></div><h2 id="home-what-heading"><span class="lang-tr">Ne Yapıyoruz</span><span class="lang-en">What We Do</span></h2><p class="home-what-subtitle"><span class="lang-tr">{esc(content['whatWeDo']['titleTr'])}</span><span class="lang-en">{esc(content['whatWeDo']['titleEn'].strip())}</span></p></div>{home_flow_svg}</section></div></div>'''
 (OUT/"index.html").write_text(layout(content["home"]["titleTr"],home_body,"home",title_en=content["home"]["titleEn"]),encoding="utf-8")
 # Keep the fallback free of copy that is not supplied in the source documents.
 (OUT/"404.html").write_text('<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=./index.html"></head><body></body></html>',encoding="utf-8")
@@ -564,7 +814,267 @@ for cat in categories:
 calculator_body='''<div class="page-wrap form-page"><div class="page-heading"><h1><span class="lang-tr">API 2000 Hesaplama</span><span class="lang-en">API 2000 Calculation</span></h1></div><div class="steps"><span class="step-indicator" data-step-indicator="1" aria-current="step">1</span><span class="step-indicator" data-step-indicator="2">2</span><span class="step-indicator" data-step-indicator="3">3</span></div><section class="form-panel" id="calc-step-email"><form id="calc-email-form" class="form-grid"><div class="form-field"><label for="calc-email"><span class="lang-tr">E-posta</span><span class="lang-en">Email</span></label><input id="calc-email" name="email" type="email" autocomplete="email" required></div><button class="button button-primary" type="submit"><span class="lang-tr">Devam</span><span class="lang-en">Continue</span></button></form></section><section class="form-panel" id="calc-step-inputs" hidden><form id="calc-input-form" class="form-grid"><div class="form-field"><label for="tank-capacity"><span class="lang-tr">Tank Kapasitesi (m³)</span><span class="lang-en">Tank Capacity (m³)</span></label><input id="tank-capacity" name="tank_capacity_m3" type="number" min="0.01" step="any" required></div><div class="form-field"><label for="fill-rate"><span class="lang-tr">Maksimum Dolum Debisi (m³/h)</span><span class="lang-en">Max Fill Rate (m³/h)</span></label><input id="fill-rate" name="max_fill_rate_m3h" type="number" min="0" step="any" required></div><div class="form-field"><label for="empty-rate"><span class="lang-tr">Maksimum Boşaltım Debisi (m³/h)</span><span class="lang-en">Max Empty Rate (m³/h)</span></label><input id="empty-rate" name="max_empty_rate_m3h" type="number" min="0" step="any" required></div><div class="form-field"><label for="flash-point"><span class="lang-tr">Ürünün Parlama Noktası 37°C Üzerinde</span><span class="lang-en">Product Flash Point Above 37°C</span></label><select id="flash-point" name="product_flash_point_above_37c"><option value="true" data-i18n-tr="Evet" data-i18n-en="Yes">Evet</option><option value="false" data-i18n-tr="Hayır" data-i18n-en="No">Hayır</option></select></div><div><button class="button button-primary" type="submit"><span class="lang-tr">Hesapla</span><span class="lang-en">Calculate</span></button></div></form></section><section class="form-panel" id="calc-step-results" hidden><div id="calc-results" class="calc-results"></div><p class="legal-copy"><span class="lang-tr">Yasal Uyarı ve Sorumluluk Reddi: Bu raporda sunulan tüm hesaplamalar, veriler ve sonuçlar yalnızca bilgi amaçlıdır ve hiçbir şekilde mühendislik veya ticari açıdan bağlayıcılığı yoktur. Kesin ekipman seçimi, boyutlandırma ve projelendirme aşamalarında saha koşulları, meteorolojik veriler, boru hattı dinamikleri ve yerel/uluslararası standartlar göz önünde bulundurularak doğrulama yapılması gerekmektedir.</span><span class="lang-en">Legal Notice and Disclaimer: All calculations, data, and results in this report are for informational purposes only and are not binding for engineering or commercial purposes. Final equipment selection, sizing, and project design must be verified by taking site conditions, meteorological data, pipeline dynamics, and applicable local and international standards into account.</span></p><button class="button button-primary" id="calc-send" type="button"><span class="lang-tr">Gönder</span><span class="lang-en">Send</span></button><p class="form-status" id="calc-status" role="status" aria-live="polite"></p><button class="button" id="calc-back" type="button"><span class="lang-tr">Geri</span><span class="lang-en">Back</span></button></section></div>'''
 (OUT/"calculator.html").write_text(layout("API 2000 Hesaplama",calculator_body,"calculator",title_en="API 2000 Calculation"),encoding="utf-8")
 
-career_body = '''<div class="page-wrap career-page"><div class="page-heading"><h1><span class="lang-tr">Kariyer</span><span class="lang-en">Career</span></h1></div><section class="career-hero"><div class="career-hero-copy"><div class="about-subtitle"><span class="lang-tr">EKİBİMİZE KATILIN</span><span class="lang-en">JOIN OUR TEAM</span></div><div class="lang-tr"><p class="career-lead">NarTech çatısı altında; dünya pazarlarıyla bağ kurar, uluslararası ticaretin kalbinde yer alır ve geleceğin global ticaret ekosistemini birlikte tasarlarız.</p><p>Eğer küresel vizyona sahip, yetenekli ve sınır tanımayan bir profesyonelseniz; kariyerinize ivme kazandıracak en doğru ekibe katılın, <strong>NarTech’te yeriniz hazır!</strong></p></div><div class="lang-en"><p class="career-lead">Under the roof of NarTech, we connect with global markets, stand at the heart of international trade, and co-design the future of the global trade ecosystem.</p><p>If you are a talented, visionary professional without boundaries, join the team that will accelerate your career—<strong>your place at NarTech is ready!</strong></p></div><div class="career-actions"><a class="button button-primary" href="mailto:sales@nartech.com.tr?subject=Kariyer%20Basvurusu%20-%20NarTech"><span class="lang-tr">Özgeçmiş Gönderin</span><span class="lang-en">Submit Resume</span></a><a class="button" href="contact.html"><span class="lang-tr">Bize Ulaşın</span><span class="lang-en">Contact Us</span></a></div></div><figure class="career-hero-media"><picture><source srcset="assets/images/career.webp" type="image/webp"><img src="assets/images/career-4k.jpeg" srcset="assets/images/career.jpeg 1920w, assets/images/career-4k.jpeg 3840w" sizes="(max-width: 900px) 100vw, 1200px" alt="NarTech Kariyer ve Global Ticaret Ekibi" data-alt-tr="NarTech Kariyer ve Global Ticaret Ekibi" data-alt-en="NarTech Career and Global Trade Team" width="3840" height="2557" loading="eager" fetchpriority="high"></picture></figure></section><section class="career-values"><div class="about-subtitle"><span class="lang-tr">NEDEN NARTECH?</span><span class="lang-en">WHY NARTECH?</span></div><div class="career-values-grid"><div class="about-card"><div class="about-card-badge">01</div><h3><span class="lang-tr">Global Ticaretin Kalbinde</span><span class="lang-en">At the Heart of Global Trade</span></h3><p><span class="lang-tr">Uluslararası endüstriyel pazarlarla güçlü bağlar kuruyor, kritik enerji ve depolama projelerinde küresel tedarik zincirini birlikte şekillendiriyoruz.</span><span class="lang-en">We forge robust connections across international industrial markets and co-shape the global supply chain in mission-critical energy and storage infrastructure.</span></p></div><div class="about-card"><div class="about-card-badge">02</div><h3><span class="lang-tr">Mühendislik &amp; Yüksek Standartlar</span><span class="lang-en">Engineering &amp; Rigorous Standards</span></h3><p><span class="lang-tr">Her zorluğu bir mühendislik problemi olarak ele alıyor; uluslararası standartlar ve şartnamelere tam uyumlu birinci sınıf çözümler üretiyoruz.</span><span class="lang-en">We approach every challenge through an engineering-first lens, delivering premier solutions in full compliance with international standards and strict specifications.</span></p></div><div class="about-card"><div class="about-card-badge">03</div><h3><span class="lang-tr">Sınır Tanımayan Gelişim</span><span class="lang-en">Boundless Professional Growth</span></h3><p><span class="lang-tr">Yeteneklerinize değer veren, inisiyatif almanızı destekleyen ve kariyerinize küresel ölçekte ivme kazandıran dinamik bir ekosistem sunuyoruz.</span><span class="lang-en">We cultivate a dynamic ecosystem that values talent, empowers initiative, and accelerates your career on a truly global scale.</span></p></div></div></section><section class="career-cta-section"><div class="career-cta-box"><h2><span class="lang-tr">Kariyerinize NarTech ile Yön Verin</span><span class="lang-en">Shape Your Career With NarTech</span></h2><p><span class="lang-tr">Global ticaret ve mühendislik ekosistemimizin bir parçası olmak için güncel özgeçmişinizi ve ilgilendiğiniz alanı belirterek bize iletebilirsiniz.</span><span class="lang-en">To become a pivotal part of our global trade and engineering ecosystem, submit your updated CV detailing your background and areas of expertise.</span></p><div class="career-cta-actions"><a class="button button-primary" href="mailto:sales@nartech.com.tr?subject=Kariyer%20Basvurusu%20-%20NarTech"><span class="lang-tr">sales@nartech.com.tr Adresine Başvurun</span><span class="lang-en">Apply via sales@nartech.com.tr</span></a></div></div></section></div>'''
+career_body = '''<div class="career-page">
+<section class="career-hero">
+  <div class="page-wrap career-hero-inner">
+    <div class="career-hero-copy">
+      <div class="career-kicker-pill">
+        <span class="career-kicker-dot" aria-hidden="true"></span>
+        <span class="lang-tr">KÜRESEL VİZYON &amp; EKİP</span>
+        <span class="lang-en">GLOBAL VISION &amp; TEAM</span>
+      </div>
+      <h1 class="career-heading">
+        <span class="lang-tr">Kariyerinize NarTech ile Yön Verin</span>
+        <span class="lang-en">Shape Your Career With NarTech</span>
+      </h1>
+      <blockquote class="career-manifesto-card">
+        <div class="career-manifesto-mark" aria-hidden="true">“</div>
+        <p class="career-lead">
+          <span class="lang-tr">NarTech çatısı altında; dünya pazarlarıyla bağ kurar, uluslararası ticaretin kalbinde yer alır ve geleceğin global ticaret ekosistemini birlikte tasarlarız.</span>
+          <span class="lang-en">Under the roof of NarTech, we connect with global markets, stand at the heart of international trade, and co-design the future of the global trade ecosystem.</span>
+        </p>
+        <p class="career-invitation">
+          <span class="lang-tr">Eğer küresel vizyona sahip, yetenekli ve sınır tanımayan bir profesyonelseniz; kariyerinize ivme kazandıracak en doğru ekibe katılın, <strong class="career-spotlight">NarTech’te yeriniz hazır!</strong></span>
+          <span class="lang-en">If you are a talented, visionary professional without boundaries, join the team that will accelerate your career—<strong class="career-spotlight">your place at NarTech is ready!</strong></span>
+        </p>
+      </blockquote>
+      <div class="career-hero-actions">
+        <a class="button button-primary" href="#open-positions">
+          <span class="lang-tr">Açık Rolleri İnceleyin</span>
+          <span class="lang-en">Explore Open Roles</span>
+          <span aria-hidden="true">↓</span>
+        </a>
+        <a class="button" href="mailto:sales@nartech.com.tr?subject=Kariyer%20Basvurusu%20-%20NarTech">
+          <span class="lang-tr">Doğrudan CV Gönderin</span>
+          <span class="lang-en">Submit Resume</span>
+          <span aria-hidden="true">✉</span>
+        </a>
+      </div>
+    </div>
+
+    <figure class="career-hero-media">
+      <picture>
+        <source srcset="assets/images/career.webp" type="image/webp">
+        <img src="assets/images/career-4k.jpeg" srcset="assets/images/career.jpeg 1920w, assets/images/career-4k.jpeg 3840w" sizes="(max-width: 900px) 100vw, 620px" alt="NarTech Global Ticaret ve Mühendislik Çalışma Ekosistemi" data-alt-tr="NarTech Global Ticaret ve Mühendislik Çalışma Ekosistemi" data-alt-en="NarTech Global Trade and Engineering Workspace Ecosystem" width="3840" height="2557" loading="eager" fetchpriority="high">
+      </picture>
+      <div class="career-stat-badge stat-badge-top">
+        <span class="stat-badge-num">10+</span>
+        <span class="stat-badge-desc">
+          <span class="lang-tr">Yıllık Endüstriyel Miras</span>
+          <span class="lang-en">Years Industrial Heritage</span>
+        </span>
+      </div>
+      <div class="career-stat-badge stat-badge-bottom">
+        <span class="stat-badge-icon" aria-hidden="true">🌍</span>
+        <span class="stat-badge-desc">
+          <span class="lang-tr">Uluslararası Ticaret Ağı</span>
+          <span class="lang-en">Global Trade Network</span>
+        </span>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- Values Section -->
+<section class="career-section career-values-section">
+  <div class="page-wrap">
+    <div class="section-title-wrap text-center">
+      <div class="about-subtitle"><span class="lang-tr">NEDEN NARTECH?</span><span class="lang-en">WHY NARTECH?</span></div>
+      <h2><span class="lang-tr">Sizi Neler Bekliyor?</span><span class="lang-en">What to Expect at NarTech</span></h2>
+      <p class="section-lead-muted"><span class="lang-tr">Yeteneklerinizin değer bulduğu, inisiyatif alabileceğiniz ve sınırlarınızı aşabileceğiniz bir ekosistem.</span><span class="lang-en">An ecosystem where your talent is valued, initiative is empowered, and professional boundaries expand.</span></p>
+    </div>
+    <div class="career-values-grid">
+      <article class="career-value-card">
+        <div class="career-value-badge">01</div>
+        <div class="career-value-icon">🌐</div>
+        <h3><span class="lang-tr">Global Ticaretin Kalbinde</span><span class="lang-en">Heart of Global Trade</span></h3>
+        <p><span class="lang-tr">Dünya pazarlarıyla doğrudan bağ kurarak, kritik enerji, depolama ve endüstriyel tedarik zincirlerinin merkezinde uluslararası ölçekte rol alırsınız.</span><span class="lang-en">Work at the center of international trade, directly connecting with global markets and mission-critical storage and energy supply chains.</span></p>
+      </article>
+
+      <article class="career-value-card">
+        <div class="career-value-badge">02</div>
+        <div class="career-value-icon">⚙️</div>
+        <h3><span class="lang-tr">Mühendislik Standartları</span><span class="lang-en">Engineering Rigor</span></h3>
+        <p><span class="lang-tr">API 650, API 2000, EN ISO 16852 ve ATEX gibi uluslararası normlara tam uyumlu birinci sınıf projelerde teknik bilgi birikiminizi derinleştirirsiniz.</span><span class="lang-en">Deepen your technical expertise across world-class projects compliant with API 650, API 2000, EN ISO 16852, and ATEX standards.</span></p>
+      </article>
+
+      <article class="career-value-card">
+        <div class="career-value-badge">03</div>
+        <div class="career-value-icon">🚀</div>
+        <h3><span class="lang-tr">Çevik &amp; İnisiyatif Veren Kültür</span><span class="lang-en">Agile &amp; Empowered Culture</span></h3>
+        <p><span class="lang-tr">Bürokrasiden uzak, fikirlerin dinlendiği ve hızla hayata geçirildiği şeffaf, dinamik ve başarıyı ödüllendiren bir çalışma ortamı.</span><span class="lang-en">A lean, flat structure where ideas are heard and executed swiftly, fostering initiative and rewarding proactive achievement.</span></p>
+      </article>
+
+      <article class="career-value-card">
+        <div class="career-value-badge">04</div>
+        <div class="career-value-icon">📈</div>
+        <h3><span class="lang-tr">Sınır Tanımayan İvme</span><span class="lang-en">Boundless Growth</span></h3>
+        <p><span class="lang-tr">Uluslararası iş ortaklıkları, küresel fuarlar ve dinamik projelerle kariyerinizi dünya ölçeğinde ileriye taşıyacak fırsatlar.</span><span class="lang-en">Accelerate your career through global partnerships, international exhibitions, and dynamic cross-border industrial operations.</span></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Open Roles Section -->
+<section class="career-section career-roles-section" id="open-positions">
+  <div class="page-wrap">
+    <div class="section-title-wrap text-center">
+      <div class="about-subtitle"><span class="lang-tr">AÇIK ROLLER &amp; ODAKLAR</span><span class="lang-en">OPEN ROLES &amp; FOCUS AREAS</span></div>
+      <h2><span class="lang-tr">Ekibimize Katılın</span><span class="lang-en">Join Our Team</span></h2>
+      <p class="section-lead-muted"><span class="lang-tr">Aşağıdaki alanlarda veya profilinize uygun genel başvuruda yerinizi alın.</span><span class="lang-en">Find your place among our active roles or submit a general application.</span></p>
+    </div>
+
+    <div class="career-roles-grid">
+      <!-- Role 1 -->
+      <div class="career-role-card">
+        <div class="role-header">
+          <div class="role-tags">
+            <span class="role-tag role-tag-dept"><span class="lang-tr">Global Satış &amp; Ticaret</span><span class="lang-en">Global Merchandising</span></span>
+            <span class="role-tag role-tag-loc"><span class="lang-tr">Mersin / Hibrit</span><span class="lang-en">Mersin / Hybrid</span></span>
+          </div>
+          <h3 class="role-title"><span class="lang-tr">Uluslararası Ticaret &amp; İş Geliştirme Uzmanı</span><span class="lang-en">Global Trade &amp; Business Development</span></h3>
+        </div>
+        <p class="role-desc">
+          <span class="lang-tr">Dünya pazarlarında müşteri ve tedarikçi ağlarını genişletme, uluslararası teklif hazırlama ve küresel ticaret operasyonlarını yönetme.</span>
+          <span class="lang-en">Expanding client and supplier networks across global markets, managing cross-border commercial bids, and driving trade operations.</span>
+        </p>
+        <ul class="role-points">
+          <li><span class="lang-tr">Akıcı İngilizce (ikinci dil avantajdır)</span><span class="lang-en">Fluent English (second language is an asset)</span></li>
+          <li><span class="lang-tr">Dış ticaret, lojistik ve sözleşme yönetimi deneyimi</span><span class="lang-en">Experience in foreign trade, logistics, and contracts</span></li>
+        </ul>
+        <div class="role-action">
+          <a class="button button-outline" href="mailto:sales@nartech.com.tr?subject=Kariyer%20Basvurusu%20-%20Uluslararasi%20Ticaret"><span class="lang-tr">Başvuru Yap</span><span class="lang-en">Apply for Role</span> ↗</a>
+        </div>
+      </div>
+
+      <!-- Role 2 -->
+      <div class="career-role-card">
+        <div class="role-header">
+          <div class="role-tags">
+            <span class="role-tag role-tag-dept"><span class="lang-tr">Mühendislik &amp; Satış</span><span class="lang-en">Engineering &amp; Sales</span></span>
+            <span class="role-tag role-tag-loc"><span class="lang-tr">Mersin / Saha</span><span class="lang-en">Mersin / Field</span></span>
+          </div>
+          <h3 class="role-title"><span class="lang-tr">Mekanik &amp; Proses Satış Mühendisi</span><span class="lang-en">Technical Sales &amp; Application Engineer</span></h3>
+        </div>
+        <p class="role-desc">
+          <span class="lang-tr">Depolama tankı ve terminal ekipmanları için teknik şartname analizi, müşteri danışmanlığı ve ürün mühendisliği hesaplamaları.</span>
+          <span class="lang-en">Technical specification analysis, customer consulting, and engineering sizing for storage tank and terminal equipment.</span>
+        </p>
+        <ul class="role-points">
+          <li><span class="lang-tr">Makine, Kimya veya Petrol Mühendisliği lisansı</span><span class="lang-en">Degree in Mechanical, Chemical, or Petroleum Engineering</span></li>
+          <li><span class="lang-tr">API 650, API 2000 veya endüstriyel vana bilgisi</span><span class="lang-en">Knowledge of API 650, API 2000, or industrial valves</span></li>
+        </ul>
+        <div class="role-action">
+          <a class="button button-outline" href="mailto:sales@nartech.com.tr?subject=Kariyer%20Basvurusu%20-%20Satis%20Muhendisi"><span class="lang-tr">Başvuru Yap</span><span class="lang-en">Apply for Role</span> ↗</a>
+        </div>
+      </div>
+
+      <!-- Role 3 -->
+      <div class="career-role-card">
+        <div class="role-header">
+          <div class="role-tags">
+            <span class="role-tag role-tag-dept"><span class="lang-tr">Saha Hizmetleri</span><span class="lang-en">Field Services</span></span>
+            <span class="role-tag role-tag-loc"><span class="lang-tr">Proje Sahaları</span><span class="lang-en">Project Sites</span></span>
+          </div>
+          <h3 class="role-title"><span class="lang-tr">Saha Denetim &amp; Süpervizörlük Uzmanı</span><span class="lang-en">Field Supervision &amp; Inspection Specialist</span></h3>
+        </div>
+        <p class="role-desc">
+          <span class="lang-tr">Mekanik montaj sahalarında PVRV set point testleri, dahili yüzer tavan (IFR) denetimleri ve yerinde teknik süpervizörlük kontrolleri.</span>
+          <span class="lang-en">PVRV set point testing, internal floating roof (IFR) inspections, and on-site technical supervision at mechanical installation sites.</span>
+        </p>
+        <ul class="role-points">
+          <li><span class="lang-tr">Tank terminali veya rafineri saha deneyimi</span><span class="lang-en">Tank terminal or refinery on-site experience</span></li>
+          <li><span class="lang-tr">İSG ve saha güvenlik standartlarına tam uyum</span><span class="lang-en">Strict commitment to HSE standards</span></li>
+        </ul>
+        <div class="role-action">
+          <a class="button button-outline" href="mailto:sales@nartech.com.tr?subject=Kariyer%20Basvurusu%20-%20Saha%20Supervizorlugu"><span class="lang-tr">Başvuru Yap</span><span class="lang-en">Apply for Role</span> ↗</a>
+        </div>
+      </div>
+
+      <!-- Role 4: Genel Başvuru -->
+      <div class="career-role-card career-role-general">
+        <div class="role-header">
+          <div class="role-tags">
+            <span class="role-tag role-tag-dept"><span class="lang-tr">Tüm Birimler</span><span class="lang-en">All Departments</span></span>
+            <span class="role-tag role-tag-loc"><span class="lang-tr">Esnek</span><span class="lang-en">Flexible</span></span>
+          </div>
+          <h3 class="role-title"><span class="lang-tr">Genel Başvuru</span><span class="lang-en">General Application</span></h3>
+        </div>
+        <p class="role-desc">
+          <span class="lang-tr">Yukarıdaki rollerden bağımsız olarak; küresel vizyonunuza, dinamizminize ve NarTech’e değer katacağınıza inanıyorsanız sizi tanımak isteriz!</span>
+          <span class="lang-en">Regardless of specific open roles, if you believe your global vision and drive will enrich NarTech, we look forward to meeting you!</span>
+        </p>
+        <ul class="role-points">
+          <li><span class="lang-tr">Sınır tanımayan, sonuç odaklı profesyoneller</span><span class="lang-en">Ambitious, boundary-pushing professionals</span></li>
+          <li><span class="lang-tr">Özgeçmişiniz İK veri tabanımızda öncelikli saklanır</span><span class="lang-en">Your profile receives priority review in our talent pool</span></li>
+        </ul>
+        <div class="role-action">
+          <a class="button button-outline" href="mailto:sales@nartech.com.tr?subject=Kariyer%20Genel%20Basvurusu%20-%20NarTech"><span class="lang-tr">Genel Başvuru Yap</span><span class="lang-en">Submit Application</span> ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Recruitment Process Section -->
+<section class="career-section career-process-section">
+  <div class="page-wrap">
+    <div class="section-title-wrap text-center">
+      <div class="about-subtitle"><span class="lang-tr">NASIL ÇALIŞIYORUZ?</span><span class="lang-en">HOW WE HIRE</span></div>
+      <h2><span class="lang-tr">İşe Alım Yolculuğu</span><span class="lang-en">Our Recruitment Journey</span></h2>
+      <p class="section-lead-muted"><span class="lang-tr">Adaylarımızın zamanına saygı duyan, şeffaf ve hızlı ilerleyen 4 adımlı süreç.</span><span class="lang-en">A transparent, rapid 4-step process respecting every candidate's time.</span></p>
+    </div>
+
+    <div class="career-process-grid">
+      <div class="career-step-item">
+        <div class="step-num-box">01</div>
+        <h4><span class="lang-tr">Başvuru &amp; İnceleme</span><span class="lang-en">Application Review</span></h4>
+        <p><span class="lang-tr">Özgeçmişiniz insan kaynakları ve ilgili departman liderleri tarafından 48 saat içinde incelenir.</span><span class="lang-en">Your CV is reviewed within 48 hours by HR and department leaders.</span></p>
+      </div>
+      <div class="career-step-item">
+        <div class="step-num-box">02</div>
+        <h4><span class="lang-tr">Tanışma Görüşmesi</span><span class="lang-en">Culture &amp; Intro</span></h4>
+        <p><span class="lang-tr">Kültürümüz, hedefleriniz ve ortak vizyonumuz üzerine ilk karşılıklı değerlendirme toplantısı.</span><span class="lang-en">An introductory conversation exploring shared vision, culture, and goals.</span></p>
+      </div>
+      <div class="career-step-item">
+        <div class="step-num-box">03</div>
+        <h4><span class="lang-tr">Teknik Değerlendirme</span><span class="lang-en">Technical Deep-Dive</span></h4>
+        <p><span class="lang-tr">Rolün gerektirdiği uzmanlık alanında vaka analizi ve karşılıklı teknik sohbet.</span><span class="lang-en">Role-specific discussion, case assessment, and domain expertise alignment.</span></p>
+      </div>
+      <div class="career-step-item">
+        <div class="step-num-box">04</div>
+        <h4><span class="lang-tr">Teklif &amp; Katılım</span><span class="lang-en">Offer &amp; Welcome</span></h4>
+        <p><span class="lang-tr">Şeffaf teklif süreci ve NarTech’in global ticaret ekosistemine hızlı oryantasyon.</span><span class="lang-en">A transparent offer package and onboarding into our global trade ecosystem.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Direct Application / CTA Section -->
+<section class="career-section career-cta-section">
+  <div class="page-wrap">
+    <div class="career-hub-card">
+      <div class="career-hub-content">
+        <div class="career-kicker-pill"><span class="career-kicker-dot"></span><span class="lang-tr">BAŞVURU KANALI</span><span class="lang-en">APPLICATION CHANNEL</span></div>
+        <h2><span class="lang-tr">NarTech’te Yerinizi Almaya Hazır mısınız?</span><span class="lang-en">Ready to Take Your Place at NarTech?</span></h2>
+        <p><span class="lang-tr">Güncel özgeçmişinizi (CV) ve ilgilendiğiniz uzmanlık alanını belirterek doğrudan bize iletebilirsiniz. Tüm başvurular KVKK ve uluslararası gizlilik standartlarına uygun olarak titizlikle değerlendirilir.</span><span class="lang-en">Submit your updated CV detailing your background and desired role. All submissions are handled with strict professional confidentiality.</span></p>
+        <div class="career-hub-actions">
+          <a class="button button-primary button-lg" href="mailto:sales@nartech.com.tr?subject=Kariyer%20Basvurusu%20-%20NarTech">
+            <span class="lang-tr">sales@nartech.com.tr Adresine Başvurun</span>
+            <span class="lang-en">Apply via sales@nartech.com.tr</span>
+            <span aria-hidden="true">✉</span>
+          </a>
+          <a class="button button-secondary" href="contact.html">
+            <span class="lang-tr">İletişim Bilgileri</span>
+            <span class="lang-en">Contact Info</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>'''
 (OUT/"career.html").write_text(layout("Kariyer",career_body,"career",title_en="Career"),encoding="utf-8")
 
 contact_body = '''<div class="page-wrap form-page contact-page"><div class="page-heading"><h1><span class="lang-tr">İletişim</span><span class="lang-en">Contact Us</span></h1></div><div class="contact-layout"><aside class="contact-info-panel"><div class="contact-info-card"><div class="contact-badge"><span class="lang-tr">Merkez Ofis &amp; Satış</span><span class="lang-en">Head Office &amp; Sales</span></div><h2 class="contact-office-title"><span class="lang-tr">Türkiye Merkez Ofis + Satış</span><span class="lang-en">Head Office &amp; Sales (Turkey)</span></h2><div class="contact-item"><div class="contact-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="contact-item-text"><strong class="contact-item-label"><span class="lang-tr">Adres</span><span class="lang-en">Address</span></strong><p class="contact-item-value">Fatih Mah. 30020 Sok. Güzelyalı Sit. Güzel Yalı Sitesi No: 29B İç Kapı No: 4 Mezitli / Mersin</p></div></div><div class="contact-item"><div class="contact-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div class="contact-item-text"><strong class="contact-item-label"><span class="lang-tr">E-Posta</span><span class="lang-en">Email</span></strong><p class="contact-item-value"><a href="mailto:sales@nartech.com.tr">sales@nartech.com.tr</a></p></div></div><div class="contact-note"><span class="lang-tr">Proje talepleriniz, teknik şartname uyumu ve ürün teklifleri için bizimle doğrudan iletişime geçebilir veya formu doldurabilirsiniz.</span><span class="lang-en">For project inquiries, technical specification compliance, and quotation requests, reach out directly or submit the form.</span></div></div></aside><section class="form-panel contact-form-panel"><form id="contact-form" class="form-grid"><input name="product" id="contact-product" type="hidden"><div class="form-field"><label for="contact-name"><span class="lang-tr">Ad Soyad</span><span class="lang-en">Full Name</span></label><input id="contact-name" name="name" autocomplete="name" required></div><div class="form-field"><label for="contact-phone"><span class="lang-tr">Telefon No</span><span class="lang-en">Phone</span></label><input id="contact-phone" name="phone" type="tel" autocomplete="tel" required></div><div class="form-field"><label for="contact-message"><span class="lang-tr">Açıklama</span><span class="lang-en">Description</span></label><textarea id="contact-message" name="description" required></textarea></div><button class="button button-primary" type="submit"><span class="lang-tr">Gönder</span><span class="lang-en">Send</span></button><p class="form-status" id="contact-status" role="status" aria-live="polite"></p></form></section></div></div>'''
