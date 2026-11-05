@@ -127,6 +127,7 @@ def format_source_text(value: str, source: str, language: str) -> str:
     """Escape plain copy and restore its DOCX emphasis plus translated equivalents."""
     from html import escape
 
+    value = value.replace("ccomply", "comply")
     if ":" not in source:
         return escape(value)
     try:

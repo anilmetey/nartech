@@ -320,14 +320,14 @@ def footer(prefix: str) -> str:
     ]
     links = "".join(f'<li><a href="{prefix}{path}"><span class="lang-tr">{esc(tr)}</span><span class="lang-en">{esc(en)}</span></a></li>' for path, tr, en in entries)
     return f'''<footer class="site-footer" role="contentinfo"><div class="footer-inner">
-<section class="footer-brand-block"><a class="footer-brand" href="{prefix}index.html" aria-label="NarTech ana sayfa" data-aria-tr="NarTech ana sayfa" data-aria-en="NarTech home page"><img src="{prefix}assets/images/nartech-logo-transparent.png" width="1958" height="803" alt="NarTech"></a><p class="footer-tagline"><span class="footer-tagline-dot" aria-hidden="true"></span><span class="lang-tr">{esc(content['home']['titleTr'])}</span><span class="lang-en">{esc(content['home']['titleEn'])}</span></p></section>
+<section class="footer-brand-block"><a class="footer-brand" href="{prefix}index.html" aria-label="NarTech ana sayfa" data-aria-tr="NarTech ana sayfa" data-aria-en="NarTech home page"><img src="{prefix}assets/images/nartech-logo-transparent.png" width="1958" height="803" alt="NarTech"></a><p class="footer-tagline"><span class="footer-tagline-dot" aria-hidden="true"></span><span class="lang-tr">{esc(content['home']['titleTr'])}</span><span class="lang-en">{esc(content['home']['titleEn'])}</span></p><p class="footer-email"><a href="mailto:sales@nartech.com.tr">sales@nartech.com.tr</a></p></section>
 <nav class="footer-group footer-site" aria-label="Hızlı Erişim" data-aria-tr="Hızlı Erişim" data-aria-en="Quick Links"><h2 class="footer-heading"><span class="lang-tr">Hızlı Erişim</span><span class="lang-en">Quick Links</span></h2><ul class="footer-links">{links}</ul></nav>
 <nav class="footer-group footer-contact" aria-label="İletişim" data-aria-tr="İletişim" data-aria-en="Contact Us"><h2 class="footer-heading"><span class="lang-tr">İletişim</span><span class="lang-en">Contact Us</span></h2><div class="footer-contact-details"><p class="footer-contact-address"><span class="lang-tr">Fatih Mah. 30020 Sok. No: 29B/4 Mezitli / Mersin</span><span class="lang-en">Mezitli / Mersin, Turkey</span></p><p class="footer-contact-email"><a href="mailto:sales@nartech.com.tr">sales@nartech.com.tr</a></p></div><a class="footer-cta" href="{prefix}contact.html#contact-form"><span class="lang-tr">Teklif Gönder</span><span class="lang-en">Send Request</span><span aria-hidden="true">↗</span></a></nav>
 </div></footer>'''
 
 def layout(title: str, body: str, current: str, prefix="", lang="tr", title_en=None) -> str:
-    css_version = "nartech-clean-20261105-2"
-    js_version = "nartech-clean-20261105-2"
+    css_version = "nartech-clean-20261105-3"
+    js_version = "nartech-clean-20261105-3"
     title_en = title_en or title
     return f'''<!doctype html>
 <html lang="{lang}" data-language="tr" data-title-tr="{esc(title)} | NarTech" data-title-en="{esc(title_en)} | NarTech">
@@ -481,7 +481,7 @@ for n,cat in enumerate(categories,1):
 product_standards_tr=ref(product_lines.index(197))
 product_standards_en=ref(product_lines.index(198))
 product_standards_note=f'<section class="copy-section"><div class="lang-tr">{p_html(product_standards_tr,"tr")}</div><div class="lang-en">{p_html(product_standards_en,"en")}</div></section>'
-products_body=f'''<div class="page-wrap catalog-page"><div class="page-heading"><h1><span class="lang-tr">Ürünler</span><span class="lang-en">Products</span></h1></div><div class="catalog-layout"><nav class="catalog-index" aria-label="Ürünler" data-aria-tr="Ürünler" data-aria-en="Products">{''.join(index_links)}</nav><div class="catalog-content">{''.join(category_details)}</div></div>{product_standards_note}</div>'''
+products_body=f'''<div class="page-wrap catalog-page"><div class="page-heading"><h1><span class="lang-tr">Ürünler</span><span class="lang-en">Products</span></h1></div><div class="catalog-layout"><div class="catalog-content">{''.join(category_details)}</div></div>{product_standards_note}</div>'''
 (OUT/"products.html").write_text(layout("Ürünler",products_body,"products",title_en="Products"),encoding="utf-8")
 
 # Category pages show product names; detail pages include each mapped source paragraph.
@@ -830,7 +830,187 @@ career_body = '''<div class="career-page">
 </div>'''
 (OUT/"career.html").write_text(layout("Kariyer",career_body,"career",title_en="Career"),encoding="utf-8")
 
-contact_body = '''<div class="page-wrap form-page contact-page"><div class="page-heading"><h1><span class="lang-tr">İletişim</span><span class="lang-en">Contact Us</span></h1></div><div class="contact-layout"><aside class="contact-info-panel"><div class="contact-info-card"><div class="contact-badge"><span class="lang-tr">Merkez Ofis &amp; Satış</span><span class="lang-en">Head Office &amp; Sales</span></div><h2 class="contact-office-title"><span class="lang-tr">Türkiye Merkez Ofis + Satış</span><span class="lang-en">Head Office &amp; Sales (Turkey)</span></h2><div class="contact-item"><div class="contact-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="contact-item-text"><strong class="contact-item-label"><span class="lang-tr">Adres</span><span class="lang-en">Address</span></strong><p class="contact-item-value">Fatih Mah. 30020 Sok. Güzelyalı Sit. Güzel Yalı Sitesi No: 29B İç Kapı No: 4 Mezitli / Mersin</p></div></div><div class="contact-item"><div class="contact-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div class="contact-item-text"><strong class="contact-item-label"><span class="lang-tr">E-Posta</span><span class="lang-en">Email</span></strong><p class="contact-item-value"><a href="mailto:sales@nartech.com.tr">sales@nartech.com.tr</a></p></div></div><div class="contact-note"><span class="lang-tr">Proje talepleriniz, teknik şartname uyumu ve ürün teklifleri için bizimle doğrudan iletişime geçebilir veya formu doldurabilirsiniz.</span><span class="lang-en">For project inquiries, technical specification compliance, and quotation requests, reach out directly or submit the form.</span></div></div></aside><section class="form-panel contact-form-panel"><form id="contact-form" class="form-grid"><input name="product" id="contact-product" type="hidden"><div class="form-field"><label for="contact-name"><span class="lang-tr">Ad Soyad</span><span class="lang-en">Full Name</span></label><input id="contact-name" name="name" autocomplete="name" required></div><div class="form-field"><label for="contact-phone"><span class="lang-tr">Telefon No</span><span class="lang-en">Phone</span></label><input id="contact-phone" name="phone" type="tel" autocomplete="tel" required></div><div class="form-field"><label for="contact-message"><span class="lang-tr">Açıklama</span><span class="lang-en">Description</span></label><textarea id="contact-message" name="description" required></textarea></div><button class="button button-primary" type="submit"><span class="lang-tr">Gönder</span><span class="lang-en">Send</span></button><p class="form-status" id="contact-status" role="status" aria-live="polite"></p></form></section></div></div>'''
+contact_body = '''<div class="page-wrap contact-page">
+  <div class="contact-header">
+    <div class="contact-eyebrow">
+      <span class="contact-pulse-dot" aria-hidden="true"></span>
+      <span class="lang-tr">İletişim &amp; Proje Desteği</span>
+      <span class="lang-en">Contact &amp; Engineering Support</span>
+    </div>
+    <h1 class="contact-hero-title">
+      <span class="lang-tr">Mühendislik Ekibimizle İletişime Geçin</span>
+      <span class="lang-en">Connect With Our Engineering Team</span>
+    </h1>
+    <p class="contact-hero-lead">
+      <span class="lang-tr">Depolama tankı ekipmanları, endüstriyel vanalar ve terminal yedek parça talepleriniz için teknik şartname uyumu ve fiyat teklifi taleplerinizi doğrudan bize iletebilirsiniz.</span>
+      <span class="lang-en">Directly submit your project requirements, technical specifications, and RFQ inquiries for storage tank equipment, valve systems, and terminal solutions.</span>
+    </p>
+  </div>
+
+  <div class="contact-main-grid">
+    <aside class="contact-channels-column">
+      <div class="contact-card contact-card--primary">
+        <div class="contact-card-badge">
+          <span class="lang-tr">Türkiye Merkez Ofis &amp; Satış</span>
+          <span class="lang-en">Turkey Head Office &amp; Sales</span>
+        </div>
+        <h2 class="contact-card-title">
+          <span class="lang-tr">Mersin Operasyon &amp; Satış Merkezi</span>
+          <span class="lang-en">Mersin Operations &amp; Sales Center</span>
+        </h2>
+
+        <div class="contact-card-group">
+          <div class="contact-channel-item">
+            <div class="contact-channel-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div class="contact-channel-content">
+              <span class="contact-channel-label">
+                <span class="lang-tr">Fiziki Ofis &amp; Sevkiyat Adresi</span>
+                <span class="lang-en">Office &amp; Dispatch Address</span>
+              </span>
+              <p class="contact-channel-value">
+                Fatih Mah. 30020 Sok. Güzelyalı Sit. Güzel Yalı Sitesi No: 29B İç Kapı No: 4<br>
+                <strong>Mezitli / Mersin, Türkiye</strong>
+              </p>
+              <a class="contact-sublink" href="https://maps.google.com/?q=Mezitli+Mersin" target="_blank" rel="noopener noreferrer">
+                <span class="lang-tr">Haritada Görüntüle</span>
+                <span class="lang-en">View on Google Maps</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-channel-item">
+            <div class="contact-channel-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2"/>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+              </svg>
+            </div>
+            <div class="contact-channel-content">
+              <span class="contact-channel-label">
+                <span class="lang-tr">Doğrudan Satış &amp; Mühendislik E-Postası</span>
+                <span class="lang-en">Direct Sales &amp; Engineering Email</span>
+              </span>
+              <a class="contact-channel-email" href="mailto:sales@nartech.com.tr">sales@nartech.com.tr</a>
+              <span class="contact-channel-hint">
+                <span class="lang-tr">Tüm teklif, CAD çizimi ve teknik şartname dosyaları için</span>
+                <span class="lang-en">For all RFQ, CAD drawings, and specification documents</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-card contact-card--trust">
+        <div class="trust-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+        </div>
+        <div class="trust-card-body">
+          <h3>
+            <span class="lang-tr">24 Saat İçinde Teknik Yanıt</span>
+            <span class="lang-en">24-Hour Engineering Response</span>
+          </h3>
+          <p>
+            <span class="lang-tr">Proje talepleriniz, uluslararası standart uyumu (API, EN, ATEX) ve özel şartnameleriniz uzman mühendislerimizce incelenerek en kısa sürede detaylı teklifle yanıtlanır.</span>
+            <span class="lang-en">Your project inquiries, international standard compliance checks (API, EN, ATEX), and specifications are reviewed by senior engineers with prompt detailed quotations.</span>
+          </p>
+        </div>
+      </div>
+    </aside>
+
+    <section class="contact-form-column">
+      <div class="contact-form-card">
+        <div class="contact-form-header">
+          <div class="contact-form-kicker">
+            <span class="lang-tr">Online Talep Formu</span>
+            <span class="lang-en">Online Inquiry Form</span>
+          </div>
+          <h2 class="contact-form-title">
+            <span class="lang-tr">Teklif &amp; Bilgi Talebi Oluşturun</span>
+            <span class="lang-en">Request a Quotation or Info</span>
+          </h2>
+          <p class="contact-form-subtitle">
+            <span class="lang-tr">Projeniz için gereken ürün grubu veya teknik parametreleri paylaşın, mühendislik ekibimiz size özel çözüm ve fiyatlandırmayı hazırlasın.</span>
+            <span class="lang-en">Share your required product line or technical parameters to receive a custom solution and quotation from our team.</span>
+          </p>
+        </div>
+
+        <form id="contact-form" class="contact-form-body">
+          <input name="product" id="contact-product" type="hidden">
+
+          <div class="form-row-grid">
+            <div class="form-field-wrapper">
+              <label for="contact-name" class="field-label">
+                <span class="lang-tr">Adınız Soyadınız</span>
+                <span class="lang-en">Full Name</span>
+                <span class="required-star" aria-hidden="true">*</span>
+              </label>
+              <div class="field-input-box">
+                <input id="contact-name" name="name" autocomplete="name" required placeholder="Örn: Ahmet Yılmaz" data-placeholder-tr="Örn: Ahmet Yılmaz" data-placeholder-en="e.g. John Doe">
+              </div>
+            </div>
+
+            <div class="form-field-wrapper">
+              <label for="contact-phone" class="field-label">
+                <span class="lang-tr">Telefon Numaranız</span>
+                <span class="lang-en">Phone Number</span>
+                <span class="required-star" aria-hidden="true">*</span>
+              </label>
+              <div class="field-input-box">
+                <input id="contact-phone" name="phone" type="tel" autocomplete="tel" required placeholder="+90 (5XX) XXX XX XX" data-placeholder-tr="+90 (5XX) XXX XX XX" data-placeholder-en="+1 (555) 000-0000">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-field-wrapper">
+            <label for="contact-message" class="field-label">
+              <span class="lang-tr">Proje Detayları, İhtiyaçlar &amp; Açıklama</span>
+              <span class="lang-en">Project Details, Inquiries &amp; Specifications</span>
+              <span class="required-star" aria-hidden="true">*</span>
+            </label>
+            <div class="field-input-box">
+              <textarea id="contact-message" name="description" required placeholder="Tank kapasitesi, vana çapları, çalışma basıncı/sıcaklığı veya talep ettiğiniz teknik detayları belirtebilirsiniz..." data-placeholder-tr="Tank kapasitesi, vana çapları, çalışma basıncı/sıcaklığı veya talep ettiğiniz teknik detayları belirtebilirsiniz..." data-placeholder-en="Please specify tank capacity, valve sizes, operating pressure/temperature, or other technical details..."></textarea>
+            </div>
+          </div>
+
+          <div class="form-actions-wrapper">
+            <button class="contact-submit-button" type="submit">
+              <span class="btn-text">
+                <span class="lang-tr">Talebi Gönder</span>
+                <span class="lang-en">Submit Inquiry</span>
+              </span>
+              <span class="btn-icon-pill" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </span>
+            </button>
+          </div>
+
+          <p class="form-status" id="contact-status" role="status" aria-live="polite"></p>
+
+          <div class="form-footer-secure">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            <span class="lang-tr">Bilgileriniz yalnızca teknik teklif hazırlama amacıyla güvenle işlenir.</span>
+            <span class="lang-en">Your information is handled strictly for preparing engineering quotations.</span>
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>
+</div>'''
 (OUT/"contact.html").write_text(layout("İletişim",contact_body,"contact",title_en="Contact Us"),encoding="utf-8")
 
 # FAQ questions are phrased from supplied product information; answers remain source text.

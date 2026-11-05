@@ -48,6 +48,9 @@
     document.querySelectorAll('[data-i18n-tr][data-i18n-en]').forEach(element => {
       element.textContent = english ? element.dataset.i18nEn : element.dataset.i18nTr;
     });
+    document.querySelectorAll('[data-placeholder-tr][data-placeholder-en]').forEach(element => {
+      element.setAttribute('placeholder', english ? element.dataset.placeholderEn : element.dataset.placeholderTr);
+    });
     document.querySelectorAll('[data-status-key]').forEach(element => {
       element.textContent = statusCopy[element.dataset.statusKey]?.[language] || '';
     });
