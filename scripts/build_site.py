@@ -326,7 +326,7 @@ def footer(prefix: str) -> str:
 </div></footer>'''
 
 def layout(title: str, body: str, current: str, prefix="", lang="tr", title_en=None) -> str:
-    css_version = "nartech-career-layout-20261105-1"
+    css_version = "nartech-career-layout-20261105-2"
     js_version = "nartech-home-flow-20261105-1"
     title_en = title_en or title
     return f'''<!doctype html>
@@ -569,17 +569,14 @@ calculator_body='''<div class="page-wrap form-page"><div class="page-heading"><h
 
 career_body = '''<div class="career-page">
 <section class="career-hero">
-  <div class="page-wrap career-hero-inner">
+  <div class="page-wrap career-hero-wrap">
+    <div class="page-heading career-page-heading"><h1 class="career-heading">
+      <span class="lang-tr">Kariyer</span>
+      <span class="lang-en">Career</span>
+    </h1></div>
+    <div class="career-hero-inner">
     <div class="career-hero-copy">
-      <div class="career-kicker-pill">
-        <span class="career-kicker-dot" aria-hidden="true"></span>
-        <span class="lang-tr">KÜRESEL VİZYON &amp; EKİP</span>
-        <span class="lang-en">GLOBAL VISION &amp; TEAM</span>
-      </div>
-      <h1 class="career-heading">
-        <span class="lang-tr">Kariyerinize NarTech ile Yön Verin</span>
-        <span class="lang-en">Shape Your Career With NarTech</span>
-      </h1>
+      <div class="about-subtitle"><span class="lang-tr">KÜRESEL VİZYON &amp; EKİP</span><span class="lang-en">GLOBAL VISION &amp; TEAM</span></div>
       <blockquote class="career-manifesto-card">
         <div class="career-manifesto-mark" aria-hidden="true">“</div>
         <p class="career-lead">
@@ -625,6 +622,7 @@ career_body = '''<div class="career-page">
         </span>
       </div>
     </figure>
+    </div>
   </div>
 </section>
 
