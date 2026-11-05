@@ -16,18 +16,28 @@
   const setLanguage = language => {
     language = language === 'en' ? 'en' : 'tr';
     root.dataset.language = language;
+    root.setAttribute('data-language', language);
     root.lang = language;
     const english = language === 'en';
-    document.title = english ? root.dataset.titleEn : root.dataset.titleTr;
+    if (root.dataset.titleEn && root.dataset.titleTr) {
+      document.title = english ? root.dataset.titleEn : root.dataset.titleTr;
+    }
     const menuButton = document.querySelector('[data-nav-toggle]');
     if (menuButton) {
       const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
       const labelLanguage = english ? 'En' : 'Tr';
       const labelAction = isOpen ? 'close' : 'open';
-      menuButton.setAttribute('aria-label', menuButton.dataset[`${labelAction}Label${labelLanguage}`]);
+      const labelVal = menuButton.dataset[`${labelAction}Label${labelLanguage}`];
+      if (labelVal) menuButton.setAttribute('aria-label', labelVal);
     }
     document.querySelectorAll('[data-set-language]').forEach(button => {
-      button.setAttribute('aria-pressed', String(button.dataset.setLanguage === language));
+      const isActive = button.dataset.setLanguage === language;
+      button.setAttribute('aria-pressed', String(isActive));
+      if (isActive) {
+        button.classList.add('is-active');
+      } else {
+        button.classList.remove('is-active');
+      }
     });
     document.querySelectorAll('[data-aria-tr][data-aria-en]').forEach(element => {
       element.setAttribute('aria-label', english ? element.dataset.ariaEn : element.dataset.ariaTr);
@@ -44,10 +54,33 @@
     document.dispatchEvent(new CustomEvent('nartech-language-change', { detail: { language } }));
     try { localStorage.setItem('nartech-language', language); } catch { /* Storage may be unavailable for file previews. */ }
   };
-  setLanguage(selectedLanguage());
+
+  const bindLanguageControls = () => {
+    document.querySelectorAll('[data-set-language]').forEach(button => {
+      button.addEventListener('click', event => {
+        event.preventDefault();
+        event.stopPropagation();
+        setLanguage(button.dataset.setLanguage);
+      });
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      bindLanguageControls();
+      setLanguage(selectedLanguage());
+    });
+  } else {
+    bindLanguageControls();
+    setLanguage(selectedLanguage());
+  }
+
   document.addEventListener('click', event => {
     const button = event.target.closest('[data-set-language]');
-    if (button) setLanguage(button.dataset.setLanguage);
+    if (button) {
+      event.preventDefault();
+      setLanguage(button.dataset.setLanguage);
+    }
   });
   const navToggle = document.querySelector('[data-nav-toggle]');
   const siteNav = document.querySelector('#site-nav');
