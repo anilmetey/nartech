@@ -326,7 +326,7 @@ def footer(prefix: str) -> str:
 </div></footer>'''
 
 def layout(title: str, body: str, current: str, prefix="", lang="tr", title_en=None) -> str:
-    css_version = "nartech-career-layout-20261105-2"
+    css_version = "nartech-career-layout-20261105-3"
     js_version = "nartech-home-flow-20261105-1"
     title_en = title_en or title
     return f'''<!doctype html>
@@ -802,25 +802,25 @@ career_body = '''<div class="career-page">
 </section>
 
 <!-- Direct Application / CTA Section -->
-<section class="career-section career-cta-section">
+<section class="career-application" id="application-channel">
   <div class="page-wrap">
-    <div class="career-hub-card">
-      <div class="career-hub-content">
-        <div class="career-kicker-pill"><span class="career-kicker-dot"></span><span class="lang-tr">BAŞVURU KANALI</span><span class="lang-en">APPLICATION CHANNEL</span></div>
-        <h2><span class="lang-tr">NarTech’te Yerinizi Almaya Hazır mısınız?</span><span class="lang-en">Ready to Take Your Place at NarTech?</span></h2>
-        <p><span class="lang-tr">Güncel özgeçmişinizi (CV) ve ilgilendiğiniz uzmanlık alanını belirterek doğrudan bize iletebilirsiniz. Tüm başvurular KVKK ve uluslararası gizlilik standartlarına uygun olarak titizlikle değerlendirilir.</span><span class="lang-en">Submit your updated CV detailing your background and desired role. All submissions are handled with strict professional confidentiality.</span></p>
-        <div class="career-hub-actions">
-          <a class="button button-primary button-lg" href="mailto:sales@nartech.com.tr?subject=Kariyer%20Basvurusu%20-%20NarTech">
-            <span class="lang-tr">sales@nartech.com.tr Adresine Başvurun</span>
-            <span class="lang-en">Apply via sales@nartech.com.tr</span>
-            <span aria-hidden="true">✉</span>
-          </a>
-          <a class="button button-secondary" href="contact.html">
-            <span class="lang-tr">İletişim Bilgileri</span>
-            <span class="lang-en">Contact Info</span>
-            <span aria-hidden="true">→</span>
-          </a>
-        </div>
+    <div class="career-application-panel">
+      <div class="career-application-copy">
+        <div class="about-subtitle"><span class="lang-tr">EKİBİMİZE KATILIN</span><span class="lang-en">JOIN OUR TEAM</span></div>
+        <h2><span class="lang-tr">Başvuru Kanalı</span><span class="lang-en">Application Channel</span></h2>
+        <p><span class="lang-tr">Güncel özgeçmişinizi ve ilgilendiğiniz uzmanlık alanını belirterek bize e-posta gönderin veya iletişim sayfamızdan ulaşın.</span><span class="lang-en">Email your current CV and the area you are interested in, or reach us through our contact page.</span></p>
+      </div>
+      <div class="career-application-actions">
+        <a class="button career-apply-button" href="mailto:sales@nartech.com.tr?subject=Kariyer%20Basvurusu%20-%20NarTech">
+          <span class="career-action-label"><span class="lang-tr">E-posta ile Başvur</span><span class="lang-en">Apply by Email</span></span>
+          <span class="career-action-detail">sales@nartech.com.tr</span>
+          <span class="career-action-icon" aria-hidden="true">↗</span>
+        </a>
+        <a class="button career-contact-button" href="contact.html">
+          <span class="career-action-label"><span class="lang-tr">İletişim Sayfası</span><span class="lang-en">Contact Page</span></span>
+          <span class="career-action-detail"><span class="lang-tr">Bize ulaşın</span><span class="lang-en">Get in touch</span></span>
+          <span class="career-action-icon" aria-hidden="true">→</span>
+        </a>
       </div>
     </div>
   </div>
