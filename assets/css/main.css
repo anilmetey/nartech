@@ -1671,18 +1671,20 @@ main { min-height: 58vh; }
 
 .contact-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(28px, 4vw, 44px);
-  align-items: start;
+  align-items: stretch;
   margin-top: 32px;
 }
 
 /* Office Info Column */
 .contact-info-panel {
+  display: flex;
   margin-top: 0;
 }
 
 .contact-info-card {
+  flex: 1;
   padding: clamp(28px, 3.5vw, 36px);
   border: 1px solid #d8e5dd;
   border-radius: 12px;
