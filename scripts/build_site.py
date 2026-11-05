@@ -296,7 +296,7 @@ def nav(prefix: str, current: str) -> str:
         ("services","services.html","Hizmetler","Services"),
         ("calculator","calculator.html","Hesaplama","Calculation"),
         ("career","career.html","Kariyer","Career"),
-        ("contact","contact.html","İletişim","Contact"),
+        ("contact","contact.html","İletişim","Contact Us"),
     ]
     links=[]
     for key,path,tr,en in entries:

@@ -1,0 +1,7 @@
+yandı son durmenin başında böyle ABGDFG yazıyor ya onları kaldıracağız.
+Bir de PIC kısmı var.
+13 bölümü size metal yumuşak diye onu PIC yazıp altına o kırılımları koyabiliriz.
+Şimdi böyle güncellemenle yapmamız yeterli produk kısımlar çok fazla değil.
+Ben başındaki aslında ana fikir O ABGDFG kısmına kaldırmak.
+O PIC ve O ABGDFG şiştlandırıp O PICDFG 3 kırılıma bölmek.
+O kadar.

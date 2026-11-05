@@ -1,0 +1,7 @@
+Anıl selam ya şimdi şöyle bir şey var bu yapı da bize çok uymadı tamam mı?
+Şimdi şöyle bir şey yapalım.
+Sen bu sayfayı da nar agro gibi yap tamam mı?
+Ben sana who we are işte about us kısımlarını tekrar güncelleyip göndereyim ondan sonra.
+Yine nar agro yapısında yapalım ama her sekme bir sayfa olsun yani aşağıya doğru inip bitmesin.
+İşte who we are, about us, kontak, services, products kısımları olsun.
+Hani bunun sıralamasını yine düzenleriz hangi sırada olacağını ama bu döngüde yapalım olur mu?
