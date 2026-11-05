@@ -127,8 +127,13 @@ def format_source_text(value: str, source: str, language: str) -> str:
     """Escape plain copy and restore its DOCX emphasis plus translated equivalents."""
     from html import escape
 
-    source_name, line_text = source.rsplit(":", 1)
-    line = int(line_text)
+    if ":" not in source:
+        return escape(value)
+    try:
+        source_name, line_text = source.rsplit(":", 1)
+        line = int(line_text)
+    except ValueError:
+        return escape(value)
     phrases = list(TRANSLATED_BOLD.get((source_name, line, language), ()))
     phrases.extend(_source_bold(source))
     normalized, positions = _collapse_space(value)
