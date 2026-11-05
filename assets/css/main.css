@@ -663,10 +663,39 @@ main { min-height: 58vh; }
 .home-flow-lines { position: absolute; z-index: 1; inset: 0; display: block; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
 .home-flow-lines--mobile { display: none; }
 .home-flow-track { fill: none; stroke: rgba(20,79,50,.25); stroke-width: 2; stroke-dasharray: 7 9; stroke-linecap: round; }
-.home-flow-particles { fill: none; stroke: #78ad8d; stroke-width: 5.5; stroke-dasharray: 0 84; stroke-dashoffset: 0; stroke-linecap: round; animation: home-flow-particle-run 2.5s linear infinite; animation-delay: var(--flow-delay, 0s); animation-play-state: paused; }
-.home-what-flow.is-visible .home-flow-particles { animation-play-state: running; }
-@keyframes home-flow-particle-run { to { stroke-dashoffset: -84; } }
-.home-flow-orbit { position: absolute; z-index: 1; top: 160px; left: 50%; width: 144px; height: 144px; transform: translateX(-50%); border: 1px solid rgba(20,79,50,.14); border-radius: 50%; box-shadow: 0 0 0 15px rgba(20,79,50,.025), 0 0 0 30px rgba(20,79,50,.018); }
+.home-flow-particles {
+  fill: none;
+  stroke: #78ad8d;
+  stroke-width: 5.5;
+  stroke-dasharray: 8 76;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  animation: home-flow-particle-run 2.5s linear infinite !important;
+  animation-delay: var(--flow-delay, 0s);
+  animation-play-state: running !important;
+}
+.home-what-flow.is-visible .home-flow-particles { animation-play-state: running !important; }
+@keyframes home-flow-particle-run {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -84; }
+}
+.home-flow-orbit {
+  position: absolute;
+  z-index: 1;
+  top: 160px;
+  left: 50%;
+  width: 144px;
+  height: 144px;
+  transform: translateX(-50%);
+  border: 1px solid rgba(20,79,50,.14);
+  border-radius: 50%;
+  box-shadow: 0 0 0 15px rgba(20,79,50,.025), 0 0 0 30px rgba(20,79,50,.018);
+  animation: home-flow-orbit-spin 22s linear infinite;
+}
+@keyframes home-flow-orbit-spin {
+  from { transform: translateX(-50%) rotate(0deg); }
+  to { transform: translateX(-50%) rotate(360deg); }
+}
 .home-flow-orbit::before, .home-flow-orbit::after { position: absolute; inset: 11px; border: 1px dashed rgba(20,79,50,.15); border-radius: 50%; content: ""; }
 .home-flow-orbit::after { inset: 25px; border-style: solid; border-color: rgba(20,79,50,.1); }
 .home-flow-hub { position: absolute; z-index: 3; top: 192px; left: 50%; display: grid; width: 250px; height: 80px; place-items: center; overflow: hidden; border: 1px solid rgba(20,79,50,.58); border-radius: 12px; background: rgba(255,255,255,.98); box-shadow: 0 10px 28px rgba(24,58,39,.1); transform: translateX(-50%); }
@@ -674,12 +703,9 @@ main { min-height: 58vh; }
 .home-flow-output { position: absolute; z-index: 2; top: 354px; left: 50%; display: grid; width: min(330px, calc(100% - 48px)); min-height: 72px; align-content: center; justify-items: center; gap: 2px; border: 1px solid #d5e3da; border-radius: 9px; padding: 10px 16px; background: rgba(255,255,255,.98); box-shadow: 0 6px 18px rgba(24,58,39,.045); text-align: center; transform: translateX(-50%); }
 .home-flow-output strong { color: var(--green); font-size: 15px; font-weight: 740; line-height: 1.35; }
 .home-flow-output > span { color: #53645a; font-size: 12px; line-height: 1.4; }
-.home-what-flow.motion-ready:not(.is-visible) .home-flow-card { opacity: 0; transform: translateY(12px); }
-.home-what-flow.motion-ready:not(.is-visible) .home-flow-output { opacity: 0; transform: translate(-50%, 12px); }
-.home-what-flow.motion-ready:not(.is-visible) .home-flow-hub { opacity: 0; transform: translate(-50%, 10px) scale(.98); }
-.home-what-flow.is-visible .home-flow-card { animation: home-flow-card-enter 420ms cubic-bezier(.22,1,.36,1) both; animation-delay: var(--flow-delay, 0ms); }
-.home-what-flow.is-visible .home-flow-hub { animation: home-flow-hub-enter 320ms cubic-bezier(.22,1,.36,1) 250ms both; }
-.home-what-flow.is-visible .home-flow-output { animation: home-flow-output-enter 300ms cubic-bezier(.22,1,.36,1) 430ms both; }
+.home-what-flow .home-flow-card { opacity: 1; transform: translateY(0); }
+.home-what-flow .home-flow-output { opacity: 1; transform: translate(-50%, 0); }
+.home-what-flow .home-flow-hub { opacity: 1; transform: translate(-50%, 0); }
 @keyframes home-flow-card-enter { from { opacity: 0; transform: translateY(12px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
 @keyframes home-flow-hub-enter { from { opacity: 0; transform: translate(-50%, 10px) scale(.98); } to { opacity: 1; transform: translate(-50%, 0) scale(1); } }
 @keyframes home-flow-output-enter { from { opacity: 0; transform: translate(-50%, 10px); } to { opacity: 1; transform: translate(-50%, 0); } }
@@ -1708,91 +1734,7 @@ main { min-height: 58vh; }
 .footer-contact-email { margin: 0; }
 .footer-contact-email a { color: #fff; text-decoration: underline; text-underline-offset: 2px; font-weight: 600; }
 
-/* ========================================================
-   NarAgro-Inspired Native SVG Vector Ecosystem Diagram
-   ======================================================== */
-.supply-chain-section {
-  padding: clamp(38px, 4vw, 54px) 0 clamp(44px, 4.8vw, 64px);
-  background: linear-gradient(180deg, #ffffff 0%, #f9fbf9 100%);
-}
-.supply-chain-wrapper {
-  max-width: 1040px;
-  margin: 28px auto 0;
-  position: relative;
-}
-.supply-chain-svg {
-  width: 100%;
-  height: auto;
-  display: block;
-  overflow: visible;
-  filter: drop-shadow(0 12px 36px rgba(1, 79, 77, 0.05));
-}
-.flow-stream {
-  stroke-dasharray: 8, 12;
-}
-.flow-group {
-  transition: opacity 0.35s ease, filter 0.35s ease;
-}
-.flow-group.is-dimmed {
-  opacity: 0.16;
-}
-.flow-group.is-active {
-  opacity: 1;
-}
-.flow-group.is-active .flow-stream {
-  stroke-width: 5;
-  filter: drop-shadow(0 0 7px #10b981);
-}
-#flow-solutions.is-active .flow-stream {
-  filter: drop-shadow(0 0 7px #bd6a4b);
-}
-.node-card {
-  cursor: pointer;
-}
-.node-card .card-box {
-  transition: stroke 0.25s ease, stroke-width 0.25s ease, filter 0.25s ease;
-}
-.node-card:hover .card-box,
-.node-card.is-active .card-box {
-  stroke: #014f4d;
-  stroke-width: 2.6;
-  filter: url(#cardShadowActive);
-}
-.hub-center {
-  cursor: pointer;
-}
-.hub-center .hub-box {
-  transition: stroke-width 0.25s ease, filter 0.25s ease;
-}
-.hub-center:hover .hub-box,
-.hub-center.is-active .hub-box {
-  stroke-width: 3.5;
-  filter: url(#cardShadowActive);
-}
-.ecosystem-banner {
-  margin-top: 22px;
-  padding: 16px 24px;
-  background: #ffffff;
-  border: 1px solid #e0ebe4;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(1, 79, 77, 0.04);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  transition: all 0.3s ease;
-}
-.banner-text {
-  margin: 0;
-  font-size: 14.5px;
-  color: #334155;
-  font-weight: 500;
-  line-height: 1.55;
-  transition: color 0.2s ease;
-}
-.banner-text strong {
-  color: #014f4d;
-}
+
 
 /* ========================================================
    Executive High-End Career Architecture
