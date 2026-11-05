@@ -368,8 +368,113 @@
     }
   }
 
-  const homeFlow = document.querySelector('[data-home-flow]');
-  if (homeFlow) {
-    homeFlow.classList.add('is-visible');
-  }
+  const setupSupplyChain = () => {
+    const supplyChainWrapper = document.querySelector('.supply-chain-wrapper');
+    if (!supplyChainWrapper) return;
+
+    const bannerText = document.getElementById('banner-text');
+    const flowGroups = supplyChainWrapper.querySelectorAll('.flow-group');
+    const nodeCards = supplyChainWrapper.querySelectorAll('.node-card');
+    const hubCenter = supplyChainWrapper.querySelector('#hub-nartech');
+
+    const nodeInfoMap = {
+      consultancy: {
+        tr: { title: 'Danışmanlık & Doğru Ürün Seçimi', desc: 'Müşteri operasyonel şartlarına en uygun, sertifikalı ve uzun ömürlü tank/terminal ekipmanlarının mühendislik analizi ile belirlenmesi.' },
+        en: { title: 'Consultancy & Optimal Equipment Selection', desc: 'Identifying long-lasting, certified tank and terminal equipment tailored to client operational specifications.' }
+      },
+      engineering: {
+        tr: { title: 'Mühendislik & Şartname Uyumu', desc: 'Projeye özel teknik şartnamelerin hazırlanması, proses/mekanik hesaplamalar ve uluslararası normlara tam uyumun sağlanması.' },
+        en: { title: 'Engineering & Specification Compliance', desc: 'Preparing project-specific specifications, mechanical/process calculations, and ensuring total alignment with international standards.' }
+      },
+      procurement: {
+        tr: { title: 'Doğrudan Üreticiden Tedarik', desc: 'Aracısız, doğrudan birinci el küresel üreticilerden en kaliteli tank ve terminal ekipmanlarının rekabetçi koşullarla temini.' },
+        en: { title: 'Direct Procurement from Manufacturers', desc: 'Procuring premium certified equipment directly from world-class manufacturers under optimal and competitive conditions.' }
+      },
+      supervision: {
+        tr: { title: 'Saha Süpervizörlüğü & Denetim', desc: 'Montaj, devreye alma ve saha kontrollerinde yerinde teknik gözetim, PVRV set point testleri ve IFR montaj süpervizörlüğü.' },
+        en: { title: 'Field Supervision & Inspection', desc: 'On-site technical supervision, PVRV set point inspection, and IFR installation checks during mechanical assembly and commissioning.' }
+      },
+      hub: {
+        tr: { title: 'NarTech Tank Terminal Solutions', desc: 'Depolama tankı ve terminal çözümlerinde doğru mühendislik, kaliteli ürün ve küresel standartları birleştiren güvenilir merkez.' },
+        en: { title: 'NarTech Tank Terminal Solutions', desc: 'The trusted engineering hub uniting sound design, premier products, and international standards in storage tank and terminal solutions.' }
+      },
+      solutions: {
+        tr: { title: 'Nihai Mühendislik Çözümleri', desc: 'Petrol & Gaz, Petrokimya, Rafineri, Kimya, Su ve Offshore depolama tesisleri için güvenilir, verimli ve sürdürülebilir anahtar teslim sonuçlar.' },
+        en: { title: 'Final Engineering Solutions', desc: 'Reliable, efficient, and sustainable end-to-end engineering outcomes for Oil & Gas, Petrochemical, Refinery, Chemical, and Offshore storage facilities.' }
+      }
+    };
+
+    const defaultBannerHTML = {
+      tr: '<strong>Doğru Mühendislik &amp; Doğru Ürün:</strong> Müşteri gereksinimlerinden nihai çözüme kesintisiz, güvenilir ve sertifikalı süreç.',
+      en: '<strong>The Right Engineering &amp; The Right Product:</strong> Seamless, certified, and reliable flow from technical requirements to final solutions.'
+    };
+
+    let activeNode = null;
+
+    const renderBanner = () => {
+      const lang = root.dataset.language === 'en' ? 'en' : 'tr';
+      if (activeNode && nodeInfoMap[activeNode]) {
+        const info = nodeInfoMap[activeNode][lang];
+        bannerText.innerHTML = `<strong>${info.title}:</strong> ${info.desc}`;
+      } else {
+        bannerText.innerHTML = defaultBannerHTML[lang];
+      }
+    };
+
+    const activateNode = nodeId => {
+      activeNode = nodeId;
+      flowGroups.forEach(flow => {
+        if (flow.id === `flow-${nodeId}` || (nodeId === 'hub' && flow.id === 'flow-solutions')) {
+          flow.classList.add('is-active');
+          flow.classList.remove('is-dimmed');
+        } else {
+          flow.classList.remove('is-active');
+          flow.classList.add('is-dimmed');
+        }
+      });
+      nodeCards.forEach(card => card.classList.toggle('is-active', card.dataset.node === nodeId));
+      if (hubCenter) hubCenter.classList.toggle('is-active', nodeId === 'hub');
+      renderBanner();
+    };
+
+    const resetAll = () => {
+      activeNode = null;
+      flowGroups.forEach(flow => {
+        flow.classList.remove('is-active', 'is-dimmed');
+      });
+      nodeCards.forEach(card => card.classList.remove('is-active'));
+      if (hubCenter) hubCenter.classList.remove('is-active');
+      renderBanner();
+    };
+
+    nodeCards.forEach(card => {
+      const nodeId = card.dataset.node;
+      card.addEventListener('mouseenter', () => activateNode(nodeId));
+      card.addEventListener('mouseleave', resetAll);
+      card.addEventListener('click', e => {
+        e.stopPropagation();
+        if (activeNode === nodeId) resetAll();
+        else activateNode(nodeId);
+      });
+    });
+
+    if (hubCenter) {
+      hubCenter.addEventListener('mouseenter', () => activateNode('hub'));
+      hubCenter.addEventListener('mouseleave', resetAll);
+      hubCenter.addEventListener('click', e => {
+        e.stopPropagation();
+        if (activeNode === 'hub') resetAll();
+        else activateNode('hub');
+      });
+    }
+
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.supply-chain-wrapper')) resetAll();
+    });
+
+    document.addEventListener('nartech-language-change', renderBanner);
+    renderBanner();
+  };
+
+  setupSupplyChain();
 })();
