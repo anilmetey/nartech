@@ -326,8 +326,8 @@ def footer(prefix: str) -> str:
 </div></footer>'''
 
 def layout(title: str, body: str, current: str, prefix="", lang="tr", title_en=None) -> str:
-    css_version = "nartech-clean-20261105-3"
-    js_version = "nartech-clean-20261105-3"
+    css_version = "nartech-ecosystem-20261105-4"
+    js_version = "nartech-ecosystem-20261105-4"
     title_en = title_en or title
     return f'''<!doctype html>
 <html lang="{lang}" data-language="tr" data-title-tr="{esc(title)} | NarTech" data-title-en="{esc(title_en)} | NarTech">
