@@ -281,6 +281,7 @@ def remove_product_letter_prefix(nodes):
             value = node.get(field)
             if value:
                 node[field] = re.sub(r"^[A-Ga-g][ -]+", "", value).strip().rstrip(":").strip()
+        remove_product_letter_prefix(node.get("items", []))
         remove_product_letter_prefix(node.get("children", []))
 
 remove_product_letter_prefix(categories)
