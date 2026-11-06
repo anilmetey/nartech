@@ -1885,6 +1885,11 @@ main { min-height: 58vh; }
     grid-template-columns: 1fr;
     gap: 16px;
   }
+  .contact-form-panel #contact-form .form-field input,
+  .contact-form-panel #contact-form .form-field textarea {
+    min-width: 0;
+    font-size: 16px;
+  }
   .contact-form-panel #contact-form .form-field:nth-of-type(3),
   .contact-form-panel #contact-form > .button {
     grid-column: 1;
