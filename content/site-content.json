@@ -159,6 +159,44 @@
       },
       "items": [
         {
+          "id": "high-velocity-pressure-vacuum-relief-valve",
+          "titleTr": "Yüksek Hızlı Basınç Vakum Ventili",
+          "titleEn": "High Velocity Pressure Vacuum Relief Valve",
+          "tr": [
+            {
+              "text": "En zorlu operasyonel koşullarda dahi üstün koruma sağlayan Yüksek Hızlı Basınç ve Vakum Ventilleri (High Velocity PV Valves), sisteminizi aşırı basınç ve vakum risklerine karşı güvence altına alır. Kargo gemilerinin yükleme ve tahliye süreçleri için özel olarak geliştirilen bu sistem; ani basınç değişimlerini ve buhar transferini kusursuz bir şekilde yöneterek, dinamik deniz koşullarında kargo tanklarınızın güvenliğini ve bütünlüğünü maksimum düzeyde korur.",
+              "source": "User-provided product copy"
+            }
+          ],
+          "en": [
+            {
+              "text": "Providing superior protection even under the most demanding operational conditions, High-Velocity Pressure and Vacuum Valves safeguard your system against the risks of overpressure and vacuum. Specifically developed for cargo ship loading and unloading operations, this advanced system flawlessly manages rapid pressure fluctuations and vapor transfer, ensuring the maximum safety and structural integrity of your cargo tanks during dynamic marine transfers.",
+              "source": "User-provided product copy"
+            }
+          ],
+          "children": [],
+          "source": "Mahmut Tunaz: 2026-11-06"
+        },
+        {
+          "id": "thermal-relief-valve",
+          "titleTr": "Termal Emniyet Vanası (TRV)",
+          "titleEn": "Thermal Relief Valve (TRV)",
+          "tr": [
+            {
+              "text": "Termal Tahliye Vanası (TRV), kapalı bir hat veya ekipman hacminde hapsolmuş sıvının ısıl genleşmesi sonucu oluşan aşırı basınca karşı koruma sağlayan tahliye vanasıdır. Sıvı genleştikçe kapalı hacimdeki basınç yükselir; basınç set değerine ulaştığında yay yüklü vana açılarak küçük miktarda sıvıyı tahliye eder. Basınç güvenli seviyeye düştüğünde vana yeniden kapanır.",
+              "source": "Valpro TRV"
+            }
+          ],
+          "en": [
+            {
+              "text": "Thermal Relief Valve (TRV) is an overpressure protection device designed to protect closed piping systems and equipment against excessive hydraulic pressure caused by thermal fluid expansion. As the trapped fluid warms and expands, pressure rises rapidly; once set pressure is reached, the spring-loaded valve opens to discharge a small volume of liquid, reseating tightly once safe pressure is restored.",
+              "source": "Valpro TRV"
+            }
+          ],
+          "children": [],
+          "source": 132
+        },
+        {
           "id": "pressure-vacuum-relief-valve",
           "titleTr": "Basınç Vakum Ventili",
           "titleEn": "Pressure Vacuum Relief Valve",
@@ -340,7 +378,7 @@
           ],
           "children": [],
           "source": 36,
-          "navTitleEn": "Emergency Relief Valve"
+          "navTitleEn": "d-Emergency Relief Valve"
         },
         {
           "id": "gauge-hatch",
@@ -589,7 +627,7 @@
             {
               "id": "hdpe-seal",
               "titleTr": "HDPE Contası",
-              "titleEn": "-HDPE Seal",
+              "titleEn": "HDPE Seal",
               "tr": [
                 {
                   "text": "Yüksek yoğunluklu polietilen (HDPE) esaslı elemanlar, IFR çevre sızdırmazlık uygulamalarında yüksek mekanik dayanım ve aşınma direnci sunarak uzun ömürlü ve güvenilir çalışmayı destekler.",
@@ -629,7 +667,7 @@
         }
       ],
       "titleTr": "1-Depolama Tankı Ekipmanları",
-      "titleEn": "1-Storage Tank Equipments: "
+      "titleEn": "1-Storage Tank Equipments"
     },
     {
       "id": "fire-fighting-equipments",
@@ -897,8 +935,18 @@
               "id": "foam-pigs",
               "titleTr": "Köpük Pigleri",
               "titleEn": "Foam Pigs",
-              "tr": [],
-              "en": [],
+              "tr": [
+                {
+                  "text": "Yüksek kaliteli poliüretan köpükten üretilen bu hafif ve esnek pigler; boru hatlarının kurutulması, suyu süpürme (dewatering) ve hafif temizlik işlemleri için idealdir. Dar dirseklerden ve farklı çaplardaki hatlardan kolayca geçebilme yeteneği sayesinde maksimum uyumluluk sunar. Genellikle hat ön hazırlığı ve genel bakım süreçlerinde pratik bir çözüm olarak tercih edilir.",
+                  "source": "WhatsApp 2026-11-06"
+                }
+              ],
+              "en": [
+                {
+                  "text": "Made from high-quality polyurethane foam, these lightweight and flexible pigs are ideal for pipeline drying, dewatering, and light cleaning. Their ability to pass easily through tight bends and pipelines of varying diameters provides maximum versatility. They are commonly chosen as a practical solution for pipeline preparation and general maintenance.",
+                  "source": "WhatsApp 2026-11-06"
+                }
+              ],
               "children": [],
               "source": 112
             },
@@ -906,8 +954,18 @@
               "id": "solid-cast-pigs",
               "titleTr": "Katı Döküm Pigleri",
               "titleEn": "Solid Cast Pigs",
-              "tr": [],
-              "en": [],
+              "tr": [
+                {
+                  "text": "Tek parça döküm poliüretan malzemeden üretilen bu sağlam pigler, yüksek aşınma direnci ve mükemmel sızdırmazlık özellikleri ile öne çıkar. Boru iç yüzeyindeki birikintilerin temizlenmesi, sıvıların hat dışına itilmesi ve rutin hat bakımı için uzun ömürlü bir performans sunar. Zorlu saha koşullarında bile formunu koruyarak güvenilir ve kesintisiz bir pigging operasyonu sağlar.",
+                  "source": "WhatsApp 2026-11-06"
+                }
+              ],
+              "en": [
+                {
+                  "text": "Manufactured from one-piece cast polyurethane, these robust pigs stand out for their high abrasion resistance and excellent sealing. They deliver long-lasting performance when removing deposits from pipe interiors, displacing liquids from the line, and carrying out routine pipeline maintenance. They retain their shape in demanding field conditions, supporting reliable and uninterrupted pigging operations.",
+                  "source": "WhatsApp 2026-11-06"
+                }
+              ],
               "children": [],
               "source": 113
             },
@@ -915,8 +973,18 @@
               "id": "steel-pigs",
               "titleTr": "Çelik Pigler",
               "titleEn": "Steel Pigs",
-              "tr": [],
-              "en": [],
+              "tr": [
+                {
+                  "text": "Çelik ana gövde üzerine monte edilen diskler, manşetler ve çelik tel fırçalardan oluşan bu dayanıklı pigler, en ağır temizlik ve kazıma operasyonları için tasarlanmıştır. Boru duvarındaki sert tortuları, pası, kalıntıları ve parafin birikintilerini sökmekte üstün performans gösterir. Aynı zamanda hat içi denetim (ILI) öncesi kalibrasyon ve yüksek mukavemet gerektiren endüstriyel hatlar için vazgeçilmezdir.",
+                  "source": "WhatsApp 2026-11-06"
+                }
+              ],
+              "en": [
+                {
+                  "text": "Built around a steel body fitted with discs, cups, and steel wire brushes, these durable pigs are designed for the most demanding cleaning and scraping operations. They perform effectively in removing hard deposits, rust, debris, and paraffin buildup from pipe walls. They are also essential for calibration before in-line inspection (ILI) and for industrial pipelines requiring high mechanical strength.",
+                  "source": "WhatsApp 2026-11-06"
+                }
+              ],
               "children": [],
               "source": 114
             }
@@ -934,8 +1002,18 @@
               "id": "non-intrusive-pig-signaller",
               "titleTr": "Müdahalesiz Tip Pig Sinyal Vericisi",
               "titleEn": "Non Intrusive Type Pig Signaller",
-              "tr": [],
-              "en": [],
+              "tr": [
+                {
+                  "text": "Non-intrusive manyetik tip ATEX sertifikalı pig işaretçisi, patlayıcı ortamların bulunduğu tehlikeli sahalarda boru hattına zarar vermeden pig geçişlerini dışarıdan tespit eden yüksek güvenilirlikli bir izleme cihazıdır. Bu gelişmiş manyetik sistem, pig gövdesine entegre edilen mıknatısların yarattığı manyetik alan değişimini ex-proof sensörleri vasıtasıyla boru duvarının dışından algılar. Boru delme işlemi gerektirmeyen sızdırmaz yapısı, alev sızdırmaz ATEX gövdesi ve kolay montaj avantajıyla, Zone 1 ve Zone 2 gibi riskli endüstriyel hatlarda maksimum operasyonel emniyet sağlar.",
+                  "source": "WhatsApp 2026-11-06"
+                }
+              ],
+              "en": [
+                {
+                  "text": "The ATEX-certified non-intrusive magnetic pig signaller is a high-reliability monitoring device that detects pig passage externally, without damaging the pipeline, in hazardous areas where explosive atmospheres may be present. This advanced magnetic system detects, from outside the pipe wall and through explosion-proof sensors, changes in the magnetic field created by magnets integrated into the pig body. Its sealed design requires no pipe drilling; together with its flameproof ATEX enclosure and easy installation, it provides maximum operational safety in hazardous industrial lines such as Zone 1 and Zone 2.",
+                  "source": "WhatsApp 2026-11-06"
+                }
+              ],
               "children": [],
               "source": 116
             },
@@ -943,8 +1021,18 @@
               "id": "intrusive-pig-signaller",
               "titleTr": "Müdahaleli Tip Pig Sinyal Vericisi",
               "titleEn": "Intrusive Type Pig Signaller",
-              "tr": [],
-              "en": [],
+              "tr": [
+                {
+                  "text": "Intrusive tip ATEX sertifikalı pig işaretçisi, yanıcı ve patlayıcı gaz/buhar içeren tehlikeli boru hatlarının içerisine mekanik bir tetikleyici uzatarak pig geçişlerini doğrudan temas yoluyla tespit eden güvenilir bir mekanik izleme cihazıdır. Bu sistem, pigin boru içindeki hareketi sırasında ex-proof gövde içerisindeki tetik mekanizmasını itmesiyle anlık ve kesin bir sinyal üretir. Sağlam, alev sızdırmaz ATEX tasarımı ve doğrudan temaslı algılama prensibi sayesinde, tehlikeli sahalardaki standart akışkan hatlarında net, güvenli ve yönetmeliklere tam uyumlu bir çözüm sunar.",
+                  "source": "WhatsApp 2026-11-06"
+                }
+              ],
+              "en": [
+                {
+                  "text": "The ATEX-certified intrusive pig signaller is a reliable mechanical monitoring device that detects pig passage by extending a mechanical trigger into hazardous pipelines carrying flammable and explosive gases or vapours, through direct contact. As the pig moves through the pipeline, it pushes the trigger mechanism inside the explosion-proof enclosure, generating an immediate and precise signal. Its robust, flameproof ATEX design and direct-contact detection principle provide a clear, safe, and fully compliant solution for standard fluid lines in hazardous areas.",
+                  "source": "WhatsApp 2026-11-06"
+                }
+              ],
               "children": [],
               "source": 116
             }
@@ -961,17 +1049,25 @@
         "text": "4-Industrial Silencers",
         "source": "Products (3).docx:169"
       },
-      "items": [],
-      "descriptionTr": [
+      "items": [
         {
-          "text": "Endüstriyel Susturucu; fan, blower ve egzoz sistemleri gibi ekipmanların oluşturduğu yüksek çalışma gürültüsünü önemli ölçüde azaltmak için tasarlanmış kritik bir ses kontrol cihazıdır. Gürültü seviyesini 85 dB'ye kadar düşürerek çalışanları iş güvenliği mevzuatına uygun biçimde işitme kaybı ve uzun vadeli sağlık risklerinden korur. Ayrıca çevresel gürültü kirliliğini azaltarak daha güvenli, verimli ve mevzuata uygun bir çalışma ortamı sağlar.",
-          "source": "Products (3).docx:170"
-        }
-      ],
-      "descriptionEn": [
-        {
-          "text": "An Industrial Silencer is a critical noise control device engineered to significantly reduce high-intensity operational noise generated by equipment like fans, blowers, and exhaust systems. By lowering noise levels precisely down to 85 dB, it effectively protects workers from hearing loss and long-term health hazards in compliance with occupational safety regulations. Additionally, it minimizes environmental noise pollution, creating a safer, more productive, and regulation-friendly industrial workplace.",
-          "source": "Products (3).docx:170"
+          "id": "vent-silencer",
+          "titleTr": "Endüstriyel Susturucu",
+          "titleEn": "Vent Silencer",
+          "tr": [
+            {
+              "text": "Endüstriyel Susturucu; fan, blower ve egzoz sistemleri gibi ekipmanların oluşturduğu yüksek çalışma gürültüsünü önemli ölçüde azaltmak için tasarlanmış kritik bir ses kontrol cihazıdır. Gürültü seviyesini 85 dB'ye kadar düşürerek çalışanları iş güvenliği mevzuatına uygun biçimde işitme kaybı ve uzun vadeli sağlık risklerinden korur. Ayrıca çevresel gürültü kirliliğini azaltarak daha güvenli, verimli ve mevzuata uygun bir çalışma ortamı sağlar.",
+              "source": "Products (3).docx:170"
+            }
+          ],
+          "en": [
+            {
+              "text": "An Industrial Silencer is a critical noise control device engineered to significantly reduce high-intensity operational noise generated by equipment like fans, blowers, and exhaust systems. By lowering noise levels precisely down to 85 dB, it effectively protects workers from hearing loss and long-term health hazards in compliance with occupational safety regulations. Additionally, it minimizes environmental noise pollution, creating a safer, more productive, and regulation-friendly industrial workplace.",
+              "source": "Products (3).docx:170"
+            }
+          ],
+          "children": [],
+          "source": 119
         }
       ],
       "titleTr": "4-Susturucular",
@@ -1092,25 +1188,6 @@
           "en": [],
           "children": [],
           "source": 131
-        },
-        {
-          "id": "thermal-relief-valve",
-          "titleTr": "Termal Emniyet Vanası (TRV)",
-          "titleEn": "Thermal Relief Valve (TRV)",
-          "tr": [
-            {
-              "text": "Termal Tahliye Vanası (TRV), kapalı bir hat veya ekipman hacminde hapsolmuş sıvının ısıl genleşmesi sonucu oluşan aşırı basınca karşı koruma sağlayan tahliye vanasıdır. Sıvı genleştikçe kapalı hacimdeki basınç yükselir; basınç set değerine ulaştığında yay yüklü vana açılarak küçük miktarda sıvıyı tahliye eder. Basınç güvenli seviyeye düştüğünde vana yeniden kapanır.",
-              "source": "Valpro TRV"
-            }
-          ],
-          "en": [
-            {
-              "text": "Thermal Relief Valve (TRV) is an overpressure protection device designed to protect closed piping systems and equipment against excessive hydraulic pressure caused by thermal fluid expansion. As the trapped fluid warms and expands, pressure rises rapidly; once set pressure is reached, the spring-loaded valve opens to discharge a small volume of liquid, reseating tightly once safe pressure is restored.",
-              "source": "Valpro TRV"
-            }
-          ],
-          "children": [],
-          "source": 132
         }
       ],
       "titleTr": "8-Vanalar",

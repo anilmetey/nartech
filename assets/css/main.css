@@ -233,6 +233,7 @@ main { min-height: 58vh; }
 .breadcrumbs a:last-child::before { content: "←"; font-size: 17px; line-height: 1; transition: transform 150ms ease; }
 @media (hover: hover) { .breadcrumbs a:last-child:hover::before { transform: translateX(-3px); } }
 .detail-layout { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: clamp(26px, 5vw, 64px); align-items: start; padding-top: 28px; }
+.detail-layout-copy { grid-template-columns: minmax(0, 1fr); max-width: 880px; margin-inline: auto; }
 .detail-media { aspect-ratio: 4 / 3; }
 .product-copy { padding: 4px 0; }
 .product-copy h1 { margin: 0 0 12px; color: var(--green); font-size: clamp(29px, 4vw, 44px); letter-spacing: -.03em; line-height: 1.2; }
