@@ -376,7 +376,7 @@ def footer(prefix: str) -> str:
 </div></footer>'''
 
 def layout(title: str, body: str, current: str, prefix="", lang="tr", title_en=None) -> str:
-    css_version = "nartech-home-flow-20261106-3"
+    css_version = "nartech-mobile-contact-20261106-1"
     js_version = "nartech-home-flow-20261105-1"
     title_en = title_en or title
     return f'''<!doctype html>
