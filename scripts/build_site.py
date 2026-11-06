@@ -326,7 +326,7 @@ def footer(prefix: str) -> str:
 </div></footer>'''
 
 def layout(title: str, body: str, current: str, prefix="", lang="tr", title_en=None) -> str:
-    css_version = "nartech-career-layout-20261105-3"
+    css_version = "nartech-home-flow-20261106-2"
     js_version = "nartech-home-flow-20261105-1"
     title_en = title_en or title
     return f'''<!doctype html>
@@ -409,32 +409,26 @@ home_flow_items=[
 ]
 home_flow_card_items=[]
 for index,(title_tr,title_en,detail_tr,detail_en,source_tr,source_en) in enumerate(home_flow_items):
-    home_flow_card_items.append(f'''<article class="home-flow-card" role="listitem" style="--flow-delay:{index*55}ms" data-source="{esc(source_tr)}"><h3><span class="lang-tr">{esc(title_tr)}</span><span class="lang-en" data-source="{esc(source_en)}">{esc(title_en)}</span></h3><p><span class="lang-tr">{esc(detail_tr)}</span><span class="lang-en">{esc(detail_en)}</span></p></article>''')
+    home_flow_card_items.append(f'''<article class="home-what-card" role="listitem" data-source="{esc(source_tr)}"><h3><span class="lang-tr">{esc(title_tr)}</span><span class="lang-en" data-source="{esc(source_en)}">{esc(title_en)}</span></h3><p><span class="lang-tr">{esc(detail_tr)}</span><span class="lang-en">{esc(detail_en)}</span></p></article>''')
 home_flow_cards=''.join(home_flow_card_items)
-home_flow_desktop_paths=[
-    ("M125 144 C125 180 385 174 482 232", "0.30s"),
-    ("M375 144 C375 178 445 187 492 232", "0.44s"),
-    ("M625 144 C625 178 555 187 508 232", "0.58s"),
-    ("M875 144 C875 180 615 174 518 232", "0.72s"),
+home_what_paths=[
+    ("M250 130 C250 220 410 285 500 390", "0s"),
+    ("M750 130 C750 220 590 285 500 390", "0.18s"),
+    ("M250 310 C250 350 405 370 500 390", "0.36s"),
+    ("M750 310 C750 350 595 370 500 390", "0.54s"),
+    ("M500 448 C430 520 270 560 175 625", "0.72s"),
+    ("M500 448 C500 520 500 560 500 625", "0.9s"),
+    ("M500 448 C570 520 730 560 825 625", "1.08s"),
 ]
-home_flow_mobile_paths=[
-    ("M250 136 C250 204 420 245 490 326", "0.30s"),
-    ("M750 136 C750 204 580 245 510 326", "0.44s"),
-    ("M250 264 C250 288 430 306 492 326", "0.58s"),
-    ("M750 264 C750 288 570 306 508 326", "0.72s"),
-]
-def flow_svg_paths(paths, output_path, output_delay="0.82s"):
-    source_paths=''.join(f'<path class="home-flow-track" d="{path}"/><path class="home-flow-particles" d="{path}" style="--flow-delay:{delay}"><animate attributeName="stroke-dashoffset" from="0" to="-84" dur="2.5s" repeatCount="indefinite" begin="{delay}"/></path>' for path, delay in paths)
-    out_path = f'<path class="home-flow-track" d="{output_path}"/><path class="home-flow-particles home-flow-particles--output" d="{output_path}" style="--flow-delay:{output_delay}"><animate attributeName="stroke-dashoffset" from="0" to="-84" dur="2.5s" repeatCount="indefinite" begin="{output_delay}"/></path>'
-    return f'{source_paths}{out_path}'
+def flow_svg_paths(paths):
+    return ''.join(f'<path class="home-what-track" d="{path}"/><path class="home-what-particles" d="{path}" style="--flow-delay:{delay}"/>' for path,delay in paths)
 
-home_flow_desktop_svg=flow_svg_paths(home_flow_desktop_paths,"M500 272 C500 302 500 328 500 354","0.82s")
-home_flow_mobile_svg=flow_svg_paths(home_flow_mobile_paths,"M500 366 C500 383 500 400 500 418","0.82s")
-home_flow_graphic=f'''<svg class="home-flow-lines home-flow-lines--desktop" viewBox="0 0 1000 464" preserveAspectRatio="none" aria-hidden="true">{home_flow_desktop_svg}</svg><svg class="home-flow-lines home-flow-lines--mobile" viewBox="0 0 1000 500" preserveAspectRatio="none" aria-hidden="true">{home_flow_mobile_svg}</svg>'''
+home_flow_graphic=f'''<svg class="home-what-connectors" viewBox="0 0 1000 700" preserveAspectRatio="none" aria-hidden="true">{flow_svg_paths(home_what_paths)}</svg>'''
+home_what_board=f'''<div class="home-what-board" data-home-flow>{home_flow_graphic}<div class="home-what-cards" role="list">{home_flow_cards}</div><div class="home-what-hub"><img src="assets/images/nartech-logo-transparent.png" width="1958" height="803" alt="NarTech"></div><div class="home-what-outcomes"><div><span class="lang-tr">Tank Terminalleri</span><span class="lang-en">Tank Terminals</span></div><div><span class="lang-tr">Rafineriler</span><span class="lang-en">Refineries</span></div><div><span class="lang-tr">Yükleniciler</span><span class="lang-en">Contractors</span></div></div></div>'''
 home_body=f'''<div class="home-page"><div class="page-wrap"><section class="home-hero"><div class="home-hero-copy"><h1><span class="lang-tr">{esc(content['home']['titleTr'])}</span><span class="lang-en">{esc(content['home']['titleEn'])}</span></h1><p><span class="lang-tr">{esc(content['home']['bodyTr'])}</span><span class="lang-en">{esc(content['home']['bodyEn'])}</span></p><div class="home-actions"><a class="button button-primary" href="products.html"><span class="lang-tr">Ürünler</span><span class="lang-en">Products</span></a><a class="button" href="contact.html#contact-form"><span class="lang-tr">İletişime Geç</span><span class="lang-en">Get in Touch</span></a></div></div><figure class="home-hero-media"><img src="assets/images/home-4k.jpeg" alt="NarTech Depolama Tankı ve Terminal Ekipmanları Sahası" data-alt-tr="NarTech Depolama Tankı ve Terminal Ekipmanları Sahası" data-alt-en="NarTech storage tank and terminal equipment facility" width="3840" height="1723" fetchpriority="high" decoding="async"></figure></section>
 <section class="home-proof-strip" aria-label="Mühendislik Göstergeleri" data-aria-tr="Mühendislik Göstergeleri" data-aria-en="Engineering Indicators">{home_proof_html}</section>
 <section class="home-who-section" aria-labelledby="home-who-heading"><div class="home-who-heading"><div class="about-subtitle"><span class="lang-tr">BİZ KİMİZ</span><span class="lang-en">WHO WE ARE</span></div><h2 id="home-who-heading"><span class="lang-tr">Biz Kimiz</span><span class="lang-en">Who We Are</span></h2></div><div class="home-who-copy"><div class="lang-tr">{home_about_tr}</div><div class="lang-en">{home_about_en}</div>{nar_story_html}</div></section>
-<section class="home-what-section" aria-labelledby="home-what-heading"><div class="home-what-heading"><h2 id="home-what-heading"><span class="lang-tr">Ne Yapıyoruz</span><span class="lang-en">What We Do</span></h2><p class="home-what-subtitle"><span class="lang-tr">{esc(content['whatWeDo']['titleTr'])}</span><span class="lang-en">{esc(content['whatWeDo']['titleEn'].strip())}</span></p></div><div class="home-what-flow" data-home-flow><div class="home-flow-visual"><div class="home-flow-cards" role="list">{home_flow_cards}</div>{home_flow_graphic}<div class="home-flow-orbit" aria-hidden="true"></div><div class="home-flow-hub"><img src="assets/images/nartech-logo-transparent.png" width="1958" height="803" alt="NarTech"></div><div class="home-flow-output"><strong><span class="lang-tr">Mühendislik Çözümleri</span><span class="lang-en">Engineering Solutions</span></strong><span><span class="lang-tr">Güvenilir · verimli · sürdürülebilir</span><span class="lang-en">Reliable · efficient · sustainable</span></span></div></div></div></section></div></div>'''
+<section class="home-what-section" aria-labelledby="home-what-heading"><div class="home-what-heading"><h2 id="home-what-heading"><span class="lang-tr">Ne Yapıyoruz</span><span class="lang-en">What We Do</span></h2><p class="home-what-subtitle"><span class="lang-tr">{esc(content['whatWeDo']['titleTr'])}</span><span class="lang-en">{esc(content['whatWeDo']['titleEn'].strip())}</span></p></div>{home_what_board}</section></div></div>'''
 (OUT/"index.html").write_text(layout(content["home"]["titleTr"],home_body,"home",title_en=content["home"]["titleEn"]),encoding="utf-8")
 # Keep the fallback free of copy that is not supplied in the source documents.
 (OUT/"404.html").write_text('<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=./index.html"></head><body></body></html>',encoding="utf-8")
