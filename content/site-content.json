@@ -200,12 +200,12 @@
           ],
           "children": [],
           "source": 1,
-          "navTitleEn": "a-Pressure Vacuum Relief Valves"
+          "navTitleEn": "Pressure Vacuum Relief Valves"
         },
         {
           "id": "inline-flame-arrester",
-          "titleTr": "Hat Arası Alev Tutucu:",
-          "titleEn": "In- Line Type Flame Arrester:",
+          "titleTr": "Hat Arası Alev Tutucu",
+          "titleEn": "In- Line Type Flame Arrester",
           "tr": [
             {
               "text": "EN ISO 16852 standardına uygun olarak tasarlanan ve test edilen Flame Arrestor (Alev Tutucu), yanıcı gaz, buhar veya hava karışımının bulunduğu proses ve depolama sistemlerinde, oluşabilecek bir alevin ekipman veya tank içerisine ilerlemesini ve diğer bölgelere yayılmasını önlemek amacıyla kullanılan pasif bir güvenlik ekipmanıdır.",
@@ -252,12 +252,12 @@
           ],
           "children": [],
           "source": 12,
-          "navTitleEn": "b-In Line Type Flame Arresters:"
+          "navTitleEn": "In Line Type Flame Arresters"
         },
         {
           "id": "end-line-flame-arrester",
-          "titleTr": "Hat Sonu Alev Tutucu:",
-          "titleEn": "End-of-Line Flame Arrester:",
+          "titleTr": "Hat Sonu Alev Tutucu",
+          "titleEn": "End-of-Line Flame Arrester",
           "tr": [
             {
               "text": "EN ISO 16852 standardına uygun olarak tasarlanan ve test edilen Hat Sonu Alev Tutucu, yanıcı gaz, buhar veya hava karışımının bulunduğu proses ve depolama sistemlerinin atmosferik açık uçlarında veya tank havalandırma hatlarında, dış ortamdan kaynaklanabilecek bir alevin veya kıvılcımın ekipman veya tank içerisine ilerlemesini önlemek amacıyla kullanılan pasif bir güvenlik ekipmanıdır.",
@@ -296,7 +296,7 @@
           ],
           "children": [],
           "source": 25,
-          "navTitleEn": "c-End of Line Type Flame Arresters:"
+          "navTitleEn": "End of Line Type Flame Arresters"
         },
         {
           "id": "emergency-relief-valve",
@@ -340,7 +340,7 @@
           ],
           "children": [],
           "source": 36,
-          "navTitleEn": "\nd-Emergency Relief Valve"
+          "navTitleEn": "Emergency Relief Valve"
         },
         {
           "id": "gauge-hatch",
@@ -392,12 +392,12 @@
           ],
           "children": [],
           "source": 45,
-          "navTitleEn": "e-Gauge Hatches"
+          "navTitleEn": "Gauge Hatches"
         },
         {
           "id": "internal-floating-roofs-and-seals",
           "titleTr": "İç Yüzer Tavanlar ve Fitiller",
-          "titleEn": "f-Internal Floating Roofs and Seals",
+          "titleEn": "Internal Floating Roofs and Seals",
           "tr": [],
           "en": [],
           "children": [
@@ -589,7 +589,7 @@
             {
               "id": "hdpe-seal",
               "titleTr": "HDPE Contası",
-              "titleEn": " -HDPE Seal",
+              "titleEn": "-HDPE Seal",
               "tr": [
                 {
                   "text": "Yüksek yoğunluklu polietilen (HDPE) esaslı elemanlar, IFR çevre sızdırmazlık uygulamalarında yüksek mekanik dayanım ve aşınma direnci sunarak uzun ömürlü ve güvenilir çalışmayı destekler.",
@@ -608,7 +608,7 @@
             {
               "id": "ldpe-seal",
               "titleTr": "LDPE Contası",
-              "titleEn": "-LDPE Seal: ",
+              "titleEn": "-LDPE Seal",
               "tr": [
                 {
                   "text": "Düşük yoğunluklu polietilen (LDPE) contalar, esnekliği ve buhar sızdırmazlığı sağlayan özellikleriyle IFR tavanlarında uçucu organik bileşik (VOC) emisyonlarını sınırlar ve çevresel güvenliği destekler.",
@@ -634,14 +634,14 @@
     {
       "id": "fire-fighting-equipments",
       "title": {
-        "text": "2-Fire Fighting Equipments (FM / UL Approved)",
+        "text": "2-Fire Fighting Equipments (ATEX & FM / UL Approved)",
         "source": "Products (3).docx:125"
       },
       "items": [
         {
           "id": "fixed-foam-monitor",
-          "titleTr": "A Sabit Köpük Monitörü",
-          "titleEn": "A Fixed Foam Monitor:",
+          "titleTr": "Sabit Köpük Monitörü",
+          "titleEn": "Fixed Foam Monitor",
           "tr": [
             {
               "text": "Sabit Köpük Monitörü, endüstriyel tesislerde ve tank çiftliklerinde büyük miktarda su-köpük çözeltisini uzak mesafelere hızla iletmek için kullanılan, yüksek kapasiteli ve sabit bir yangın söndürme cihazıdır.",
@@ -675,8 +675,8 @@
         },
         {
           "id": "foam-maker",
-          "titleTr": "B Köpük Yapıcı",
-          "titleEn": "B Foam Maker:",
+          "titleTr": "Köpük Yapıcı",
+          "titleEn": "Foam Maker",
           "tr": [
             {
               "text": "Köpük Yapıcı, düşük hızlı köpük akışının istendiği açık yüzer tavanlı depolama tanklarını korumak için kullanılan özel bir tahliye cihazıdır. Çalışma prensibi köpük odasına benzer; ancak köpük yapıcı, köpüğü depolamadan doğrudan akıtarak yanıcı sıvı yüzeylerini korumak üzere düşük genleşmeli köpük üretir.",
@@ -710,8 +710,8 @@
         },
         {
           "id": "foam-mixer-proportioner",
-          "titleTr": "C Köpük Karıştırıcı (Oranlayıcı)",
-          "titleEn": "C Foam Mixer (Proportioner):",
+          "titleTr": "Köpük Karıştırıcı (Oranlayıcı)",
+          "titleEn": "Foam Mixer (Proportioner)",
           "tr": [
             {
               "text": "Köpük Karıştırıcı (oranlayıcı), acil durumda etkili bir köpük çözeltisi oluşturmak için su ile köpük konsantresini önceden belirlenmiş doğru oranda otomatik olarak karıştıran kritik bir yangın koruma cihazıdır.",
@@ -745,8 +745,8 @@
         },
         {
           "id": "foam-top-pourer",
-          "titleTr": "D Köpük Üstten Dökme Cihazı",
-          "titleEn": "D Foam Top Pourer:",
+          "titleTr": "Köpük Üstten Dökme Cihazı",
+          "titleEn": "Foam Top Pourer",
           "tr": [
             {
               "text": "Köpük odası olarak da bilinen Köpük Üstten Dökme Cihazı, sabit çatılı depolama tanklarının gövdesine monte edilir ve genleşmiş yangın söndürme köpüğünü yanan sıvı yüzeyine doğrudan, sıvının içine dalmadan, nazikçe verir.",
@@ -780,8 +780,8 @@
         },
         {
           "id": "rim-seal-foam-pourer",
-          "titleTr": "E Kenar Sızdırmazlığı Köpük Dökme Cihazı",
-          "titleEn": "E Rim Seal Foam Pourer:",
+          "titleTr": "Kenar Sızdırmazlığı Köpük Dökme Cihazı",
+          "titleEn": "Rim Seal Foam Pourer",
           "tr": [
             {
               "text": "Kenar Sızdırmazlığı Köpük Dökme Cihazı, dış yüzer tavanlı tankların dairesel kenar sızdırmazlık alanını korumak için tasarlanmış özel bir yangın koruma cihazıdır. Genleşmiş köpüğü, kenar yangınlarının görülme olasılığının en yüksek olduğu hassas sızdırmazlık bölgesine doğrudan iletir.",
@@ -815,8 +815,8 @@
         },
         {
           "id": "foam-tanks",
-          "titleTr": "F Köpük Tankı",
-          "titleEn": "F Foam Tanks:",
+          "titleTr": "Köpük Tankı",
+          "titleEn": "Foam Tanks",
           "tr": [
             {
               "text": "Köpük Tankı (genellikle bladder tank oranlama sistemi), köpük konsantresini yangın koruma sisteminde depolayan ve acil durumda doğru oranda su hattına otomatik olarak veren, ön borulaması yapılmış basınçlı bir kaptır.",
@@ -850,8 +850,8 @@
         },
         {
           "id": "foam-water-sprinkler",
-          "titleTr": "G Köpük ve Su Sprinkleri",
-          "titleEn": "G Foam & Water Sprinkler:",
+          "titleTr": "Köpük ve Su Sprinkleri",
+          "titleEn": "Foam & Water Sprinkler",
           "tr": [
             {
               "text": "Tank çiftliklerinde kullanılan köpük ve su sprinklerleri; pompa istasyonları, manifold alanları, tanker dolum sahaları ve ikincil sızdırmazlık havuzları gibi yüksek riskli çevre bölgelerini koruyan otomatik tahliye nozullarıdır. Bu nozullar, eşit su püskürtmesi veya hava emişli köpük örtüsünü hızla iletir.",
@@ -876,8 +876,8 @@
           "source": 108
         }
       ],
-      "titleTr": "2-Yangın Söndürme",
-      "titleEn": "2-Fire Fighting Equipments (FM / UL Approved)"
+      "titleTr": "2-Yangın Söndürme (ATEX & FM / UL Onaylı)",
+      "titleEn": "2-Fire Fighting Equipments (ATEX & FM / UL Approved)"
     },
     {
       "id": "pig-cleaning-equipments",
@@ -895,8 +895,8 @@
           "children": [
             {
               "id": "foam-pigs",
-              "titleTr": "A Köpük Pigleri",
-              "titleEn": "A Foam Pigs",
+              "titleTr": "Köpük Pigleri",
+              "titleEn": "Foam Pigs",
               "tr": [],
               "en": [],
               "children": [],
@@ -904,8 +904,8 @@
             },
             {
               "id": "solid-cast-pigs",
-              "titleTr": "B Katı Döküm Pigleri",
-              "titleEn": "B Solid Cast Pigs",
+              "titleTr": "Katı Döküm Pigleri",
+              "titleEn": "Solid Cast Pigs",
               "tr": [],
               "en": [],
               "children": [],
@@ -913,8 +913,8 @@
             },
             {
               "id": "steel-pigs",
-              "titleTr": "C Çelik Pigler",
-              "titleEn": "C Steel Pigs",
+              "titleTr": "Çelik Pigler",
+              "titleEn": "Steel Pigs",
               "tr": [],
               "en": [],
               "children": [],
@@ -932,8 +932,8 @@
           "children": [
             {
               "id": "non-intrusive-pig-signaller",
-              "titleTr": "A Müdahalesiz Tip Pig Sinyal Vericisi",
-              "titleEn": "A Non Intrusive Type Pig Signaller",
+              "titleTr": "Müdahalesiz Tip Pig Sinyal Vericisi",
+              "titleEn": "Non Intrusive Type Pig Signaller",
               "tr": [],
               "en": [],
               "children": [],
@@ -941,8 +941,8 @@
             },
             {
               "id": "intrusive-pig-signaller",
-              "titleTr": "B Müdahaleli Tip Pig Sinyal Vericisi",
-              "titleEn": "B Intrusive Type Pig Signaller",
+              "titleTr": "Müdahaleli Tip Pig Sinyal Vericisi",
+              "titleEn": "Intrusive Type Pig Signaller",
               "tr": [],
               "en": [],
               "children": [],
@@ -986,8 +986,8 @@
       "items": [
         {
           "id": "pipe-type-floating-suction-unit",
-          "titleTr": "A Boru Tipi Yüzer Emiş Ünitesi",
-          "titleEn": "A Pipe Type Floating Suction Unit",
+          "titleTr": "Boru Tipi Yüzer Emiş Ünitesi",
+          "titleEn": "Pipe Type Floating Suction Unit",
           "tr": [],
           "en": [],
           "children": [],
@@ -995,8 +995,8 @@
         },
         {
           "id": "hose-type-floating-suction-unit",
-          "titleTr": "B Hortum Tipi Yüzer Emiş Ünitesi",
-          "titleEn": "B Hose Type Floating Suction Unit",
+          "titleTr": "Hortum Tipi Yüzer Emiş Ünitesi",
+          "titleEn": "Hose Type Floating Suction Unit",
           "tr": [],
           "en": [],
           "children": [],
@@ -1004,8 +1004,8 @@
         },
         {
           "id": "oil-skimmer",
-          "titleTr": "C Yağ Sıyırıcı",
-          "titleEn": "C Oil Skimmer",
+          "titleTr": "Yağ Sıyırıcı",
+          "titleEn": "Oil Skimmer",
           "tr": [],
           "en": [],
           "children": [],
@@ -1068,8 +1068,8 @@
       "items": [
         {
           "id": "ball-valves",
-          "titleTr": "A Küresel Vanalar",
-          "titleEn": "A Ball Valves",
+          "titleTr": "Küresel Vanalar",
+          "titleEn": "Ball Valves",
           "tr": [],
           "en": [],
           "children": [],
@@ -1077,8 +1077,8 @@
         },
         {
           "id": "gate-valves",
-          "titleTr": "B Sürgülü Vanalar",
-          "titleEn": "B Gate Valves",
+          "titleTr": "Sürgülü Vanalar",
+          "titleEn": "Gate Valves",
           "tr": [],
           "en": [],
           "children": [],
@@ -1086,8 +1086,8 @@
         },
         {
           "id": "butterfly-valves",
-          "titleTr": "C Kelebek Vanalar",
-          "titleEn": "C Butterfly Valves",
+          "titleTr": "Kelebek Vanalar",
+          "titleEn": "Butterfly Valves",
           "tr": [],
           "en": [],
           "children": [],
@@ -1095,8 +1095,8 @@
         },
         {
           "id": "thermal-relief-valve",
-          "titleTr": "D Termal Emniyet Vanası (TRV)",
-          "titleEn": "D Thermal Relief Valve (TRV)",
+          "titleTr": "Termal Emniyet Vanası (TRV)",
+          "titleEn": "Thermal Relief Valve (TRV)",
           "tr": [
             {
               "text": "Termal Tahliye Vanası (TRV), kapalı bir hat veya ekipman hacminde hapsolmuş sıvının ısıl genleşmesi sonucu oluşan aşırı basınca karşı koruma sağlayan tahliye vanasıdır. Sıvı genleştikçe kapalı hacimdeki basınç yükselir; basınç set değerine ulaştığında yay yüklü vana açılarak küçük miktarda sıvıyı tahliye eder. Basınç güvenli seviyeye düştüğünde vana yeniden kapanır.",
