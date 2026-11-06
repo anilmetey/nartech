@@ -3,6 +3,10 @@
   const statusCopy = {
     sent: { tr: 'Gönderildi', en: 'Sent' },
     failed: { tr: 'Gönderilemedi', en: 'Could not send' },
+    draftOpened: {
+      tr: 'E-posta taslağı açıldı. Göndermek için e-posta uygulamanızda Gönder’e basın.',
+      en: 'Email draft opened. Press Send in your email app to send it.',
+    },
   };
   const setStatus = (element, key) => {
     element.dataset.statusKey = key;
@@ -286,29 +290,24 @@
     const params = new URLSearchParams(location.search);
     contactForm.elements.product.value = params.get('product') || '';
     const status = document.querySelector('#contact-status');
-    contactForm.addEventListener('submit', async event => {
+    contactForm.addEventListener('submit', event => {
       event.preventDefault();
       if (!contactForm.reportValidity()) return;
-      const button = contactForm.querySelector('button[type="submit"]');
-      button.disabled = true;
-      status.removeAttribute('data-status-key');
-      status.textContent = '';
       const form = new FormData(contactForm);
-      try {
-        const response = await fetch('/api/contact', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name: form.get('name'), phone: form.get('phone'), description: form.get('description'), product: form.get('product'), language: root.dataset.language }),
-        });
-        if (!response.ok) throw new Error('send-failed');
-        setStatus(status, 'sent');
-        contactForm.reset();
-        contactForm.elements.product.value = params.get('product') || '';
-      } catch {
-        setStatus(status, 'failed');
-      } finally {
-        button.disabled = false;
-      }
+      const language = root.dataset.language === 'en' ? 'en' : 'tr';
+      const values = language === 'en'
+        ? { name: 'Name', phone: 'Phone Number', description: 'Description', product: 'Product', subject: 'NarTech Contact Request' }
+        : { name: 'Ad Soyad', phone: 'Telefon No', description: 'Açıklama', product: 'Ürün', subject: 'NarTech İletişim Talebi' };
+      const lines = [
+        `${values.name}: ${form.get('name')}`,
+        `${values.phone}: ${form.get('phone')}`,
+        `${values.description}: ${form.get('description')}`,
+      ];
+      const product = form.get('product');
+      if (product) lines.push(`${values.product}: ${product}`);
+      const mailto = `mailto:sales@nartech.com.tr?subject=${encodeURIComponent(values.subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
+      setStatus(status, 'draftOpened');
+      window.location.href = mailto;
     });
   }
 
