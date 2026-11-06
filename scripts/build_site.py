@@ -326,7 +326,7 @@ def footer(prefix: str) -> str:
 </div></footer>'''
 
 def layout(title: str, body: str, current: str, prefix="", lang="tr", title_en=None) -> str:
-    css_version = "nartech-home-flow-20261106-2"
+    css_version = "nartech-home-flow-20261106-3"
     js_version = "nartech-home-flow-20261105-1"
     title_en = title_en or title
     return f'''<!doctype html>
@@ -411,7 +411,16 @@ home_flow_card_items=[]
 for index,(title_tr,title_en,detail_tr,detail_en,source_tr,source_en) in enumerate(home_flow_items):
     home_flow_card_items.append(f'''<article class="home-what-card" role="listitem" data-source="{esc(source_tr)}"><h3><span class="lang-tr">{esc(title_tr)}</span><span class="lang-en" data-source="{esc(source_en)}">{esc(title_en)}</span></h3><p><span class="lang-tr">{esc(detail_tr)}</span><span class="lang-en">{esc(detail_en)}</span></p></article>''')
 home_flow_cards=''.join(home_flow_card_items)
-home_what_paths=[
+home_what_desktop_paths=[
+    ("M125 195 C125 245 390 270 500 315", "0s"),
+    ("M375 195 C375 245 440 275 500 315", "0.18s"),
+    ("M625 195 C625 245 560 275 500 315", "0.36s"),
+    ("M875 195 C875 245 610 270 500 315", "0.54s"),
+    ("M500 365 C430 395 270 420 167 450", "0.72s"),
+    ("M500 365 C500 395 500 420 500 450", "0.9s"),
+    ("M500 365 C570 395 730 420 833 450", "1.08s"),
+]
+home_what_mobile_paths=[
     ("M250 130 C250 220 410 285 500 390", "0s"),
     ("M750 130 C750 220 590 285 500 390", "0.18s"),
     ("M250 310 C250 350 405 370 500 390", "0.36s"),
@@ -423,7 +432,7 @@ home_what_paths=[
 def flow_svg_paths(paths):
     return ''.join(f'<path class="home-what-track" d="{path}"/><path class="home-what-particles" d="{path}" style="--flow-delay:{delay}"/>' for path,delay in paths)
 
-home_flow_graphic=f'''<svg class="home-what-connectors" viewBox="0 0 1000 700" preserveAspectRatio="none" aria-hidden="true">{flow_svg_paths(home_what_paths)}</svg>'''
+home_flow_graphic=f'''<svg class="home-what-connectors home-what-connectors--desktop" viewBox="0 0 1000 500" preserveAspectRatio="none" aria-hidden="true">{flow_svg_paths(home_what_desktop_paths)}</svg><svg class="home-what-connectors home-what-connectors--mobile" viewBox="0 0 1000 700" preserveAspectRatio="none" aria-hidden="true">{flow_svg_paths(home_what_mobile_paths)}</svg>'''
 home_what_board=f'''<div class="home-what-board" data-home-flow>{home_flow_graphic}<div class="home-what-cards" role="list">{home_flow_cards}</div><div class="home-what-hub"><img src="assets/images/nartech-logo-transparent.png" width="1958" height="803" alt="NarTech"></div><div class="home-what-outcomes"><div><span class="lang-tr">Tank Terminalleri</span><span class="lang-en">Tank Terminals</span></div><div><span class="lang-tr">Rafineriler</span><span class="lang-en">Refineries</span></div><div><span class="lang-tr">Yükleniciler</span><span class="lang-en">Contractors</span></div></div></div>'''
 home_body=f'''<div class="home-page"><div class="page-wrap"><section class="home-hero"><div class="home-hero-copy"><h1><span class="lang-tr">{esc(content['home']['titleTr'])}</span><span class="lang-en">{esc(content['home']['titleEn'])}</span></h1><p><span class="lang-tr">{esc(content['home']['bodyTr'])}</span><span class="lang-en">{esc(content['home']['bodyEn'])}</span></p><div class="home-actions"><a class="button button-primary" href="products.html"><span class="lang-tr">Ürünler</span><span class="lang-en">Products</span></a><a class="button" href="contact.html#contact-form"><span class="lang-tr">İletişime Geç</span><span class="lang-en">Get in Touch</span></a></div></div><figure class="home-hero-media"><img src="assets/images/home-4k.jpeg" alt="NarTech Depolama Tankı ve Terminal Ekipmanları Sahası" data-alt-tr="NarTech Depolama Tankı ve Terminal Ekipmanları Sahası" data-alt-en="NarTech storage tank and terminal equipment facility" width="3840" height="1723" fetchpriority="high" decoding="async"></figure></section>
 <section class="home-proof-strip" aria-label="Mühendislik Göstergeleri" data-aria-tr="Mühendislik Göstergeleri" data-aria-en="Engineering Indicators">{home_proof_html}</section>
