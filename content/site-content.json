@@ -1143,6 +1143,25 @@
       },
       "items": [
         {
+          "id": "floating-suction-unit",
+          "titleTr": "Yüzer Emiş Ünitesi",
+          "titleEn": "Floating Suction Unit",
+          "tr": [
+            {
+              "text": "Yüzer Emiş Ünitesi, depolama tanklarında sıvıyı en temiz yüzey seviyesinden çekmek için tasarlanmış bir sistemdir; özellikle havacılık yakıtları ve kimyasallarda kullanılır. En temiz ürünün üst seviyeden alınmasını sağlayarak tankın dibinde biriken su, tortu ve çamurun pompalanmasını önler.",
+              "source": "Products (3).docx:174"
+            }
+          ],
+          "en": [
+            {
+              "text": "The Floating Suction Unit is a system designed to draw liquid from the cleanest surface level in storage tanks (especially for aviation fuels and chemicals). It ensures that always the clearest product at the very top is withdrawn, preventing the pumping of water, sediments, and sludge accumulated at the bottom of the tank.",
+              "source": "Products (3).docx:174"
+            }
+          ],
+          "children": [],
+          "source": 122
+        },
+        {
           "id": "pipe-type-floating-suction-unit",
           "titleTr": "Boru Tipi Yüzer Emiş Ünitesi",
           "titleEn": "Pipe Type Floating Suction Unit",
@@ -1168,18 +1187,6 @@
           "en": [],
           "children": [],
           "source": 124
-        }
-      ],
-      "descriptionTr": [
-        {
-          "text": "Yüzer Emiş Ünitesi, depolama tanklarında sıvıyı en temiz yüzey seviyesinden çekmek için tasarlanmış bir sistemdir; özellikle havacılık yakıtları ve kimyasallarda kullanılır. En temiz ürünün üst seviyeden alınmasını sağlayarak tankın dibinde biriken su, tortu ve çamurun pompalanmasını önler.",
-          "source": "Products (3).docx:174"
-        }
-      ],
-      "descriptionEn": [
-        {
-          "text": "The Floating Suction Unit is a system designed to draw liquid from the cleanest surface level in storage tanks (especially for aviation fuels and chemicals). It ensures that always the clearest product at the very top is withdrawn, preventing the pumping of water, sediments, and sludge accumulated at the bottom of the tank.",
-          "source": "Products (3).docx:174"
         }
       ],
       "titleTr": "5-Yüzer Emiş",

@@ -169,7 +169,9 @@ floating_children[3]["titleEn"] = "HDPE Seal"
 floating_roofs = item("internal-floating-roofs-and-seals", 57, None, [], [], floating_children, 56)
 floating_roofs["titleTr"] = "İç Yüzer Tavanlar ve Fitiller"
 floating_roofs["titleEn"] = "f-Internal Floating Roofs and Seals"
+floating_suction_overview = item("floating-suction-unit", "Yüzer Emiş Ünitesi", "Floating Suction Unit", [122], [122], src=122)
 floating_suction_children = [
+    floating_suction_overview,
     item("pipe-type-floating-suction-unit", 123, 123, [], [], src=122),
     item("hose-type-floating-suction-unit", 124, 124, [], [], src=123),
     item("oil-skimmer", 125, 125, [], [], src=124),
@@ -255,7 +257,7 @@ categories = [
     {"id":"pig-cleaning-equipments", "title":{"text": "3-Pig Signaller & Pigs", "source": "Products (3).docx:157"}, "items":[
         pig_signallers, pigs_branch]},
     {"id":"industrial-silencers", "title":ref(119), "items":[vent_silencer]},
-    {"id":"floatin-suction-units", "title":{"text":"5-Floating Suction Units","source":"Products (3).docx:173"}, "items":floating_suction_children, "descriptionTr":refs([122],"tr"), "descriptionEn":refs([122])},
+    {"id":"floatin-suction-units", "title":{"text":"5-Floating Suction Units","source":"Products (3).docx:173"}, "items":floating_suction_children},
     {"id":"retractable-grounding-cable", "title":ref(126), "items":[rgr_item]},
     {"id":"loading-arms", "title":ref(128), "items":[]},
     {"id":"industrial-valves", "title":ref(129), "items":valve_items},
@@ -564,8 +566,6 @@ for n,cat in enumerate(categories,1):
     intro_tr=''.join(p_html(entry,"tr") for entry in cat.get("descriptionTr",[]))
     intro_en=''.join(p_html(entry,"en") for entry in cat.get("descriptionEn",[]))
     intro=f'<div class="lang-tr">{intro_tr}</div><div class="lang-en">{intro_en}</div>' if intro_tr or intro_en else ''
-    if cat["id"] == "floatin-suction-units" and intro:
-        intro = f'<details class="tree-branch"><summary><span class="lang-tr">Yüzer Emiş Ünitesi</span><span class="lang-en">Floating Suction Unit</span></summary><div class="tree-children"><div class="tree-copy">{intro}</div></div></details>'
     if cat["id"] == "retractable-grounding-cable" and intro:
         intro = f'<details class="tree-branch"><summary><span class="lang-tr">Geri Sarmalı Topraklama Makarası (RGR)</span><span class="lang-en">Retractable Grounding Reel (RGR)</span></summary><div class="tree-children">{intro}</div></details>'
     category_label=f'<span class="lang-tr">{esc(category_title(cat,"tr"))}</span><span class="lang-en">{esc(category_title(cat,"en"))}</span>'
