@@ -987,6 +987,54 @@
       },
       "items": [
         {
+          "id": "pig-signallers",
+          "titleTr": "Pig Sinyal Vericileri",
+          "titleEn": "Pig Signallers",
+          "tr": [],
+          "en": [],
+          "children": [
+            {
+              "id": "non-intrusive-pig-signaller",
+              "titleTr": "Müdahalesiz Tip Pig Sinyal Vericisi",
+              "titleEn": "Non Intrusive Type Pig Signaller",
+              "tr": [
+                {
+                  "text": "Non-intrusive manyetik tip ATEX sertifikalı pig işaretçisi, patlayıcı ortamların bulunduğu tehlikeli sahalarda boru hattına zarar vermeden pig geçişlerini dışarıdan tespit eden yüksek güvenilirlikli bir izleme cihazıdır. Bu gelişmiş manyetik sistem, pig gövdesine entegre edilen mıknatısların yarattığı manyetik alan değişimini ex-proof sensörleri vasıtasıyla boru duvarının dışından algılar. Boru delme işlemi gerektirmeyen sızdırmaz yapısı, alev sızdırmaz ATEX gövdesi ve kolay montaj avantajıyla, Zone 1 ve Zone 2 gibi riskli endüstriyel hatlarda maksimum operasyonel emniyet sağlar.",
+                  "source": "WhatsApp 2026-11-06"
+                }
+              ],
+              "en": [
+                {
+                  "text": "The ATEX-certified non-intrusive magnetic pig signaller is a high-reliability monitoring device that detects pig passage externally, without damaging the pipeline, in hazardous areas where explosive atmospheres may be present. This advanced magnetic system detects, from outside the pipe wall and through explosion-proof sensors, changes in the magnetic field created by magnets integrated into the pig body. Its sealed design requires no pipe drilling; together with its flameproof ATEX enclosure and easy installation, it provides maximum operational safety in hazardous industrial lines such as Zone 1 and Zone 2.",
+                  "source": "WhatsApp 2026-11-06"
+                }
+              ],
+              "children": [],
+              "source": 116
+            },
+            {
+              "id": "intrusive-pig-signaller",
+              "titleTr": "Müdahaleli Tip Pig Sinyal Vericisi",
+              "titleEn": "Intrusive Type Pig Signaller",
+              "tr": [
+                {
+                  "text": "Intrusive tip ATEX sertifikalı pig işaretçisi, yanıcı ve patlayıcı gaz/buhar içeren tehlikeli boru hatlarının içerisine mekanik bir tetikleyici uzatarak pig geçişlerini doğrudan temas yoluyla tespit eden güvenilir bir mekanik izleme cihazıdır. Bu sistem, pigin boru içindeki hareketi sırasında ex-proof gövde içerisindeki tetik mekanizmasını itmesiyle anlık ve kesin bir sinyal üretir. Sağlam, alev sızdırmaz ATEX tasarımı ve doğrudan temaslı algılama prensibi sayesinde, tehlikeli sahalardaki standart akışkan hatlarında net, güvenli ve yönetmeliklere tam uyumlu bir çözüm sunar.",
+                  "source": "WhatsApp 2026-11-06"
+                }
+              ],
+              "en": [
+                {
+                  "text": "The ATEX-certified intrusive pig signaller is a reliable mechanical monitoring device that detects pig passage by extending a mechanical trigger into hazardous pipelines carrying flammable and explosive gases or vapours, through direct contact. As the pig moves through the pipeline, it pushes the trigger mechanism inside the explosion-proof enclosure, generating an immediate and precise signal. Its robust, flameproof ATEX design and direct-contact detection principle provide a clear, safe, and fully compliant solution for standard fluid lines in hazardous areas.",
+                  "source": "WhatsApp 2026-11-06"
+                }
+              ],
+              "children": [],
+              "source": 116
+            }
+          ],
+          "source": 115
+        },
+        {
           "id": "pigs",
           "titleTr": "Pigler",
           "titleEn": "Pigs",
@@ -1052,54 +1100,6 @@
             }
           ],
           "source": 112
-        },
-        {
-          "id": "pig-signallers",
-          "titleTr": "Pig Sinyal Vericileri",
-          "titleEn": "Pig Signallers",
-          "tr": [],
-          "en": [],
-          "children": [
-            {
-              "id": "non-intrusive-pig-signaller",
-              "titleTr": "Müdahalesiz Tip Pig Sinyal Vericisi",
-              "titleEn": "Non Intrusive Type Pig Signaller",
-              "tr": [
-                {
-                  "text": "Non-intrusive manyetik tip ATEX sertifikalı pig işaretçisi, patlayıcı ortamların bulunduğu tehlikeli sahalarda boru hattına zarar vermeden pig geçişlerini dışarıdan tespit eden yüksek güvenilirlikli bir izleme cihazıdır. Bu gelişmiş manyetik sistem, pig gövdesine entegre edilen mıknatısların yarattığı manyetik alan değişimini ex-proof sensörleri vasıtasıyla boru duvarının dışından algılar. Boru delme işlemi gerektirmeyen sızdırmaz yapısı, alev sızdırmaz ATEX gövdesi ve kolay montaj avantajıyla, Zone 1 ve Zone 2 gibi riskli endüstriyel hatlarda maksimum operasyonel emniyet sağlar.",
-                  "source": "WhatsApp 2026-11-06"
-                }
-              ],
-              "en": [
-                {
-                  "text": "The ATEX-certified non-intrusive magnetic pig signaller is a high-reliability monitoring device that detects pig passage externally, without damaging the pipeline, in hazardous areas where explosive atmospheres may be present. This advanced magnetic system detects, from outside the pipe wall and through explosion-proof sensors, changes in the magnetic field created by magnets integrated into the pig body. Its sealed design requires no pipe drilling; together with its flameproof ATEX enclosure and easy installation, it provides maximum operational safety in hazardous industrial lines such as Zone 1 and Zone 2.",
-                  "source": "WhatsApp 2026-11-06"
-                }
-              ],
-              "children": [],
-              "source": 116
-            },
-            {
-              "id": "intrusive-pig-signaller",
-              "titleTr": "Müdahaleli Tip Pig Sinyal Vericisi",
-              "titleEn": "Intrusive Type Pig Signaller",
-              "tr": [
-                {
-                  "text": "Intrusive tip ATEX sertifikalı pig işaretçisi, yanıcı ve patlayıcı gaz/buhar içeren tehlikeli boru hatlarının içerisine mekanik bir tetikleyici uzatarak pig geçişlerini doğrudan temas yoluyla tespit eden güvenilir bir mekanik izleme cihazıdır. Bu sistem, pigin boru içindeki hareketi sırasında ex-proof gövde içerisindeki tetik mekanizmasını itmesiyle anlık ve kesin bir sinyal üretir. Sağlam, alev sızdırmaz ATEX tasarımı ve doğrudan temaslı algılama prensibi sayesinde, tehlikeli sahalardaki standart akışkan hatlarında net, güvenli ve yönetmeliklere tam uyumlu bir çözüm sunar.",
-                  "source": "WhatsApp 2026-11-06"
-                }
-              ],
-              "en": [
-                {
-                  "text": "The ATEX-certified intrusive pig signaller is a reliable mechanical monitoring device that detects pig passage by extending a mechanical trigger into hazardous pipelines carrying flammable and explosive gases or vapours, through direct contact. As the pig moves through the pipeline, it pushes the trigger mechanism inside the explosion-proof enclosure, generating an immediate and precise signal. Its robust, flameproof ATEX design and direct-contact detection principle provide a clear, safe, and fully compliant solution for standard fluid lines in hazardous areas.",
-                  "source": "WhatsApp 2026-11-06"
-                }
-              ],
-              "children": [],
-              "source": 116
-            }
-          ],
-          "source": 115
         }
       ],
       "titleTr": "3-Pig Sinyal Vericileri & Pigler",

@@ -253,7 +253,7 @@ categories = [
     {"id":"storage-tank-equipments", "title":ref(0), "items":[high_velocity_item, trv_item, pvrv, inline, endline, emergency, gauge, floating_roofs]},
     {"id":"fire-fighting-equipments", "title":ref(84), "items":fire_items},
     {"id":"pig-cleaning-equipments", "title":{"text": "3-Pig Signaller & Pigs", "source": "Products (3).docx:157"}, "items":[
-        pigs_branch, pig_signallers]},
+        pig_signallers, pigs_branch]},
     {"id":"industrial-silencers", "title":ref(119), "items":[vent_silencer]},
     {"id":"floatin-suction-units", "title":{"text":"5-Floating Suction Units","source":"Products (3).docx:173"}, "items":floating_suction_children, "descriptionTr":refs([122],"tr"), "descriptionEn":refs([122])},
     {"id":"retractable-grounding-cable", "title":ref(126), "items":[rgr_item]},
@@ -406,7 +406,7 @@ def footer(prefix: str) -> str:
 </div></footer>'''
 
 def layout(title: str, body: str, current: str, prefix="", lang="tr", title_en=None) -> str:
-    css_version = "nartech-about-card-headings-20261108-1"
+    css_version = "nartech-career-copy-layout-20261108-1"
     js_version = "nartech-home-flow-20261105-1"
     title_en = title_en or title
     return f'''<!doctype html>
@@ -559,19 +559,11 @@ for n,cat in enumerate(categories,1):
     for obj in cat["items"]:
         if obj["children"]:
             children.append(branch_for(obj,""))
-        elif cat["id"] == "floatin-suction-units" and obj["id"] == "pipe-type-floating-suction-unit":
-            group_title='<span class="lang-tr">Yüzer Emiş Ünitesi Tipleri</span><span class="lang-en">Floating Suction Unit Types</span>'
-            group_links=''.join(link_for(x,"") for x in floating_suction_children[:2])
-            children.append(f'<details class="tree-branch"><summary>{group_title}</summary><div class="tree-children">{group_links}</div></details>')
-        elif cat["id"] == "floatin-suction-units" and obj["id"] == "hose-type-floating-suction-unit":
-            continue
         else:
             children.append(link_for(obj,""))
     intro_tr=''.join(p_html(entry,"tr") for entry in cat.get("descriptionTr",[]))
     intro_en=''.join(p_html(entry,"en") for entry in cat.get("descriptionEn",[]))
     intro=f'<div class="lang-tr">{intro_tr}</div><div class="lang-en">{intro_en}</div>' if intro_tr or intro_en else ''
-    if cat["id"] == "floatin-suction-units" and intro:
-        intro = f'<details class="tree-branch"><summary><span class="lang-tr">Yüzer Emiş Ünitesi</span><span class="lang-en">Floating Suction Unit</span></summary><div class="tree-children"><div class="tree-copy">{intro}</div></div></details>'
     if cat["id"] == "retractable-grounding-cable" and intro:
         intro = f'<details class="tree-branch"><summary><span class="lang-tr">Geri Sarmalı Topraklama Makarası (RGR)</span><span class="lang-en">Retractable Grounding Reel (RGR)</span></summary><div class="tree-children">{intro}</div></details>'
     category_label=f'<span class="lang-tr">{esc(category_title(cat,"tr"))}</span><span class="lang-en">{esc(category_title(cat,"en"))}</span>'
@@ -703,245 +695,29 @@ calculator_body='''<div class="page-wrap form-page"><div class="page-heading"><h
 career_body = '''<div class="career-page">
 <section class="career-hero">
   <div class="page-wrap career-hero-wrap">
-    <div class="page-heading career-page-heading"><h1 class="career-heading">
-      <span class="lang-tr">Kariyer</span>
-      <span class="lang-en">Career</span>
-    </h1></div>
+    <div class="page-heading career-page-heading"><h1 class="career-heading"><span class="lang-tr">Kariyer</span><span class="lang-en">Career</span></h1></div>
     <div class="career-hero-inner">
-    <div class="career-hero-copy">
-      <div class="about-subtitle"><span class="lang-tr">KÜRESEL VİZYON &amp; EKİP</span><span class="lang-en">GLOBAL VISION &amp; TEAM</span></div>
-      <blockquote class="career-manifesto-card">
-        <div class="career-manifesto-mark" aria-hidden="true">“</div>
-        <p class="career-lead">
-          <span class="lang-tr">NarTech çatısı altında; dünya pazarlarıyla bağ kurar, uluslararası ticaretin kalbinde yer alır ve geleceğin global ticaret ekosistemini birlikte tasarlarız.</span>
-          <span class="lang-en">Under the roof of NarTech, we connect with global markets, stand at the heart of international trade, and co-design the future of the global trade ecosystem.</span>
-        </p>
-        <p class="career-invitation">
-          <span class="lang-tr">Eğer küresel vizyona sahip, yetenekli ve sınır tanımayan bir profesyonelseniz; kariyerinize ivme kazandıracak en doğru ekibe katılın, <strong class="career-spotlight">NarTech’te yeriniz hazır!</strong></span>
-          <span class="lang-en">If you are a talented, visionary professional without boundaries, join the team that will accelerate your career—<strong class="career-spotlight">your place at NarTech is ready!</strong></span>
-        </p>
-      </blockquote>
-      <div class="career-hero-actions">
-        <a class="button button-primary" href="#open-positions">
-          <span class="lang-tr">Açık Rolleri İnceleyin</span>
-          <span class="lang-en">Explore Open Roles</span>
-          <span aria-hidden="true">↓</span>
-        </a>
-        <a class="button" href="mailto:sales@nartech.com.tr?subject=Kariyer%20Basvurusu%20-%20NarTech">
-          <span class="lang-tr">Doğrudan CV Gönderin</span>
-          <span class="lang-en">Submit Resume</span>
-          <span aria-hidden="true">✉</span>
-        </a>
+      <div class="career-hero-copy">
+        <div class="about-subtitle"><span class="lang-tr">KÜRESEL VİZYON &amp; EKİP</span><span class="lang-en">GLOBAL VISION &amp; TEAM</span></div>
+        <div class="lang-tr"><p class="career-copy">NarTech çatısı altında; dünya pazarlarıyla bağ kurar, uluslararası ticaretin kalbinde yer alır ve geleceğin global ticaret ekosistemini birlikte tasarlarız. Eğer küresel vizyona sahip, yetenekli ve sınır tanımayan bir profesyonelseniz; kariyerinize ivme kazandıracak en doğru ekibe katılın, NarTech’te yeriniz hazır!</p></div>
+        <div class="lang-en"><p class="career-copy">At NarTech, we connect with global markets, stand at the heart of international trade, and shape the future global trade ecosystem together. If you are a talented professional with a global outlook and no boundaries, join the right team to accelerate your career. Your place at NarTech is ready!</p></div>
       </div>
-    </div>
-
-    <figure class="career-hero-media">
-      <picture>
-        <source srcset="assets/images/career.webp" type="image/webp">
-        <img src="assets/images/career-4k.jpeg" srcset="assets/images/career.jpeg 1920w, assets/images/career-4k.jpeg 3840w" sizes="(max-width: 900px) 100vw, 620px" alt="NarTech Global Ticaret ve Mühendislik Çalışma Ekosistemi" data-alt-tr="NarTech Global Ticaret ve Mühendislik Çalışma Ekosistemi" data-alt-en="NarTech Global Trade and Engineering Workspace Ecosystem" width="3840" height="2557" loading="eager" fetchpriority="high">
-      </picture>
-      <div class="career-stat-badge stat-badge-top">
-        <span class="stat-badge-num">10+</span>
-        <span class="stat-badge-desc">
-          <span class="lang-tr">Yıllık Endüstriyel Miras</span>
-          <span class="lang-en">Years Industrial Heritage</span>
-        </span>
-      </div>
-      <div class="career-stat-badge stat-badge-bottom">
-        <span class="stat-badge-icon" aria-hidden="true">🌍</span>
-        <span class="stat-badge-desc">
-          <span class="lang-tr">Uluslararası Ticaret Ağı</span>
-          <span class="lang-en">Global Trade Network</span>
-        </span>
-      </div>
-    </figure>
+      <figure class="career-hero-media">
+        <picture>
+          <source srcset="assets/images/career.webp" type="image/webp">
+          <img src="assets/images/career-4k.jpeg" srcset="assets/images/career.jpeg 1920w, assets/images/career-4k.jpeg 3840w" sizes="(max-width: 820px) calc(100vw - 40px), 620px" alt="Masaüstünde dizüstü bilgisayar, telefon ve saksı bitkisi" data-alt-tr="Masaüstünde dizüstü bilgisayar, telefon ve saksı bitkisi" data-alt-en="Laptop, phone, and potted plant on a desk" width="3840" height="2557" loading="eager" fetchpriority="high" decoding="async">
+        </picture>
+      </figure>
     </div>
   </div>
 </section>
-
-<!-- Values Section -->
-<section class="career-section career-values-section">
-  <div class="page-wrap">
-    <div class="section-title-wrap text-center">
-      <div class="about-subtitle"><span class="lang-tr">NEDEN NARTECH?</span><span class="lang-en">WHY NARTECH?</span></div>
-      <h2><span class="lang-tr">Sizi Neler Bekliyor?</span><span class="lang-en">What to Expect at NarTech</span></h2>
-      <p class="section-lead-muted"><span class="lang-tr">Yeteneklerinizin değer bulduğu, inisiyatif alabileceğiniz ve sınırlarınızı aşabileceğiniz bir ekosistem.</span><span class="lang-en">An ecosystem where your talent is valued, initiative is empowered, and professional boundaries expand.</span></p>
-    </div>
-    <div class="career-values-grid">
-      <article class="career-value-card">
-        <div class="career-value-badge">01</div>
-        <div class="career-value-icon">🌐</div>
-        <h3><span class="lang-tr">Global Ticaretin Kalbinde</span><span class="lang-en">Heart of Global Trade</span></h3>
-        <p><span class="lang-tr">Dünya pazarlarıyla doğrudan bağ kurarak, kritik enerji, depolama ve endüstriyel tedarik zincirlerinin merkezinde uluslararası ölçekte rol alırsınız.</span><span class="lang-en">Work at the center of international trade, directly connecting with global markets and mission-critical storage and energy supply chains.</span></p>
-      </article>
-
-      <article class="career-value-card">
-        <div class="career-value-badge">02</div>
-        <div class="career-value-icon">⚙️</div>
-        <h3><span class="lang-tr">Mühendislik Standartları</span><span class="lang-en">Engineering Rigor</span></h3>
-        <p><span class="lang-tr">API 650, API 2000, EN ISO 16852 ve ATEX gibi uluslararası normlara tam uyumlu birinci sınıf projelerde teknik bilgi birikiminizi derinleştirirsiniz.</span><span class="lang-en">Deepen your technical expertise across world-class projects compliant with API 650, API 2000, EN ISO 16852, and ATEX standards.</span></p>
-      </article>
-
-      <article class="career-value-card">
-        <div class="career-value-badge">03</div>
-        <div class="career-value-icon">🚀</div>
-        <h3><span class="lang-tr">Çevik &amp; İnisiyatif Veren Kültür</span><span class="lang-en">Agile &amp; Empowered Culture</span></h3>
-        <p><span class="lang-tr">Bürokrasiden uzak, fikirlerin dinlendiği ve hızla hayata geçirildiği şeffaf, dinamik ve başarıyı ödüllendiren bir çalışma ortamı.</span><span class="lang-en">A lean, flat structure where ideas are heard and executed swiftly, fostering initiative and rewarding proactive achievement.</span></p>
-      </article>
-
-      <article class="career-value-card">
-        <div class="career-value-badge">04</div>
-        <div class="career-value-icon">📈</div>
-        <h3><span class="lang-tr">Sınır Tanımayan İvme</span><span class="lang-en">Boundless Growth</span></h3>
-        <p><span class="lang-tr">Uluslararası iş ortaklıkları, küresel fuarlar ve dinamik projelerle kariyerinizi dünya ölçeğinde ileriye taşıyacak fırsatlar.</span><span class="lang-en">Accelerate your career through global partnerships, international exhibitions, and dynamic cross-border industrial operations.</span></p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- Open Roles Section -->
-<section class="career-section career-roles-section" id="open-positions">
-  <div class="page-wrap">
-    <div class="section-title-wrap text-center">
-      <div class="about-subtitle"><span class="lang-tr">AÇIK ROLLER &amp; ODAKLAR</span><span class="lang-en">OPEN ROLES &amp; FOCUS AREAS</span></div>
-      <h2><span class="lang-tr">Ekibimize Katılın</span><span class="lang-en">Join Our Team</span></h2>
-      <p class="section-lead-muted"><span class="lang-tr">Aşağıdaki alanlarda veya profilinize uygun genel başvuruda yerinizi alın.</span><span class="lang-en">Find your place among our active roles or submit a general application.</span></p>
-    </div>
-
-    <div class="career-roles-grid">
-      <!-- Role 1 -->
-      <div class="career-role-card">
-        <div class="role-header">
-          <div class="role-tags">
-            <span class="role-tag role-tag-dept"><span class="lang-tr">Global Satış &amp; Ticaret</span><span class="lang-en">Global Merchandising</span></span>
-            <span class="role-tag role-tag-loc"><span class="lang-tr">Mersin / Hibrit</span><span class="lang-en">Mersin / Hybrid</span></span>
-          </div>
-          <h3 class="role-title"><span class="lang-tr">Uluslararası Ticaret &amp; İş Geliştirme Uzmanı</span><span class="lang-en">Global Trade &amp; Business Development</span></h3>
-        </div>
-        <p class="role-desc">
-          <span class="lang-tr">Dünya pazarlarında müşteri ve tedarikçi ağlarını genişletme, uluslararası teklif hazırlama ve küresel ticaret operasyonlarını yönetme.</span>
-          <span class="lang-en">Expanding client and supplier networks across global markets, managing cross-border commercial bids, and driving trade operations.</span>
-        </p>
-        <ul class="role-points">
-          <li><span class="lang-tr">Akıcı İngilizce (ikinci dil avantajdır)</span><span class="lang-en">Fluent English (second language is an asset)</span></li>
-          <li><span class="lang-tr">Dış ticaret, lojistik ve sözleşme yönetimi deneyimi</span><span class="lang-en">Experience in foreign trade, logistics, and contracts</span></li>
-        </ul>
-        <div class="role-action">
-          <a class="button button-outline" href="mailto:sales@nartech.com.tr?subject=Kariyer%20Basvurusu%20-%20Uluslararasi%20Ticaret"><span class="lang-tr">Başvuru Yap</span><span class="lang-en">Apply for Role</span> ↗</a>
-        </div>
-      </div>
-
-      <!-- Role 2 -->
-      <div class="career-role-card">
-        <div class="role-header">
-          <div class="role-tags">
-            <span class="role-tag role-tag-dept"><span class="lang-tr">Mühendislik &amp; Satış</span><span class="lang-en">Engineering &amp; Sales</span></span>
-            <span class="role-tag role-tag-loc"><span class="lang-tr">Mersin / Saha</span><span class="lang-en">Mersin / Field</span></span>
-          </div>
-          <h3 class="role-title"><span class="lang-tr">Mekanik &amp; Proses Satış Mühendisi</span><span class="lang-en">Technical Sales &amp; Application Engineer</span></h3>
-        </div>
-        <p class="role-desc">
-          <span class="lang-tr">Depolama tankı ve terminal ekipmanları için teknik şartname analizi, müşteri danışmanlığı ve ürün mühendisliği hesaplamaları.</span>
-          <span class="lang-en">Technical specification analysis, customer consulting, and engineering sizing for storage tank and terminal equipment.</span>
-        </p>
-        <ul class="role-points">
-          <li><span class="lang-tr">Makine, Kimya veya Petrol Mühendisliği lisansı</span><span class="lang-en">Degree in Mechanical, Chemical, or Petroleum Engineering</span></li>
-          <li><span class="lang-tr">API 650, API 2000 veya endüstriyel vana bilgisi</span><span class="lang-en">Knowledge of API 650, API 2000, or industrial valves</span></li>
-        </ul>
-        <div class="role-action">
-          <a class="button button-outline" href="mailto:sales@nartech.com.tr?subject=Kariyer%20Basvurusu%20-%20Satis%20Muhendisi"><span class="lang-tr">Başvuru Yap</span><span class="lang-en">Apply for Role</span> ↗</a>
-        </div>
-      </div>
-
-      <!-- Role 3 -->
-      <div class="career-role-card">
-        <div class="role-header">
-          <div class="role-tags">
-            <span class="role-tag role-tag-dept"><span class="lang-tr">Saha Hizmetleri</span><span class="lang-en">Field Services</span></span>
-            <span class="role-tag role-tag-loc"><span class="lang-tr">Proje Sahaları</span><span class="lang-en">Project Sites</span></span>
-          </div>
-          <h3 class="role-title"><span class="lang-tr">Saha Denetim &amp; Süpervizörlük Uzmanı</span><span class="lang-en">Field Supervision &amp; Inspection Specialist</span></h3>
-        </div>
-        <p class="role-desc">
-          <span class="lang-tr">Mekanik montaj sahalarında PVRV set point testleri, dahili yüzer tavan (IFR) denetimleri ve yerinde teknik süpervizörlük kontrolleri.</span>
-          <span class="lang-en">PVRV set point testing, internal floating roof (IFR) inspections, and on-site technical supervision at mechanical installation sites.</span>
-        </p>
-        <ul class="role-points">
-          <li><span class="lang-tr">Tank terminali veya rafineri saha deneyimi</span><span class="lang-en">Tank terminal or refinery on-site experience</span></li>
-          <li><span class="lang-tr">İSG ve saha güvenlik standartlarına tam uyum</span><span class="lang-en">Strict commitment to HSE standards</span></li>
-        </ul>
-        <div class="role-action">
-          <a class="button button-outline" href="mailto:sales@nartech.com.tr?subject=Kariyer%20Basvurusu%20-%20Saha%20Supervizorlugu"><span class="lang-tr">Başvuru Yap</span><span class="lang-en">Apply for Role</span> ↗</a>
-        </div>
-      </div>
-
-      <!-- Role 4: Genel Başvuru -->
-      <div class="career-role-card career-role-general">
-        <div class="role-header">
-          <div class="role-tags">
-            <span class="role-tag role-tag-dept"><span class="lang-tr">Tüm Birimler</span><span class="lang-en">All Departments</span></span>
-            <span class="role-tag role-tag-loc"><span class="lang-tr">Esnek</span><span class="lang-en">Flexible</span></span>
-          </div>
-          <h3 class="role-title"><span class="lang-tr">Genel Başvuru</span><span class="lang-en">General Application</span></h3>
-        </div>
-        <p class="role-desc">
-          <span class="lang-tr">Yukarıdaki rollerden bağımsız olarak; küresel vizyonunuza, dinamizminize ve NarTech’e değer katacağınıza inanıyorsanız sizi tanımak isteriz!</span>
-          <span class="lang-en">Regardless of specific open roles, if you believe your global vision and drive will enrich NarTech, we look forward to meeting you!</span>
-        </p>
-        <ul class="role-points">
-          <li><span class="lang-tr">Sınır tanımayan, sonuç odaklı profesyoneller</span><span class="lang-en">Ambitious, boundary-pushing professionals</span></li>
-          <li><span class="lang-tr">Özgeçmişiniz İK veri tabanımızda öncelikli saklanır</span><span class="lang-en">Your profile receives priority review in our talent pool</span></li>
-        </ul>
-        <div class="role-action">
-          <a class="button button-outline" href="mailto:sales@nartech.com.tr?subject=Kariyer%20Genel%20Basvurusu%20-%20NarTech"><span class="lang-tr">Genel Başvuru Yap</span><span class="lang-en">Submit Application</span> ↗</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Recruitment Process Section -->
-<section class="career-section career-process-section">
-  <div class="page-wrap">
-    <div class="section-title-wrap text-center">
-      <div class="about-subtitle"><span class="lang-tr">NASIL ÇALIŞIYORUZ?</span><span class="lang-en">HOW WE HIRE</span></div>
-      <h2><span class="lang-tr">İşe Alım Yolculuğu</span><span class="lang-en">Our Recruitment Journey</span></h2>
-      <p class="section-lead-muted"><span class="lang-tr">Adaylarımızın zamanına saygı duyan, şeffaf ve hızlı ilerleyen 4 adımlı süreç.</span><span class="lang-en">A transparent, rapid 4-step process respecting every candidate's time.</span></p>
-    </div>
-
-    <div class="career-process-grid">
-      <div class="career-step-item">
-        <div class="step-num-box">01</div>
-        <h4><span class="lang-tr">Başvuru &amp; İnceleme</span><span class="lang-en">Application Review</span></h4>
-        <p><span class="lang-tr">Özgeçmişiniz insan kaynakları ve ilgili departman liderleri tarafından 48 saat içinde incelenir.</span><span class="lang-en">Your CV is reviewed within 48 hours by HR and department leaders.</span></p>
-      </div>
-      <div class="career-step-item">
-        <div class="step-num-box">02</div>
-        <h4><span class="lang-tr">Tanışma Görüşmesi</span><span class="lang-en">Culture &amp; Intro</span></h4>
-        <p><span class="lang-tr">Kültürümüz, hedefleriniz ve ortak vizyonumuz üzerine ilk karşılıklı değerlendirme toplantısı.</span><span class="lang-en">An introductory conversation exploring shared vision, culture, and goals.</span></p>
-      </div>
-      <div class="career-step-item">
-        <div class="step-num-box">03</div>
-        <h4><span class="lang-tr">Teknik Değerlendirme</span><span class="lang-en">Technical Deep-Dive</span></h4>
-        <p><span class="lang-tr">Rolün gerektirdiği uzmanlık alanında vaka analizi ve karşılıklı teknik sohbet.</span><span class="lang-en">Role-specific discussion, case assessment, and domain expertise alignment.</span></p>
-      </div>
-      <div class="career-step-item">
-        <div class="step-num-box">04</div>
-        <h4><span class="lang-tr">Teklif &amp; Katılım</span><span class="lang-en">Offer &amp; Welcome</span></h4>
-        <p><span class="lang-tr">Şeffaf teklif süreci ve NarTech’in global ticaret ekosistemine hızlı oryantasyon.</span><span class="lang-en">A transparent offer package and onboarding into our global trade ecosystem.</span></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Direct Application / CTA Section -->
 <section class="career-application" id="application-channel">
   <div class="page-wrap">
     <div class="career-application-panel">
       <div class="career-application-copy">
         <div class="about-subtitle"><span class="lang-tr">EKİBİMİZE KATILIN</span><span class="lang-en">JOIN OUR TEAM</span></div>
         <h2><span class="lang-tr">Başvuru Kanalı</span><span class="lang-en">Application Channel</span></h2>
-        <p><span class="lang-tr">Güncel özgeçmişinizi ve ilgilendiğiniz uzmanlık alanını belirterek bize e-posta gönderin veya iletişim sayfamızdan ulaşın.</span><span class="lang-en">Email your current CV and the area you are interested in, or reach us through our contact page.</span></p>
+        <p><span class="lang-tr">Özgeçmişinizi e-posta ile iletin veya iletişim sayfamızdan bize ulaşın.</span><span class="lang-en">Send your CV by email or reach us through our contact page.</span></p>
       </div>
       <div class="career-application-actions">
         <a class="button career-apply-button" href="mailto:sales@nartech.com.tr?subject=Kariyer%20Basvurusu%20-%20NarTech">
@@ -959,6 +735,7 @@ career_body = '''<div class="career-page">
   </div>
 </section>
 </div>'''
+
 (OUT/"career.html").write_text(layout("Kariyer",career_body,"career",title_en="Career"),encoding="utf-8")
 
 contact_body = '''<div class="page-wrap form-page contact-page"><div class="page-heading"><h1><span class="lang-tr">İletişim</span><span class="lang-en">Contact Us</span></h1></div><div class="contact-layout"><aside class="contact-info-panel"><div class="contact-info-card"><div class="contact-badge"><span class="lang-tr">Merkez Ofis &amp; Satış</span><span class="lang-en">Head Office &amp; Sales</span></div><h2 class="contact-office-title"><span class="lang-tr">Türkiye Merkez Ofis + Satış</span><span class="lang-en">Head Office &amp; Sales (Turkey)</span></h2><div class="contact-item"><div class="contact-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="contact-item-text"><strong class="contact-item-label"><span class="lang-tr">Adres</span><span class="lang-en">Address</span></strong><p class="contact-item-value"><span class="lang-tr">Fatih Mah. 30020 Sok. Güzelyalı Sit. Güzel Yalı Sitesi No: 29B İç Kapı No: 4, Mezitli, Mersin, Türkiye</span><span class="lang-en">Fatih Mah. 30020 Sok. Güzelyalı Sit. Güzel Yalı Sitesi No: 29B, Apt. 4, Mezitli, Mersin, Türkiye</span></p></div></div><div class="contact-item"><div class="contact-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div class="contact-item-text"><strong class="contact-item-label"><span class="lang-tr">E-Posta</span><span class="lang-en">Email</span></strong><p class="contact-item-value"><a href="mailto:sales@nartech.com.tr">sales@nartech.com.tr</a></p></div></div><div class="contact-note"><span class="lang-tr">Proje talepleriniz, teknik şartname uyumu ve ürün teklifleri için bizimle doğrudan iletişime geçebilir veya formu doldurabilirsiniz.</span><span class="lang-en">For project inquiries, technical specification compliance, and quotation requests, reach out directly or submit the form.</span></div></div></aside><section class="form-panel contact-form-panel"><form id="contact-form" class="form-grid"><input name="product" id="contact-product" type="hidden"><div class="form-field"><label for="contact-name"><span class="lang-tr">Ad Soyad</span><span class="lang-en">Full Name</span></label><input id="contact-name" name="name" autocomplete="name" required></div><div class="form-field"><label for="contact-phone"><span class="lang-tr">Telefon No</span><span class="lang-en">Phone</span></label><input id="contact-phone" name="phone" type="tel" autocomplete="tel" required></div><div class="form-field"><label for="contact-message"><span class="lang-tr">Açıklama</span><span class="lang-en">Description</span></label><textarea id="contact-message" name="description" required></textarea></div><button class="button button-primary" type="submit"><span class="lang-tr">Gönder</span><span class="lang-en">Send</span></button><p class="form-status" id="contact-status" role="status" aria-live="polite"></p></form></section></div></div>'''
