@@ -564,6 +564,8 @@ for n,cat in enumerate(categories,1):
     intro_tr=''.join(p_html(entry,"tr") for entry in cat.get("descriptionTr",[]))
     intro_en=''.join(p_html(entry,"en") for entry in cat.get("descriptionEn",[]))
     intro=f'<div class="lang-tr">{intro_tr}</div><div class="lang-en">{intro_en}</div>' if intro_tr or intro_en else ''
+    if cat["id"] == "floatin-suction-units" and intro:
+        intro = f'<details class="tree-branch"><summary><span class="lang-tr">Yüzer Emiş Ünitesi</span><span class="lang-en">Floating Suction Unit</span></summary><div class="tree-children"><div class="tree-copy">{intro}</div></div></details>'
     if cat["id"] == "retractable-grounding-cable" and intro:
         intro = f'<details class="tree-branch"><summary><span class="lang-tr">Geri Sarmalı Topraklama Makarası (RGR)</span><span class="lang-en">Retractable Grounding Reel (RGR)</span></summary><div class="tree-children">{intro}</div></details>'
     category_label=f'<span class="lang-tr">{esc(category_title(cat,"tr"))}</span><span class="lang-en">{esc(category_title(cat,"en"))}</span>'
