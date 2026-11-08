@@ -53,6 +53,52 @@
       }
     ]
   },
+  "homeWhatWeDo": {
+    "paragraphsTr": [
+      {
+        "text": "Petrol & Gaz, Petrokimya, Kimya, Su, Upstream, Downstream ve Offshore sektörlerinde; uluslararası güvenlik, kalite ve performans standartlarına tam uyumlu, dünya standartlarında mühendislik çözümleri sunuyoruz.",
+        "source": "Mahmut Tunaz: 2026-11-08"
+      },
+      {
+        "text": "Ayrıca tank terminalleri, rafineriler ve önde gelen EPC yüklenicileri için uzmanlaşmış ürün tedariki ve mühendislik çözümleri sunuyoruz.",
+        "source": "Mahmut Tunaz: 2026-11-08"
+      },
+      {
+        "text": "Müşterilerimizin teknik gereksinimleri, proje ihtiyaçları ve proje şartnameleri doğrultusunda, en yüksek uluslararası standartlara uygun, küresel ölçekte sertifikalı üreticilerden en uygun ürün ve çözümleri tedarik edip teslim ediyoruz.",
+        "source": "Mahmut Tunaz: 2026-11-08"
+      },
+      {
+        "text": "Derin mühendislik uzmanlığımızı, teknik bilgi birikimimizi ve uluslararası iş ortaklıklarımızı bir araya getirerek her projenin özel gereksinimlerine uygun, güvenilir ve verimli çözümler sunuyoruz.",
+        "source": "Mahmut Tunaz: 2026-11-08"
+      },
+      {
+        "text": "Bizim için doğru ürün, teknik şartnameleri karşılamanın ötesinde; güvenliği, performansı, operasyonel verimliliği ve uzun vadeli değeri bir araya getirir.",
+        "source": "Mahmut Tunaz: 2026-11-08"
+      }
+    ],
+    "paragraphsEn": [
+      {
+        "text": "We provide world-class engineering solutions across the Oil & Gas, Petrochemical, Chemical, Water, Upstream, Downstream, and Offshore industries, fully compliant with international safety, quality, and performance standards.",
+        "source": "Mahmut Tunaz: 2026-11-08"
+      },
+      {
+        "text": "In addition, we provide specialized product procurement and engineering solutions for tank terminals, refineries, and leading EPC contractors.",
+        "source": "Mahmut Tunaz: 2026-11-08"
+      },
+      {
+        "text": "Based on our clients' technical requirements, project needs, and project specifications, we source and deliver the most suitable products and solutions from globally certified manufacturers that comply with the highest international standards.",
+        "source": "Mahmut Tunaz: 2026-11-08"
+      },
+      {
+        "text": "Combining deep engineering expertise, technical know-how, and international partnerships, we deliver dependable and efficient solutions tailored to the specific requirements of every project.",
+        "source": "Mahmut Tunaz: 2026-11-08"
+      },
+      {
+        "text": "To us, the right product does more than meet technical specifications. It brings together safety, performance, operational efficiency, and long-term value.",
+        "source": "Mahmut Tunaz: 2026-11-08"
+      }
+    ]
+  },
   "whatWeDo": {
     "titleTr": "Doğru Mühendislik & Doğru Ürün.",
     "paragraphsTr": [
@@ -71,6 +117,14 @@
       {
         "text": "Bizim için doğru ürün, yalnızca teknik gereklilikleri karşılayan değil; güvenliği, performansı, operasyonel verimliliği ve uzun vadeli değeri bir arada sunan üründür.",
         "source": "What We Do (1).docx:5"
+      },
+      {
+        "text": "Küresel tedarik zincirimiz ve sektörün önde gelen firmalarıyla kurduğumuz iş ortaklıkları sayesinde, en yüksek kalite standartlarındaki bileşen ve ekipmanları projelerinize zamanında ve sorunsuz biçimde entegre ediyoruz.",
+        "source": "Mahmut Tunaz: 2026-11-08"
+      },
+      {
+        "text": "Yenilikçi mühendislik yaklaşımlarımız ve sürekli gelişim taahhüdümüzle, geleceğin sektör standartlarını bugünden karşılamanıza imkân veren sürdürülebilir sistemler kuruyoruz.",
+        "source": "Mahmut Tunaz: 2026-11-08"
       }
     ],
     "titleEn": "The Right Engineering & The Right Product. ",
@@ -90,6 +144,14 @@
       {
         "text": "To us, the right product does more than meet technical specifications. It brings together safety, performance, operational efficiency, and long-term value.",
         "source": "What We Do (1).docx:10"
+      },
+      {
+        "text": "Thanks to our global supply chain and industry-leading partnerships, we seamlessly integrate components and equipment of the highest quality standards into your projects right on schedule.",
+        "source": "Mahmut Tunaz: 2026-11-08"
+      },
+      {
+        "text": "Driven by innovative engineering approaches and our commitment to continuous improvement, we build sustainable systems that empower you to meet future industry standards today.",
+        "source": "Mahmut Tunaz: 2026-11-08"
       }
     ]
   },
@@ -1076,7 +1138,7 @@
     {
       "id": "floatin-suction-units",
       "title": {
-        "text": "5-Floatin Suction Units",
+        "text": "5-Floating Suction Units",
         "source": "Products (3).docx:173"
       },
       "items": [
@@ -1121,7 +1183,7 @@
         }
       ],
       "titleTr": "5-Yüzer Emiş",
-      "titleEn": "5-Floatin Suction Units"
+      "titleEn": "5-Floating Suction Units"
     },
     {
       "id": "retractable-grounding-cable",
@@ -1129,17 +1191,25 @@
         "text": "6-Retractable Grounding Cable",
         "source": "Products (3).docx:179"
       },
-      "items": [],
-      "descriptionTr": [
+      "items": [
         {
-          "text": "ATEX sertifikalı Geri Sarmalı Topraklama Makarası (RGR), API standartlarına uygun olarak yüzer tavanlı tanklardaki statik elektriği güvenli biçimde boşaltmak için tasarlanmıştır. Yüzer tavan ile tank gövdesi arasında doğrudan elektrik bağlantısı kurar; yıldırım sırasında akımın ve biriken yüklerin hızla toprağa iletilmesini sağlar.",
-          "source": "Products (3).docx:180"
-        }
-      ],
-      "descriptionEn": [
-        {
-          "text": "The ATEX-Certified Retractable Grounding Reel (RGR) is designed to safely discharge static electricity from floating roof tanks in accordance with API standards. Acting as a direct electrical connection between the floating roof and the tank shell, it ensures that lightning currents and bound charges are rapidly and effectively conducted to the earth during a lightning strike.",
-          "source": "Products (3).docx:180"
+          "id": "retractable-grounding-reel",
+          "titleTr": "Geri Sarmalı Topraklama Makarası (RGR)",
+          "titleEn": "Retractable Grounding Reel (RGR)",
+          "tr": [
+            {
+              "text": "ATEX sertifikalı Geri Sarmalı Topraklama Makarası (RGR), API standartlarına uygun olarak yüzer tavanlı tanklardaki statik elektriği güvenli biçimde boşaltmak için tasarlanmıştır. Yüzer tavan ile tank gövdesi arasında doğrudan elektrik bağlantısı kurar; yıldırım sırasında akımın ve biriken yüklerin hızla toprağa iletilmesini sağlar.",
+              "source": "Products (3).docx:180"
+            }
+          ],
+          "en": [
+            {
+              "text": "The ATEX-Certified Retractable Grounding Reel (RGR) is designed to safely discharge static electricity from floating roof tanks in accordance with API standards. Acting as a direct electrical connection between the floating roof and the tank shell, it ensures that lightning currents and bound charges are rapidly and effectively conducted to the earth during a lightning strike.",
+              "source": "Products (3).docx:180"
+            }
+          ],
+          "children": [],
+          "source": 126
         }
       ],
       "titleTr": "6-Topraklama RGR",
