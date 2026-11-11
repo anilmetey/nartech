@@ -150,20 +150,17 @@
     });
   }
 
-  const calculatorEmailForm = document.querySelector('#calc-email-form');
-  if (calculatorEmailForm) {
-    const stepEmail = document.querySelector('#calc-step-email');
+  const calculatorForm = document.querySelector('#calc-input-form');
+  if (calculatorForm) {
     const stepInputs = document.querySelector('#calc-step-inputs');
     const stepResults = document.querySelector('#calc-step-results');
     const resultContent = document.querySelector('#calc-results');
     const status = document.querySelector('#calc-status');
-    let recipientEmail = '';
     let calculation = null;
 
     const showStep = number => {
-      stepEmail.hidden = number !== 1;
-      stepInputs.hidden = number !== 2;
-      stepResults.hidden = number !== 3;
+      stepInputs.hidden = number !== 1;
+      stepResults.hidden = number !== 2;
       document.querySelectorAll('[data-step-indicator]').forEach(indicator => {
         if (Number(indicator.dataset.stepIndicator) === number) indicator.setAttribute('aria-current', 'step');
         else indicator.removeAttribute('aria-current');
@@ -211,15 +208,6 @@
       );
     };
 
-    calculatorEmailForm.addEventListener('submit', event => {
-      event.preventDefault();
-      const field = calculatorEmailForm.elements.email;
-      if (!field.reportValidity()) return;
-      recipientEmail = field.value.trim();
-      showStep(2);
-      document.querySelector('#tank-capacity').focus();
-    });
-
     document.querySelector('#calc-input-form').addEventListener('submit', event => {
       event.preventDefault();
       const form = event.currentTarget;
@@ -251,38 +239,17 @@
       renderResults();
       status.removeAttribute('data-status-key');
       status.textContent = '';
-      showStep(3);
-      document.querySelector('#calc-send').focus();
+      showStep(2);
+      document.querySelector('#calc-back').focus();
     });
 
     document.querySelector('#calc-back').addEventListener('click', () => {
       status.removeAttribute('data-status-key');
       status.textContent = '';
-      showStep(2);
+      showStep(1);
     });
 
     document.addEventListener('nartech-language-change', renderResults);
-
-    document.querySelector('#calc-send').addEventListener('click', async event => {
-      if (!calculation || !recipientEmail) return;
-      const button = event.currentTarget;
-      button.disabled = true;
-      status.removeAttribute('data-status-key');
-      status.textContent = '';
-      try {
-        const response = await fetch('/api/api2000-report', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ recipientEmail, calculation, language: root.dataset.language }),
-        });
-        if (!response.ok) throw new Error('send-failed');
-        setStatus(status, 'sent');
-      } catch {
-        setStatus(status, 'failed');
-      } finally {
-        button.disabled = false;
-      }
-    });
   }
 
   const contactForm = document.querySelector('#contact-form');

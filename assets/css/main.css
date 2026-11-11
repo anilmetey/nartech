@@ -174,6 +174,7 @@ main { min-height: 58vh; }
 .home-service-row p:last-child { margin-bottom: 0; }
 .home-services-section > .home-section-link { margin-top: 18px; }
 .button { display: inline-flex; min-height: 44px; align-items: center; justify-content: center; border: 1px solid var(--green); border-radius: 4px; padding: 9px 17px; background: #fff; color: var(--green); font-size: 15px; font-weight: 680; cursor: pointer; }
+.button:disabled { cursor: not-allowed; opacity: .62; }
 .button:hover { background: var(--green-soft); text-decoration: none; }
 .button-primary { background: var(--green); color: #fff; }
 .button-primary:hover { background: var(--green-dark); color: #fff; }
@@ -268,6 +269,9 @@ main { min-height: 58vh; }
 .step-indicator { border: 1px solid var(--line); border-radius: 4px; padding: 6px 11px; color: #607166; font-size: 13px; font-weight: 680; }
 .step-indicator[aria-current="step"] { border-color: var(--green-line); color: var(--green); background: var(--green-soft); }
 .calc-results { display: grid; gap: 0; margin: 20px 0; border-top: 1px solid var(--line); }
+.calc-email-notice { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px; margin-top: 22px; border: 1px solid var(--line); border-radius: 7px; padding: 14px 16px; background: var(--green-soft); }
+.calc-email-notice p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.55; }
+.calc-email-notice .button { flex: 0 0 auto; margin: 0; }
 .calc-result-row { display: flex; justify-content: space-between; gap: 20px; border-bottom: 1px solid var(--line); padding: 12px 0; }
 .calc-result-row dt { color: #34463b; }
 .calc-result-row dd { margin: 0; text-align: right; font-weight: 700; white-space: nowrap; }
@@ -497,10 +501,9 @@ main { min-height: 58vh; }
 #contact-form .form-field:nth-of-type(3), #contact-form .form-status, #contact-form > .button { grid-column: 1 / -1; }
 #contact-form > .button { justify-self: center; min-width: 180px; margin-top: 8px; }
 #contact-form .form-status { text-align: center; }
-#calc-email-form { grid-template-columns: minmax(0, 1fr) auto; align-items: end; }
 #calc-input-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 #calc-input-form > div:last-child { grid-column: 1 / -1; }
-#calc-email-form .button, #calc-input-form .button { margin-top: 0; }
+#calc-input-form .button { margin-top: 0; }
 .service-list, .faq-list { max-width: 960px; margin-right: auto; margin-left: auto; }
 .service-list { gap: 14px; padding-top: 28px; }
 .service-item, .faq-item { border-radius: 9px; box-shadow: 0 7px 22px rgba(24,58,39,.035); }
@@ -536,10 +539,9 @@ main { min-height: 58vh; }
   .what-we-do-grid p:nth-child(odd) { border-right: 0; }
   .what-we-do-grid p:not(:last-child) { border-bottom: 1px solid var(--line); }
   .what-we-do-grid p:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
-  #contact-form, #calc-email-form, #calc-input-form { grid-template-columns: 1fr; }
+  #contact-form, #calc-input-form { grid-template-columns: 1fr; }
   #contact-form .form-field, #contact-form .form-status, #contact-form > .button, #calc-input-form > div:last-child { grid-column: 1; }
   #contact-form > .button { width: 100%; justify-self: stretch; }
-  #calc-email-form .button { width: 100%; }
   .site-footer { padding: 34px 0 30px; }
   .footer-inner { grid-template-columns: minmax(0, 1fr) minmax(136px, .88fr); grid-template-areas: "brand brand" "site contact"; align-items: start; gap: 14px 18px; }
   .footer-brand-block { align-items: center; text-align: center; }
