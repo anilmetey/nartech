@@ -23,9 +23,6 @@
     root.setAttribute('data-language', language);
     root.lang = language;
     const english = language === 'en';
-    document.querySelectorAll('.footer-tagline .lang-en').forEach(element => {
-      element.textContent = 'The Right Engineering & The Right Products';
-    });
     if (root.dataset.titleEn && root.dataset.titleTr) {
       document.title = english ? root.dataset.titleEn : root.dataset.titleTr;
     }
